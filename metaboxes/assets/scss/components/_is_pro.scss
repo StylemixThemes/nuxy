@@ -1,0 +1,150 @@
+.stm_metaboxes_grid {
+
+    &__inner {
+        .stm_lms_certificate_banner {
+            .certificate_banner {
+                width: 100%;
+                padding: 0 20px;
+                img {
+                    margin-bottom: 0 !important;
+                    max-width: 100%;
+                }
+            }
+        }
+
+        .is_pro {
+            position: relative;
+
+            .wpcfto-field-aside {
+                align-self: center;
+            }
+            .pro-notice {
+                font-size: 13px;
+                font-weight: 400;
+                color: $color_muted;
+                position: relative;
+                z-index: 101;
+                margin: 0 20px 0 0;
+                white-space: nowrap;
+                width: 20%;
+                order: 3;
+
+                a {
+                    margin-left: 4px;
+                    color: $accent;
+                    text-decoration: none !important;
+                }
+            }
+
+            .wpcfto_field_hint {
+                display: none;
+            }
+
+            .wpcfto_generic_field {
+                label {
+                    color: $color_muted;
+                }
+            }
+
+            .field_overlay {
+            }
+
+            /*DRIP*/
+            &.drip_content {
+                .field_overlay {
+                    top: -8px;
+                    bottom: 0;
+                }
+            }
+
+            &:hover {
+                .pro-notice {
+                    opacity: 1;
+                    visibility: visible;
+                }
+                .field_overlay {
+                    background: rgba(255,255,255,0.4);
+                }
+            }
+            .certificate_banner {
+                width: 100%;
+                padding: 0 20px 0 0;
+                & {
+                    padding: 20px;
+                }
+                .field_overlay {
+                    left: 0;
+                    right: 0;
+                }
+                .pro-notice {
+                    display: block;
+                    margin: 0 0 0.8em;
+                }
+                a {
+                    outline: none;
+                    box-shadow: none;
+                    img {
+                        max-width: 100%;
+                        margin-bottom: 0;
+                    }
+                }
+                &:hover {
+                    .field_overlay {
+                        background: rgba(255,255,255,0.8);
+                    }
+                }
+            }
+            .wpcfto_generic_field {
+                background-color: transparent;
+            }
+        }
+
+        .is_pro_in_addon {
+            .pro-notice {
+                opacity: 0;
+                visibility: hidden;
+                a {
+                    padding: 7px 10px;
+                    margin: 0 3px 0 10px;
+                    background: $main_color;
+                    color: #fff;
+                    border-radius: 4px;
+                }
+            }
+            .wpcfto_generic_field label:after {
+                display: none;
+            }
+        }
+
+        .wpcfto-field-pro-content {
+            .pro-notice {
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+
+        .wpcfto_group_started,
+        .preopen_field_wrapper {
+            position: relative;
+
+            .is_pro {
+                position: static;
+                .field_overlay {
+                    right: 0;
+                    left: 0;
+                    bottom: 0;
+                }
+            }
+
+            .is_pro {
+                &.sale_price_dates {
+                    position: relative;
+                    margin-bottom: 10px;
+                }
+            }
+
+        }
+
+    }
+
+}

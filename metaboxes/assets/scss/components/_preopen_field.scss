@@ -1,0 +1,27 @@
+html body .stm_metaboxes_grid {
+
+    &__inner {
+        .preopen_field_wrapper {
+            width: 100%;
+            margin: 0 5px;
+            .wpcfto_generic_field.wpcfto_generic_field_flex_input,
+            .wpcfto_generic_field {
+                padding: 0;
+                margin: 10px -5px 0;
+                label {
+                    display: none;
+                }
+                input {
+                    width: 100% !important;
+                }
+            }
+            .wpcfto_field_hint {
+                .wpcfto_generic_field.wpcfto_generic_field_flex_input {
+                    input {
+                        margin-right: 50px;
+                    }
+                }
+            }
+        }
+    }
+}

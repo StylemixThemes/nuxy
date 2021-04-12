@@ -1,0 +1,96 @@
+//.wpcfto-box {
+//    &:not(.column-1),
+//    .wpcfto-box-child:not(.column-1) {
+//        .wpcfto_generic_radio {
+//            .wpcfto-admin-radio > label {
+//                display: block;
+//                margin-bottom: .8em;
+//            }
+//        }
+//    }
+//}
+
+.stm_metaboxes_grid__inner {
+    .wpcfto_generic_radio {
+        .wpcfto-field-aside {
+            align-self: center;
+        }
+    }
+    input[type="checkbox"],
+    input[type="radio"] {
+        display: inline-block !important;
+    }
+    .wpcfto-admin-radio {
+        & > label {
+            display: block;
+            margin-bottom: 15px;
+        }
+        .wpcfto-radio {
+            margin: 0;
+        }
+    }
+    .wpcfto-radio {
+        input {
+            position: relative;
+            top: 0;
+            vertical-align: middle;
+            margin: 0 !important;
+        }
+        & > label {
+            font-size: 15px;
+            font-weight: 400 !important;
+            background-color: #fff;
+            padding: 11px 13px;
+            display: inline-block;
+            margin: 7px 18px 7px 0;
+            position: relative;
+            transition: background-color 0.3s ease 0s;
+            border-radius: 5px;
+
+            .radio-option-text {
+                vertical-align: middle;
+                margin-left: 5px;
+            }
+            .wpcfto_preview {
+                vertical-align: middle;
+                //top: 2px;
+            }
+            input {
+            }
+
+            &:hover, &.active {
+                background-color: #f6f9fc;
+            }
+        }
+        input[type=radio]:checked {
+            & {
+                border-color: $accent;
+                background-color: $accent;
+            }
+            &::before {
+                background-color: #fff;
+                width: 6px;
+                height: 6px;
+                margin: 4px;
+            }
+        }
+    }
+
+
+	.section_quiz_settings-quiz_style,
+    .section_settings-status {
+        margin: 0 0 10px !important;
+        .wpcfto-radio {
+            margin: 0 0 10px;
+            display: flex;
+            label {
+                margin-right: 20px !important;
+            }
+        }
+    }
+
+	.section_quiz_settings-quiz_style {
+		padding-top: 25px;
+	}
+
+}

@@ -1,0 +1,36 @@
+.stm_metaboxes_grid .stm_metaboxes_grid__inner {
+    .notice_banner {
+        background-color: transparent;
+    }
+    .wpcfto_generic_field {
+        &.wpcfto_generic_field__notice_banner {
+            position: relative;
+            display: inline-block;
+            margin: 2px 0 20px 20px;
+            min-height: auto;
+            background-color: rgb(253, 253, 228);
+            filter: drop-shadow(3px 5.196px 16px rgba(0, 0, 0, 0.2));
+            border-radius: 10px;
+
+            &:before {
+                position: absolute;
+                top: -8px;
+                left: 8px;
+                content: '';
+                width: 0;
+                height: 0;
+                border-style: solid;
+                border-width: 0 5px 8px 5px;
+                border-color: transparent transparent rgb(253, 253, 228) transparent;
+            }
+
+            label {
+                margin: 0;
+                color: #2a2e33;
+                font-size: 14px;
+                font-weight: 400;
+            }
+
+        }
+    }
+}

@@ -1,0 +1,129 @@
+.stm_metaboxes_grid__inner .wpcfto_generic_field.wpcfto_generic_field_image {
+    & {
+        display: flex;
+        // align-items: center;
+        justify-content: space-between;
+        padding: 20px;
+    }
+    .wpcfto-field-aside {
+        margin: 10px 0 0;
+    }
+    .wpcfto_field_title {
+        display: block;
+        max-width: 35%;
+        margin-top: 10px;
+    }
+    .wpcfto-field-content {
+        display: flex;
+        align-items: center;
+    }
+    .wpcfto-image {
+        display: flex;
+        align-items: center;
+        height: auto;
+        //width: 60%;
+        width: 100%;
+        min-height: 40px;
+        &.has-image {
+            display: block;
+            .image-field {
+                float: left;
+            }
+            .actions {
+                & {
+                    margin: 18px 0 0 0;
+                    float: left;
+                }
+                .button {
+                    display: block;
+                    margin-bottom: 8px;
+                    &.button-remove {
+                        background-color: $color_muted;
+                        border-color: $color_muted;
+                        &:hover {
+                            background-color: darken($color_muted, 5%) !important;
+                            border-color: darken($color_muted, 5%) !important;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .field-description {
+        margin-top: 10px;
+        margin-right: 10px;
+        display: block;
+    }
+
+    .not_image {
+        .wpcfto-image {
+            align-items: flex-start;
+        }
+        .actions {
+            .button {
+                width: 100%;
+                margin-bottom: 10px;
+                text-align: center;
+                &.button-remove {
+                    background-color: $color_muted;
+                    border-color: $color_muted;
+                    &:hover {
+                        background-color: darken($color_muted, 5%) !important;
+                        border-color: darken($color_muted, 5%) !important;
+                    }
+                }
+            }
+        }
+    }
+
+}
+.wpcfto-image {
+    .image-field {
+        background-color: #d2d6da;
+        padding: 10px;
+        display: inline-block;
+        margin: 18px 15px 0 0;
+        max-width: 180px;
+        margin-bottom: 10px;
+        overflow: hidden;
+        border-radius: 5px;
+        img {
+            object-fit: cover;
+            width: 100%;
+            height: auto;
+        }
+    }
+    .wpcfto-input-url {
+        width: 100%;
+        margin-right: 18px;
+    }
+    .actions {
+        .button {
+            display: inline-block;
+            padding: 10px 27px;
+            margin-right: 0;
+            min-height: auto;
+            height: 40px;
+            line-height: 1.4;
+            text-transform: uppercase;
+            color: #fff;
+            font-size: 13px;
+            font-weight: 600;
+            border-radius: 4px;
+            background: $accent;
+            border-color: $accent;
+            box-shadow: 0 3px 3px rgba(0, 0, 0, 0.16);
+            cursor: pointer;
+            letter-spacing: 0;
+            &:hover {
+                background-color: lighten($accent, 5%) !important;
+                border-color: lighten($accent, 5%) !important;
+            }
+            i {
+                display: inline;
+                margin-right: 10px;
+            }
+        }
+    }
+
+}

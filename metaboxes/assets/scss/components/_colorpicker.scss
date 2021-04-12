@@ -1,0 +1,108 @@
+.wpcfto_generic_field_color {
+    font-size: 0;
+    .stm_colorpicker_wrapper {
+        width: auto;
+        display: inline-block;
+    }
+    .wpcfto-field-aside {
+        align-self: center;
+    }
+    &__clear {
+        display: inline-block;
+        margin: 6px 0 0 11px;
+        padding: 5px 10px;
+        font-size: 13px;
+        vertical-align: top;
+        text-decoration: none;
+        background-color: #f1f1f1;
+        border-radius: 5px;
+    }
+}
+.stm_colorpicker_wrapper {
+    position: relative;
+    .vc-photoshop,
+    .vc-chrome {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        width: 100%;
+        min-width: 540px;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(5px);
+        transition: .3s ease;
+        z-index: 999999999999;
+        &:hover {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        .vc-ps-ac-btn {
+            display: none;
+        }
+        .vc-editable-input {
+            .vc-input__input {
+                position: relative;
+                left: 17px;
+                width: 100%;
+            }
+        }
+    }
+
+    &.picker-position-top {
+        .vc-photoshop,
+        .vc-chrome {
+            top: auto;
+            bottom: 100%;
+        }
+    }
+
+    label {
+        display: block;
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: 7px;
+    }
+    > input[type='text'] {
+        padding-right: 20px;
+        & {
+            vertical-align: middle;
+            width: calc(100% - 52px) !important;
+            display: initial !important;
+        }
+        &:focus + div {
+            .vc-photoshop,
+            .vc-chrome {
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0);
+            }
+        }
+    }
+    > span:not(.description) {
+        background-color: #f6f9fc;
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        margin-right: 10px;
+        border: 1px solid #bec5cb;
+        cursor: pointer;
+        vertical-align: top;
+        border-radius: 5px;
+    }
+
+    .wpcfto_generic_field_color__clear {
+        position: absolute;
+        right: 7px;
+        top: 5px;
+        padding: 0;
+        width: 18px;
+        height: 18px;
+        text-align: center;
+        line-height: 19px;
+        border-radius: 50%;
+        font-size: 11px;
+        background: #ccc;
+        color: #fff;
+    }
+}

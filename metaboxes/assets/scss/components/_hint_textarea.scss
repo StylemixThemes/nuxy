@@ -1,0 +1,18 @@
+.wpcfto_generic_field {
+    .hints {
+        margin: 0 0 15px;
+        span {
+            display: inline-block;
+            vertical-align: top;
+            padding: 3px 10px;
+            margin-right: 10px;
+            background-color: #f1f1f1;
+            border: 1px dashed #c1c0c3;
+            border-radius: 8px;
+            cursor: pointer;
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+    }
+}

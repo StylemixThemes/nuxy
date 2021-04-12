@@ -1,0 +1,44 @@
+.stm_metaboxes_grid .stm_metaboxes_grid__inner {
+
+    .wpcfto_generic_field__notice {
+
+        display: block;
+        padding: 0 0 0 20px;
+        margin: 30px 0 15px;
+        background-color: transparent;
+        min-height: auto;
+
+        &.first {
+            margin-top: 0;
+            margin-left: 5px;
+        }
+
+        label {
+            font-size: 26px;
+            font-weight: 500;
+            line-height: 40px;
+            color: $color_main;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+    }
+
+    .wpcfto-box.enable_courses_filter_notice {
+        padding: 20px;
+    }
+
+    .wpcfto-box-notice {
+        min-height: auto;
+        background-color: transparent;
+        .wpcfto_generic_field__notice {
+            margin: 15px 0;
+            padding: 0;
+            label {
+                font-size: 18px;
+                line-height: 24px;
+            }
+        }
+    }
+
+}

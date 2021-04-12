@@ -1,0 +1,47 @@
+.stm_metaboxes_grid__inner {
+    .wpcfto_button_group {
+        label {
+            min-width: auto !important;
+            padding: 10px 20px;
+            margin: 0 !important;
+            height: 40px;
+            border-top: 1px solid #bec5cb;
+            border-bottom: 1px solid #bec5cb;
+            background-color: #f6f9fc;
+            color: $color_main;
+            font-size: 14px !important;
+            font-weight: 400 !important;
+
+            &:not(:last-of-type) {
+                border-right: 1px solid #bec5cb;
+            }
+
+            input[type="radio"] {
+                display: none !important;
+            }
+            &:first-child {
+                border-top-left-radius: 5px;
+                border-bottom-left-radius: 5px;
+                border-left: 1px solid #bec5cb;
+            }
+            &:last-child {
+                border-top-right-radius: 5px;
+                border-bottom-right-radius: 5px;
+                border-right: 1px solid #bec5cb;
+            }
+            &.active {
+                background: $accent;
+                border-top-color: $accent;
+                border-bottom-color: $accent;
+                border-right-color: $accent;
+                color: #fff;
+            }
+        }
+    }
+}
+.wpcfto_generic_field_button_group {
+    .wpcfto-field-content {
+        display: flex;
+        align-items: center;
+    }
+}

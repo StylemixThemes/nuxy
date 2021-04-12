@@ -1,0 +1,106 @@
+.stm_metaboxes_grid {
+    .wpcfto_generic_field_sorter {
+        & {
+            display: flex;
+            justify-content: space-between;
+            padding: 27px 20px;
+            align-items: initial;
+            .wpcfto-field-aside {
+                align-self: flex-start;
+            }
+        }
+        .wpcfto_field_title {
+            & {
+                max-width: 40%;
+                padding-right: 15px;
+                align-self: flex-start;
+            }
+            label {
+                display: block;
+            }
+        }
+        .field-description {
+            margin-top: 15px;
+            display: block;
+        }
+        .wpcfto_sorter {
+
+        }
+    }
+
+    .list-group {
+        display: flex;
+        height: 100%;
+        flex-direction: column;
+        padding: 15px;
+        margin-bottom: 0;
+    }
+
+    .list-group-item {
+        position: relative;
+        display: block;
+        background-color: #fff;
+        cursor: move;
+        border-radius: 5px;
+        border: 1px dashed $color_muted;
+        background-color: #f6f9fc;
+        font-size: 15px;
+        font-weight: 500;
+        text-align: center;
+        color: $color_main;
+        padding: 10px;
+
+        &.sortable-chosen {
+            opacity: 0.3;
+        }
+
+        &:not(:last-of-type) {
+            margin-bottom: 5px;
+        }
+        &:hover {
+            color: $accent;
+        }
+    }
+
+    .wpcfto_sorter {
+        margin: 15px 0;
+        display: block;
+        text-align: justify;
+        font-size: 0;
+        width: 60%;
+        min-width: 490px;
+
+        &::after {
+            display: inline-block;
+            width: 100%;
+        }
+
+        &_single {
+            display: inline-block;
+            min-width: 225px;
+            width: calc(50% - 20px);
+            margin-bottom: 20px;
+            font-size: 14px;
+            border-radius: 5px;
+            border: 1px solid #bec5cb;
+            background-color: #ffffff;
+            vertical-align: top;
+
+            &:nth-child(2n + 1) {
+                margin-right: 20px;
+            }
+
+            h6 {
+                height: 40px;
+                background-color: $accent;
+                font-size: 13px;
+                font-weight: 600;
+                text-transform: uppercase;
+                color: #fff;
+                text-align: center;
+                padding: 10px;
+                margin: 0;
+            }
+        }
+    }
+}

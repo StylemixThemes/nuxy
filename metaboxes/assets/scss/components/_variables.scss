@@ -1,0 +1,30 @@
+// Base
+$white: #fff;
+$accent: #2985f7;
+
+// Backgrounds
+$bg_head_side: #1e2a36;
+$bg_head_content: $white;
+$bg_tab_nav: #2c3e50;
+$bg_content: #f0f3f5;
+$bg_blocks: $white;
+
+// Text
+$color_head_side: $white;
+$color_tab_nav: #bec5cb;
+$color_main: #27374e;
+$color_muted: #8c99a5;
+
+// Sizes
+$side_width: 273px;
+$content_width: unquote('calc(100% - ' + $side_width + ')');
+
+$fields_aside_width: 40%;
+$fields_content_width: 60%;
+
+// Other
+$main_color: #195ec8;
+$secondary_color: #2c3e50;
+
+// Fonts
+$main_font: 'Roboto', sans-serif;

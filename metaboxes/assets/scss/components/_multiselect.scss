@@ -1,0 +1,17 @@
+.wpcfto_generic_field_multiselect {
+
+    .wpcfto-field-aside {
+        &__label {
+            display: block;
+            margin-top: 10px;
+        }
+    }
+
+    .multiselect {
+        .multiselect__input {
+            box-shadow: none !important;
+            border: 0;
+        }
+    }
+
+}

@@ -1,0 +1,88 @@
+.stm_metaboxes_grid {
+    .wpcfto_generic_field {
+        display: flex;
+        justify-content: flex-start;
+        padding: 20px;
+        width: 100%;
+
+        input, select, textarea {
+            box-shadow: 0 0 0 transparent;
+            font-size: 14px;
+        }
+        select {
+            line-height: 1.4;
+        }
+
+        label {
+            font-size: 16px;
+
+            &.disabled {
+                color: $color_muted;
+                position: relative;
+
+                &:hover {
+                    background-color: transparent;
+                }
+
+                &::after {
+                    content: "Soon";
+                    text-transform: uppercase;
+                    position: absolute;
+                    top: 0;
+                    right: -12px;
+                    font-size: 7px;
+                    font-weight: 500;
+                    font-style: normal;
+                    letter-spacing: 0.7px;
+                    line-height: 24px;
+                }
+            }
+        }
+
+        &_flex_input {
+
+            align-items: center;
+
+            .wpcfto_datepicker {
+                .mx-datepicker {
+                    margin-bottom: 0;
+                }
+                input {
+                    width: 100%;
+                }
+            }
+
+            textarea,
+            select,
+            input {
+                margin-bottom: 0;
+                border: 1px solid #bec5cb;
+                background-color: #f6f9fc;
+                box-shadow: 0 0 0 transparent;
+                font-size: 15px;
+                color: $color_main;
+            }
+
+        }
+
+    }
+    .unflex_fields {
+
+    }
+}
+
+.wpcfto-admin-select {
+    .wpcfto-radio {
+        margin-left: 10px;
+    }
+}
+
+.image-field-file {
+    i {
+        position: relative;
+        top: 2px;
+        color: #195ec8;
+        font-size: 20px;
+        margin: 0 6px 0 0;
+    }
+}

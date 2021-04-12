@@ -1,0 +1,33 @@
+{
+  "name": "nuxy",
+  "version": "1.0.0",
+  "description": "[![Latest Version](https://img.shields.io/badge/release-v1.0.0-blue?style=flat-square)](https://github.com/StylemixThemes/nuxy/releases) [![GNU Licensed](https://img.shields.io/badge/license-GNU%20v3.0-brightgreen)](https://github.com/StylemixThemes/nuxy/blob/master/LICENSE)",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp-autoprefixer": "^7.0.1",
+    "gulp-clean": "^0.4.0",
+    "gulp-cssmin": "^0.2.0",
+    "gulp-sass": "^4.1.0",
+    "gulp-watch": "^5.0.1",
+    "vue2-ace-editor": "0.0.15"
+  },
+  "dependencies": {
+    "@babel/core": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "babelify": "^10.0.0",
+    "browser-sync": "^2.26.14",
+    "emmet": "git+https://github.com/cloud9ide/emmet-core.git#41973fcc70392864c7a469cf5dcd875b88b93d4a",
+    "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0",
+    "gulp-browserify": "^0.5.1",
+    "vue-multiselect": "^2.1.6",
+    "vue-range-component": "^1.0.3",
+    "vue-range-slider": "^0.6.0",
+    "vuejs-ace-editor": "^1.0.1"
+  }
+}

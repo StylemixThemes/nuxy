@@ -1,0 +1,19 @@
+.wpcfto_image_field {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    &__holder {
+        width: 100%;
+        min-width: 50px;
+        min-height: 50px;
+        margin: 0 0 30px;
+        background-color: #aaa;
+        img {
+            width: 100%;
+            vertical-align: top;
+        }
+    }
+    .button {
+        margin-right: 15px;
+    }
+}

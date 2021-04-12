@@ -1,0 +1,144 @@
+.wpcfto_field_hint {
+    & {
+        position: relative;
+        z-index: 990;
+        height: 14px;
+        display: inline-block;
+        font-size: 0;
+        margin-left: 5px;
+    }
+    & > .hint {
+        position: absolute;
+        bottom: 100%;
+        left: 0;
+        transform: translate(-50%,-10px);
+        max-width: 185px;
+        min-width: 185px;
+        padding: 10px;
+        background-color: $accent;
+        border-radius: 5px;
+        color: #fff;
+        z-index: 999999;
+        opacity: 0;
+        font-size: 14px;
+        visibility: hidden;
+        transition: .3s ease;
+
+        &::after {
+            content: "";
+            border: 5px solid transparent;
+            border-top-color: $accent;
+            left: 50%;
+            bottom: -10px;
+            position: absolute;
+            margin: 0 auto;
+            transform: translateX(2px);
+        }
+    }
+    & > i {
+        cursor: pointer;
+        z-index: 99999;
+        font-size: 14px;
+        color: $color_muted;
+        display: inline-block;
+
+        &:before {
+            content: url(data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2014%2014%22%3E%3Cpath%20fill%3D%22%238c99a5%22%20d%3D%22M6.158%204.028a.765.765%200%201%200%201.529-.002.765.765%200%200%200-1.53.002zm.765%206.5a.573.573%200%200%200%20.573-.574v-3.44a.572.572%200%201%200-1.147%200v3.44c0%20.317.258.574.574.574zm-.002-8.794a5.168%205.168%200%200%201%205.163%205.16%205.169%205.169%200%200%201-5.163%205.163%205.168%205.168%200%200%201-5.16-5.162%205.168%205.168%200%200%201%205.16-5.161zm0%2011.47c3.48%200%206.311-2.83%206.311-6.31A6.318%206.318%200%200%200%206.922.587%206.315%206.315%200%200%200%20.613%206.895c0%203.48%202.83%206.309%206.307%206.309z%22%2F%3E%3C%2Fsvg%3E);
+            display: block;
+            width: 14px;
+            height: 14px;
+            opacity: 0.9;
+        }
+    }
+    &:hover {
+        & > i {
+            opacity: 1;
+            color: $accent;
+
+            &:before {
+                content: url(data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2014%2014%22%3E%3Cpath%20fill%3D%22%232985f7%22%20d%3D%22M6.158%204.028a.765.765%200%201%200%201.529-.002.765.765%200%200%200-1.53.002zm.765%206.5a.573.573%200%200%200%20.573-.574v-3.44a.572.572%200%201%200-1.147%200v3.44c0%20.317.258.574.574.574zm-.002-8.794a5.168%205.168%200%200%201%205.163%205.16%205.169%205.169%200%200%201-5.163%205.163%205.168%205.168%200%200%201-5.16-5.162%205.168%205.168%200%200%201%205.16-5.161zm0%2011.47c3.48%200%206.311-2.83%206.311-6.31A6.318%206.318%200%200%200%206.922.587%206.315%206.315%200%200%200%20.613%206.895c0%203.48%202.83%206.309%206.307%206.309z%22%2F%3E%3C%2Fsvg%3E);
+            }
+        }
+        .hint {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+}
+
+//.wpcfto-icon-info {
+//    background: transparent url(../images/stm-icon-info.svg) no-repeat center center;
+//}
+
+//.wpcfto-box {
+//    .wpcfto-box-child {
+//
+//    }
+//    &.column-1 {
+//
+//    }
+//    &:not(.column-1) {
+//        .wpcfto_field_hint {
+//            position: absolute;
+//            right: 25px;
+//            top: 11px;
+//
+//            .hint {
+//                right: -15px;
+//                left: auto;
+//                bottom: 25px;
+//                transform: translateX(0);
+//
+//                &::after {
+//                    left: auto;
+//                    right: 18px;
+//                }
+//            }
+//        }
+//        .wpcfto_generic_field__text {
+//            .wpcfto_field_hint {
+//                margin: 0;
+//                top: 16px;
+//            }
+//        }
+//        &.checkbox {
+//            .wpcfto_field_hint {
+//                position: static;
+//                transform: translateX(-60px);
+//            }
+//            &.is_pro {
+//                & {
+//                    display: block;
+//                }
+//                .wpcfto_field_hint {
+//                    transform: translateX(0);
+//                }
+//            }
+//        }
+//    }
+//}
+
+
+/*First hint shows on bottom*/
+.wpcfto-tab {
+    .container {
+        .row {
+            .column {
+                .wpcfto-box {
+                    &:first-child {
+                        .wpcfto_field_hint>.hint {
+                            top: 100%;
+                            bottom: auto;
+                            transform: translate(-50%,10px);
+                            &:after {
+                                bottom: auto;
+                                top: -10px;
+                                transform: translateX(2px) rotate(180deg);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

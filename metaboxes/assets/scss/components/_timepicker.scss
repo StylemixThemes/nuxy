@@ -1,0 +1,26 @@
+.time {
+    .wpcfto_generic_field {
+        &.wpcfto_generic_field_time {
+            input {
+                width: auto;
+                min-width: 210px;
+                padding-right: 30px;
+                position: relative;
+                display: block;
+                &[type="time"]::-webkit-calendar-picker-indicator {
+                    background: url(data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20512%20512%22%3E%3Cpath%20fill%3D%22%238c99a5%22%20d%3D%22M256%2C8C119%2C8%2C8%2C119%2C8%2C256S119%2C504%2C256%2C504%2C504%2C393%2C504%2C256%2C393%2C8%2C256%2C8Zm92.49%2C313h0l-20%2C25a16%2C16%2C0%2C0%2C1-22.49%2C2.5h0l-67-49.72a40%2C40%2C0%2C0%2C1-15-31.23V112a16%2C16%2C0%2C0%2C1%2C16-16h32a16%2C16%2C0%2C0%2C1%2C16%2C16V256l58%2C42.5A16%2C16%2C0%2C0%2C1%2C348.49%2C321Z%22%3E%3C%2Fpath%3E%3C%2Fsvg%3E%0A);
+                    background-repeat: no-repeat;
+                    background-position: center center;
+                    background-size: 14px 14px;
+                    transform: translate(3px,-3px);
+                    position: absolute;
+                    right: 0;
+                    top: 0;
+                    width: 30px;
+                    height: 100%;
+                }
+            }
+        }
+    }
+}
+

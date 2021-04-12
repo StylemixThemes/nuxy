@@ -1,0 +1,159 @@
+.wpcfto_generic_field_autocomplete {
+    .wpcfto-field-content {
+        & {
+            display: flex;
+            align-items: center;
+        }
+        .wpcfto-autocomplete-search {
+            width: 100%;
+            &.loading {
+                opacity: .5;
+            }
+        }
+    }
+    .limited {
+        li {
+            &:first-child {
+                margin-top: 0 !important;
+            }
+        }
+    }
+}
+.wpcfto-autocomplete {
+    margin: 0;
+    li {
+        background-color: #fff !important;
+        border: 1px solid #bec5cb;
+        position: relative;
+        margin: 10px 0 0 !important;
+        padding: 0 !important;
+        font-size: 14px !important;
+        font-weight: 500;
+        border-radius: 5px;
+        i {
+            position: absolute;
+            right: -1px;
+            top: 50%;
+            margin-top: -17px;
+            opacity: .4;
+            font-weight: 900;
+            padding: 10px;
+            margin-right: 10px;
+            cursor: pointer;
+            &:hover {
+                opacity: 1;
+                color: #f32c41;
+            }
+        }
+        &.hovered {
+            border-color: #f32c41;
+        }
+        .item-title {
+            font-size: 15px;
+            font-weight: 500;
+            color: $color_main;
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+        .item-excerpt {
+            font-size: 13px;
+            font-weight: 300;
+            color: $color_muted;
+        }
+        .item-wrapper {
+            display: flex;
+            padding: 10px 20px;
+            align-items: center;
+        }
+        .item-image {
+            width: 36px;
+            height: auto;
+            object-fit: cover;
+            margin-right: 10px;
+            align-self: flex-start;
+        }
+        .item-data {
+            padding: 0 40px 0 0;
+            flex-grow: 1;
+            span {
+                display: block;
+                &.item-label {
+                    margin-bottom: 5px;
+                    font-size: 12px;
+                    line-height: 12px;
+                    color: #aaaaaa;
+                }
+            }
+        }
+    }
+}
+
+.wpcfto-autocomplete-search {
+    .v-select-search {
+        position: relative;
+        & > i {
+            position: absolute;
+            top: 12px !important;
+            left: 11px;
+            font-size: 16px;
+            color: $accent;
+            z-index: 2;
+        }
+        .dropdown-menu {
+            & {
+                border: 1px solid #bec5cb;
+                box-shadow: 0 6px 6px rgba(0, 0, 0, 0.16);
+                border-radius: 5px;
+                transform: translateY(5px);
+            }
+            li {
+                a {
+                    font-size: 15px;
+                    font-weight: 500;
+                    color: $color_main;
+                    height: 40px;
+                }
+                &.highlight a {
+                    background-color: #f6f9fc;
+                    color: $color_main !important;
+                }
+                &:not(:last-of-type) {
+                    a {
+                        border-bottom: 1px solid #d6dade;
+                    }
+                }
+            }
+        }
+        .dropdown {
+            .dropdown-toggle {
+                background-color: #f6f9fc;
+                border: 1px solid #bec5cb;
+                border-radius: 5px;
+                height: 40px !important;
+                .form-control {
+                    background-color: transparent;
+                    height: 40px;
+                    padding-left: 33px !important;
+                }
+                i {
+                    display: none;
+                }
+            }
+            .selected-tag {
+                margin-left: 33px;
+            }
+            &.open {
+                .dropdown-toggle {
+                    border-color: $accent;
+                    background-color: #fff;
+                }
+            }
+        }
+    }
+    .v-select-search-label {
+        color: $color_muted;
+        margin-top: 0.5em;
+        display: block;
+    }
+}

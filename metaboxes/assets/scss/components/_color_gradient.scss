@@ -1,0 +1,41 @@
+.stm_metaboxes_grid__inner {
+    .wpcfto_generic_field_color_gradient {
+        display: flex;
+        align-items: center;
+        font-size: 0;
+        justify-content: space-between;
+        .wpcfto_field_title {
+            max-width: 35%;
+            label {
+                display: block;
+                width: 100%;
+                min-width: unset;
+                font-size: 16px;
+                font-weight: 600;
+                line-height: 1.2;
+            }
+        }
+        .field-description {
+            margin-top: 10px;
+        }
+    }
+    .wpcfto_color_gradient {
+        display: flex;
+        width: calc(66.66% - 10px)!important;
+
+        .wpcfto_color_gradient_group {
+            & {
+                width: 100%;
+            }
+            .stm_colorpicker_wrapper {
+            }
+            label {
+                display: block;
+                margin-bottom: 10px;
+            }
+            + .wpcfto_color_gradient_group {
+                margin-left: 20px;
+            }
+        }
+    }
+}

@@ -1,0 +1,136 @@
+@import "components/payment_methods";
+
+.wpcfto_generic_field_demo_import {
+    &.wpcfto_generic_field {
+        width: 100%;
+    }
+    .button {
+        & {
+            background-color: $accent !important;
+            border-color: $accent !important;
+            padding: 13px 18px !important;
+            font-weight: 600 !important;
+            transition: all 0.3s ease 0s;
+        }
+        i {
+            display: inline !important;
+        }
+        &:hover, &:focus, &:active:focus {
+            background-color: lighten($accent, 5%) !important;
+            border-color: lighten($accent, 5%) !important;
+        }
+    }
+    .import_steps {
+        &.complete .step-complete,
+        &.courses .step-courses,
+        &.lessons .step-lessons,
+        &.questions .step-questions,
+        &.quizzes .step-quizzes {
+            .step-wrap {
+                .bullet {
+                    background: $accent;
+                }
+            }
+        }
+        &::after {
+            background-color: $accent;
+            background-image: linear-gradient(135deg,lighten($accent, 15%) 10%,transparent 10%,transparent 50%,lighten($accent, 15%) 50%,$accent 90%,transparent 90%,transparent);
+        }
+    }
+}
+
+.repeater {
+    padding: 16px 20px 18px;
+    .wpcfto-repeater {
+        display: block;
+        width: 100%;
+    }
+    .wpcfto-repeater-single {
+        display: block;
+        width: 100%;
+    }
+}
+
+.stm_lms_shortcode_list {
+    padding: 20px;
+    width: 100%;
+
+    & > div {
+        label {
+            display: block;
+            margin-bottom: 15px;
+        }
+        input, select, textarea {
+            margin-bottom: 15px;
+        }
+        ul {
+            & {
+                list-style: circle;
+            }
+            li {
+                line-height: 1.4;
+            }
+            ul {
+                list-style: none;
+                text-indent: -5px;
+                li {
+                    &:before {
+                        content: "-";
+                        text-indent: -5px;
+                        margin-right: 5px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+.stm_metaboxes_grid {
+    .stm-lms-faq-wrapper,
+    .stm_lms_curriculum_v2_wrapper {
+        width: 100%;
+    }
+    stm-lms-faq-wrapper {
+        padding: 20px;
+    }
+    .stm_lms_faq__single {
+        & {
+            background: transparent !important;
+        }
+        label {
+            display:  block;
+        }
+        textarea {
+            display: block;
+            width: 100%;
+        }
+    }
+    .stm-lms-faq .addArea {
+        margin: 0 20px 20px;
+    }
+}
+body .stm_metaboxes_grid .stm_metaboxes_grid__inner .stm_lms_questions_v2_wrapper {
+    & {
+        max-width: 100%;
+    }
+    .stm_lms_curriculum_v2 .section_data {
+        display: block;
+    }
+    .stm_lms_curriculum_v2 .section_data__title {
+        margin-bottom: 1em;
+        input {
+            max-width: 100%;
+        }
+    }
+}
+
+.stm_metaboxes_grid__inner .container-constructed .row .wpcfto-box.answers {
+    padding: 20px;
+}
+
+.stm_metaboxes_grid__inner {
+    .wpcfto-box.drip_content {
+        padding: 20px;
+    }
+}

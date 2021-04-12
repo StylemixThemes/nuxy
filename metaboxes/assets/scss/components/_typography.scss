@@ -1,0 +1,83 @@
+.wpcfto_generic_field__typography {
+    &.wpcfto_generic_field {
+        padding: 27px 20px 20px;
+    }
+
+    .wpcfto-field-aside {
+        //align-self: flex-start;
+        //max-width: 30%;
+    }
+
+    .wpcfto-typography-fields-wrap {
+        //max-width: 70%;
+        & > .row > .column {
+            padding: 0 !important;
+        }
+
+        .column {
+            & > .column-1,
+            & > .column-50 {
+                padding-bottom: 1em;
+            }
+
+            & > .column-50 {
+                width: calc(50% - 10px);
+            }
+
+            .row {
+                .column {
+                    padding: 0;
+
+                    & > div {
+                        padding: 0;
+                    }
+                }
+            }
+        }
+
+        .wpcfto_generic_field {
+            padding: 0;
+        }
+
+        .stm_colorpicker_wrapper {
+            width: 75%;
+        }
+
+        .wpcfto_generic_field_color__clear {
+            width: calc(25% - 11px);
+        }
+
+        .field-label {
+            margin-bottom: 1em;
+            display: block;
+            font-size: 16px;
+            font-weight: 500;
+        }
+    }
+
+    &__preview {
+        word-break: break-all;
+    }
+
+    select, input {
+        width: 100%;
+        margin-bottom: 1em;
+    }
+
+    .input-group {
+        margin-bottom: 1em;
+    }
+
+    .wpcfto_generic_field_color {
+        .wpcfto-field-content {
+            width: 100%;
+        }
+    }
+
+    .wpcfto_generic_field__typography__preview {
+        border-radius: 5px;
+        border: 1px dashed $color_muted;
+        background-color: #f6f9fc;
+        padding: 8px 15px;
+    }
+}

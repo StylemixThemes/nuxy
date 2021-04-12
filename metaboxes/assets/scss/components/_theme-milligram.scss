@@ -1,0 +1,25 @@
+.stm_metaboxes_grid .stm_metaboxes_grid__inner label,
+.stm_metaboxes_grid .stm_metaboxes_grid__inner legend {
+    font-size: 1rem;
+}
+
+.stm_metaboxes_grid .stm_metaboxes_grid__inner input[type=search],
+.stm_metaboxes_grid .stm_metaboxes_grid__inner input[type=tel],
+.stm_metaboxes_grid .stm_metaboxes_grid__inner input[type=text],
+.stm_metaboxes_grid .stm_metaboxes_grid__inner input[type=time],
+.stm_metaboxes_grid .stm_metaboxes_grid__inner input[type=url],
+.stm_metaboxes_grid .stm_metaboxes_grid__inner input[type=email],
+.stm_metaboxes_grid .stm_metaboxes_grid__inner input[type=number],
+.stm_metaboxes_grid .stm_metaboxes_grid__inner input[type=password],
+.stm_metaboxes_grid .stm_metaboxes_grid__inner select,
+.stm_metaboxes_grid .stm_metaboxes_grid__inner textarea {
+    box-sizing: border-box;
+    max-width: 100%;
+    width: 100%;
+    height: 2.6rem;
+}
+
+.stm_metaboxes_grid .stm_metaboxes_grid__inner .container {
+    padding: 0;
+    box-sizing: border-box;
+}

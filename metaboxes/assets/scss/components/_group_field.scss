@@ -1,0 +1,28 @@
+html body .stm_metaboxes_grid {
+    &__inner {
+        .no-childs-visible {
+            display: none !important;
+        }
+        .wpcfto_group_started {
+            width: 100%;
+            flex-wrap: wrap;
+
+            .wpcfto_generic_field {
+                min-height: auto;
+                border-radius: 0 !important;
+                margin: 0 0 10px;
+                padding: 0;
+                background-color: transparent;
+            }
+            .container {
+                padding: 16px 20px 18px;
+                border-radius: 5px;
+            }
+            .row {
+                flex-wrap: wrap;
+                margin-left: -10px;
+                margin-right: -10px;
+            }
+        }
+    }
+}

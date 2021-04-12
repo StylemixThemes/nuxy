@@ -1,0 +1,11 @@
+.wpcfto-submenus {
+    display: none;
+}
+
+.wpcfto-nav {
+    &.active {
+        .wpcfto-submenus {
+            display: block;
+        }
+    }
+}

@@ -1,0 +1,426 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: WordPress Custom Fields & Theme Options\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-10-12 12:19+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: \n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.4.3; wp-5.5.1"
+
+#: metaboxes/components_js/payments.php:29
+msgid "Account number"
+msgstr ""
+
+#: metaboxes/components_js/curriculum.php:60
+#: metaboxes/components/stm-curriculum.php:33
+msgid "Add course data"
+msgstr ""
+
+#: taxonomy_meta/fields/image.php:11
+msgid "Add image"
+msgstr ""
+
+#: metaboxes/fields/payout.php:35
+msgid "Add in wp-config.php"
+msgstr ""
+
+#: metaboxes/components/multimedia.php:24
+msgid "Add media"
+msgstr ""
+
+#: metaboxes/components/questions.php:107
+msgid "Add new question"
+msgstr ""
+
+#: metaboxes/components/answers.php:34 metaboxes/components/answers.php:87
+#: metaboxes/components/answers.php:177 metaboxes/components/answers.php:219
+msgid "Answer explanation (Will be shown in \"Show Answers\" section)"
+msgstr ""
+
+#: metaboxes/components_js/payments.php:101
+msgid "Australian dollar"
+msgstr ""
+
+#: metaboxes/metabox.php:762
+msgid ""
+"Available in <a href=\"https://stylemixthemes.com/plugins/masterstudy-pro/\" "
+"target=\"_blank\">Pro Version</a>"
+msgstr ""
+
+#: metaboxes/components_js/payments.php:37
+msgid "Bank name"
+msgstr ""
+
+#: metaboxes/components_js/payments.php:102
+msgid "Brazilian real"
+msgstr ""
+
+#: metaboxes/components/multimedia.php:26
+msgid "Bulk upload"
+msgstr ""
+
+#: metaboxes/components_js/payments.php:103
+msgid "Canadian dollar"
+msgstr ""
+
+#: settings/settings.php:54
+msgid "Choose Page"
+msgstr ""
+
+#: metaboxes/metabox.php:45
+msgid "Choose User"
+msgstr ""
+
+#: metaboxes/fields/payout.php:30
+msgid "Cron At 00:00 on day-of-month 1."
+msgstr ""
+
+#: metaboxes/components_js/payments.php:61
+msgid "Currency code"
+msgstr ""
+
+#: metaboxes/components_js/payments.php:104
+msgid "Czech koruna"
+msgstr ""
+
+#: metaboxes/components_js/payments.php:105
+msgid "Danish krone"
+msgstr ""
+
+#: metaboxes/fields/duration.php:26
+msgid "Days"
+msgstr ""
+
+#: metaboxes/fields/payout.php:54
+msgid "Default"
+msgstr ""
+
+#: taxonomy_meta/fields/image.php:14
+msgid "Delete image"
+msgstr ""
+
+#: metaboxes/fields/payout.php:51
+msgid "Disable Payment method"
+msgstr ""
+
+#: metaboxes/components_js/curriculum.php:44
+#: metaboxes/components/stm-curriculum.php:17
+#: metaboxes/components/questions.php:20
+msgid "Do you really want to delete this item?"
+msgstr ""
+
+#: metaboxes/components/multimedia.php:16
+msgid "Do you really want to delete this media?"
+msgstr ""
+
+#: metaboxes/fields/duration.php:17
+msgid "duration"
+msgstr ""
+
+#: metaboxes/metabox.php:776
+msgid "Enable addon"
+msgstr ""
+
+#: metaboxes/fields/payout.php:52
+msgid "Enable Payment method"
+msgstr ""
+
+#: metaboxes/components/answers.php:296
+msgid "Enter new Answer"
+msgstr ""
+
+#: metaboxes/components_js/curriculum.php:114
+#: metaboxes/components/stm-curriculum.php:87
+msgid "Enter new assignment title"
+msgstr ""
+
+#: metaboxes/components_js/curriculum.php:85
+#: metaboxes/components/stm-curriculum.php:58
+msgid "Enter new lesson title"
+msgstr ""
+
+#: metaboxes/components_js/curriculum.php:98
+#: metaboxes/components/stm-curriculum.php:71
+msgid "Enter new quiz title"
+msgstr ""
+
+#: metaboxes/components_js/curriculum.php:70
+#: metaboxes/components/stm-curriculum.php:43
+msgid "Enter new section title"
+msgstr ""
+
+#: metaboxes/components/questions.php:105
+msgid "Enter question title"
+msgstr ""
+
+#: metaboxes/components/answers.php:242
+msgid "Enter text, separate answers with \"|\" symbol"
+msgstr ""
+
+#: metaboxes/components_js/payments.php:106
+msgid "Euro"
+msgstr ""
+
+#: metaboxes/components_js/answers.php:153
+#: metaboxes/components_js/answers.php:158
+msgid "False"
+msgstr ""
+
+#: metaboxes/components/questions.php:66
+msgid "Fill the Gap"
+msgstr ""
+
+#: metaboxes/components_js/payments.php:33
+msgid "Holder name"
+msgstr ""
+
+#: metaboxes/components_js/payments.php:107
+msgid "Hong Kong dollar"
+msgstr ""
+
+#: metaboxes/fields/duration.php:25
+msgid "Hours"
+msgstr ""
+
+#. URI of the plugin
+msgid "https://github.com/StylemixThemes/nuxy"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://stylemixthemes.com"
+msgstr ""
+
+#: metaboxes/components_js/payments.php:108
+msgid "Hungarian forint 1"
+msgstr ""
+
+#: metaboxes/components_js/payments.php:109
+msgid "Indian rupee"
+msgstr ""
+
+#: metaboxes/components_js/payments.php:110
+msgid "Israeli new shekel"
+msgstr ""
+
+#: metaboxes/components/questions.php:54
+msgid "Item Match"
+msgstr ""
+
+#: metaboxes/components_js/payments.php:111
+msgid "Japanese yen 1"
+msgstr ""
+
+#: metaboxes/components/questions.php:60
+msgid "Keywords"
+msgstr ""
+
+#: metaboxes/components_js/payments.php:129
+msgid "Live"
+msgstr ""
+
+#: metaboxes/fields/payout.php:49
+msgid "Loading"
+msgstr ""
+
+#: metaboxes/fields/payout.php:55
+msgid "Make default"
+msgstr ""
+
+#: metaboxes/components_js/payments.php:112
+msgid "Malaysian ringgit 2\t"
+msgstr ""
+
+#: metaboxes/components/answers.php:157
+msgid "Match"
+msgstr ""
+
+#: metaboxes/components/multimedia.php:7
+msgid "Media URL"
+msgstr ""
+
+#: metaboxes/components_js/payments.php:113
+msgid "Mexican peso"
+msgstr ""
+
+#: metaboxes/fields/duration.php:24
+msgid "Minutes"
+msgstr ""
+
+#: metaboxes/components/questions.php:42
+msgid "Multi choice"
+msgstr ""
+
+#: metaboxes/components_js/payments.php:114
+msgid "New Taiwan dollar 1"
+msgstr ""
+
+#: metaboxes/components_js/payments.php:115
+msgid "New Zealand dollar"
+msgstr ""
+
+#: metaboxes/components_js/payments.php:116
+msgid "Norwegian krone"
+msgstr ""
+
+#: metaboxes/components_js/payments.php:15
+msgid "Offline payment"
+msgstr ""
+
+#: metaboxes/components/manage_post_type.php:16
+msgid "Pause update"
+msgstr ""
+
+#: metaboxes/components_js/payments.php:19
+#: metaboxes/components_js/payments.php:45
+#: metaboxes/components_js/payments.php:71
+#: metaboxes/components_js/payments.php:89
+msgid "Payment method description"
+msgstr ""
+
+#: metaboxes/fields/payout.php:39
+msgid "Payment method for payout"
+msgstr ""
+
+#: metaboxes/components_js/payments.php:51
+msgid "Paypal"
+msgstr ""
+
+#: metaboxes/components_js/payments.php:55
+msgid "PayPal Email"
+msgstr ""
+
+#: metaboxes/components_js/payments.php:67
+msgid "PayPal mode"
+msgstr ""
+
+#: metaboxes/components_js/payments.php:117
+msgid "Philippine peso"
+msgstr ""
+
+#: metaboxes/components_js/payments.php:118
+msgid "Polish złoty"
+msgstr ""
+
+#: metaboxes/components_js/payments.php:119
+msgid "Pound sterling"
+msgstr ""
+
+#: metaboxes/components_js/payments.php:81
+msgid "Publishable key"
+msgstr ""
+
+#: metaboxes/components/answers.php:149
+msgid "Question"
+msgstr ""
+
+#: metaboxes/components/questions.php:72
+msgid "Question Bank"
+msgstr ""
+
+#: metaboxes/components_js/payments.php:120
+msgid "Russian ruble"
+msgstr ""
+
+#: metaboxes/components_js/payments.php:128
+msgid "Sandbox"
+msgstr ""
+
+#: settings/view/main.php:36
+msgid "Save Settings"
+msgstr ""
+
+#: metaboxes/components_js/curriculum.php:52
+#: metaboxes/components/stm-curriculum.php:25
+msgid "Search lesson or quiz"
+msgstr ""
+
+#: metaboxes/components/questions.php:90
+msgid "Search questions"
+msgstr ""
+
+#: metaboxes/components_js/payments.php:85
+msgid "Secret key"
+msgstr ""
+
+#: metaboxes/components_js/payments.php:100
+msgid "Select Currency code"
+msgstr ""
+
+#: metaboxes/components_js/payments.php:121
+msgid "Singapore dollar"
+msgstr ""
+
+#: metaboxes/components/questions.php:36
+msgid "Single choice"
+msgstr ""
+
+#: metaboxes/components_js/payments.php:77
+msgid "Stripe"
+msgstr ""
+
+#: metaboxes/components_js/payments.php:93
+msgid "Stripe currency code"
+msgstr ""
+
+#. Author of the plugin
+msgid "StylemixThemes"
+msgstr ""
+
+#: metaboxes/components_js/payments.php:122
+msgid "Swedish krona"
+msgstr ""
+
+#: metaboxes/components_js/payments.php:41
+msgid "Swift"
+msgstr ""
+
+#: metaboxes/components_js/payments.php:123
+msgid "Swiss franc"
+msgstr ""
+
+#: metaboxes/components_js/payments.php:124
+msgid "Thai baht"
+msgstr ""
+
+#: metaboxes/components_js/answers.php:149
+#: metaboxes/components_js/answers.php:158
+#: metaboxes/components_js/answers.php:159
+msgid "True"
+msgstr ""
+
+#: metaboxes/components/questions.php:48
+msgid "True or False"
+msgstr ""
+
+#: metaboxes/components_js/payments.php:125
+msgid "United States dollar"
+msgstr ""
+
+#: metaboxes/components/manage_post_type.php:15
+msgid "Update All"
+msgstr ""
+
+#: metaboxes/components_js/payments.php:25
+msgid "Wire Transfer"
+msgstr ""
+
+#: metaboxes/components/order.php:4
+#, php-format
+msgid "Woocommerce Checkout enabled. Get order information here - %s"
+msgstr ""
+
+#. Name of the plugin
+msgid "WordPress Custom Fields & Theme Options"
+msgstr ""
+
+#. Description of the plugin
+msgid "WordPress Custom Fields & Theme Options with Vue.js."
+msgstr ""

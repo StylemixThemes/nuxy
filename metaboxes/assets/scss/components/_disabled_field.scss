@@ -1,0 +1,34 @@
+.wpcfto_search_group {
+    position: relative;
+    opacity: 0.5;
+    &:after {
+        content: 'Coming soon...';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(255,255,255,0.8);
+        font-style: italic;
+        line-height: 40px;
+        text-align: center;
+
+        transition: .3s ease;
+        z-index: 999;
+    }
+}
+
+.wpcfto-disabled-field {
+    position: relative;
+    &:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(255,255,255,0.8);
+        transition: .3s ease;
+        z-index: 999;
+    }
+}

@@ -1,0 +1,73 @@
+.stm_metaboxes_grid__inner {
+    .wpcfto_generic_field.wpcfto_generic_field_image_select {
+        & {
+            display: flex;
+            align-items: initial;
+            justify-content: space-between;
+        }
+        .wpcfto_field_title {
+            label {
+                display: block;
+                margin: 0;
+            }
+            .field-description {
+                margin-top: 15px;
+            }
+        }
+    }
+    .wpcfto_image_select {
+        display: flex;
+        margin-top: 10px;
+        label {
+            & {
+                text-align: center;
+                margin: 0 32px 0 0;
+            }
+            .wpcfto-img-wrap {
+                display: block;
+                min-width: auto !important;
+                overflow: hidden;
+                margin: 0 0 15px;;
+                border: 2px solid transparent;
+                border-radius: 5px;
+            }
+            input[type="radio"] {
+                width: auto !important;
+                border-color: $color_muted;
+
+                &:checked {
+                    & {
+                        border-color: $accent;
+                        background-color: $accent;
+                    }
+                    &::before {
+                        background-color: #fff;
+                        width: 6px;
+                        height: 6px;
+                        margin: 4px;
+                    }
+                }
+            }
+            img {
+                display: block;
+                max-width: 100%;
+            }
+            .wpcfto-img-alt {
+                color: $color_muted;
+                font-size: 15px;
+                font-weight: 400;
+            }
+            &.active {
+                .wpcfto-img-wrap {
+                     border-color: $accent;
+                }
+                .wpcfto-img-alt {
+                    color: $color_main;
+                }
+            }
+            & + label {
+                margin-left: 5px;
+            }
+        }
+    }
+}

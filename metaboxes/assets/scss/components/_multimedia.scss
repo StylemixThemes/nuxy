@@ -1,0 +1,45 @@
+.stm_metaboxes_grid .stm_metaboxes_grid__inner {
+    .wpcfto-multimedia {
+        margin: 0 0 30px;
+        border: .1rem solid #d1d1d1;
+        border-radius: 5px;
+        &__single {
+            padding: 10px 15px;
+            border-bottom: .1rem solid #d1d1d1;
+            &:last-child {
+                border-bottom: 0;
+            }
+            input {
+                margin: 0;
+            }
+        }
+        &__actions {
+            text-align: right;
+            .lnr {
+                display: inline-block;
+                margin-left: 5px;
+                font-size: 20px;
+                cursor: pointer;
+                transition: .3s ease;
+                &:first-child {
+                    margin-left: 0;
+                }
+                &:hover {
+                    color: #2196F3;
+                }
+                &-trash {
+                    &:hover {
+                        color: #EF9A9A;
+                    }
+                }
+            }
+        }
+        &__image {
+            margin: 20px 0;
+            max-width: 150px;
+            img {
+                border-radius: 5px;
+            }
+        }
+    }
+}

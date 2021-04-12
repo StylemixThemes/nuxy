@@ -1,0 +1,72 @@
+.date {
+    .wpcfto_generic_field.wpcfto_generic_field_date {
+        .wpcfto_field_title {
+            display: block;
+        }
+        .wpcfto_datepicker {
+            min-width: 30%;
+        }
+    }
+}
+.dates {
+    .wpcfto_generic_field.wpcfto_generic_field__date {
+        .wpcfto_field_title {
+            display: block;
+        }
+        .wpcfto_datepicker {
+            min-width: 30%;
+        }
+    }
+}
+.mx-datepicker {
+    width: 100%;
+    margin: 0 0 30px;
+    input.mx-input {
+        height: 2.6rem;
+        margin-bottom: 0 !important;
+        background-color: transparent;
+        border: .1rem solid #d1d1d1;
+        border-radius: 6px;
+        box-shadow: none;
+    }
+    &-popup {
+        left: 0;
+    }
+    .mx-input-icon {
+        &__calendar {
+            background: transparent;
+            color: $color_muted;
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            line-height: 40px;
+            text-align: center;
+            &::after {
+                content: "\f073";
+                display: inline;
+            }
+        }
+    }
+}
+
+.mx-calendar-content {
+    .mx-calendar-table {
+        tr {
+            th,
+            td {
+                padding: 0;
+                text-align: center;
+            }
+        }
+    }
+}
+
+.wpcfto_generic_field_date {
+    .mx-datepicker {
+        margin-bottom: 0;
+    }
+}
+
+.mx-datepicker-popup {
+    right: 0 !important;
+    left: auto !important;
+}

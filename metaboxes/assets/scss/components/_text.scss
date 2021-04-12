@@ -1,0 +1,15 @@
+//.wpcfto-box {
+//    &.column-1 .wpcfto-box-child.column-1 {
+//        .wpcfto_generic_field__text {
+//            .wpcfto-field-aside {
+//                margin-bottom: 1em;
+//            }
+//        }
+//    }
+//}
+.wpcfto_generic_field_flex_input {
+    .wpcfto-field-content {
+        display: flex;
+        align-items: center;
+    }
+}

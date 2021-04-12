@@ -1,0 +1,30 @@
+.stm_metaboxes_grid__inner {
+    .wpcfto-box-import_export {
+        background-color: transparent;
+        .wpcfto_import_export {
+            width: 100%;
+            &__export {
+                margin-bottom: 30px;
+            }
+            &__import {
+                textarea {
+                    min-height: 150px;
+                    margin: 0 0 15px;
+                }
+                &_notice {
+                    padding: 15px 30px;
+                    margin: 15px 0;
+                    background-color: #E53935;
+                    color: #fff;
+                    border-radius: 5px;
+                }
+                .loading_import {
+                    display: inline-block;
+                    width: 50px;
+                    height: 40px;
+                    position: relative;
+                }
+            }
+        }
+    }
+}

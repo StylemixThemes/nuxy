@@ -1,0 +1,86 @@
+.stm_metaboxes_grid {
+    select,
+    textarea,
+    input[type=number],
+    input[type=email],
+    input[type=phone],
+    input[type=date],
+    input[type=time],
+    input[type=text] {
+        box-shadow: 0 0 0 transparent;
+        border-radius: 5px;
+        border: 1px solid #bec5cb;
+        background-color: #f6f9fc;
+        height: 40px;
+        padding: 8px 16px;
+        &:focus,
+        &:active {
+            border-color: $accent;
+        }
+    }
+}
+
+.stm_metaboxes_grid .stm_metaboxes_grid__inner .stm-curriculum .stm-curriculum-list .stm-curriculum-single-name input,
+.stm_metaboxes_grid .stm_metaboxes_grid__inner .stm-curriculum .stm-curriculum-list .stm-curriculum-single.section input {
+    box-shadow: none !important;
+    background-color: transparent !important;
+}
+
+.input-group {
+    & {
+        position: relative;
+        display: table;
+        border-collapse: separate;
+    }
+    .form-control {
+        margin: 0;
+    }
+    .form-control,
+    &-addon,
+    &-btn {
+        display: table-cell;
+        &:first-child,
+        &:first-child,
+        &:first-child>.btn,
+        &:first-child>.btn-group>.btn,
+        &:last-child>.btn-group:not(:last-child)>.btn {
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+        &:last-child,
+        &:last-child,
+        &:first-child>.btn-group:not(:first-child)>.btn,
+        &:first-child>.btn:not(:first-child),
+        &:last-child>.btn, .input-group-btn:last-child>.btn-group>.btne {
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+    }
+    .form-control {
+        position: relative;
+        z-index: 2;
+        float: left;
+        width: 100%;
+        margin-bottom: 0;
+    }
+    &-addon {
+        padding: 6px 12px;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 1;
+        color: $color_muted;
+        text-align: center;
+        background-color: #ffffff;
+        border: 1px solid #bec5cb;
+        border-radius: 5px;
+        &:last-child {
+            border-left: 0;
+        }
+    }
+    &-addon,
+    &-btn {
+        width: 1%;
+        white-space: nowrap;
+        vertical-align: middle;
+    }
+}

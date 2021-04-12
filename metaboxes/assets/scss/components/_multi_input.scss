@@ -1,0 +1,66 @@
+.wpcfto_generic_field_multi_input {
+    .wpcfto-field-aside {
+        align-self: flex-start;
+    }
+}
+
+.wpcfto_multi_input_label {
+    cursor: move;
+    display: none;
+}
+
+.wpcfto_generic_field_multi_input {
+    .wpcfto_sorter {
+        & {
+            min-width: 280px;
+            width: auto;
+        }
+        .list-group {
+            & {
+                padding: 0;
+            }
+            .wpcfto_generic_field {
+                padding: 0;
+                position: relative;
+                input {
+                    width: 100%;
+                    padding-right: 40px;
+                    border: 1px dashed #8c99a5;
+
+                    &:focus {
+                        border-color: $accent;
+                    }
+                }
+                &.sortable-chosen {
+                    input {
+                        border-color: $accent;
+                        box-shadow: 0 6px 0 rgba(0, 0, 0, 0.1);
+                    }
+                }
+                &.sortable-ghost {
+                    opacity: 0;
+                }
+                &:not(:last-of-type){
+                    margin-bottom: 15px;
+                }
+            }
+            .wpcfto_multi_input_icon {
+                height: 40px;
+                width: 40px;
+                display: block;
+                position: absolute;
+                top: 0;
+                right: 0;
+                background-color: $accent;
+                color: #fff;
+                text-align: center;
+                cursor: pointer;
+                border-radius: 0 5px 5px 0;
+                i {
+                    font-size: 14px;
+                    line-height: 40px;
+                }
+            }
+        }
+    }
+}

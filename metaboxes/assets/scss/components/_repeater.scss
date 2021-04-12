@@ -1,0 +1,212 @@
+.stm_metaboxes_grid .stm_metaboxes_grid__inner {
+
+    .wpcfto-box.repeater {
+        padding: 0;
+    }
+
+    .wpcfto-repeater {
+
+        > label {
+            margin: 0 0 15px;
+            font-size: 18px;
+        }
+
+        .separator {
+            border-bottom: 1px solid #d6dade;
+            margin-bottom: 20px;
+        }
+
+        &-single {
+            position: relative;
+            padding: 0;
+            margin: 0 0 2.5rem;
+            background-color: transparent;
+            border-radius: 3px;
+
+            .wpcfto_group_title {
+                padding: 0 0px 10px;
+                margin: 0 0 15px;
+                width: auto;
+            }
+
+            .wpcfto-field-aside {
+                margin-right: 0;
+            }
+
+            .wpcfto_generic_field {
+                padding: 0;
+            }
+
+            .wpcfto-admin-select {
+                width: 100%;
+
+                select {
+                    max-width: 100%
+                }
+            }
+
+            .wpcfto_generic_field {
+                padding: 0;
+                margin-bottom: 0.8em !important;
+            }
+
+            .repeater_inner {
+                & {
+                    display: block;
+                }
+
+                &.closed {
+                    display: none;
+                }
+
+            }
+
+            &-delete {
+                position: absolute;
+                top: 0;
+                right: 0;
+                padding: 0px;
+                color: $color_muted;
+                font-size: 13px;
+                cursor: pointer;
+                text-transform: uppercase;
+                font-weight: 400;
+                transition: 0.2s ease 0s;
+
+                i {
+                    vertical-align: baseline;
+                    margin-right: 8px;
+                }
+
+                &:hover {
+                    color: $color_main;
+                }
+            }
+
+            &-key {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 50px;
+                height: 50px;
+                cursor: pointer;
+
+                &:after {
+                    content: attr(data-number);
+                    position: absolute;
+                    top: 19px;
+                    left: 19px;
+                    display: block;
+                    width: 15px;
+                    height: 15px;
+                    text-align: center;
+                    color: #fff;
+                    font-size: 10px;
+                    line-height: 15px;
+                    border-radius: 50%;
+                    background-color: #195ec8;
+                }
+
+                &:before {
+                    content: attr(data-tab);
+                    display: block;
+                    position: absolute;
+                    top: 16px;
+                    left: 50px;
+                    font-weight: 500;
+                }
+            }
+        }
+
+        .wpcfto-repeater-field {
+            width: 100%;
+            margin: 0 0 30px;
+
+            .wpcfto-field-aside {
+                align-self: center;
+            }
+
+            .wpcfto-admin-checkbox,
+            .wpcfto-radio {
+                & {
+                    position: relative;
+                }
+
+                label {
+                    margin-bottom: 0;
+                }
+            }
+
+            input[type=radio],
+            input[type=checkbox] {
+                width: auto;
+                margin-bottom: 0;
+            }
+
+            &:last-child {
+                > div {
+                    margin-bottom: 0;
+
+                    .field_label__file {
+                        margin-bottom: 0;
+                    }
+                }
+            }
+
+            .wpcfto_generic_field__typography,
+            .wpcfto_generic_field_iconpicker {
+                display: block;
+                > .wpcfto-field-aside {
+                    label {
+                        display: block;
+                        margin-bottom: 20px;
+                    }
+                }
+                .wpcfto-field-content {
+                    width: 100%;
+                    .field-label,
+                    label {
+                        font-size: 12px;
+                    }
+                    .wpcfto_generic_field {
+                        padding-right: 20px;
+                    }
+                }
+            }
+
+        }
+
+        .addArea {
+            height: 40px;
+            background-color: $accent;
+            border-color: $accent;
+            color: $white;
+            padding: 13px;
+            font-size: 13px;
+            font-weight: 600;
+            line-height: 14px;
+            display: inline-block;
+            width: auto;
+            text-transform: uppercase;
+            border-radius: 4px;
+            transition: all 0.3s ease 0s;
+            cursor: pointer;
+
+            i {
+                position: relative;
+                top: 1px;
+                margin-right: 5px;
+                font-size: 14px;
+            }
+
+            &:hover, &:focus, &:active:focus {
+                background-color: lighten($accent, 5%);
+                border-color: lighten($accent, 5%);
+                color: $white;
+            }
+        }
+        
+
+    }
+}
+

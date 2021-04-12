@@ -1,0 +1,241 @@
+.custom-shadow {
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.custom-shadow-sm {
+    //box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.16);
+}
+
+/* In FontawesomePicker.vue <style scoped lang="scss" /> */
+
+.icon-preview-fade-enter-active, .icon-preview-fade-leave-active {
+    transition: opacity .25s;
+}
+
+.icon-preview-fade-enter, .icon-preview-fade-leave-to /* .fade-leave-active below version 2.1.8 */
+{
+    opacity: 0;
+}
+
+.preview-container {
+    position: absolute;
+    left: 20px;
+    right: 20px;
+    top: 120px;
+    background-color: #ffffff;
+    z-index: 9999999;
+
+    //&::before {
+    //    content: "";
+    //    border: 10px solid transparent;
+    //    border-bottom-color: #fff;
+    //    position: absolute;
+    //    top: -40px;
+    //    left: 40px;
+    //    z-index: 9;
+    //}
+}
+
+.previewer {
+    position: absolute;
+    width: 100%;
+    min-height: 50px;
+    max-height: 500px;
+    overflow: auto;
+    border: 1px solid #bec5cb;
+    background: white;
+    padding: 20px;
+    top: -20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 10px;
+    transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
+}
+
+.icon-preview {
+    text-align: center;
+    .icon-wrapper {
+        width: 45px;
+        height: 45px;
+        padding: 10px;
+        margin: 0;
+        line-height: 30px;
+        cursor: pointer;
+        border-radius: 5px;
+        color: $color_muted;
+        transition: ease-in-out all .25s;
+
+        &:hover, &.selected {
+            background-color: #f2f5f8;
+            color: $color_main;
+        }
+
+        i {
+            font-size: 22px;
+        }
+    }
+}
+
+.wpcfto_generic_field__iconpicker__icon {
+    padding: 10px;
+    background-color: rgba(255,255,255,.5);
+    font-size: 20px;
+}
+
+.wpcfto-box {
+    &.column-1,
+    .wpcfto-box-child.column-1 {
+        .wpcfto_generic_field {
+            &.wpcfto_generic_field__iconpicker {
+                display: block;
+
+                .wpcfto_generic_field, input {
+                    //flex: 1;
+                }
+            }
+            .wpcfto_generic_field__text {
+                // display: block;
+            }
+        }
+    }
+}
+
+.wpcfto_generic_field_iconpicker {
+    & {
+        position: relative;
+    }
+    & > .wpcfto-field-content {
+        display: flex;
+    }
+    .wpcfto-field-aside {
+
+    }
+    .wpcfto_generic_field__inner {
+        width: 100%;
+
+        .wpcfto_generic_field {
+            padding: 0;
+            display: block;
+            width: 50%;
+            float: left;
+            padding-right: 20px;
+            margin-bottom: 1.8em;
+            .wpcfto-field-aside {
+                width: 100%;
+                padding-right: 0;
+            }
+            .wpcfto-field-content {
+                width: 100%;
+            }
+            label {
+                display: block;
+                margin: 0 0 0.8em;
+            }
+            input:not(.range-slider-hidden) {
+                width: 100%;
+            }
+            &.wpcfto_generic_field_range_slider {
+                width: 100%;
+                display: block;
+                margin-bottom: 0;
+                .wpcfto-field-aside {
+                    label {
+                        margin: 0 !important;
+                    }
+                }
+            }
+        }
+        &::after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+    }
+    .wpcfto_range_slider {
+        min-width: 290px;
+        width: 100%;
+        max-width: 420px;
+        padding-top: 0;
+        .range-slider-hidden {
+            position: absolute;
+            display: block !important;
+            width: 100px;
+            padding-right: 50px;
+            top: 0;
+            right: -120px;
+            text-align: center;
+        }
+        .wpcfto_range_slider__pin {
+            display: none;
+        }
+        .wpcfto_field_addon {
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: 40px;
+            line-height: 26px;
+            padding: 6px 10px;
+            font-size: 14px;
+            font-weight: 400;
+            color: $color_muted;
+            text-align: center;
+            background-color: #fff;
+            border: 1px solid #bec5cb;
+            border-radius: 0 5px 5px 0;
+        }
+        .wpcfto_range_slider_custom_input {
+            position: absolute;
+            right: 35px;
+            top: 0;
+            padding-right: 6px;
+            border-radius: 4px 0 0 4px;
+            max-width: 70px;
+            height: 40px;
+        }
+        .range-slider {
+            & {
+                padding-right: 120px;
+                .range-slider-hidden {
+                    display: none !important;
+                }
+            }
+            .range-slider-inner {
+                padding-top: 40px;
+            }
+        }
+    }
+    .icon-preview-wrap {
+        & {
+            align-self: flex-start;
+        }
+        label {
+            display: block;
+            margin: 0 0 0.8em;
+        }
+        .icon-preview-inner {
+            width: 121px;
+            height: 121px;
+            display: flex;
+            overflow: hidden;
+            align-items: center;
+            justify-content: space-around;
+            border-radius: 5px;
+            border: 1px solid #bec5cb;
+            background-color: #ffffff;
+        }
+    }
+}
+
+.wpcfto_group_started {
+    .wpcfto_generic_field_iconpicker {
+        .wpcfto_generic_field__inner {
+            .wpcfto_generic_field {
+                padding-right: 20px;
+            }
+        }
+    }
+}

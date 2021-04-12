@@ -1,0 +1,19 @@
+.not_exist {
+    display: none !important;
+}
+
+.wpcfto-box {
+    &.duration {
+        .wpcfto-field-content {
+            .row {
+                margin: 0 -15px;
+                .column {
+                    padding: 0 7.5px;
+                }
+            }
+        }
+        .wpcfto-field-aside {
+            align-self: center;
+        }
+    }
+}
