@@ -1,7 +1,7 @@
 <?php
 /**
- * Plugin Name: NUXY
- * Plugin URI:  https://github.com/StylemixThemes/nuxy
+ * Framework Name: NUXY
+ * Framework URI:  https://github.com/StylemixThemes/nuxy
  * Description: WordPress Custom Fields & Theme Options with Vue.js.
  * Version:     4.0
  * Author:      StylemixThemes
