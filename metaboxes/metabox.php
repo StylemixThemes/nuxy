@@ -18,6 +18,8 @@ class STM_Metaboxes
         add_action('add_meta_boxes', array($this, 'wpcfto_register_meta_boxes'));
 
         add_action('admin_enqueue_scripts', array($this, 'wpcfto_scripts'));
+        
+        add_action('wp_enqueue_scripts', array($this, 'wpcfto_front_scripts'));
 
         add_action('save_post', array($this, 'wpcfto_save'), 10, 3);
 
@@ -323,6 +325,14 @@ class STM_Metaboxes
         );
 
         do_action('wpcfto_enqueue_scripts');
+    }
+    
+    function wpcfto_front_scripts () {
+		$v = time();
+		$base = STM_WPCFTO_URL . 'metaboxes/assets/';
+		$assets = STM_WPCFTO_URL . 'metaboxes/assets';
+  
+		wp_enqueue_style('font-awesome-min', $assets . '/vendors/font-awesome.min.css', null, $v, 'all');
     }
 
     function wpcfto_post_types()
