@@ -120,6 +120,7 @@ if (empty($id)) {
 
                         </div>
                     <?php endforeach; ?>
+                    <?php do_action('wpcfto_after_tab_nav'); ?>
                 </div>
             </div>
 
