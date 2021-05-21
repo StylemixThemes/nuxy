@@ -58,10 +58,10 @@ add_action( 'wp_ajax_stm_wpcfto_get_settings', function() {
 });
 
 function wpcfto_get_settings_map($source, $name) {
-	
-	
+
+
 	if ( $source === 'settings' ) {
-		
+
 		$theme_options_page = apply_filters( 'wpcfto_options_page_setup', array() );
 		$settings_data      = get_option( $name, array() );
 		$settings           = array();
@@ -70,27 +70,27 @@ function wpcfto_get_settings_map($source, $name) {
 			if ( $option_page['option_name'] !== $name ) {
 				continue;
 			}
-			
+
 			$settings = $option_page['fields'];
 		}
-		
+
 		foreach ( $settings as $section_name => $section ) {
 			foreach ( $section['fields'] as $field_name => $field ) {
 				$default_value                                               = ( ! empty( $field['value'] ) ) ? $field['value'] : '';
 				$settings[ $section_name ]['fields'][ $field_name ]['value'] = ( isset( $settings_data[ $field_name ] ) ) ? $settings_data[ $field_name ] : $default_value;
 			}
 		}
-		
+
 		return $settings;
-		
+
 	} else {
 		$post_id = intval( $source );
-		
+
 		$meta = STM_Metaboxes::convert_meta( $post_id );
-		
+
 		$fields_data = apply_filters( 'stm_wpcfto_fields', array() );
 		$sections    = $fields_data[ $name ];
-		
+
 		foreach ( $sections as $section_name => $section ) {
 			foreach ( $section['fields'] as $field_name => $field ) {
 				$default_value = ( ! empty( $field['value'] ) ) ? $field['value'] : '';
@@ -111,18 +111,18 @@ function wpcfto_get_settings_map($source, $name) {
 							if ( empty( $value ) ) {
 								$value = array();
 							}
-							
+
 							break;
 					}
 				}
 				$sections[ $section_name ]['fields'][ $field_name ]['value'] = $value;
 			}
 		}
-		
+
 		return $sections;
-		
+
 	}
-	
+
 }
 
 

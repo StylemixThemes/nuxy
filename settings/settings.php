@@ -106,7 +106,7 @@ class WPCFTO_Settings
 
         if (!empty($q)) {
             foreach ($q as $post_data) {
-                $r[$post_data->ID] = $post_data->post_title;
+                $r[$post_data->ID] = html_entity_decode($post_data->post_title);
             }
         }
 
