@@ -47,7 +47,7 @@ Vue.component('wpcfto_repeater', {
     
             <div class="addArea" @click="addArea">
                 <i class="fa fa-plus-circle"></i>
-                <span v-html="'Add ' + field_label"></span>
+                <span v-html="addLabel()"></span>
             </div>
         
         </div>
@@ -112,6 +112,14 @@ Vue.component('wpcfto_repeater', {
             if (typeof this.repeater_values[key][field_name] === 'undefined') return field.value;
 
             return this.repeater_values[key][field_name];
+        },
+        addLabel() {
+
+            if(typeof this.field_data['load_labels'] !== 'undefined' && this.field_data['load_labels']['add_label'] !== 'undefined') {
+                return this.field_data['load_labels']['add_label'];
+            }
+
+            return 'Add ' + this['field_label'];
         }
     },
     watch: {
