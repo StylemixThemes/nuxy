@@ -3,7 +3,7 @@
  * Framework Name: NUXY
  * Framework URI:  https://github.com/StylemixThemes/nuxy
  * Description: WordPress Custom Fields & Theme Options with Vue.js.
- * Version:     4.0
+ * Version:     4.1
  * Author:      StylemixThemes
  * Author URI:  https://stylemixthemes.com
  *
