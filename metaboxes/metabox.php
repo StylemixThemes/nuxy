@@ -265,6 +265,7 @@ class STM_Metaboxes
             'file',
             'notice',
             'notice_banner',
+            'notification_message',
             'button_group',
             'image_select',
             'spacing',
