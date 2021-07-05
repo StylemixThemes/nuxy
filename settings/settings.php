@@ -179,13 +179,20 @@ class WPCFTO_Settings
             }
         }
 
+        $response = [
+            'reload' => false,
+            'updated' => false
+        ];
+        
+        $response['reload'] = apply_filters('wpcfto_reload_after_save', $id, $settings);
+        
         do_action('wpcfto_settings_saved', $id, $settings);
-
-        $updateOption = update_option($id, $settings);
-
+        
+        $response['updated'] = update_option($id, $settings);
+        
         do_action('wpcfto_after_settings_saved', $id, $settings);
-
-        wp_send_json($updateOption);
+        
+        wp_send_json($response);
     }
 }
 
