@@ -107,9 +107,9 @@ if (empty($id)) {
                                             $submenu_classes[] = 'active';
                                         }
                                         ?>
-                                        <div data-submenu="<?php echo esc_attr($section_name . '_' . sanitize_title($submenu)); ?>"
+                                        <div data-submenu="<?php echo esc_attr($section_name . '_' . wpcfto_sanitize_string($submenu)); ?>"
                                              class="<?php echo esc_attr(implode(' ', $submenu_classes)); ?>"
-                                             @click="changeSubMenu('<?php echo esc_attr($section_name . '_' . sanitize_title($submenu)); ?>')">
+                                             @click="changeSubMenu('<?php echo esc_attr($section_name . '_' . wpcfto_sanitize_string($submenu)); ?>')">
                                             <?php echo esc_attr($submenu); ?>
                                             <i class="fa fa-chevron-right"></i>
                                         </div>
