@@ -245,6 +245,10 @@ class STM_Metaboxes
         wp_enqueue_style('font-awesome-min', $assets . '/vendors/font-awesome.min.css', null, $v, 'all');
         wp_enqueue_style('vue-multiselect-min', $assets . '/vendors/vue-multiselect.min.css', null, $v, 'all');
 
+        if ( is_rtl() ) {
+            wp_enqueue_style('nuxy-rtl', $base . 'css/rtl.css', array('wpcfto-metaboxes.css'), $v);
+        }
+
         /*GENERAL COMPONENTS*/
         $components = array(
             'text',
