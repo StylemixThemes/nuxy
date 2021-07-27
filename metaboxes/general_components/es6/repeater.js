@@ -115,8 +115,8 @@ Vue.component('wpcfto_repeater', {
         },
         addLabel() {
 
-            if(typeof this.field_data['load_labels'] !== 'undefined' && this.field_data['load_labels']['add_label'] !== 'undefined') {
-                return this.field_data['load_labels']['add_label'];
+            if(typeof this.fields['load_labels'] !== 'undefined' && this.fields['load_labels']['add_label'] !== 'undefined') {
+                return this.fields['load_labels']['add_label'];
             }
 
             return 'Add ' + this['field_label'];
