@@ -108,6 +108,8 @@
                         vm.loading = true;
                         this.$http.post(stm_wpcfto_ajaxurl + '?action=wpcfto_save_settings&nonce=' + stm_wpcfto_nonces['wpcfto_save_settings'] + '&name=' + id, JSON.stringify(vm.data)).then(function (response) {
                             vm.loading = false;
+
+                            if(response.body?.reload === true) location.reload();
                         });
                     },
                     initOpen(field) {

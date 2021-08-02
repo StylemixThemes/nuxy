@@ -245,6 +245,10 @@ class STM_Metaboxes
         wp_enqueue_style('font-awesome-min', $assets . '/vendors/font-awesome.min.css', null, $v, 'all');
         wp_enqueue_style('vue-multiselect-min', $assets . '/vendors/vue-multiselect.min.css', null, $v, 'all');
 
+        if ( is_rtl() ) {
+            wp_enqueue_style('nuxy-rtl', $base . 'css/rtl.css', array('wpcfto-metaboxes.css'), $v);
+        }
+
         /*GENERAL COMPONENTS*/
         $components = array(
             'text',
@@ -265,6 +269,7 @@ class STM_Metaboxes
             'file',
             'notice',
             'notice_banner',
+            'notification_message',
             'button_group',
             'image_select',
             'spacing',
@@ -609,7 +614,7 @@ function wpcfto_metaboxes_display_single_field($section, $section_name, $field, 
     }
 
     if (!empty($field['submenu'])) {
-        $classes[] = $section_name . '_' . sanitize_title($field['submenu']);
+        $classes[] = $section_name . '_' . wpcfto_sanitize_string($field['submenu']);
     }
 
     $classes = apply_filters('stm_wpcfto_single_field_classes', $classes, $field_name, $field);
