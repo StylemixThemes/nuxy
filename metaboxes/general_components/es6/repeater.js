@@ -119,7 +119,7 @@ Vue.component('wpcfto_repeater', {
                 return this.fields['load_labels']['add_label'];
             }
 
-            return 'Add ' + this['field_label'];
+            return this['field_label'];
         }
     },
     watch: {
