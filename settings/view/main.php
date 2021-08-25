@@ -1,6 +1,8 @@
 <?php
 
 /**
+ * Settings Main template.
+ *
  * @var $metabox
  * @var $page
  * @var $wpcfto_title
@@ -12,31 +14,33 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 } //Exit if accessed directly
 
-if(empty($wpcfto_title)) $wpcfto_title = $page['page_title'];
+if ( empty( $wpcfto_title ) ) {
+	$wpcfto_title = $page['page_title'];
+}
 
 ?>
 
 <?php
-$id        = $metabox['id'];
-$sections  = $metabox['args'][ $id ];
-$source_id = 'data-source="settings"';
+$metabox_id = $metabox['id'];
+$sections   = $metabox['args'][ $metabox_id ];
+$source_id  = 'data-source="settings"';
 
+do_action( "wpcfto_settings_screen_{$metabox_id}_before" );
 
-do_action( "wpcfto_settings_screen_{$id}_before" );
-
-if ( ! empty( $sections ) ) : ?>
+if ( ! empty( $sections ) ) :
+	?>
 
 	<div class="wpcfto-settings"
-		 v-bind:class="'data-' + data.length"
-		 data-vue="<?php echo sanitize_text_field( $id ); ?>" <?php echo stm_wpcfto_filtered_output( $source_id ); ?>>
+		v-bind:class="'data-' + data.length"
+		data-vue="<?php echo esc_attr( $metabox_id ); ?>" data-source="settings">
 
-		 <?php include STM_WPCFTO_PATH . '/settings/view/header.php'; ?>
+		<?php include STM_WPCFTO_PATH . '/settings/view/header.php'; ?>
 
-		 <?php require_once( STM_WPCFTO_PATH . '/metaboxes/metabox-display.php' ); ?>
-
+		<?php require_once STM_WPCFTO_PATH . '/metaboxes/metabox-display.php'; ?>
 
 	</div>
 
-<?php endif;
+<?php
+endif;
 
-do_action( "wpcfto_settings_screen_{$id}_after" );
+do_action( "wpcfto_settings_screen_{$metabox_id}_after" );
