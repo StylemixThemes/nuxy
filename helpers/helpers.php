@@ -113,11 +113,11 @@ function wpcfto_get_settings_map( $source, $name ) {
 				$sections[ $section_name ]['fields'][ $field_name ]['value'] = $value;
 			}
 		}
-		
+
 		return $sections;
-		
+
 	}
-	
+
 }
 
 

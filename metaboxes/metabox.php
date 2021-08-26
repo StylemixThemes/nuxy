@@ -243,6 +243,10 @@ class STM_Metaboxes {
 		wp_enqueue_style( 'font-awesome-min', $assets . '/vendors/font-awesome.min.css', null, $v, 'all' );
 		wp_enqueue_style( 'vue-multiselect-min', $assets . '/vendors/vue-multiselect.min.css', null, $v, 'all' );
 
+		if ( is_rtl() ) {
+			wp_enqueue_style( 'nuxy-rtl', $base . 'css/rtl.css', array( 'wpcfto-metaboxes.css' ), $v );
+		}
+
 		/*GENERAL COMPONENTS*/
 		$components = array(
 			'text',
@@ -263,6 +267,7 @@ class STM_Metaboxes {
 			'file',
 			'notice',
 			'notice_banner',
+			'notification_message',
 			'button_group',
 			'image_select',
 			'spacing',
@@ -354,8 +359,8 @@ class STM_Metaboxes {
 		$post_type = get_post_type( $post_id );
 
 		if ( isset( $_REQUEST['_wpnonce'] )
-			&& wp_verify_nonce( sanitize_text_field( $_REQUEST['_wpnonce'] ), 'update-post_' . $post_id )
-			&& ! in_array( $post_type, $this->wpcfto_post_types(), true )
+		     && wp_verify_nonce( sanitize_text_field( $_REQUEST['_wpnonce'] ), 'update-post_' . $post_id )
+		     && ! in_array( $post_type, $this->wpcfto_post_types(), true )
 		) {
 			return;
 		}
@@ -604,10 +609,19 @@ function wpcfto_metaboxes_display_single_field( $section, $section_name, $field,
 			<?php echo wp_kses( $dependency, [] ); ?>
 			 data-field="<?php echo esc_attr( "wpcfto_addon_option_{$field_name}" ); ?>">
 
-			<?php do_action( 'stm_wpcfto_single_field_before_start', $classes, $field_name, $field, $is_pro, $pro_url ); ?>
+			<?php
+			do_action( 'stm_wpcfto_single_field_before_start', $classes, $field_name, $field, $is_pro, $pro_url );
+
+			/**
+			 * !!! This block for insert pro notice html to component "wpcfto_fields_aside_after"
+			 * ob_start();
+			 * do_action('stm_wpcfto_single_field_before_start', $classes, $field_name, $field, $is_pro, $pro_url);
+			 * $pro_content = ob_get_contents();
+			 * ob_end_clean();
+			 */
+			?>
 
 			<?php
-
 			$field_data = $field;
 
 			$label = ( ! empty( $field_data['label'] ) ) ? $field_data['label'] : '';
@@ -646,8 +660,8 @@ function wpcfto_metaboxes_display_group_field( $section, $section_name, $field, 
 		<div class="container">
 		<div class="row">
 		<?php if ( isset( $field['group_title'] ) && ! empty( $field['group_title'] ) ) { ?>
-			<div class="wpcfto_group_title"><?php echo esc_html( $field['group_title'] ); ?></div>
-		<?php } ?>
+		<div class="wpcfto_group_title"><?php echo esc_html( $field['group_title'] ); ?></div>
+	<?php } ?>
 	<?php
 	endif;
 
@@ -671,7 +685,7 @@ function wpcfto_metaboxes_preopen_field( $section, $section_name, $field, $field
 			<label>
 
 				<div class="wpcfto-admin-checkbox-wrapper"
-					v-bind:class="{'active' : <?php echo esc_attr( $vue_field ); ?>['opened'], 'is_toggle' : <?php echo ( isset( $field['toggle'] ) ) ? esc_attr( $field['toggle'] ) : 'true'; ?>}">
+				     v-bind:class="{'active' : <?php echo esc_attr( $vue_field ); ?>['opened'], 'is_toggle' : <?php echo ( isset( $field['toggle'] ) ) ? esc_attr( $field['toggle'] ) : 'true'; ?>}">
 					<div class="wpcfto-checkbox-switcher"></div>
 				</div>
 
@@ -682,11 +696,11 @@ function wpcfto_metaboxes_preopen_field( $section, $section_name, $field, $field
 		</div>
 
 		<div class="preopen_field"
-			v-if="<?php echo esc_attr( $vue_field ); ?>['opened']">
+		     v-if="<?php echo esc_attr( $vue_field ); ?>['opened']">
 			<?php wpcfto_metaboxes_display_single_field( $section, $section_name, $field, $field_name ); ?>
 		</div>
 
 	</div>
 
-<?php
+	<?php
 }
