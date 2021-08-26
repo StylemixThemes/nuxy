@@ -1,1 +1,5 @@
-<!--Silence is golden-->
+<?php
+
+/**
+ * Not Existing field template.
+ */

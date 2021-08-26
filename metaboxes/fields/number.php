@@ -1,6 +1,8 @@
 <?php
 
 /**
+ * Number field template.
+ *
  * @var $field
  * @var $field_id
  * @var $field_value
@@ -14,10 +16,10 @@
 ?>
 
 <wpcfto_number :fields="<?php echo esc_attr($field); ?>"
-               :field_data='<?php echo json_encode($field_data); ?>'
-               :field_label="<?php echo esc_attr($field_label); ?>"
-               :field_name="'<?php echo esc_attr($field_name); ?>'"
-               :field_id="'<?php echo esc_attr($field_id); ?>'"
-               :field_value="<?php echo esc_attr($field_value); ?>"
-               @wpcfto-get-value="<?php echo esc_attr($field_value); ?> = $event">
+				:field_data='<?php echo esc_attr(wp_json_encode($field_data)); ?>'
+				:field_label="<?php echo esc_attr($field_label); ?>"
+				:field_name="'<?php echo esc_attr($field_name); ?>'"
+				:field_id="'<?php echo esc_attr($field_id); ?>'"
+				:field_value="<?php echo esc_attr($field_value); ?>"
+				@wpcfto-get-value="<?php echo esc_attr($field_value); ?> = $event">
 </wpcfto_number>

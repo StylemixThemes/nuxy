@@ -42,7 +42,7 @@ function stm_wpcfto_nonces() {
 
 	?>
 	<script>
-		var stm_wpcfto_nonces = <?php echo json_encode( $nonces_list ); ?>;
+		var stm_wpcfto_nonces = <?php echo wp_json_encode( $nonces_list ); ?>;
 	</script>
 	<?php
 }
@@ -52,16 +52,13 @@ add_action( 'wp_head', 'stm_wpcfto_nonces' );
 
 
 add_action( 'wp_ajax_stm_wpcfto_get_settings', function() {
-	$source = sanitize_text_field( $_GET['source'] );
-	$name   = sanitize_text_field( $_GET['name'] );
+	$source = ( isset( $_GET['source'] ) ) ? sanitize_text_field( $_GET['source'] ) : '';
+	$name   = ( isset( $_GET['name'] ) ) ? sanitize_text_field( $_GET['name'] ) : '';
 	wp_send_json(wpcfto_get_settings_map($source, $name));
 });
 
-function wpcfto_get_settings_map($source, $name) {
-
-
-	if ( $source === 'settings' ) {
-
+function wpcfto_get_settings_map( $source, $name ) {
+	if ( 'settings' === $source ) {
 		$theme_options_page = apply_filters( 'wpcfto_options_page_setup', array() );
 		$settings_data      = get_option( $name, array() );
 		$settings           = array();
@@ -76,13 +73,12 @@ function wpcfto_get_settings_map($source, $name) {
 
 		foreach ( $settings as $section_name => $section ) {
 			foreach ( $section['fields'] as $field_name => $field ) {
-				$default_value                                               = ( ! empty( $field['value'] ) ) ? $field['value'] : '';
+				$default_value = ( ! empty( $field['value'] ) ) ? $field['value'] : '';
 				$settings[ $section_name ]['fields'][ $field_name ]['value'] = ( isset( $settings_data[ $field_name ] ) ) ? $settings_data[ $field_name ] : $default_value;
 			}
 		}
 
 		return $settings;
-
 	} else {
 		$post_id = intval( $source );
 
@@ -97,21 +93,20 @@ function wpcfto_get_settings_map($source, $name) {
 				$value         = ( isset( $meta[ $field_name ] ) ) ? $meta[ $field_name ] : $default_value;
 				if ( isset( $value ) ) {
 					switch ( $field['type'] ) {
-						case 'dates' :
+						case 'dates':
 							if ( ! empty( $value ) ) {
 								$value = explode( ',', $value );
 							}
 							break;
-						case 'answers' :
+						case 'answers':
 							if ( ! empty( $value ) ) {
 								$value = unserialize( $value );
 							}
 							break;
-						case 'repeater' :
+						case 'repeater':
 							if ( empty( $value ) ) {
 								$value = array();
 							}
-
 							break;
 					}
 				}
@@ -148,5 +143,5 @@ function wpcfto_get_image_url() {
 }
 
 function wpcfto_sanitize_string( $taxonomy ) {
-    return apply_filters( 'wpcfto_sanitize_string', urldecode( sanitize_title( urldecode( $taxonomy ) ) ), $taxonomy );
+	return apply_filters( 'wpcfto_sanitize_string', urldecode( sanitize_title( urldecode( $taxonomy ) ) ), $taxonomy );
 }
