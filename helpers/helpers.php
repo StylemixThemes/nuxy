@@ -141,3 +141,7 @@ function wpcfto_get_image_url() {
 	}
 	wp_send_json( wp_get_attachment_url( intval( $_GET['image_id'] ) ) );
 }
+
+function wpcfto_sanitize_string( $taxonomy ) {
+	return apply_filters( 'wpcfto_sanitize_string', urldecode( sanitize_title( urldecode( $taxonomy ) ) ), $taxonomy );
+}

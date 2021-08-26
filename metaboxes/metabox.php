@@ -49,8 +49,13 @@ class STM_Metaboxes {
 	}
 
 	public function get_fields( $metaboxes ) {
+		global $post_id;
 
 		$fields = array();
+
+		if ( isset( $_REQUEST['_wpnonce'] ) && wp_verify_nonce( sanitize_text_field( $_REQUEST['_wpnonce'] ), 'update-post_' . $post_id ) ) {
+			return $fields;
+		}
 
 		foreach ( $metaboxes as $metabox_name => $metabox ) {
 			foreach ( $metabox as $section ) {
@@ -60,9 +65,8 @@ class STM_Metaboxes {
 
 					$field_modified = '';
 
-					if ( isset( $_POST[ $field_name ] ) ) { // phpcs:disable WordPress.Security.NonceVerification
-						// phpcs:disable WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
-						$field_modified = $_POST[ $field_name ];
+					if ( isset( $_POST[ $field_name ] ) ) {
+						$field_modified = sanitize_text_field( $_POST[ $field_name ] );
 
 						if ( method_exists( 'STM_Metaboxes', "wpcfto_field_sanitize_{$field['type']}" ) ) {
 							$field_modified = call_user_func( array(
@@ -119,7 +123,10 @@ class STM_Metaboxes {
 
 		$dates = array();
 
-		// phpcs:disable WordPress.Security.NonceVerification
+		if ( isset( $_REQUEST['_wpnonce'] ) && wp_verify_nonce( sanitize_text_field( $_REQUEST['_wpnonce'] ), 'update-post_' . $post_id ) ) {
+			return $value;
+		}
+
 		if ( isset( $_POST["{$field_name}_start"] ) ) {
 			$dates[] = sanitize_text_field( $_POST["{$field_name}_start"] );
 		}
@@ -346,12 +353,14 @@ class STM_Metaboxes {
 	public function wpcfto_save( $post_id, $post ) {
 		$post_type = get_post_type( $post_id );
 
-		if ( ! in_array( $post_type, $this->wpcfto_post_types(), true ) ) {
+		if ( isset( $_REQUEST['_wpnonce'] )
+			&& wp_verify_nonce( sanitize_text_field( $_REQUEST['_wpnonce'] ), 'update-post_' . $post_id )
+			&& ! in_array( $post_type, $this->wpcfto_post_types(), true )
+		) {
 			return;
 		}
 
-		if ( ! empty( $_POST ) && ! empty( $_POST['action'] ) && 'editpost' === $_POST['action'] ) { // phpcs:ignore WordPress.Security.NonceVerification
-
+		if ( ! empty( $_POST ) && ! empty( $_POST['action'] ) && 'editpost' === $_POST['action'] ) {
 			$fields = $this->get_fields( $this->fields() );
 
 			foreach ( $fields as $field_name => $field_value ) {
@@ -592,7 +601,7 @@ function wpcfto_metaboxes_display_single_field( $section, $section_name, $field,
 
 	<transition name="slide-fade">
 		<div class="<?php echo esc_attr( implode( ' ', $classes ) ); ?>"
-			<?php echo stm_wpcfto_filtered_output( $dependency ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+			<?php echo wp_kses( $dependency, [] ); ?>
 			 data-field="<?php echo esc_attr( "wpcfto_addon_option_{$field_name}" ); ?>">
 
 			<?php do_action( 'stm_wpcfto_single_field_before_start', $classes, $field_name, $field, $is_pro, $pro_url ); ?>
@@ -627,8 +636,6 @@ function wpcfto_metaboxes_display_single_field( $section, $section_name, $field,
 }
 
 function wpcfto_metaboxes_display_group_field( $section, $section_name, $field, $field_name ) {
-	$group_title = ( isset( $field['group_title'] ) && ! empty( $field['group_title'] ) ) ? '<div class="wpcfto_group_title">' . $field['group_title'] . '</div>' : '';
-
 	if ( 'started' === $field['group'] ) :
 		$group_classes = array( 'wpcfto-box wpcfto_group_started column-1' );
 		if ( ! empty( $field['submenu'] ) ) {
@@ -638,7 +645,9 @@ function wpcfto_metaboxes_display_group_field( $section, $section_name, $field, 
 		<div class="<?php echo esc_attr( implode( ' ', $group_classes ) ); ?>">
 		<div class="container">
 		<div class="row">
-		<?php echo stm_wpcfto_filtered_output($group_title); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+		<?php if ( isset( $field['group_title'] ) && ! empty( $field['group_title'] ) ) { ?>
+			<div class="wpcfto_group_title"><?php echo esc_html( $field['group_title'] ); ?></div>
+		<?php } ?>
 	<?php
 	endif;
 
@@ -655,9 +664,9 @@ function wpcfto_metaboxes_preopen_field( $section, $section_name, $field, $field
 	$vue_field = "data['{$section_name}']['fields']['{$field_name}']";
 
 	?>
-	<div class="preopen_field_wrapper wpcfto_generic_field" v-init="initOpen(<?php echo stm_wpcfto_filtered_output($vue_field); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>)">
+	<div class="preopen_field_wrapper wpcfto_generic_field" v-init="initOpen(<?php echo wp_kses($vue_field, []); ?>)">
 
-		<div class="wpcfto-admin-checkbox" @click="openField(<?php echo stm_wpcfto_filtered_output($vue_field); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>)">
+		<div class="wpcfto-admin-checkbox" @click="openField(<?php echo wp_kses($vue_field, []); ?>)">
 
 			<label>
 

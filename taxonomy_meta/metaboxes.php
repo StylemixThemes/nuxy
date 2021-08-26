@@ -111,12 +111,14 @@ add_action('init', function () {
 	}
 
 	function wpcfto_save_term_meta_field( $term_id ) {
-		// phpcs:disable WordPress.Security.NonceVerification.Missing
+		if ( isset( $_REQUEST['_wpnonce'] ) && ! wp_verify_nonce( sanitize_text_field( $_REQUEST['_wpnonce'] ), 'update-tag_' . $term_id ) ) {
+			return;
+		}
+
 		if ( !empty($_POST['taxonomy']) ) {
 			$taxonomy = sanitize_text_field($_POST['taxonomy']);
 			$meta     = wpcfto_term_meta_fields();
-
-			if (!empty($meta[$taxonomy])) {
+			if ( !empty($meta[$taxonomy]) ) {
 				$fields = $meta[$taxonomy];
 				foreach ($fields as $field_key => $field) {
 					$field_value = ( !empty($_POST[ $field_key ]) ) ? sanitize_text_field( $_POST[ $field_key ] ) : '';
