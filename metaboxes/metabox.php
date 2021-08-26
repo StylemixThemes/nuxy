@@ -53,7 +53,7 @@ class STM_Metaboxes {
 
 		$fields = array();
 
-		if ( isset( $_REQUEST['_wpnonce'] ) && wp_verify_nonce( sanitize_text_field( $_REQUEST['_wpnonce'] ), 'update-post_' . $post_id ) ) {
+		if ( isset( $_REQUEST['_wpnonce'] ) && ! wp_verify_nonce( sanitize_text_field( $_REQUEST['_wpnonce'] ), 'update-post_' . $post_id ) ) {
 			return $fields;
 		}
 
@@ -123,7 +123,7 @@ class STM_Metaboxes {
 
 		$dates = array();
 
-		if ( isset( $_REQUEST['_wpnonce'] ) && wp_verify_nonce( sanitize_text_field( $_REQUEST['_wpnonce'] ), 'update-post_' . $post_id ) ) {
+		if ( isset( $_REQUEST['_wpnonce'] ) && ! wp_verify_nonce( sanitize_text_field( $_REQUEST['_wpnonce'] ), 'update-post_' . $post_id ) ) {
 			return $value;
 		}
 
@@ -359,8 +359,8 @@ class STM_Metaboxes {
 		$post_type = get_post_type( $post_id );
 
 		if ( isset( $_REQUEST['_wpnonce'] )
-		     && wp_verify_nonce( sanitize_text_field( $_REQUEST['_wpnonce'] ), 'update-post_' . $post_id )
-		     && ! in_array( $post_type, $this->wpcfto_post_types(), true )
+			&& ! wp_verify_nonce( sanitize_text_field( $_REQUEST['_wpnonce'] ), 'update-post_' . $post_id )
+			&& ! in_array( $post_type, $this->wpcfto_post_types(), true )
 		) {
 			return;
 		}
