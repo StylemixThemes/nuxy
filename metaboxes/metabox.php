@@ -685,7 +685,7 @@ function wpcfto_metaboxes_preopen_field( $section, $section_name, $field, $field
 			<label>
 
 				<div class="wpcfto-admin-checkbox-wrapper"
-				     v-bind:class="{'active' : <?php echo esc_attr( $vue_field ); ?>['opened'], 'is_toggle' : <?php echo ( isset( $field['toggle'] ) ) ? esc_attr( $field['toggle'] ) : 'true'; ?>}">
+					v-bind:class="{'active' : <?php echo esc_attr( $vue_field ); ?>['opened'], 'is_toggle' : <?php echo ( isset( $field['toggle'] ) ) ? esc_attr( $field['toggle'] ) : 'true'; ?>}">
 					<div class="wpcfto-checkbox-switcher"></div>
 				</div>
 
@@ -696,7 +696,7 @@ function wpcfto_metaboxes_preopen_field( $section, $section_name, $field, $field
 		</div>
 
 		<div class="preopen_field"
-		     v-if="<?php echo esc_attr( $vue_field ); ?>['opened']">
+			v-if="<?php echo esc_attr( $vue_field ); ?>['opened']">
 			<?php wpcfto_metaboxes_display_single_field( $section, $section_name, $field, $field_name ); ?>
 		</div>
 
