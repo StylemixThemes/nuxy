@@ -1,6 +1,8 @@
 <?php
 
 /**
+ * Notification Message field template.
+ *
  * @var $field
  * @var $field_id
  * @var $field_value
@@ -13,4 +15,4 @@ $field = "data['{$section_name}']['fields']['{$field_name}']";
 ?>
 
 <wpcfto_notification_message :fields="<?php echo esc_attr($field); ?>"
-               :field_name="'<?php echo esc_attr($field_name); ?>'"></wpcfto_notification_message>
+						:field_name="'<?php echo esc_attr($field_name); ?>'"></wpcfto_notification_message>
