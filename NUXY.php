@@ -20,7 +20,7 @@ add_action( 'plugins_loaded', function () {
 
 	$framework_versions = apply_filters( 'wpcfto_versions', array() );
 
-	$max_version = array_keys( $framework_versions, max( $framework_versions ) );
+	$max_version = array_keys( $framework_versions, max( $framework_versions ), true );
 
 	if ( ! class_exists( 'Stylemix_NUXY' ) && __FILE__ === $max_version[0] ) {
 
@@ -35,15 +35,14 @@ add_action( 'plugins_loaded', function () {
 				require_once STM_WPCFTO_PATH . '/metaboxes/google_fonts.php';
 				require_once STM_WPCFTO_PATH . '/taxonomy_meta/metaboxes.php';
 				require_once STM_WPCFTO_PATH . '/settings/settings.php';
+				require_once STM_WPCFTO_PATH . '/settings/front_settings.php';
 				require_once STM_WPCFTO_PATH . '/backward-compatibility.php';
 
 				if ( ! is_textdomain_loaded( 'nuxy' ) ) {
-
 					load_textdomain(
 						'nuxy',
 						STM_WPCFTO_PATH . '/languages/nuxy.mo'
 					);
-
 				}
 
 			}

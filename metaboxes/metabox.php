@@ -14,7 +14,7 @@ class STM_Metaboxes {
 
 		add_action( 'add_meta_boxes', array( $this, 'wpcfto_register_meta_boxes' ) );
 
-		add_action( 'admin_enqueue_scripts', array( $this, 'wpcfto_scripts' ) );
+		add_action( 'admin_enqueue_scripts', array( self::class, 'wpcfto_scripts' ) );
 
 		add_action( 'wp_enqueue_scripts', array( $this, 'wpcfto_front_scripts' ) );
 
@@ -210,7 +210,7 @@ class STM_Metaboxes {
 		);
 	}
 
-	public function wpcfto_scripts( $hook ) {
+	public static function wpcfto_scripts() {
 		$v      = time();
 		$base   = STM_WPCFTO_URL . 'metaboxes/assets/';
 		$assets = STM_WPCFTO_URL . 'metaboxes/assets';
