@@ -27,9 +27,16 @@ class WPCFTO_Front_Settings {
 			}
 		}
 
+		self::create_option( $option_name );
+
 		STM_Metaboxes::wpcfto_scripts();
 
 		include STM_WPCFTO_PATH . '/settings/view/main.php';
 	}
 
+	public static function create_option( $option_name ) {
+		if ( false === get_option( $option_name, false ) ) {
+			update_option( $option_name, '' );
+		}
+	}
 }
