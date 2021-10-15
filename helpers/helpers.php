@@ -59,7 +59,10 @@ add_action( 'wp_ajax_stm_wpcfto_get_settings', function() {
 
 function wpcfto_get_settings_map( $source, $name ) {
 	if ( 'settings' === $source ) {
-		$theme_options_page = apply_filters( 'wpcfto_options_page_setup', array() );
+		$theme_options_page = array_merge(
+			apply_filters( 'wpcfto_options_page_setup', array() ),
+			apply_filters( 'wpcfto_get_frontend_settings', array() )
+		);
 		$settings_data      = get_option( $name, array() );
 		$settings           = array();
 		/*Get Our settings*/

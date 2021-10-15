@@ -2,7 +2,17 @@
 
 class WPCFTO_Front_Settings {
 
-	public static function render( $options ) {
+	public static function render( $option_name ) {
+		$front_options = apply_filters( 'wpcfto_get_frontend_settings', array() );
+
+		foreach ( $front_options as $front_option ) {
+			if ( $front_option['option_name'] !== $option_name ) {
+				continue;
+			}
+
+			$options = $front_option;
+		}
+
 		if ( empty( $options['option_name'] ) || empty( $options['page'] ) || ! isset( $options['fields'] ) ) {
 			return;
 		}
@@ -27,16 +37,9 @@ class WPCFTO_Front_Settings {
 			}
 		}
 
-		self::create_option( $option_name );
-
 		STM_Metaboxes::wpcfto_scripts();
 
 		include STM_WPCFTO_PATH . '/settings/view/main.php';
 	}
 
-	public static function create_option( $option_name ) {
-		if ( false === get_option( $option_name, false ) ) {
-			update_option( $option_name, '' );
-		}
-	}
 }
