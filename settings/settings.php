@@ -29,7 +29,7 @@ class WPCFTO_Settings {
 		$selector = "#wp-admin-bar-{$this->setup['option_name']}";
 		?>
 		<style>
-			<?php echo esc_attr($selector); ?>
+			<?php echo esc_attr( $selector ); ?>
 			img {
 				max-width: 25px;
 				vertical-align: top;
@@ -37,7 +37,7 @@ class WPCFTO_Settings {
 				top: 3px;
 			}
 		</style>
-	<?php
+		<?php
 	}
 
 	public function admin_bar_button( $wp_admin_bar ) {
@@ -51,8 +51,8 @@ class WPCFTO_Settings {
 			'title' => $menu,
 			'href'  => $url,
 			'meta'  => array(
-				'title' => $title
-			)
+				'title' => $title,
+			),
 		);
 		$wp_admin_bar->add_node( $args );
 	}
@@ -93,7 +93,7 @@ class WPCFTO_Settings {
 		$default_args = array(
 			'post_type'      => $post_type,
 			'posts_per_page' => - 1,
-			'post_status'    => 'publish'
+			'post_status'    => 'publish',
 		);
 
 		$q = get_posts( wp_parse_args( $args, $default_args ) );
@@ -113,10 +113,13 @@ class WPCFTO_Settings {
 		$args                       = array();
 		$args[ $this->option_name ] = $this->fields;
 
-		return apply_filters( $this->option_name, array(
-			'id'   => $this->option_name,
-			'args' => $args
-		) );
+		return apply_filters(
+			$this->option_name,
+			array(
+				'id'   => $this->option_name,
+				'args' => $args,
+			)
+		);
 	}
 
 	public function wpcfto_get_settings() {
@@ -168,26 +171,36 @@ class WPCFTO_Settings {
 			}
 		}
 
+		$response = array(
+			'reload'  => false,
+			'updated' => false,
+		);
+
+		$response['reload'] = apply_filters( 'wpcfto_reload_after_save', $id, $settings );
+
 		do_action( 'wpcfto_settings_saved', $id, $settings );
 
-		$updateOption = update_option( $id, $settings );
+		$response['updated'] = update_option( $id, $settings );
 
 		do_action( 'wpcfto_after_settings_saved', $id, $settings );
 
-		wp_send_json( $updateOption );
+		wp_send_json( $response );
 	}
 }
 
-add_action( 'init', function () {
-	$theme_options_page = apply_filters( 'wpcfto_options_page_setup', array() );
+add_action(
+	'init',
+	function () {
+		$theme_options_page = apply_filters( 'wpcfto_options_page_setup', array() );
 
-	if ( ! empty( $theme_options_page ) ) {
-		foreach ( $theme_options_page as $setup ) {
-			if ( empty( $setup['option_name'] ) || empty( $setup['page'] ) || ! isset( $setup['fields'] ) ) {
-				continue;
+		if ( ! empty( $theme_options_page ) ) {
+			foreach ( $theme_options_page as $setup ) {
+				if ( empty( $setup['option_name'] ) || empty( $setup['page'] ) || ! isset( $setup['fields'] ) ) {
+					continue;
+				}
+
+				new WPCFTO_Settings( $setup['option_name'], $setup['page'], $setup['fields'], $setup );
 			}
-
-			new WPCFTO_Settings( $setup['option_name'], $setup['page'], $setup['fields'], $setup );
 		}
 	}
-} );
+);
