@@ -66,7 +66,7 @@ class STM_Metaboxes {
 					$field_modified = '';
 
 					if ( isset( $_POST[ $field_name ] ) ) {
-						$field_modified = sanitize_text_field( $_POST[ $field_name ] );
+						$field_modified = ( is_array( $_POST[ $field_name ] ) ) ? filter_var_array( $_POST[ $field_name ],FILTER_SANITIZE_STRING ) : sanitize_text_field( $_POST[ $field_name ] );
 
 						if ( method_exists( 'STM_Metaboxes', "wpcfto_field_sanitize_{$field['type']}" ) ) {
 							$field_modified = call_user_func( array(
