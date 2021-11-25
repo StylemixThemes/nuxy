@@ -440,7 +440,7 @@ class STM_Metaboxes {
 				$data = array();
 
 				foreach ( $r as $item ) {
-					if ( ! in_array( $item['id'], $args['post__in'], true ) ) {
+					if ( ! in_array( $item['id'], $args['post__in'] ) ) {
 						continue;
 					}
 
