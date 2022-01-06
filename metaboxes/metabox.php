@@ -21,6 +21,8 @@ class STM_Metaboxes {
 		add_action( 'save_post', array( $this, 'wpcfto_save' ), 10, 3 );
 
 		add_action( 'wp_ajax_wpcfto_search_posts', 'STM_Metaboxes::search_posts' );
+
+		add_filter( 'safe_style_css', 'STM_Metaboxes::add_safe_style', 10, 1 );
 	}
 
 	public function boxes() {
@@ -66,7 +68,12 @@ class STM_Metaboxes {
 					$field_modified = '';
 
 					if ( isset( $_POST[ $field_name ] ) ) {
-						$field_modified = ( is_array( $_POST[ $field_name ] ) ) ? filter_var_array( $_POST[ $field_name ],FILTER_SANITIZE_STRING ) : sanitize_text_field( $_POST[ $field_name ] );
+						
+						if ( $field['type'] == 'editor' ) {
+							$field_modified = ( is_array( $_POST[ $field_name ] ) ) ? filter_var_array( $_POST[ $field_name ] ) : $_POST[ $field_name ];
+						} else {
+							$field_modified = ( is_array( $_POST[ $field_name ] ) ) ? filter_var_array( $_POST[ $field_name ],FILTER_SANITIZE_STRING ) : sanitize_text_field( $_POST[ $field_name ] );
+						}
 
 						if ( method_exists( 'STM_Metaboxes', "wpcfto_field_sanitize_{$field['type']}" ) ) {
 							$field_modified = call_user_func( array(
@@ -118,6 +125,37 @@ class STM_Metaboxes {
 		return sanitize_text_field( $value );
 	}
 
+	public function wpcfto_sanitize_editor( $value ) {
+
+		global $wpcfto_allowed_html;
+
+		$wpcfto_allowed_html = array(
+				'a'		=> array('href' => array(),'style' => array()),
+				'p'		=> array('style' => array()),
+				'br'		=> array(),
+				'span'		=> array('style' => array()),
+				'strong'	=> array('style' => array()),
+				'h1'		=> array(),
+				'h2'		=> array(),
+				'h3'		=> array(),
+				'h4'		=> array(),
+				'h5'		=> array(),
+				'h6'		=> array(),
+				'ol'		=> array('style' => array()),
+				'ul'		=> array('style' => array()),
+				'li'		=> array('style' => array()),
+				'blockquote'	=> array(),
+			); 
+		$value = wp_kses($value, $wpcfto_allowed_html);
+		return $value;
+	}
+
+	public static function add_safe_style() {
+		$attr = array('style' => array());
+		global $allowedposttags;
+		$allowedposttags['style'] = $attr;
+	}
+	
 	public function wpcfto_save_dates( $value, $field_name ) {
 		global $post_id;
 

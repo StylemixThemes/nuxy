@@ -24,7 +24,8 @@
                 border-radius: 5px;
 
                 p {
-                    margin-bottom: 30px;
+                    margin-top: 1em;
+                    margin-bottom: 1em;
                 }
 
                 .ql-container.ql-snow,
@@ -92,6 +93,21 @@
 
                     &:focus {
                         border-color: $accent;
+                    }
+
+                    blockquote {
+                        margin-top: 1em;
+                        margin-bottom: 1em;
+                    }
+
+                    ol {
+                        margin-top: 1em;
+                        margin-bottom: 1em;
+                    }
+
+                    ul {
+                        margin-top: 1em;
+                        margin-bottom: 1em;
                     }
                 }
             }
