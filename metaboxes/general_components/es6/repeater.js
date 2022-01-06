@@ -14,7 +14,7 @@ Vue.component('wpcfto_repeater', {
         
         <div class="wpcfto-field-content">
 
-            <div v-for="(area, area_key) in repeater" class="wpcfto-repeater-single" :class="'wpcfto-repeater_' + field_name + '_' + area_key ">
+            <div v-for="(area, area_key) in repeater" :key="area" class="wpcfto-repeater-single" :class="'wpcfto-repeater_' + field_name + '_' + area_key ">
     
                 <div class="wpcfto_group_title" v-html="field_label + ' #' + (area_key + 1)"></div>
     
