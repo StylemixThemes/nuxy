@@ -68,11 +68,11 @@ class STM_Metaboxes {
 					$field_modified = '';
 
 					if ( isset( $_POST[ $field_name ] ) ) {
-						
-						if ( $field['type'] == 'editor' ) {
+
+						if ( $field['type'] === 'editor' ) {
 							$field_modified = ( is_array( $_POST[ $field_name ] ) ) ? filter_var_array( $_POST[ $field_name ] ) : $_POST[ $field_name ];
 						} else {
-							$field_modified = ( is_array( $_POST[ $field_name ] ) ) ? filter_var_array( $_POST[ $field_name ],FILTER_SANITIZE_STRING ) : sanitize_text_field( $_POST[ $field_name ] );
+							$field_modified = ( is_array( $_POST[ $field_name ] ) ) ? filter_var_array( $_POST[ $field_name ], FILTER_SANITIZE_STRING ) : sanitize_text_field( $_POST[ $field_name ] );
 						}
 
 						if ( method_exists( 'STM_Metaboxes', "wpcfto_field_sanitize_{$field['type']}" ) ) {
@@ -130,23 +130,24 @@ class STM_Metaboxes {
 		global $wpcfto_allowed_html;
 
 		$wpcfto_allowed_html = array(
-				'a'		=> array('href' => array(),'style' => array()),
-				'p'		=> array('style' => array()),
-				'br'		=> array(),
-				'span'		=> array('style' => array()),
-				'strong'	=> array('style' => array()),
-				'h1'		=> array(),
-				'h2'		=> array(),
-				'h3'		=> array(),
-				'h4'		=> array(),
-				'h5'		=> array(),
-				'h6'		=> array(),
-				'ol'		=> array('style' => array()),
-				'ul'		=> array('style' => array()),
-				'li'		=> array('style' => array()),
-				'blockquote'	=> array(),
-			); 
-		$value = wp_kses($value, $wpcfto_allowed_html);
+			'a'          => array( 'href' => array(), 'style' => array() ),
+			'p'          => array( 'style' => array() ),
+			'br'         => array(),
+			'span'       => array( 'style' => array() ),
+			'strong'     => array( 'style' => array() ),
+			'h1'         => array(),
+			'h2'         => array(),
+			'h3'         => array(),
+			'h4'         => array(),
+			'h5'         => array(),
+			'h6'         => array(),
+			'ol'         => array( 'style' => array() ),
+			'ul'         => array( 'style' => array() ),
+			'li'         => array( 'style' => array() ),
+			'blockquote' => array(),
+		);
+		$value               = wp_kses( $value, $wpcfto_allowed_html );
+
 		return $value;
 	}
 
