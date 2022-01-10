@@ -1,3 +1,6 @@
+## 4.1.6
+- **Fix:** Fixed minor bugs.
+
 ## 4.1.5
 - **New:** Added extra styles to synchronize the displaying of tags in Vue (WordPress backend) and TinyMCE editor in the frontend description.
 - **New:** Added new function, which allows to exclude the substantial tags from clearing, while saving the data on WordPress backend admin panel.
