@@ -110,10 +110,12 @@ Vue.component('wpcfto_file', {
             })
         },
         generateFileName(url) {
-            var name = '';
+            var name = url;
             var nameLength = 30;
-            if(url.length > nameLength) name = '...';
-            name += url.substr(url.length - nameLength);
+            if(url.length > nameLength) {
+                name = '...';
+                name += url.substr(url.length - nameLength);
+            }
 
             return name;
         }

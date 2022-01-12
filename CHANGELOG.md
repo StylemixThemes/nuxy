@@ -1,3 +1,6 @@
+## 4.1.7
+- **Fix:** File upload issue
+
 ## 4.1.6
 - **Fix:** Fixed minor bugs.
 

@@ -11,6 +11,11 @@ class STM_WPCFTO_FILE_UPLOAD {
 	public function upload_file() {
 		check_ajax_referer('wpcfto_upload_file', 'nonce');
 
+		if ( ! empty( $_FILES['file'] ) && ! empty( $_FILES['file']['name'] ) ) {
+			$filename = $_FILES['file']['name'];
+			do_action( 'stm_lms_nuxy_repeater_upload_file', $filename );
+		}
+
 		$this->create_folder();
 
 		$r = array(
