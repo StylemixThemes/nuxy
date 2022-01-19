@@ -89,6 +89,9 @@
                         $submenu.addClass('active');
                         this.initSubmenu();
                     },
+                    disableFields: function disableFields() {
+                        $('#stm_student_assignment').find('input').prop("disabled", true);
+                    },
                     getSettings: function () {
                         var _this = this;
                         _this.loading = true;
@@ -100,6 +103,8 @@
                             this.changeTabFromAnchor();
 
                             this.initSubmenu();
+
+                            this.disableFields();
                         });
 
                     },
