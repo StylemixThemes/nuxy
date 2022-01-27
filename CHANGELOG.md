@@ -1,3 +1,6 @@
+## 4.1.8
+- **New:** Added 'Default' status on Text Align parameter on Typography settings.
+
 ## 4.1.7
 - **Fix:** File upload issue
 
