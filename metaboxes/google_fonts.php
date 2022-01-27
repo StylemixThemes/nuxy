@@ -38,6 +38,7 @@ class WPCFTO_Gfonts {
 
 	public static function align() {
 		return array(
+			'none' => esc_html__('Default', 'wpcfto'),
 			'left' => esc_html__('Left', 'wpcfto'),
 			'center' => esc_html__('Center', 'wpcfto'),
 			'right' => esc_html__('Right', 'wpcfto'),
