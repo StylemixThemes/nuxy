@@ -1,3 +1,6 @@
+## 4.1.9
+- **New:** Added Button list type.
+
 ## 4.1.8
 - **New:** Added 'Default' status on Text Align parameter on Typography settings.
 
