@@ -308,6 +308,7 @@ class STM_Metaboxes {
 			'notice_banner',
 			'notification_message',
 			'button_group',
+			'button_list',
 			'image_select',
 			'spacing',
 			'link_color',
