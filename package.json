@@ -25,6 +25,7 @@
     "gulp": "^4.0.2",
     "gulp-babel": "^8.0.0",
     "gulp-browserify": "^0.5.1",
+    "gulp-sourcemaps": "^3.0.0",
     "vue-multiselect": "^2.1.6",
     "vue-range-component": "^1.0.3",
     "vue-range-slider": "^0.6.0",

@@ -1,3 +1,6 @@
+## 4.2.0
+- **New:** Added Source Map for external libraries.
+
 ## 4.1.9
 - **New:** Added Button list type.
 

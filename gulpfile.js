@@ -7,6 +7,7 @@ const cssmin = require('gulp-cssmin');
 const babel = require('gulp-babel');
 const clean = require('gulp-clean');
 const browserify = require('gulp-browserify');
+const sourcemaps = require('gulp-sourcemaps');
 
 gulp.task('serve', function (done) {
     "use strict";
@@ -116,6 +117,8 @@ gulp.task('build_wpcfto', function (done) {
             .pipe(gulp.dest('./metaboxes/general_components/js'));
 
         gulp.src(['./metaboxes/assets/vendors/js/**/*.js'])
+            .pipe(sourcemaps.init())
+            .pipe(sourcemaps.write('../sourcemap'))
             .pipe(gulp.dest('./metaboxes/assets/js'));
 
         done();
