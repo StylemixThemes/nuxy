@@ -1,0 +1,15 @@
+(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+"use strict";
+
+Vue.component('wpcfto_button_list', {
+  props: ['fields', 'field_name', 'field_id', 'field_value'],
+  data: function data() {
+    return {
+      value: '',
+      mount_status: false
+    };
+  },
+  template: "\n\t\t<div class=\"wpcfto_generic_field wpcfto_generic_field__notice\" v-bind:class=\"field_name\" v-bind:data-notice=\"field_name\">\n\t\t\t<div v-if=\"fields.buttons\" class=\"wpcfto_generic_field__notice_button_list\">\n\t\t\t\t<div class=\"button_list_box\" v-for=\"(button) in fields.buttons\">\n\t\t\t\t\t<label v-if=\"button.label\">{{ button.label }}</label>\n\t\t\t\t\t<a v-if=\"button.url || button.text\" :href=\"button.url\" :class=\"button.class\" target=\"_blank\" rel=\"nofollow\">{{ button.text }}</a>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t"
+});
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImZha2VfOTliMTY0NGYuanMiXSwibmFtZXMiOlsiVnVlIiwiY29tcG9uZW50IiwicHJvcHMiLCJkYXRhIiwidmFsdWUiLCJtb3VudF9zdGF0dXMiLCJ0ZW1wbGF0ZSJdLCJtYXBwaW5ncyI6IkFBQUE7O0FBRUFBLEdBQUcsQ0FBQ0MsU0FBSixDQUFjLG9CQUFkLEVBQW9DO0FBQ2xDQyxFQUFBQSxLQUFLLEVBQUUsQ0FBQyxRQUFELEVBQVcsWUFBWCxFQUF5QixVQUF6QixFQUFxQyxhQUFyQyxDQUQyQjtBQUVsQ0MsRUFBQUEsSUFBSSxFQUFFLFNBQVNBLElBQVQsR0FBZ0I7QUFDcEIsV0FBTztBQUNMQyxNQUFBQSxLQUFLLEVBQUUsRUFERjtBQUVMQyxNQUFBQSxZQUFZLEVBQUU7QUFGVCxLQUFQO0FBSUQsR0FQaUM7QUFRbENDLEVBQUFBLFFBQVEsRUFBRTtBQVJ3QixDQUFwQyIsInNvdXJjZXNDb250ZW50IjpbIlwidXNlIHN0cmljdFwiO1xuXG5WdWUuY29tcG9uZW50KCd3cGNmdG9fYnV0dG9uX2xpc3QnLCB7XG4gIHByb3BzOiBbJ2ZpZWxkcycsICdmaWVsZF9uYW1lJywgJ2ZpZWxkX2lkJywgJ2ZpZWxkX3ZhbHVlJ10sXG4gIGRhdGE6IGZ1bmN0aW9uIGRhdGEoKSB7XG4gICAgcmV0dXJuIHtcbiAgICAgIHZhbHVlOiAnJyxcbiAgICAgIG1vdW50X3N0YXR1czogZmFsc2VcbiAgICB9O1xuICB9LFxuICB0ZW1wbGF0ZTogXCJcXG5cXHRcXHQ8ZGl2IGNsYXNzPVxcXCJ3cGNmdG9fZ2VuZXJpY19maWVsZCB3cGNmdG9fZ2VuZXJpY19maWVsZF9fbm90aWNlXFxcIiB2LWJpbmQ6Y2xhc3M9XFxcImZpZWxkX25hbWVcXFwiIHYtYmluZDpkYXRhLW5vdGljZT1cXFwiZmllbGRfbmFtZVxcXCI+XFxuXFx0XFx0XFx0PGRpdiB2LWlmPVxcXCJmaWVsZHMuYnV0dG9uc1xcXCIgY2xhc3M9XFxcIndwY2Z0b19nZW5lcmljX2ZpZWxkX19ub3RpY2VfYnV0dG9uX2xpc3RcXFwiPlxcblxcdFxcdFxcdFxcdDxkaXYgY2xhc3M9XFxcImJ1dHRvbl9saXN0X2JveFxcXCIgdi1mb3I9XFxcIihidXR0b24pIGluIGZpZWxkcy5idXR0b25zXFxcIj5cXG5cXHRcXHRcXHRcXHRcXHQ8bGFiZWwgdi1pZj1cXFwiYnV0dG9uLmxhYmVsXFxcIj57eyBidXR0b24ubGFiZWwgfX08L2xhYmVsPlxcblxcdFxcdFxcdFxcdFxcdDxhIHYtaWY9XFxcImJ1dHRvbi51cmwgfHwgYnV0dG9uLnRleHRcXFwiIDpocmVmPVxcXCJidXR0b24udXJsXFxcIiA6Y2xhc3M9XFxcImJ1dHRvbi5jbGFzc1xcXCIgdGFyZ2V0PVxcXCJfYmxhbmtcXFwiIHJlbD1cXFwibm9mb2xsb3dcXFwiPnt7IGJ1dHRvbi50ZXh0IH19PC9hPlxcblxcdFxcdFxcdFxcdDwvZGl2PlxcblxcdFxcdFxcdDwvZGl2PlxcblxcdFxcdDwvZGl2PlxcblxcdFwiXG59KTsiXX0=
+},{}]},{},[1])

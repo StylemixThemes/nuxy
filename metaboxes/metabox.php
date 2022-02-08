@@ -326,6 +326,7 @@ class STM_Metaboxes {
 			'notice_banner',
 			'notification_message',
 			'button_group',
+			'button_list',
 			'image_select',
 			'spacing',
 			'link_color',
@@ -744,7 +745,7 @@ function wpcfto_metaboxes_preopen_field( $section, $section_name, $field, $field
 	?>
 	<div class="preopen_field_wrapper wpcfto_generic_field" v-init="initOpen(<?php echo wp_kses( $vue_field, array() ); ?>)">
 		<?php
-		if ( ! stm_wpcfto_is_pro() && isset( $field_options['disabled'] ) ) {
+		if ( ! stm_wpcfto_is_pro() && isset( $field_options['disabled'] ) && true === $field_options['disabled'] ) {
 			$preopen_disable = 'preopen_disable';
 			do_action( 'metabox_field_nuxy_notification' );
 		}

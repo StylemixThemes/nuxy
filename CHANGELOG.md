@@ -1,3 +1,15 @@
+## 4.2.1
+- **Fix:** Access to field types with 'pre_open' option was fixed.
+
+## 4.2.0
+- **New:** Added Source Map for external libraries.
+
+## 4.1.9
+- **New:** Added Button list type.
+
+## 4.1.8
+- **New:** Added 'Default' status on Text Align parameter on Typography settings.
+
 ## 4.1.7
 - **Fix:** File upload issue
 
