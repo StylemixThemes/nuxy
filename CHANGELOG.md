@@ -1,3 +1,6 @@
+## 4.2.1
+- **Fix:** Access to field types with 'pre_open' option was fixed.
+
 ## 4.2.0
 - **New:** Added Source Map for external libraries.
 

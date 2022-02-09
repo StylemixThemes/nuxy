@@ -31,7 +31,7 @@ class STM_Metaboxes {
 
 	public static function get_users() {
 		$users = array(
-			'' => apply_filters( 'wpcfto_all_users_label', esc_html__( 'Choose User', 'wpcfto' ) )
+			'' => apply_filters( 'wpcfto_all_users_label', esc_html__( 'Choose User', 'wpcfto' ) ),
 		);
 
 		if ( ! is_admin() ) {
@@ -76,10 +76,13 @@ class STM_Metaboxes {
 						}
 
 						if ( method_exists( 'STM_Metaboxes', "wpcfto_field_sanitize_{$field['type']}" ) ) {
-							$field_modified = call_user_func( array(
-								$this,
-								"wpcfto_field_sanitize_{$field['type']}"
-							), $field_modified );
+							$field_modified = call_user_func(
+								array(
+									$this,
+									"wpcfto_field_sanitize_{$field['type']}",
+								),
+								$field_modified
+							);
 						}
 
 						$field_modified = call_user_func( array( $this, $sanitize ), $field_modified, $field_name );
@@ -130,7 +133,10 @@ class STM_Metaboxes {
 		global $wpcfto_allowed_html;
 
 		$wpcfto_allowed_html = array(
-			'a'          => array( 'href' => array(), 'style' => array() ),
+			'a'          => array(
+				'href'  => array(),
+				'style' => array(),
+			),
 			'p'          => array( 'style' => array() ),
 			'br'         => array(),
 			'span'       => array( 'style' => array() ),
@@ -152,11 +158,11 @@ class STM_Metaboxes {
 	}
 
 	public static function add_safe_style() {
-		$attr = array('style' => array());
+		$attr = array( 'style' => array() );
 		global $allowedposttags;
 		$allowedposttags['style'] = $attr;
 	}
-	
+
 	public function wpcfto_save_dates( $value, $field_name ) {
 		global $post_id;
 
@@ -166,11 +172,11 @@ class STM_Metaboxes {
 			return $value;
 		}
 
-		if ( isset( $_POST["{$field_name}_start"] ) ) {
-			$dates[] = sanitize_text_field( $_POST["{$field_name}_start"] );
+		if ( isset( $_POST[ "{$field_name}_start" ] ) ) {
+			$dates[] = sanitize_text_field( $_POST[ "{$field_name}_start" ] );
 		}
-		if ( isset( $_POST["{$field_name}_end"] ) ) {
-			$dates[] = sanitize_text_field( $_POST["{$field_name}_end"] );
+		if ( isset( $_POST[ "{$field_name}_end" ] ) ) {
+			$dates[] = sanitize_text_field( $_POST[ "{$field_name}_end" ] );
 		}
 
 		if ( ! empty( $dates ) && count( $dates ) > 1 ) {
@@ -185,10 +191,18 @@ class STM_Metaboxes {
 		$boxes = $this->boxes();
 		foreach ( $boxes as $box_id => $box ) {
 			$box_name = $box['label'];
-			add_meta_box( $box_id, $box_name, array(
-				$this,
-				'wpcfto_display_callback'
-			), $box['post_type'], 'normal', 'high', $this->fields() );
+			add_meta_box(
+				$box_id,
+				$box_name,
+				array(
+					$this,
+					'wpcfto_display_callback',
+				),
+				$box['post_type'],
+				'normal',
+				'high',
+				$this->fields()
+			);
 		}
 	}
 
@@ -268,14 +282,18 @@ class STM_Metaboxes {
 
 		wp_add_inline_script( 'wpcfto_metaboxes.js', 'const WPCFTO_EventBus = new Vue();' );
 
-		wp_localize_script( 'wpcfto_metaboxes.js', 'wpcfto_global_settings', array(
-			'fonts_list'   => WPCFTO_Gfonts::google_fonts(),
-			'variants'     => WPCFTO_Gfonts::variants(),
-			'subsets'      => WPCFTO_Gfonts::subsets(),
-			'align'        => WPCFTO_Gfonts::align(),
-			'translations' => self::translations(),
-			'transform'    => WPCFTO_Gfonts::transform(),
-		) );
+		wp_localize_script(
+			'wpcfto_metaboxes.js',
+			'wpcfto_global_settings',
+			array(
+				'fonts_list'   => WPCFTO_Gfonts::google_fonts(),
+				'variants'     => WPCFTO_Gfonts::variants(),
+				'subsets'      => WPCFTO_Gfonts::subsets(),
+				'align'        => WPCFTO_Gfonts::align(),
+				'translations' => self::translations(),
+				'transform'    => WPCFTO_Gfonts::transform(),
+			)
+		);
 
 		wp_enqueue_style( 'wpcfto-metaboxes.css', $base . 'css/main.css', array(), $v );
 		wp_enqueue_style( 'linear-icons', $base . 'css/linear-icons.css', array( 'wpcfto-metaboxes.css' ), $v );
@@ -345,14 +363,17 @@ class STM_Metaboxes {
 
 		$icons        = array();
 		$font_awesome = stm_wpcfto_new_fa_icons();
-		array_walk( $font_awesome, function ( &$icon ) {
-			reset( $icon );
-			$title = key( $icon );
-			$icon  = array(
-				'title'       => $title,
-				'searchTerms' => array( $icon[ $title ] )
-			);
-		} );
+		array_walk(
+			$font_awesome,
+			function ( &$icon ) {
+				reset( $icon );
+				$title = key( $icon );
+				$icon  = array(
+					'title'       => $title,
+					'searchTerms' => array( $icon[ $title ] ),
+				);
+			}
+		);
 
 		$icons = array_merge( $icons, $font_awesome );
 
@@ -364,7 +385,7 @@ class STM_Metaboxes {
 
 		array(
 			'title'       => 'icon class',
-			'searchTerms' => [ 'here', 'array', 'of', 'terms', 'to', 'search' ]
+			'searchTerms' => array( 'here', 'array', 'of', 'terms', 'to', 'search' ),
 		);
 
 		do_action( 'wpcfto_enqueue_scripts' );
@@ -452,7 +473,7 @@ class STM_Metaboxes {
 		}
 
 		$user  = wp_get_current_user();
-		$roles = ( array ) $user->roles;
+		$roles = (array) $user->roles;
 
 		if ( ! in_array( 'administrator', $roles, true ) ) {
 			$args['author'] = get_current_user_id();
@@ -511,7 +532,7 @@ class STM_Metaboxes {
 					'title'     => get_the_title(),
 					'post_type' => get_post_type( get_the_ID() ),
 					'excerpt'   => get_the_excerpt( get_the_ID() ),
-					'image'     => get_the_post_thumbnail_url( get_the_ID(), 'thumbnail' )
+					'image'     => get_the_post_thumbnail_url( get_the_ID(), 'thumbnail' ),
 				);
 
 				$r[] = apply_filters( 'wpcfto_search_posts_response', $response, $args['post_type'] );
@@ -525,7 +546,10 @@ class STM_Metaboxes {
 
 			foreach ( $args['post__in'] as $key => $post ) {
 				if ( ! empty( $post ) && ! is_numeric( $post ) ) {
-					$insert_sections[ $key ] = array( 'id' => $post, 'title' => $post );
+					$insert_sections[ $key ] = array(
+						'id'    => $post,
+						'title' => $post,
+					);
 				}
 			}
 
@@ -646,7 +670,7 @@ function wpcfto_metaboxes_display_single_field( $section, $section_name, $field,
 
 	<transition name="slide-fade">
 		<div class="<?php echo esc_attr( implode( ' ', $classes ) ); ?>"
-			<?php echo wp_kses( $dependency, [] ); ?>
+			<?php echo wp_kses( $dependency, array() ); ?>
 			 data-field="<?php echo esc_attr( "wpcfto_addon_option_{$field_name}" ); ?>">
 
 			<?php
@@ -702,7 +726,7 @@ function wpcfto_metaboxes_display_group_field( $section, $section_name, $field, 
 		<?php if ( isset( $field['group_title'] ) && ! empty( $field['group_title'] ) ) { ?>
 		<div class="wpcfto_group_title"><?php echo esc_html( $field['group_title'] ); ?></div>
 	<?php } ?>
-	<?php
+		<?php
 	endif;
 
 	wpcfto_metaboxes_display_single_field( $section, $section_name, $field, $field_name );
@@ -710,19 +734,25 @@ function wpcfto_metaboxes_display_group_field( $section, $section_name, $field, 
 	if ( 'ended' === $field['group'] ) :
 		?>
 		</div></div></div>
-	<?php
+		<?php
 	endif;
 }
 
 function wpcfto_metaboxes_preopen_field( $section, $section_name, $field, $field_name ) {
-	$vue_field = "data['{$section_name}']['fields']['{$field_name}']";
-
+	$vue_field       = "data['{$section_name}']['fields']['{$field_name}']";
+	$field_options   = $section['fields'][ $field_name ];
+	$preopen_disable = '';
 	?>
-	<div class="preopen_field_wrapper wpcfto_generic_field" v-init="initOpen(<?php echo wp_kses($vue_field, []); ?>)">
+	<div class="preopen_field_wrapper wpcfto_generic_field" v-init="initOpen(<?php echo wp_kses( $vue_field, array() ); ?>)">
+		<?php
+		if ( ! stm_wpcfto_is_pro() && isset( $field_options['disabled'] ) && true === $field_options['disabled'] ) {
+			$preopen_disable = 'preopen_disable';
+			do_action( 'metabox_field_nuxy_notification' );
+		}
+		?>
+		<div class="wpcfto-admin-checkbox" @click="openField(<?php echo wp_kses( $vue_field, array() ); ?>)">
 
-		<div class="wpcfto-admin-checkbox" @click="openField(<?php echo wp_kses($vue_field, []); ?>)">
-
-			<label>
+			<label class="<?php echo esc_attr( $preopen_disable ); ?>">
 
 				<div class="wpcfto-admin-checkbox-wrapper"
 					v-bind:class="{'active' : <?php echo esc_attr( $vue_field ); ?>['opened'], 'is_toggle' : <?php echo ( isset( $field['toggle'] ) ) ? esc_attr( $field['toggle'] ) : 'true'; ?>}">

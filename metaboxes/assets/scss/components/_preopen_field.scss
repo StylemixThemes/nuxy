@@ -4,6 +4,34 @@ html body .stm_metaboxes_grid {
         .preopen_field_wrapper {
             width: 100%;
             margin: 0 5px;
+            .pro-notice {
+                position: absolute;
+                top: 16px;
+                left: 20px;
+                z-index: 101;
+                white-space: nowrap;
+                width: 20%;
+                color: $color_muted;
+                a {
+                    color: #2985f7;
+                    text-decoration: none;
+                }
+            }
+            .field_overlay {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 99;
+                &:hover {
+                    background: rgba(255,255,255,0.4);
+                }
+            }
+            label.preopen_disable {
+                margin-top: 30px;
+                color: $color_muted;
+            }
             .wpcfto_generic_field.wpcfto_generic_field_flex_input,
             .wpcfto_generic_field {
                 padding: 0;
