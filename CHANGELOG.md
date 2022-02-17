@@ -1,3 +1,6 @@
+## 4.2.2
+- **Fix:** Bug with remaining highlights for every visited settings tabs in metaboxes.
+
 ## 4.2.1
 - **Fix:** Access to field types with 'pre_open' option was fixed.
 

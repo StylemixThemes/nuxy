@@ -65,6 +65,7 @@
 
                         let $section = $('div[data-section="' + tab + '"]');
                         $tab.closest('.wpcfto-settings').find('.wpcfto-nav').removeClass('active');
+                        $tab.closest('.stm_metaboxes_grid__inner').find('.wpcfto-nav').removeClass('active');
                         $section.closest('.wpcfto-nav').addClass('active');
 
                         history.pushState(null, null, '#' + tab);
