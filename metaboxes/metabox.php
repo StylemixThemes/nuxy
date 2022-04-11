@@ -661,7 +661,7 @@ function wpcfto_metaboxes_display_single_field( $section, $section_name, $field,
 	}
 
 	if ( ! empty( $field['submenu'] ) ) {
-		$classes[] = $section_name . '_' . sanitize_title( $field['submenu'] );
+		$classes[] = $section_name . '_' . wpcfto_sanitize_string( $field['submenu'] );
 	}
 
 	$classes = apply_filters( 'stm_wpcfto_single_field_classes', $classes, $field_name, $field );
