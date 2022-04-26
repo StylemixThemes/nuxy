@@ -1,3 +1,5 @@
+## 4.2.4
+- **Fix:** Sortable field improvement.
 ## 4.2.3
 - **Fix:** Bug with translations in settings tabs in metaboxes.
 
