@@ -19,6 +19,7 @@ Vue.component('wpcfto_sorter', {
 						<h6 v-html="column['name']"></h6>
 	
 						<draggable class="list-group"
+								   draggable=".list-group-item"
 								   :list="column['options']"
 								   group="list"
 								   key="column_key">
