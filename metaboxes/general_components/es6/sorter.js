@@ -25,6 +25,7 @@ Vue.component('wpcfto_sorter', {
 								   key="column_key">
 	
 							<div class="list-group-item"
+								 :data-id="element['id']
 								 v-for="(element, element_key) in column['options']"
 								 :key="element['id']">
 	
