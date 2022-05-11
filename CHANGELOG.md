@@ -1,3 +1,5 @@
+## 4.2.6
+- **Fix:** Sortable field improvement.
 ## 4.2.5
 - **Fix:** Sortable field identification improvement.
 ## 4.2.4
