@@ -1,3 +1,5 @@
+## 4.2.5
+- **Fix:** Sortable field improvement.
 ## 4.2.4
 - **Fix:** Sortable field improvement.
 ## 4.2.3
