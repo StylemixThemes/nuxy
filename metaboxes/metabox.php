@@ -260,6 +260,7 @@ class STM_Metaboxes {
 			'exported_data_error' => esc_html__( 'Couldn\'t copy settings', 'wpcfto' ),
 			'export_data_label'   => esc_html__( 'Export options', 'wpcfto' ),
 			'import_data_label'   => esc_html__( 'Import options', 'wpcfto' ),
+			'v_select'            => esc_html__( 'Sorry, no matching options.', 'wpcfto' ),
 		);
 	}
 
@@ -397,6 +398,15 @@ class STM_Metaboxes {
 		$assets = STM_WPCFTO_URL . 'metaboxes/assets';
 
 		wp_enqueue_style( 'font-awesome-min', $assets . '/vendors/font-awesome.min.css', null, $v, 'all' );
+		wp_enqueue_script( 'wpcfto_metaboxes.js', $base . 'js/metaboxes.js', array( 'vue.js' ), $v, true );
+
+		wp_localize_script(
+			'wpcfto_metaboxes.js',
+			'wpcfto_global_settings',
+			array(
+				'translations' => self::translations(),
+			)
+		);
 	}
 
 	public function wpcfto_post_types() {

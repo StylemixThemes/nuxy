@@ -10,7 +10,8 @@ Vue.component('wpcfto_autocomplete', {
             loading: true,
             itemHovered: null,
             value: '',
-            limit : 0
+            limit : 0,
+            translations: wpcfto_global_settings['translations'],
         }
     },
     template: `
@@ -31,6 +32,7 @@ Vue.component('wpcfto_autocomplete', {
                                   @input="setSelected($event)"
                                   :options="options"
                                   @search="onSearch($event)">
+                                  <span slot="no-options" v-html="translations['v_select']"></span>
                         </v-select>
 
                     </div>
