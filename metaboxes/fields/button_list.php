@@ -11,11 +11,11 @@
  * @var $section_name
  *
  */
-$field = "data['{$section_name}']['fields']['{$field_name}']";
+$field = "data[ '{$section_name}' ][ 'fields' ][ '{$field_name}' ]";
 ?>
 
 <wpcfto_button_list
-	:fields="<?php echo esc_attr($field); ?>"
-	:field_name="'<?php echo esc_attr($field_name); ?>'"
-	:field_label="<?php echo esc_attr($field_label); ?>">
+	:fields="<?php echo esc_attr( $field ); ?>"
+	:field_name="'<?php echo esc_attr( $field_name ); ?>'"
+	:field_label="<?php echo esc_attr( $field_label ); ?>">
 </wpcfto_button_list>
