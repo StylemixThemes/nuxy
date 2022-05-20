@@ -32,7 +32,7 @@ Vue.component('wpcfto_autocomplete', {
                                   @input="setSelected($event)"
                                   :options="options"
                                   @search="onSearch($event)">
-                                  <span slot="no-options" v-html="translations['v_select']"></span>
+                                  <span slot="no-options" v-html="translations['vue_select_notice']"></span>
                         </v-select>
 
                     </div>
