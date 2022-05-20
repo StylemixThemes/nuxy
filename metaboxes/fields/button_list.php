@@ -11,7 +11,7 @@
  * @var $section_name
  *
  */
-$field = "data[ '{$section_name}' ][ 'fields' ][ '{$field_name}' ]";
+$field = "data['{$section_name}']['fields']['{$field_name}']";
 ?>
 
 <wpcfto_button_list
