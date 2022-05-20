@@ -1,5 +1,7 @@
 ## 4.2.8
 - **Fix:** Button List field improvement.
+## 4.2.7
+- **Fix:** Strings translation issue.
 ## 4.2.6
 - **Fix:** Sortable field improvement.
 ## 4.2.5
