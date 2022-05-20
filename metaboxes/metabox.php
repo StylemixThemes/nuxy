@@ -260,7 +260,7 @@ class STM_Metaboxes {
 			'exported_data_error' => esc_html__( 'Couldn\'t copy settings', 'wpcfto' ),
 			'export_data_label'   => esc_html__( 'Export options', 'wpcfto' ),
 			'import_data_label'   => esc_html__( 'Import options', 'wpcfto' ),
-			'v_select'            => esc_html__( 'Sorry, no matching options.', 'wpcfto' ),
+			'vue_select_notice'   => esc_html__( 'Sorry, no matching options.', 'wpcfto' ),
 		);
 	}
 
