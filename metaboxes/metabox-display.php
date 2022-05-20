@@ -11,7 +11,6 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @var $post
  * @var $metabox
  * @var $args_id
- *
  */
 
 $vue_id = '';
@@ -25,14 +24,14 @@ if ( empty( $metabox_id ) ) {
 } else {
 	if ( apply_filters( 'wpcfto_enable_export_import', true ) ) {
 		$sections['wpcfto_import_export'] = array(
-			'name'   => esc_html__( 'Import/Export', 'wpcfto' ),
+			'name'   => esc_html__( 'Import/Export', 'nuxy' ),
 			'icon'   => 'fa fa-sync',
 			'fields' => array(
 				'wpcfto_import_export_field' => array(
 					'type' => 'import_export',
-					'id'   => $metabox['id']
-				)
-			)
+					'id'   => $metabox['id'],
+				),
+			),
 		);
 	}
 }
@@ -40,14 +39,14 @@ if ( empty( $metabox_id ) ) {
 ?>
 
 <div v-cloak
-	class="stm_metaboxes_grid <?php echo esc_attr( 'sections_count_' . count( $sections ) ); ?>" <?php echo wp_kses( $vue_id . ' ' . $source_id, [] ); ?>>
+	class="stm_metaboxes_grid <?php echo esc_attr( 'sections_count_' . count( $sections ) ); ?>" <?php echo wp_kses( $vue_id . ' ' . $source_id, array() ); ?>>
 
 	<div class="stm_metaboxes_grid__inner" v-if="data !== ''">
 
 		<div class="container">
 
 			<?php
-			// Hide Tab Nav if Menu Items == 1
+			/* Hide Tab Nav if Menu Items == 1 */
 			$hide_tab_nav = false;
 			if ( count( $sections ) === 1 ) {
 				foreach ( $sections as $section_name => $section ) {
