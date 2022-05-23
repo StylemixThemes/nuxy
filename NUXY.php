@@ -3,7 +3,7 @@
  * Framework Name: NUXY
  * Framework URI: https://github.com/StylemixThemes/nuxy
  * Description: WordPress Custom Fields & Theme Options with Vue.js.
- * Version: 4.2.8
+ * Version: 4.2.9
  * License: http://www.gnu.org/licenses/gpl-3.0.html
  * Author: StylemixThemes
  * Author URI: https://stylemixthemes.com
@@ -38,10 +38,8 @@ add_action( 'plugins_loaded', function () {
 				require_once STM_WPCFTO_PATH . '/backward-compatibility.php';
 
 				if ( ! is_textdomain_loaded( 'nuxy' ) ) {
-					load_textdomain(
-						'nuxy',
-						STM_WPCFTO_PATH . '/languages/nuxy.mo'
-					);
+					$mo_file_path = STM_WPCFTO_PATH . '/languages/nuxy-' . determine_locale() . '.mo';
+					load_textdomain( 'nuxy', $mo_file_path );
 				}
 
 			}
