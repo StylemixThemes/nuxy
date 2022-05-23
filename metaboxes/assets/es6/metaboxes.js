@@ -14,6 +14,10 @@
                     return {
                         loading: false,
                         data: '',
+                        settings_alert: {
+                            status: false,
+                            success: true
+                        },
                     }
                 },
                 mounted: function () {
@@ -109,6 +113,14 @@
                         vm.loading = true;
                         this.$http.post(stm_wpcfto_ajaxurl + '?action=wpcfto_save_settings&nonce=' + stm_wpcfto_nonces['wpcfto_save_settings'] + '&name=' + id, JSON.stringify(vm.data)).then(function (response) {
                             vm.loading = false;
+                            vm.settings_alert = {
+                                success: response.status === 200,
+                                status: true
+                            };
+
+                            setTimeout(() => {
+                                vm.settings_alert.status = false;
+                            }, 1500)
 
                             if(response.body?.reload === true) location.reload();
                         });
