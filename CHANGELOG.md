@@ -1,3 +1,5 @@
+## 4.3.0
+- **New:** Added save settings alert
 ## 4.2.9
 - **Fix:** Added filter for data settings.
 ## 4.2.8
