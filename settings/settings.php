@@ -127,12 +127,23 @@ class WPCFTO_Settings {
 	}
 
 	public function settings_page_view() {
-		$metabox          = $this->wpcfto_settings();
-		$settings         = $this->wpcfto_get_settings();
-		$page             = $this->page_args;
-		$wpcfto_title     = ( ! empty( $this->setup['title'] ) ) ? $this->setup['title'] : '';
-		$wpcfto_sub_title = ( ! empty( $this->setup['sub_title'] ) ) ? $this->setup['sub_title'] : '';
-		$wpcfto_logo      = ( ! empty( $this->setup['logo'] ) ) ? $this->setup['logo'] : STM_WPCFTO_URL . '/metaboxes/assets/images/stm-logo.svg';
+		$metabox               = $this->wpcfto_settings();
+		$settings              = $this->wpcfto_get_settings();
+		$page                  = $this->page_args;
+		$wpcfto_title          = ( ! empty( $this->setup['title'] ) ) ? $this->setup['title'] : '';
+		$wpcfto_sub_title      = ( ! empty( $this->setup['sub_title'] ) ) ? $this->setup['sub_title'] : '';
+		$wpcfto_logo           = ( ! empty( $this->setup['logo'] ) ) ? $this->setup['logo'] : STM_WPCFTO_URL . '/metaboxes/assets/images/stm-logo.svg';
+		$wpcfto_settings_alert = ( ! empty( $this->setup['save_settings_alert'] ) ) ? $this->setup['save_settings_alert'] : array(
+			'position'      => 'top_right',
+			'success_alert' => array(
+				'title'    => esc_html__( 'Saved!', 'nuxy' ),
+				'subtitle' => esc_html__( 'Settings are changed', 'nuxy' ),
+			),
+			'error_alert'   => array(
+				'title'    => esc_html__( 'Oops, something went wrong', 'nuxy' ),
+				'subtitle' => esc_html__( 'Settings are not changed', 'nuxy' ),
+			),
+		);
 
 		foreach ( $metabox['args'][ $this->option_name ] as $section_name => $section ) {
 			foreach ( $section['fields'] as $field_name => $field ) {
