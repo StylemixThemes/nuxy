@@ -7,6 +7,7 @@
  * @var $wpcfto_title
  * @var $wpcfto_sub_title
  * @var $wpcfto_logo
+ * @var $wpcfto_settings_alert
  */
 
 $only_logo = empty( $wpcfto_title ) && empty( $wpcfto_sub_title );
@@ -55,6 +56,24 @@ $only_logo = empty( $wpcfto_title ) && empty( $wpcfto_sub_title );
 			<i class="lnr lnr-sync"></i>
 		</a>
 
+		<div class="wpcfto_settings_alert <?php echo esc_attr( $wpcfto_settings_alert['position'] ); ?>" :class="{ 'show': settings_alert.status, 'wpcfto_settings_alert_error': !settings_alert.success }">
+			<div class="wpcfto_settings_alert__icon">
+				<span v-if="settings_alert.success">
+					<i class="fa fa-check"></i>
+				</span>
+				<span v-else>
+					<i class="lnr lnricons-cross2"></i>
+				</span>
+			</div>
+			<div class="wpcfto_settings_alert__text" v-if="settings_alert.success">
+				<div class="wpcfto_settings_alert__title"><?php echo esc_html( $wpcfto_settings_alert['success_alert']['title'] ); ?></div>
+				<div class="wpcfto_settings_alert__subtitle"><?php echo esc_html( $wpcfto_settings_alert['success_alert']['subtitle'] ); ?></div>
+			</div>
+			<div class="wpcfto_settings_alert__text" v-else>
+				<div class="wpcfto_settings_alert__title"><?php echo esc_html( $wpcfto_settings_alert['error_alert']['title'] ); ?></div>
+				<div class="wpcfto_settings_alert__subtitle"><?php echo esc_html( $wpcfto_settings_alert['error_alert']['subtitle'] ); ?></div>
+			</div>
+		</div>
 	</div>
 
 </div>
