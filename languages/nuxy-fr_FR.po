@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: NUXY\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-05-23 06:46+0000\n"
-"PO-Revision-Date: 2022-05-23 07:14+0000\n"
+"PO-Revision-Date: 2022-06-10 06:54+0000\n"
 "Last-Translator: \n"
 "Language-Team: French (France)\n"
 "Language: fr_FR\n"
@@ -12,16 +12,16 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco https://localise.biz/\n"
-"X-Loco-Version: 2.6.1; wp-5.9.3\n"
+"X-Loco-Version: 2.6.2; wp-6.0\n"
 "X-Domain: nuxy"
 
 #: taxonomy_meta/fields/image.php:10
 msgid "Add image"
-msgstr ""
+msgstr "Ajouter une image"
 
 #: metaboxes/metabox.php:250
 msgid "Backup Font Family"
-msgstr ""
+msgstr "Sauvegarde de la famille de polices"
 
 #: metaboxes/google_fonts.php:22
 msgid "Black 900"
@@ -49,19 +49,19 @@ msgstr ""
 
 #: settings/settings.php:90
 msgid "Choose Page"
-msgstr ""
+msgstr "Choisir la page"
 
 #: metaboxes/metabox.php:34
 msgid "Choose User"
-msgstr ""
+msgstr "Choisir l'utilisateur"
 
 #: metaboxes/metabox.php:256
 msgid "Copy settings"
-msgstr ""
+msgstr "Copier les paramètres"
 
 #: metaboxes/metabox.php:260
 msgid "Couldn't copy settings"
-msgstr ""
+msgstr "Impossible de copier les paramètres"
 
 #: metaboxes/google_fonts.php:29
 msgid "Cyrillic"
@@ -73,7 +73,7 @@ msgstr ""
 
 #: metaboxes/fields/duration.php:35
 msgid "Days"
-msgstr ""
+msgstr "Jours"
 
 #: metaboxes/google_fonts.php:41
 msgid "Default"
@@ -81,39 +81,39 @@ msgstr ""
 
 #: taxonomy_meta/fields/image.php:13
 msgid "Delete image"
-msgstr ""
+msgstr "Supprimer l'image"
 
 #: metaboxes/fields/duration.php:24
 msgid "duration"
-msgstr ""
+msgstr "durée"
 
 #: helpers/file_upload.php:22
 msgid "Error occurred, please try again"
-msgstr ""
+msgstr "Une erreur s'est produite, veuillez réessayer"
 
 #: metaboxes/metabox.php:261
 msgid "Export options"
-msgstr ""
+msgstr "Options d'exportation"
 
 #: metaboxes/metabox.php:254
 msgid "Font Color"
-msgstr ""
+msgstr "Couleur de la police"
 
 #: metaboxes/metabox.php:249
 msgid "Font Family"
-msgstr ""
+msgstr "Famille de polices"
 
 #: metaboxes/metabox.php:245
 msgid "Font size"
-msgstr ""
+msgstr "Taille de la police"
 
 #: metaboxes/metabox.php:252
 msgid "Font Subsets"
-msgstr ""
+msgstr "Sous-ensembles de polices"
 
 #: metaboxes/metabox.php:251
 msgid "Font Weignt & Style"
-msgstr ""
+msgstr "Poids et style de la police"
 
 #: metaboxes/google_fonts.php:31
 msgid "Greek"
@@ -125,27 +125,27 @@ msgstr ""
 
 #: metaboxes/fields/duration.php:34
 msgid "Hours"
-msgstr ""
+msgstr "Heures"
 
 #. Author URI of the plugin
 msgid "https://stylemixthemes.com"
-msgstr ""
+msgstr "https://stylemixthemes.com"
 
 #: metaboxes/metabox.php:262
 msgid "Import options"
-msgstr ""
+msgstr "Options d'import"
 
 #: metaboxes/metabox.php:257
 msgid "Import settings"
-msgstr ""
+msgstr "Importer les paramètres"
 
 #: metaboxes/metabox-display.php:27
 msgid "Import/Export"
-msgstr ""
+msgstr "Importer/Exporter"
 
 #: helpers/file_upload.php:63
 msgid "Invalid file extension"
-msgstr ""
+msgstr "Extension de fichier invalide"
 
 #: metaboxes/google_fonts.php:33
 msgid "Latin"
@@ -161,7 +161,7 @@ msgstr ""
 
 #: metaboxes/metabox.php:248
 msgid "Letter spacing"
-msgstr ""
+msgstr "Espacement entre les lettres"
 
 #: metaboxes/google_fonts.php:14
 msgid "Light 300"
@@ -173,7 +173,7 @@ msgstr ""
 
 #: metaboxes/metabox.php:246
 msgid "Line height"
-msgstr ""
+msgstr "Hauteur de ligne"
 
 #: metaboxes/google_fonts.php:52
 msgid "Lowercase"
@@ -189,7 +189,7 @@ msgstr ""
 
 #: metaboxes/fields/duration.php:33
 msgid "Minutes"
-msgstr ""
+msgstr "Minutes"
 
 #: metaboxes/google_fonts.php:50
 msgid "Normal"
@@ -197,11 +197,11 @@ msgstr ""
 
 #. Name of the plugin
 msgid "NUXY"
-msgstr ""
+msgstr "NUXY"
 
 #: helpers/file_upload.php:53
 msgid "Please, select file"
-msgstr ""
+msgstr "Veuillez sélectionner le fichier"
 
 #: metaboxes/google_fonts.php:16
 msgid "Regular 400"
@@ -217,35 +217,35 @@ msgstr ""
 
 #: settings/view/header.php:54
 msgid "Save Settings"
-msgstr ""
+msgstr "Sauvegarder les paramètres"
 
 #: settings/view/header.php:47
 msgid "Search"
-msgstr ""
+msgstr "Chercher"
 
 #: taxonomy_meta/fields/image.php:45
 msgid "Select or Upload Media Of Your Chosen Persuasion"
-msgstr ""
+msgstr "Sélectionnez ou téléchargez les médias de votre choix"
 
 #: metaboxes/metabox.php:259
 msgid "Settings copied to buffer"
-msgstr ""
+msgstr "Paramètres copiés dans la mémoire tampon"
 
 #: metaboxes/metabox.php:263
 msgid "Sorry, no matching options."
-msgstr ""
+msgstr "Désolé, aucune option ne correspond"
 
 #. Author of the plugin
 msgid "StylemixThemes"
-msgstr ""
+msgstr "StylemixThemes"
 
 #: metaboxes/metabox.php:253
 msgid "Text Align"
-msgstr ""
+msgstr "Alignement du texte"
 
 #: metaboxes/metabox.php:255
 msgid "Text transform"
-msgstr ""
+msgstr "Transformation du texte"
 
 #: metaboxes/google_fonts.php:12
 msgid "Thin 100"
@@ -261,7 +261,7 @@ msgstr ""
 
 #: taxonomy_meta/fields/image.php:47
 msgid "Use this media"
-msgstr ""
+msgstr "Utiliser ce média"
 
 #: metaboxes/google_fonts.php:35
 msgid "Vietnamese"
@@ -269,14 +269,14 @@ msgstr ""
 
 #: metaboxes/metabox.php:258
 msgid ""
-"WARNING! This will overwrite all existing option values, please proceed with "
-"caution!"
+"ATTENTION! Ceci va écraser toutes les valeurs d'options existantes, veuillez procéder avec "
+"attention!"
 msgstr ""
 
 #: metaboxes/metabox.php:247
 msgid "Word spacing"
-msgstr ""
+msgstr "Espacement entre les mots"
 
 #. Description of the plugin
 msgid "WordPress Custom Fields & Theme Options with Vue.js."
-msgstr ""
+msgstr "Champs personnalisés WordPress et options du thème avec Vue.js."

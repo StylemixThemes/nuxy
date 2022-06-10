@@ -17,11 +17,11 @@ msgstr ""
 
 #: taxonomy_meta/fields/image.php:10
 msgid "Add image"
-msgstr ""
+msgstr "Adicionar imagem"
 
 #: metaboxes/metabox.php:250
 msgid "Backup Font Family"
-msgstr ""
+msgstr "Família de fontes de reserva"
 
 #: metaboxes/google_fonts.php:22
 msgid "Black 900"
@@ -49,19 +49,19 @@ msgstr ""
 
 #: settings/settings.php:90
 msgid "Choose Page"
-msgstr ""
+msgstr "Escolha página"
 
 #: metaboxes/metabox.php:34
 msgid "Choose User"
-msgstr ""
+msgstr "Escolha o Utilizador"
 
 #: metaboxes/metabox.php:256
 msgid "Copy settings"
-msgstr ""
+msgstr "Copiar definições"
 
 #: metaboxes/metabox.php:260
 msgid "Couldn't copy settings"
-msgstr ""
+msgstr "Não foi possível copiar configurações"
 
 #: metaboxes/google_fonts.php:29
 msgid "Cyrillic"
@@ -73,7 +73,7 @@ msgstr ""
 
 #: metaboxes/fields/duration.php:35
 msgid "Days"
-msgstr ""
+msgstr "Dias"
 
 #: metaboxes/google_fonts.php:41
 msgid "Default"
@@ -81,39 +81,39 @@ msgstr ""
 
 #: taxonomy_meta/fields/image.php:13
 msgid "Delete image"
-msgstr ""
+msgstr "Apagar imagem"
 
 #: metaboxes/fields/duration.php:24
 msgid "duration"
-msgstr ""
+msgstr "duração"
 
 #: helpers/file_upload.php:22
 msgid "Error occurred, please try again"
-msgstr ""
+msgstr "Occoreu um erro, por favor tente novamente"
 
 #: metaboxes/metabox.php:261
 msgid "Export options"
-msgstr ""
+msgstr "Opções de exportação"
 
 #: metaboxes/metabox.php:254
 msgid "Font Color"
-msgstr ""
+msgstr "Cor da fonte"
 
 #: metaboxes/metabox.php:249
 msgid "Font Family"
-msgstr ""
+msgstr "Família de Fonte"
 
 #: metaboxes/metabox.php:245
 msgid "Font size"
-msgstr ""
+msgstr "Tamanho da fonte"
 
 #: metaboxes/metabox.php:252
 msgid "Font Subsets"
-msgstr ""
+msgstr "Subconjuntos de fonte"
 
 #: metaboxes/metabox.php:251
 msgid "Font Weignt & Style"
-msgstr ""
+msgstr "Peso & Estilo da Fonte"
 
 #: metaboxes/google_fonts.php:31
 msgid "Greek"
@@ -125,27 +125,27 @@ msgstr ""
 
 #: metaboxes/fields/duration.php:34
 msgid "Hours"
-msgstr ""
+msgstr "Horas"
 
 #. Author URI of the plugin
 msgid "https://stylemixthemes.com"
-msgstr ""
+msgstr "https://stylemixthemes.com"
 
 #: metaboxes/metabox.php:262
 msgid "Import options"
-msgstr ""
+msgstr "Opções de importação"
 
 #: metaboxes/metabox.php:257
 msgid "Import settings"
-msgstr ""
+msgstr "Definições de importação"
 
 #: metaboxes/metabox-display.php:27
 msgid "Import/Export"
-msgstr ""
+msgstr "Importação/Exportação"
 
 #: helpers/file_upload.php:63
 msgid "Invalid file extension"
-msgstr ""
+msgstr "Extensão de ficheiro inválida"
 
 #: metaboxes/google_fonts.php:33
 msgid "Latin"
@@ -161,7 +161,7 @@ msgstr ""
 
 #: metaboxes/metabox.php:248
 msgid "Letter spacing"
-msgstr ""
+msgstr "Espaçamento de letras"
 
 #: metaboxes/google_fonts.php:14
 msgid "Light 300"
@@ -173,7 +173,7 @@ msgstr ""
 
 #: metaboxes/metabox.php:246
 msgid "Line height"
-msgstr ""
+msgstr "Altura da linha"
 
 #: metaboxes/google_fonts.php:52
 msgid "Lowercase"
@@ -189,7 +189,7 @@ msgstr ""
 
 #: metaboxes/fields/duration.php:33
 msgid "Minutes"
-msgstr ""
+msgstr "Minutos"
 
 #: metaboxes/google_fonts.php:50
 msgid "Normal"
@@ -197,11 +197,11 @@ msgstr ""
 
 #. Name of the plugin
 msgid "NUXY"
-msgstr ""
+msgstr "NUXY"
 
 #: helpers/file_upload.php:53
 msgid "Please, select file"
-msgstr ""
+msgstr "Por favor, selecione ficheiro"
 
 #: metaboxes/google_fonts.php:16
 msgid "Regular 400"
@@ -217,35 +217,35 @@ msgstr ""
 
 #: settings/view/header.php:54
 msgid "Save Settings"
-msgstr ""
+msgstr "Guardar Definições"
 
 #: settings/view/header.php:47
 msgid "Search"
-msgstr ""
+msgstr "Pesquisar"
 
 #: taxonomy_meta/fields/image.php:45
 msgid "Select or Upload Media Of Your Chosen Persuasion"
-msgstr ""
+msgstr "Selecione ou Carregue Mídia da sua Persuasão Escolhida"
 
 #: metaboxes/metabox.php:259
 msgid "Settings copied to buffer"
-msgstr ""
+msgstr "Configurações copiadas para buffer"
 
 #: metaboxes/metabox.php:263
 msgid "Sorry, no matching options."
-msgstr ""
+msgstr "Desculpa, sem opções iguais."
 
 #. Author of the plugin
 msgid "StylemixThemes"
-msgstr ""
+msgstr "StylemixThemes"
 
 #: metaboxes/metabox.php:253
 msgid "Text Align"
-msgstr ""
+msgstr "Alinhamento de texto"
 
 #: metaboxes/metabox.php:255
 msgid "Text transform"
-msgstr ""
+msgstr "Transformação de texto"
 
 #: metaboxes/google_fonts.php:12
 msgid "Thin 100"
@@ -261,7 +261,7 @@ msgstr ""
 
 #: taxonomy_meta/fields/image.php:47
 msgid "Use this media"
-msgstr ""
+msgstr "Use este meio de comunicação"
 
 #: metaboxes/google_fonts.php:35
 msgid "Vietnamese"
@@ -269,14 +269,14 @@ msgstr ""
 
 #: metaboxes/metabox.php:258
 msgid ""
-"WARNING! This will overwrite all existing option values, please proceed with "
-"caution!"
+"AVISO! Isto vai sobrepor todos os valores existentes, por favor proceda " 
+"cuidado!"
 msgstr ""
 
 #: metaboxes/metabox.php:247
 msgid "Word spacing"
-msgstr ""
+msgstr "Espaçamento de palavras"
 
 #. Description of the plugin
 msgid "WordPress Custom Fields & Theme Options with Vue.js."
-msgstr ""
+msgstr "WordPress Custom Fields & Theme Options with Vue.js."
