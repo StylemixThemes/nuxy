@@ -1,5 +1,9 @@
-## 4.2.9
+## 4.3.1
 - **Fix:** Strings translation issue.
+## 4.3.0
+- **New:** Added save settings alert
+## 4.2.9
+- **Fix:** Added filter for data settings.
 ## 4.2.8
 - **Fix:** Button List field improvement.
 ## 4.2.7
