@@ -1,0 +1,283 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: NUXY\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-05-23 06:46+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: \n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.6.1; wp-5.9.3\n"
+"X-Domain: nuxy"
+
+#: taxonomy_meta/fields/image.php:10
+msgid "Add image"
+msgstr ""
+
+#: metaboxes/metabox.php:250
+msgid "Backup Font Family"
+msgstr ""
+
+#: metaboxes/google_fonts.php:22
+msgid "Black 900"
+msgstr ""
+
+#: metaboxes/google_fonts.php:23
+msgid "Black 900 italic"
+msgstr ""
+
+#: metaboxes/google_fonts.php:20
+msgid "Bold 700"
+msgstr ""
+
+#: metaboxes/google_fonts.php:21
+msgid "Bold 700 italic"
+msgstr ""
+
+#: metaboxes/google_fonts.php:53
+msgid "Capitalize"
+msgstr ""
+
+#: metaboxes/google_fonts.php:43
+msgid "Center"
+msgstr ""
+
+#: settings/settings.php:90
+msgid "Choose Page"
+msgstr ""
+
+#: metaboxes/metabox.php:34
+msgid "Choose User"
+msgstr ""
+
+#: metaboxes/metabox.php:256
+msgid "Copy settings"
+msgstr ""
+
+#: metaboxes/metabox.php:260
+msgid "Couldn't copy settings"
+msgstr ""
+
+#: metaboxes/google_fonts.php:29
+msgid "Cyrillic"
+msgstr ""
+
+#: metaboxes/google_fonts.php:30
+msgid "Cyrillic ext"
+msgstr ""
+
+#: metaboxes/fields/duration.php:35
+msgid "Days"
+msgstr ""
+
+#: metaboxes/google_fonts.php:41
+msgid "Default"
+msgstr ""
+
+#: taxonomy_meta/fields/image.php:13
+msgid "Delete image"
+msgstr ""
+
+#: metaboxes/fields/duration.php:24
+msgid "duration"
+msgstr ""
+
+#: helpers/file_upload.php:22
+msgid "Error occurred, please try again"
+msgstr ""
+
+#: metaboxes/metabox.php:261
+msgid "Export options"
+msgstr ""
+
+#: metaboxes/metabox.php:254
+msgid "Font Color"
+msgstr ""
+
+#: metaboxes/metabox.php:249
+msgid "Font Family"
+msgstr ""
+
+#: metaboxes/metabox.php:245
+msgid "Font size"
+msgstr ""
+
+#: metaboxes/metabox.php:252
+msgid "Font Subsets"
+msgstr ""
+
+#: metaboxes/metabox.php:251
+msgid "Font Weignt & Style"
+msgstr ""
+
+#: metaboxes/google_fonts.php:31
+msgid "Greek"
+msgstr ""
+
+#: metaboxes/google_fonts.php:32
+msgid "Greek ext"
+msgstr ""
+
+#: metaboxes/fields/duration.php:34
+msgid "Hours"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://stylemixthemes.com"
+msgstr ""
+
+#: metaboxes/metabox.php:262
+msgid "Import options"
+msgstr ""
+
+#: metaboxes/metabox.php:257
+msgid "Import settings"
+msgstr ""
+
+#: metaboxes/metabox-display.php:27
+msgid "Import/Export"
+msgstr ""
+
+#: helpers/file_upload.php:63
+msgid "Invalid file extension"
+msgstr ""
+
+#: metaboxes/google_fonts.php:33
+msgid "Latin"
+msgstr ""
+
+#: metaboxes/google_fonts.php:34
+msgid "Latin ext"
+msgstr ""
+
+#: metaboxes/google_fonts.php:42
+msgid "Left"
+msgstr ""
+
+#: metaboxes/metabox.php:248
+msgid "Letter spacing"
+msgstr ""
+
+#: metaboxes/google_fonts.php:14
+msgid "Light 300"
+msgstr ""
+
+#: metaboxes/google_fonts.php:15
+msgid "Light 300 italic"
+msgstr ""
+
+#: metaboxes/metabox.php:246
+msgid "Line height"
+msgstr ""
+
+#: metaboxes/google_fonts.php:52
+msgid "Lowercase"
+msgstr ""
+
+#: metaboxes/google_fonts.php:18
+msgid "Medium 500"
+msgstr ""
+
+#: metaboxes/google_fonts.php:19
+msgid "Medium 500 italic"
+msgstr ""
+
+#: metaboxes/fields/duration.php:33
+msgid "Minutes"
+msgstr ""
+
+#: metaboxes/google_fonts.php:50
+msgid "Normal"
+msgstr ""
+
+#. Name of the plugin
+msgid "NUXY"
+msgstr ""
+
+#: helpers/file_upload.php:53
+msgid "Please, select file"
+msgstr ""
+
+#: metaboxes/google_fonts.php:16
+msgid "Regular 400"
+msgstr ""
+
+#: metaboxes/google_fonts.php:17
+msgid "Regular 400 italic"
+msgstr ""
+
+#: metaboxes/google_fonts.php:44
+msgid "Right"
+msgstr ""
+
+#: settings/view/header.php:54
+msgid "Save Settings"
+msgstr ""
+
+#: settings/view/header.php:47
+msgid "Search"
+msgstr ""
+
+#: taxonomy_meta/fields/image.php:45
+msgid "Select or Upload Media Of Your Chosen Persuasion"
+msgstr ""
+
+#: metaboxes/metabox.php:259
+msgid "Settings copied to buffer"
+msgstr ""
+
+#: metaboxes/metabox.php:263
+msgid "Sorry, no matching options."
+msgstr ""
+
+#. Author of the plugin
+msgid "StylemixThemes"
+msgstr ""
+
+#: metaboxes/metabox.php:253
+msgid "Text Align"
+msgstr ""
+
+#: metaboxes/metabox.php:255
+msgid "Text transform"
+msgstr ""
+
+#: metaboxes/google_fonts.php:12
+msgid "Thin 100"
+msgstr ""
+
+#: metaboxes/google_fonts.php:13
+msgid "Thin 100 italic"
+msgstr ""
+
+#: metaboxes/google_fonts.php:51
+msgid "Uppercase"
+msgstr ""
+
+#: taxonomy_meta/fields/image.php:47
+msgid "Use this media"
+msgstr ""
+
+#: metaboxes/google_fonts.php:35
+msgid "Vietnamese"
+msgstr ""
+
+#: metaboxes/metabox.php:258
+msgid ""
+"WARNING! This will overwrite all existing option values, please proceed with "
+"caution!"
+msgstr ""
+
+#: metaboxes/metabox.php:247
+msgid "Word spacing"
+msgstr ""
+
+#. Description of the plugin
+msgid "WordPress Custom Fields & Theme Options with Vue.js."
+msgstr ""

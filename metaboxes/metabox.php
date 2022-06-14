@@ -31,7 +31,7 @@ class STM_Metaboxes {
 
 	public static function get_users() {
 		$users = array(
-			'' => apply_filters( 'wpcfto_all_users_label', esc_html__( 'Choose User', 'wpcfto' ) ),
+			'' => apply_filters( 'wpcfto_all_users_label', esc_html__( 'Choose User', 'nuxy' ) ),
 		);
 
 		if ( ! is_admin() ) {
@@ -69,7 +69,7 @@ class STM_Metaboxes {
 
 					if ( isset( $_POST[ $field_name ] ) ) {
 
-						if ( $field['type'] === 'editor' ) {
+						if ( 'editor' === $field['type'] ) {
 							$field_modified = ( is_array( $_POST[ $field_name ] ) ) ? filter_var_array( $_POST[ $field_name ] ) : $_POST[ $field_name ];
 						} else {
 							$field_modified = ( is_array( $_POST[ $field_name ] ) ) ? filter_var_array( $_POST[ $field_name ], FILTER_SANITIZE_STRING ) : sanitize_text_field( $_POST[ $field_name ] );
@@ -242,25 +242,25 @@ class STM_Metaboxes {
 
 	public static function translations() {
 		return array(
-			'font_size'           => esc_html__( 'Font size', 'wpcfto' ),
-			'line_height'         => esc_html__( 'Line height', 'wpcfto' ),
-			'word_spacing'        => esc_html__( 'Word spacing', 'wpcfto' ),
-			'letter_spacing'      => esc_html__( 'Letter spacing', 'wpcfto' ),
-			'font_family'         => esc_html__( 'Font Family', 'wpcfto' ),
-			'backup_font_family'  => esc_html__( 'Backup Font Family', 'wpcfto' ),
-			'font_weight'         => esc_html__( 'Font Weignt & Style', 'wpcfto' ),
-			'font_subset'         => esc_html__( 'Font Subsets', 'wpcfto' ),
-			'text_align'          => esc_html__( 'Text Align', 'wpcfto' ),
-			'font_color'          => esc_html__( 'Font Color', 'wpcfto' ),
-			'text-transform'      => esc_html__( 'Text transform', 'wpcfto' ),
-			'export'              => esc_html__( 'Copy settings', 'wpcfto' ),
-			'import'              => esc_html__( 'Import settings', 'wpcfto' ),
-			'import_notice'       => esc_html__( 'WARNING! This will overwrite all existing option values, please proceed with caution!', 'wpcfto' ),
-			'exported_data'       => esc_html__( 'Settings copied to buffer', 'wpcfto' ),
-			'exported_data_error' => esc_html__( 'Couldn\'t copy settings', 'wpcfto' ),
-			'export_data_label'   => esc_html__( 'Export options', 'wpcfto' ),
-			'import_data_label'   => esc_html__( 'Import options', 'wpcfto' ),
-			'vue_select_notice'   => esc_html__( 'Sorry, no matching options.', 'wpcfto' ),
+			'font_size'           => esc_html__( 'Font size', 'nuxy' ),
+			'line_height'         => esc_html__( 'Line height', 'nuxy' ),
+			'word_spacing'        => esc_html__( 'Word spacing', 'nuxy' ),
+			'letter_spacing'      => esc_html__( 'Letter spacing', 'nuxy' ),
+			'font_family'         => esc_html__( 'Font Family', 'nuxy' ),
+			'backup_font_family'  => esc_html__( 'Backup Font Family', 'nuxy' ),
+			'font_weight'         => esc_html__( 'Font Weignt & Style', 'nuxy' ),
+			'font_subset'         => esc_html__( 'Font Subsets', 'nuxy' ),
+			'text_align'          => esc_html__( 'Text Align', 'nuxy' ),
+			'font_color'          => esc_html__( 'Font Color', 'nuxy' ),
+			'text-transform'      => esc_html__( 'Text transform', 'nuxy' ),
+			'export'              => esc_html__( 'Copy settings', 'nuxy' ),
+			'import'              => esc_html__( 'Import settings', 'nuxy' ),
+			'import_notice'       => esc_html__( 'WARNING! This will overwrite all existing option values, please proceed with caution!', 'nuxy' ),
+			'exported_data'       => esc_html__( 'Settings copied to buffer', 'nuxy' ),
+			'exported_data_error' => esc_html__( 'Couldn\'t copy settings', 'nuxy' ),
+			'export_data_label'   => esc_html__( 'Export options', 'nuxy' ),
+			'import_data_label'   => esc_html__( 'Import options', 'nuxy' ),
+			'vue_select_notice'   => esc_html__( 'Sorry, no matching options.', 'nuxy' ),
 		);
 	}
 
@@ -681,7 +681,7 @@ function wpcfto_metaboxes_display_single_field( $section, $section_name, $field,
 	<transition name="slide-fade">
 		<div class="<?php echo esc_attr( implode( ' ', $classes ) ); ?>"
 			<?php echo wp_kses( $dependency, array() ); ?>
-			 data-field="<?php echo esc_attr( "wpcfto_addon_option_{$field_name}" ); ?>">
+			data-field="<?php echo esc_attr( "wpcfto_addon_option_{$field_name}" ); ?>">
 
 			<?php
 			do_action( 'stm_wpcfto_single_field_before_start', $classes, $field_name, $field, $is_pro, $pro_url );
