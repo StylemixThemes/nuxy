@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: NUXY\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-05-23 06:46+0000\n"
-"PO-Revision-Date: 2022-06-14 05:17+0000\n"
+"PO-Revision-Date: 2022-05-23 07:15+0000\n"
 "Last-Translator: \n"
 "Language-Team: Portuguese (Portugal)\n"
 "Language: pt_PT\n"
@@ -269,9 +269,9 @@ msgstr ""
 
 #: metaboxes/metabox.php:258
 msgid ""
-"WARNING! This will overwrite all existing option values, please proceed with "
-"caution!"
-msgstr "AVISO! Isto vai sobrepor todos os valores existentes, por favor proceda "
+"AVISO! Isto vai sobrepor todos os valores existentes, por favor proceda " 
+"cuidado!"
+msgstr ""
 
 #: metaboxes/metabox.php:247
 msgid "Word spacing"

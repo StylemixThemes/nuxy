@@ -98,7 +98,7 @@ msgstr "Экспорт настроек"
 
 #: metaboxes/metabox.php:254
 msgid "Font Color"
-msgstr ""
+msgstr "Цвет шрифта"
 
 #: metaboxes/metabox.php:249
 msgid "Font Family"
@@ -174,7 +174,7 @@ msgstr ""
 
 #: metaboxes/metabox.php:246
 msgid "Line height"
-msgstr ""
+msgstr "Высота линии"
 
 #: metaboxes/google_fonts.php:52
 msgid "Lowercase"
@@ -272,7 +272,7 @@ msgstr ""
 msgid ""
 "WARNING! This will overwrite all existing option values, please proceed with "
 "caution!"
-msgstr ""
+msgstr "ВНИМАНИЕ! Это приведет к перезаписи всех существующих значений параметров, пожалуйста, продолжайте "
 
 #: metaboxes/metabox.php:247
 msgid "Word spacing"
