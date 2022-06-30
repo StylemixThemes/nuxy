@@ -12,7 +12,7 @@
     "gulp-autoprefixer": "^7.0.1",
     "gulp-clean": "^0.4.0",
     "gulp-cssmin": "^0.2.0",
-    "gulp-sass": "^4.1.0",
+    "gulp-dart-sass": "^1.0.2",
     "gulp-watch": "^5.0.1",
     "vue2-ace-editor": "0.0.15"
   },
