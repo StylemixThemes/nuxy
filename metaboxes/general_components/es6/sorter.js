@@ -1,11 +1,11 @@
 Vue.component('wpcfto_sorter', {
-	props: ['fields', 'field_label', 'field_name', 'field_id', 'field_value', 'field_options'],
-	data: function () {
-		return {
-			columns : []
-		}
-	},
-	template: `
+    props: ['fields', 'field_label', 'field_name', 'field_id', 'field_value', 'field_options'],
+    data: function () {
+        return {
+            columns: []
+        }
+    },
+    template: `
         <div class="wpcfto_generic_field wpcfto_generic_field_sorter" v-bind:class="field_id" :class="'columns-' + columns.length">
 
 			<wpcfto_fields_aside_before :fields="fields" :field_label="field_label"></wpcfto_fields_aside_before>
@@ -19,18 +19,19 @@ Vue.component('wpcfto_sorter', {
 						<h6 v-html="column['name']"></h6>
 	
 						<draggable class="list-group"
-								   draggable=".list-group-item"
+								   draggable=".list-group-item:not(.disable)"
 								   :list="column['options']"
 								   group="list"
 								   key="column_key">
 	
 							<div class="list-group-item"
-								 :data-id="element['id']"
+							    :data-id="element['id']"
 								 v-for="(element, element_key) in column['options']"
-								 :key="element['id']">
-	
+								 :key="element['id']"
+								 :class="[element['class'] ? element['class'] : '']"
+								 >
 							  {{element['label']}}
-	
+							  <i :class="element['icon']"></i>
 							</div>
 	
 						 </draggable>
@@ -45,61 +46,61 @@ Vue.component('wpcfto_sorter', {
 
         </div>
     `,
-	mounted: function () {
+    mounted: function () {
 
-		this.columns = (typeof this.field_value !== 'undefined') ? this.field_value : this.field_options;
+        this.columns = (typeof this.field_value !== 'undefined') ? this.field_value : this.field_options;
 
-		if(typeof this.field_value === 'string' && WpcftoIsJsonString(this.field_value)) this.columns = JSON.parse(this.field_value);
+        if (typeof this.field_value === 'string' && WpcftoIsJsonString(this.field_value)) this.columns = JSON.parse(this.field_value);
 
-		if(!this.columns.length) this.columns = this.field_options;
+        if (!this.columns.length) this.columns = this.field_options;
 
-		this.fillNewOptions();
-	},
-	methods: {
-		fillNewOptions : function() {
+        this.fillNewOptions();
+    },
+    methods: {
+        fillNewOptions: function () {
 
-			var _this = this;
+            var _this = this;
 
-			/*Get current saved keys*/
-			var fields = [];
-			var keys = [];
-			_this.columns.forEach(function(column, column_key) {
-				column['options'].forEach(function(field) {
-					fields[field.id] = field.label;
-				});
-			});
+            /*Get current saved keys*/
+            var fields = [];
+            var keys = [];
+            _this.columns.forEach(function (column, column_key) {
+                column['options'].forEach(function (field) {
+                    fields[field.id] = field.label;
+                });
+            });
 
-			/*Add new fields from config*/
-			_this.field_options.forEach(function(column, column_key) {
-				column['options'].forEach(function(field) {
+            /*Add new fields from config*/
+            _this.field_options.forEach(function (column, column_key) {
+                column['options'].forEach(function (field) {
 
-					keys[field.id] = field.label;
+                    keys[field.id] = field.label;
 
-					if(typeof fields[field['id']] !== 'undefined') return false;
+                    if (typeof fields[field['id']] !== 'undefined') return false;
 
-					_this.columns[column_key]['options'].push(field);
-				});
-			});
+                    _this.columns[column_key]['options'].push(field);
+                });
+            });
 
-			/*Remove deleted config fields from stored in db*/
-			_this.columns.forEach(function(column, column_key) {
-				column['options'].forEach(function(field, field_key) {
+            /*Remove deleted config fields from stored in db*/
+            _this.columns.forEach(function (column, column_key) {
+                column['options'].forEach(function (field, field_key) {
 
-					if(typeof keys[field['id']] !== 'undefined') return false;
+                    if (typeof keys[field['id']] !== 'undefined') return false;
 
-					_this.columns[column_key]['options'].splice(field_key, 1);
+                    _this.columns[column_key]['options'].splice(field_key, 1);
 
-				});
-			});
+                });
+            });
 
-		}
-	},
-	watch: {
-		columns: {
-		    deep: true,
-		    handler: function (columns) {
-		        this.$emit('wpcfto-get-value', columns);
-		    }
-		}
-	}
+        }
+    },
+    watch: {
+        columns: {
+            deep: true,
+            handler: function (columns) {
+                this.$emit('wpcfto-get-value', columns);
+            }
+        }
+    }
 });
