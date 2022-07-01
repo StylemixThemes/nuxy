@@ -1,0 +1,60 @@
+.wpcfto-box-group_title {
+    .wpcfto_generic_field {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        width: 100%;
+
+        .fa {
+            margin-right: 10px;
+        }
+
+        .wpcfto-field-aside {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+
+            label {
+                font-size: 18px;
+                font-weight: 700;
+                line-height: 22px;
+            }
+        }
+
+        &.preview_bottom .wpcfto-field-aside {
+            .wpcfto_preview {
+                .wpcfto_preview__popup {
+                    visibility: visible;
+                    top: unset;
+                    bottom: -93px;
+                    left: 50%;
+                    padding: 5px;
+                    max-width: 297px;
+                    background-color: #fff;
+                    overflow: hidden;
+                    border-radius: 15px;
+                    transform: translateX(-50%);
+                    box-shadow: 0 5px 25px rgb(0 0 0 / 16%);
+                    z-index: 101;
+                }
+
+                &:after {
+                    content: "";
+                    border: 15px solid transparent;
+                    border-bottom-color: #fff;
+                    left: 0;
+                    right: 0;
+                    display: inline-block;
+                    margin: 0 auto;
+                    bottom: -17px;
+                    width: 0;
+                    height: 0;
+                    z-index: 109;
+                }
+            }
+        }
+    }
+}
