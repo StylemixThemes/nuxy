@@ -172,11 +172,11 @@ class STM_Metaboxes {
 			return $value;
 		}
 
-		if ( isset( $_POST[ "{$field_name}_start" ] ) ) {
-			$dates[] = sanitize_text_field( $_POST[ "{$field_name}_start" ] );
+		if ( isset( $_POST["{$field_name}_start"] ) ) {
+			$dates[] = sanitize_text_field( $_POST["{$field_name}_start"] );
 		}
-		if ( isset( $_POST[ "{$field_name}_end" ] ) ) {
-			$dates[] = sanitize_text_field( $_POST[ "{$field_name}_end" ] );
+		if ( isset( $_POST["{$field_name}_end"] ) ) {
+			$dates[] = sanitize_text_field( $_POST["{$field_name}_end"] );
 		}
 
 		if ( ! empty( $dates ) && count( $dates ) > 1 ) {
@@ -307,6 +307,7 @@ class STM_Metaboxes {
 
 		/*GENERAL COMPONENTS*/
 		$components = array(
+			'group_title',
 			'text',
 			'time',
 			'number',
@@ -430,8 +431,8 @@ class STM_Metaboxes {
 		$post_type = get_post_type( $post_id );
 
 		if ( isset( $_REQUEST['_wpnonce'] )
-			&& ! wp_verify_nonce( sanitize_text_field( $_REQUEST['_wpnonce'] ), 'update-post_' . $post_id )
-			&& ! in_array( $post_type, $this->wpcfto_post_types(), true )
+			 && ! wp_verify_nonce( sanitize_text_field( $_REQUEST['_wpnonce'] ), 'update-post_' . $post_id )
+			 && ! in_array( $post_type, $this->wpcfto_post_types(), true )
 		) {
 			return;
 		}
@@ -681,7 +682,7 @@ function wpcfto_metaboxes_display_single_field( $section, $section_name, $field,
 	<transition name="slide-fade">
 		<div class="<?php echo esc_attr( implode( ' ', $classes ) ); ?>"
 			<?php echo wp_kses( $dependency, array() ); ?>
-			data-field="<?php echo esc_attr( "wpcfto_addon_option_{$field_name}" ); ?>">
+			 data-field="<?php echo esc_attr( "wpcfto_addon_option_{$field_name}" ); ?>">
 
 			<?php
 			do_action( 'stm_wpcfto_single_field_before_start', $classes, $field_name, $field, $is_pro, $pro_url );
@@ -736,7 +737,7 @@ function wpcfto_metaboxes_display_group_field( $section, $section_name, $field, 
 		<?php if ( isset( $field['group_title'] ) && ! empty( $field['group_title'] ) ) { ?>
 		<div class="wpcfto_group_title"><?php echo esc_html( $field['group_title'] ); ?></div>
 	<?php } ?>
-		<?php
+	<?php
 	endif;
 
 	wpcfto_metaboxes_display_single_field( $section, $section_name, $field, $field_name );
@@ -744,7 +745,7 @@ function wpcfto_metaboxes_display_group_field( $section, $section_name, $field, 
 	if ( 'ended' === $field['group'] ) :
 		?>
 		</div></div></div>
-		<?php
+	<?php
 	endif;
 }
 
@@ -753,7 +754,8 @@ function wpcfto_metaboxes_preopen_field( $section, $section_name, $field, $field
 	$field_options   = $section['fields'][ $field_name ];
 	$preopen_disable = '';
 	?>
-	<div class="preopen_field_wrapper wpcfto_generic_field" v-init="initOpen(<?php echo wp_kses( $vue_field, array() ); ?>)">
+	<div class="preopen_field_wrapper wpcfto_generic_field"
+		 v-init="initOpen(<?php echo wp_kses( $vue_field, array() ); ?>)">
 		<?php
 		if ( ! stm_wpcfto_is_pro() && isset( $field_options['disabled'] ) && true === $field_options['disabled'] ) {
 			$preopen_disable = 'preopen_disable';
@@ -765,7 +767,7 @@ function wpcfto_metaboxes_preopen_field( $section, $section_name, $field, $field
 			<label class="<?php echo esc_attr( $preopen_disable ); ?>">
 
 				<div class="wpcfto-admin-checkbox-wrapper"
-					v-bind:class="{'active' : <?php echo esc_attr( $vue_field ); ?>['opened'], 'is_toggle' : <?php echo ( isset( $field['toggle'] ) ) ? esc_attr( $field['toggle'] ) : 'true'; ?>}">
+					 v-bind:class="{'active' : <?php echo esc_attr( $vue_field ); ?>['opened'], 'is_toggle' : <?php echo ( isset( $field['toggle'] ) ) ? esc_attr( $field['toggle'] ) : 'true'; ?>}">
 					<div class="wpcfto-checkbox-switcher"></div>
 				</div>
 
@@ -776,7 +778,7 @@ function wpcfto_metaboxes_preopen_field( $section, $section_name, $field, $field
 		</div>
 
 		<div class="preopen_field"
-			v-if="<?php echo esc_attr( $vue_field ); ?>['opened']">
+			 v-if="<?php echo esc_attr( $vue_field ); ?>['opened']">
 			<?php wpcfto_metaboxes_display_single_field( $section, $section_name, $field, $field_name ); ?>
 		</div>
 
