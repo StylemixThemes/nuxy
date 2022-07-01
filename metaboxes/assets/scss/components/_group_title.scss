@@ -28,8 +28,8 @@
             .wpcfto_preview {
                 .wpcfto_preview__popup {
                     visibility: visible;
-                    top: unset;
-                    bottom: -93px;
+                    top: 100%;
+                    bottom: unset;
                     left: 50%;
                     padding: 5px;
                     max-width: 297px;
@@ -39,6 +39,7 @@
                     transform: translateX(-50%);
                     box-shadow: 0 5px 25px rgb(0 0 0 / 16%);
                     z-index: 101;
+                    margin-top: 17px;
                 }
 
                 &:after {
