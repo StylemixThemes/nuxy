@@ -27,7 +27,7 @@
         &.preview_bottom .wpcfto-field-aside {
             .wpcfto_preview {
                 .wpcfto_preview__popup {
-                    visibility: visible;
+                    visibility: hidden;
                     top: 100%;
                     bottom: unset;
                     left: 50%;
@@ -54,6 +54,12 @@
                     width: 0;
                     height: 0;
                     z-index: 109;
+                }
+
+                &:hover{
+                    .wpcfto_preview__popup {
+                        visibility: visible;
+                    }
                 }
             }
         }
