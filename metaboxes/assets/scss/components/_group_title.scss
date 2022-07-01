@@ -3,16 +3,18 @@
         display: flex;
         flex-direction: row;
         justify-content: flex-start;
-        align-items: center;
+        align-items: flex-start;
         width: 100%;
 
         .fa {
             margin-right: 10px;
+            margin-top: 5px;
         }
 
         .wpcfto-field-aside {
             display: flex;
             flex-direction: row;
+            flex-wrap: wrap;
             justify-content: space-between;
             align-items: center;
             width: 100%;
@@ -21,6 +23,10 @@
                 font-size: 18px;
                 font-weight: 700;
                 line-height: 22px;
+            }
+
+            .wpcfto-field-description {
+                width: 100%;
             }
         }
 
