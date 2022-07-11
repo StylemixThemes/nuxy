@@ -33,7 +33,7 @@ Vue.component('wpcfto_icon_picker', {
                         v-model="search"
                         @blur="blur"
                         @focus="focus"
-                        type="email"
+                        type="text"
                         class="form-control"
                         placeholder="Search an icon">
                     </div>
