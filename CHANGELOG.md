@@ -1,3 +1,5 @@
+## 4.3.2
+- **Fix:** Icons adding issue with Icon Picker field type.
 ## 4.3.1
 - **Fix:** Strings translation issue.
 ## 4.3.0
