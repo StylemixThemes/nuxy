@@ -32,7 +32,7 @@ $only_logo = empty( $wpcfto_title ) && empty( $wpcfto_sub_title );
 
 			<?php if ( ! empty( $wpcfto_sub_title ) ) : ?>
 				<div class="wpcfto_settings_head__subtitle">
-					<?php echo esc_attr( $wpcfto_sub_title ); ?>
+					<?php echo wp_kses_post( $wpcfto_sub_title ); ?>
 				</div>
 			<?php endif; ?>
 		</div>

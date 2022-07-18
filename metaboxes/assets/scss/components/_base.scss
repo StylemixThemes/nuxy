@@ -57,6 +57,14 @@
     &__subtitle {
         font-size: 13px;
         font-weight: 400;
+        a {
+            color: $white;
+            text-decoration: none;
+            transition: all 0.3s;
+            &:hover {
+                text-decoration: underline;
+            }
+        }
     }
 
     &__content {
@@ -71,8 +79,8 @@
     }
 
     .wpcfto_search_group {
-        //opacity: 0;
-        //visibility: hidden;
+        opacity: 0;
+        visibility: hidden;
     }
 
     .wpcfto-search-field {
