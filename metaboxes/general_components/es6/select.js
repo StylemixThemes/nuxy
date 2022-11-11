@@ -3,6 +3,7 @@ Vue.component('wpcfto_select', {
     data: function () {
         return {
             value : '',
+            disabled_option : '',
         }
     },
     template: `
@@ -15,7 +16,7 @@ Vue.component('wpcfto_select', {
                     <select v-bind:name="field_name"
                             v-model="value"
                             v-bind:id="field_id">
-                        <option v-for="(option, key) in fields['options']" v-bind:value="key">{{ option }}</option>
+                        <option v-for="(option, key) in fields['options']" v-bind:value="key" :disabled="fields['disabled_option'] ? fields['disabled_option'][key] : false">{{ option }}</option>
                     </select>
                 </div>
             </div>
