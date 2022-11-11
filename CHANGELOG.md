@@ -1,3 +1,5 @@
+## 4.3.4
+- **New:** Add disabled attribute for select element.
 ## 4.3.3
 - **Fix:** Nuxy search has been removed.
 ## 4.3.2
