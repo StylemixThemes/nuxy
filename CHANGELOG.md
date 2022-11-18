@@ -1,3 +1,5 @@
+## 4.3.5
+- **New:** Added Trumbowyg HTML Editor
 ## 4.3.4
 - **New:** Add disabled attribute for select element.
 ## 4.3.3

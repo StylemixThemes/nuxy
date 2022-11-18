@@ -23,6 +23,15 @@ class STM_Metaboxes {
 		add_action( 'wp_ajax_wpcfto_search_posts', 'STM_Metaboxes::search_posts' );
 
 		add_filter( 'safe_style_css', 'STM_Metaboxes::add_safe_style', 10, 1 );
+
+		add_action( 'init', array( $this, 'enqueue' ), 10 );
+	}
+
+	public function enqueue() {
+		$assets = STM_WPCFTO_URL . 'metaboxes/assets';
+		wp_enqueue_style( 'ctrumbowyg', $assets . '/vendors/trumbowyg/ctrumbowyg.css', false, '' );
+		wp_enqueue_script( 'strumbowyg', $assets . '/vendors/trumbowyg/strumbowyg.js', array( 'jquery', ), '', true );
+		wp_enqueue_script( 'vtrumbowyg', $assets . '/vendors/trumbowyg/vtrumbowyg.js', array( 'jquery', ), '', true );
 	}
 
 	public function boxes() {
@@ -343,6 +352,7 @@ class STM_Metaboxes {
 			'typography',
 			'multiselect',
 			'import_export',
+			'trumbowyg',
 		);
 
 		foreach ( $components as $component ) {
