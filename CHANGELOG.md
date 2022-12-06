@@ -1,3 +1,5 @@
+## 4.3.6
+- **New:** Color Picker buttons added to Advanced HTML Editor
 ## 4.3.5
 - **New:** Added Trumbowyg HTML Editor
 ## 4.3.4
