@@ -8,7 +8,22 @@ Vue.component('wpcfto_trumbowyg', {
     return {
       value: '',
       content: null,
-      config: {}
+      config: {
+        btns: [
+          ['viewHTML'],
+          ['undo', 'redo'], // Only supported in Blink browsers
+          ['formatting'],
+          ['strong', 'em', 'del'],
+          ['foreColor', 'backColor'],
+          ['link'],
+          ['insertImage'],
+          ['justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull'],
+          ['unorderedList', 'orderedList'],
+          ['horizontalRule'],
+          ['removeformat'],
+          ['fullscreen']
+        ],
+      }
     };
   },
   template: "\n        <template>\n            <div>\n                <div class=\"wpcfto_generic_field\">\n                    <div class=\"wpcfto-field-aside\">\n                        <label v-html=\"field_label\" class=\"wpcfto-field-aside__label\"></label>\n                    </div>\n                    <div class=\"wpcfto-field-content\">\n                        <div class=\"hints\">\n                            <span @click=\"enterHint(hint_key)\" v-for=\"(hint_text, hint_key) in fields.hints\">{{hint_text}}</span>\n                        </div>\n                    </div>\n                </div>\n                <vue-trumbowyg v-model=\"value\" :config=\"config\"  class=\"form-control\" name=\"content\">\n                </vue-trumbowyg>\n            </div>\n        </template>",

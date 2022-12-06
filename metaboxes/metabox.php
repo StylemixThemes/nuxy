@@ -30,8 +30,10 @@ class STM_Metaboxes {
 	public function enqueue() {
 		$assets = STM_WPCFTO_URL . 'metaboxes/assets';
 		wp_enqueue_style( 'ctrumbowyg', $assets . '/vendors/trumbowyg/ctrumbowyg.css', false, '' );
+		wp_enqueue_style( 'color-trumbowyg', $assets . '/vendors/trumbowyg/color-trumbowyg.css', false, '' );
 		wp_enqueue_script( 'strumbowyg', $assets . '/vendors/trumbowyg/strumbowyg.js', array( 'jquery', ), '', true );
 		wp_enqueue_script( 'vtrumbowyg', $assets . '/vendors/trumbowyg/vtrumbowyg.js', array( 'jquery', ), '', true );
+		wp_enqueue_script( 'color-trumbowyg', $assets . '/vendors/trumbowyg/color-trumbowyg.js', array( 'jquery', ), '', true );
 	}
 
 	public function boxes() {

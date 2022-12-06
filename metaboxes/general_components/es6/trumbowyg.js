@@ -5,7 +5,22 @@ Vue.component('wpcfto_trumbowyg', {
         return {
             value: '',
             content: null,
-            config: {}
+            config: {
+                btns: [
+                    ['viewHTML'],
+                    ['undo', 'redo'], // Only supported in Blink browsers
+                    ['formatting'],
+                    ['strong', 'em', 'del'],
+                    ['foreColor', 'backColor'],
+                    ['link'],
+                    ['insertImage'],
+                    ['justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull'],
+                    ['unorderedList', 'orderedList'],
+                    ['horizontalRule'],
+                    ['removeformat'],
+                    ['fullscreen']
+                ],
+            }
         };
     },
     template: `
