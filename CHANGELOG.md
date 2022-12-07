@@ -1,3 +1,5 @@
+## 4.3.7
+- **New:** Added framework version constant
 ## 4.3.6
 - **New:** Color Picker buttons added to Advanced HTML Editor
 ## 4.3.5
