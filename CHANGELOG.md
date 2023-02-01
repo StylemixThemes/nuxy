@@ -1,3 +1,5 @@
+## 4.3.8
+- **Fix:** Fixed sanitize for curriculum fields.
 ## 4.3.7
 - **New:** Added framework version constant
 ## 4.3.6
