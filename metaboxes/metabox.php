@@ -23,17 +23,6 @@ class STM_Metaboxes {
 		add_action( 'wp_ajax_wpcfto_search_posts', 'STM_Metaboxes::search_posts' );
 
 		add_filter( 'safe_style_css', 'STM_Metaboxes::add_safe_style', 10, 1 );
-
-		add_action( 'init', array( $this, 'enqueue' ), 10 );
-	}
-
-	public function enqueue() {
-		$assets = STM_WPCFTO_URL . 'metaboxes/assets';
-		wp_enqueue_style( 'ctrumbowyg', $assets . '/vendors/trumbowyg/ctrumbowyg.css', false, '' );
-		wp_enqueue_style( 'color-trumbowyg', $assets . '/vendors/trumbowyg/color-trumbowyg.css', false, '' );
-		wp_enqueue_script( 'strumbowyg', $assets . '/vendors/trumbowyg/strumbowyg.js', array( 'jquery', ), '', true );
-		wp_enqueue_script( 'vtrumbowyg', $assets . '/vendors/trumbowyg/vtrumbowyg.js', array( 'jquery', ), '', true );
-		wp_enqueue_script( 'color-trumbowyg', $assets . '/vendors/trumbowyg/color-trumbowyg.js', array( 'jquery', ), '', true );
 	}
 
 	public function boxes() {
@@ -80,7 +69,7 @@ class STM_Metaboxes {
 
 					if ( isset( $_POST[ $field_name ] ) ) {
 
-						if ( 'editor' === $field['type'] ) {
+						if ( 'editor' === $field['type'] || 'curriculum' === $field['type'] ) {
 							$field_modified = ( is_array( $_POST[ $field_name ] ) ) ? filter_var_array( $_POST[ $field_name ] ) : $_POST[ $field_name ];
 						} else {
 							$field_modified = ( is_array( $_POST[ $field_name ] ) ) ? filter_var_array( $_POST[ $field_name ], FILTER_SANITIZE_STRING ) : sanitize_text_field( $_POST[ $field_name ] );
@@ -136,7 +125,7 @@ class STM_Metaboxes {
 	public function wpcfto_sanitize_curriculum( $value ) {
 		$value = str_replace( 'stm_lms_amp', '&', $value );
 
-		return sanitize_text_field( $value );
+		return esc_html( $value );
 	}
 
 	public function wpcfto_sanitize_editor( $value ) {
@@ -354,7 +343,6 @@ class STM_Metaboxes {
 			'typography',
 			'multiselect',
 			'import_export',
-			'trumbowyg',
 		);
 
 		foreach ( $components as $component ) {
