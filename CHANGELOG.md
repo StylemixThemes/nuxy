@@ -1,3 +1,5 @@
+## 4.3.9
+- **New:** Added 'disable' option to fields.
 ## 4.3.8
 - **Fix:** Fixed sanitize for curriculum fields.
 ## 4.3.7
