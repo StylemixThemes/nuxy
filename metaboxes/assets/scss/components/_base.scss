@@ -118,7 +118,6 @@
     &.is_pro {
         background-color: transparent;
         border: 2px dashed #bec5cb;
-
         .field_overlay {
             position: absolute;
             top: 0;
@@ -126,6 +125,35 @@
             height: 100%;
             width: 100%;
             z-index: 99;
+        }
+    }
+
+    &.is_disabled {
+        .field_overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            z-index: 99;
+        }
+        .is_disabled_notice {
+            font-size: 13px;
+            font-weight: 400;
+            color: $color_muted;
+            position: absolute;
+            top: 16px;
+            left: 20px;
+            z-index: 101;
+            white-space: nowrap;
+            width: 20%;
+            order: 3;
+        }
+        .wpcfto_generic_field {
+            margin-top: 20px;
+            .wpcfto-field-aside__label {
+                color: $color_muted;
+            }
         }
     }
 
