@@ -136,11 +136,11 @@
             height: 100%;
             width: 100%;
             z-index: 99;
+            background: rgba(255, 255, 255, 0.7);
         }
         .is_disabled_notice {
             font-size: 13px;
             font-weight: 400;
-            color: $color_muted;
             position: absolute;
             top: 16px;
             left: 20px;
@@ -151,9 +151,6 @@
         }
         .wpcfto_generic_field {
             margin-top: 20px;
-            .wpcfto-field-aside__label {
-                color: $color_muted;
-            }
         }
     }
 
