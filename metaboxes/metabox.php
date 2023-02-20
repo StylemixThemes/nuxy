@@ -595,6 +595,11 @@ new STM_Metaboxes();
 function wpcfto_metaboxes_deps( $field, $section_name ) {
 	$dependency   = '';
 	$dependencies = array();
+
+	if ( ! empty( $field['dependency_mode'] ) && 'disabled' === $field['dependency_mode'] ) {
+		$dependency = "v-bind:class=\"{'wpcfto-disabled-field' : true}\"";
+	}
+
 	if ( empty( $field['dependency'] ) ) {
 		return $dependency;
 	}

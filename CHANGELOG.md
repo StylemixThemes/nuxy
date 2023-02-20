@@ -1,3 +1,5 @@
+## 4.4.0
+- **New:** Fixed 'dependency_mode' for disabled fields.
 ## 4.3.9
 - **New:** Added 'disable' option to fields.
 ## 4.3.8
