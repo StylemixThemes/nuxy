@@ -304,6 +304,7 @@ class STM_Metaboxes {
 				'align'        => WPCFTO_Gfonts::align(),
 				'translations' => self::translations(),
 				'transform'    => WPCFTO_Gfonts::transform(),
+				'nonce'        => wp_create_nonce( 'stm_wpcfto_get_settings_nonce' ),
 			)
 		);
 

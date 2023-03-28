@@ -98,7 +98,7 @@
                         var _this = this;
                         _this.loading = true;
 
-                        this.$http.get(stm_wpcfto_ajaxurl + '?action=stm_wpcfto_get_settings&source=' + data_source + '&name=' + data_var).then(function (r) {
+                        this.$http.get(stm_wpcfto_ajaxurl + '?action=stm_wpcfto_get_settings&source=' + data_source + '&name=' + data_var + '&nonce=' + wpcfto_global_settings['nonce']).then(function (r) {
                             _this.$set(_this, 'data', r.body);
                             _this.loading = false;
 
