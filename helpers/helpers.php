@@ -50,15 +50,15 @@ function stm_wpcfto_nonces() {
 add_action( 'admin_head', 'stm_wpcfto_nonces' );
 add_action( 'wp_head', 'stm_wpcfto_nonces' );
 
+add_action( 'wp_ajax_stm_wpcfto_get_settings', 'stm_wpcfto_get_settings_callback' );
 
-add_action(
-	'wp_ajax_stm_wpcfto_get_settings',
-	function() {
-		$source = ( isset( $_GET['source'] ) ) ? sanitize_text_field( $_GET['source'] ) : '';
-		$name   = ( isset( $_GET['name'] ) ) ? sanitize_text_field( $_GET['name'] ) : '';
-		wp_send_json( wpcfto_get_settings_map( $source, $name ) );
-	}
-);
+function stm_wpcfto_get_settings_callback() {
+	check_ajax_referer( 'stm_wpcfto_get_settings_nonce', 'nonce' );
+
+	$source = ( isset( $_GET['source'] ) ) ? sanitize_text_field( $_GET['source'] ) : '';
+	$name   = ( isset( $_GET['name'] ) ) ? sanitize_text_field( $_GET['name'] ) : '';
+	wp_send_json( wpcfto_get_settings_map( $source, $name ) );
+}
 
 function wpcfto_get_settings_map( $source, $name ) {
 	if ( 'settings' === $source ) {

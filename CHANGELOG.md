@@ -1,3 +1,5 @@
+## 4.4.1
+- **New:** Added nonce to metaboxes to improve its security (CSRF)
 ## 4.4.0
 - **New:** Added 'field_disabled' option to fields.
 ## 4.3.9
