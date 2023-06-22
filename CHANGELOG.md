@@ -1,5 +1,5 @@
 ## 4.4.2
-- **Fix:** Added wpcfto_ prefix to safe_style_css filter to prevent fatal errors.
+- **Fix:** Fixed safe_style_css filter with 1 argument.
 ## 4.4.1
 - **New:** Added nonce to metaboxes to improve its security (CSRF)
 ## 4.4.0
