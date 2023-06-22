@@ -22,7 +22,7 @@ class STM_Metaboxes {
 
 		add_action( 'wp_ajax_wpcfto_search_posts', 'STM_Metaboxes::search_posts' );
 
-		add_filter( 'safe_style_css', 'STM_Metaboxes::add_safe_style', 10, 1 );
+		add_filter( 'wpcfto_safe_style_css', 'STM_Metaboxes::add_safe_style', 10, 1 );
 
 		add_action( 'init', array( $this, 'enqueue' ), 10 );
 	}
