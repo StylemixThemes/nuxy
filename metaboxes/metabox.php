@@ -21,7 +21,7 @@ class STM_Metaboxes {
 
 		add_action( 'wp_ajax_wpcfto_search_posts', 'STM_Metaboxes::search_posts' );
 
-		add_filter( 'safe_style_css', 'STM_Metaboxes::add_safe_style', 10, 1 );
+		add_filter( 'safe_style_css', 'STM_Metaboxes::add_safe_style', 100 );
 
 		add_action( 'init', array( $this, 'enqueue' ), 10 );
 	}
@@ -167,10 +167,12 @@ class STM_Metaboxes {
 		return $value;
 	}
 
-	public static function add_safe_style() {
-		$attr = array( 'style' => array() );
-		global $allowedposttags;
-		$allowedposttags['style'] = $attr;
+	public static function add_safe_style( $tags ) {
+		$allowed = array(
+			'style',
+		);
+
+		return array_merge( $allowed, $tags );
 	}
 
 	public function wpcfto_save_dates( $value, $field_name ) {
