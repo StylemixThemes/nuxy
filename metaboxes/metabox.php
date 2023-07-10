@@ -1,9 +1,8 @@
 <?php
 
 if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-} //Exit if accessed directly
-
+	exit; // Exit if accessed directly
+}
 
 class STM_Metaboxes {
 
@@ -66,7 +65,7 @@ class STM_Metaboxes {
 
 		$fields = array();
 
-		if ( isset( $_REQUEST['_wpnonce'] ) && ! wp_verify_nonce( sanitize_text_field( $_REQUEST['_wpnonce'] ), 'update-post_' . $post_id ) ) {
+		if ( ! isset( $_REQUEST['_wpnonce'] ) || ! wp_verify_nonce( sanitize_text_field( $_REQUEST['_wpnonce'] ), 'update-post_' . $post_id ) ) {
 			return $fields;
 		}
 
@@ -179,15 +178,15 @@ class STM_Metaboxes {
 
 		$dates = array();
 
-		if ( isset( $_REQUEST['_wpnonce'] ) && ! wp_verify_nonce( sanitize_text_field( $_REQUEST['_wpnonce'] ), 'update-post_' . $post_id ) ) {
+		if ( ! isset( $_REQUEST['_wpnonce'] ) || ! wp_verify_nonce( sanitize_text_field( $_REQUEST['_wpnonce'] ), 'update-post_' . $post_id ) ) {
 			return $value;
 		}
 
-		if ( isset( $_POST["{$field_name}_start"] ) ) {
-			$dates[] = sanitize_text_field( $_POST["{$field_name}_start"] );
+		if ( isset( $_POST[ "{$field_name}_start" ] ) ) {
+			$dates[] = sanitize_text_field( $_POST[ "{$field_name}_start" ] );
 		}
-		if ( isset( $_POST["{$field_name}_end"] ) ) {
-			$dates[] = sanitize_text_field( $_POST["{$field_name}_end"] );
+		if ( isset( $_POST[ "{$field_name}_end" ] ) ) {
+			$dates[] = sanitize_text_field( $_POST[ "{$field_name}_end" ] );
 		}
 
 		if ( ! empty( $dates ) && count( $dates ) > 1 ) {
@@ -443,9 +442,9 @@ class STM_Metaboxes {
 	public function wpcfto_save( $post_id, $post ) {
 		$post_type = get_post_type( $post_id );
 
-		if ( isset( $_REQUEST['_wpnonce'] )
-			 && ! wp_verify_nonce( sanitize_text_field( $_REQUEST['_wpnonce'] ), 'update-post_' . $post_id )
-			 && ! in_array( $post_type, $this->wpcfto_post_types(), true )
+		if ( ! isset( $_REQUEST['_wpnonce'] )
+			|| ! wp_verify_nonce( sanitize_text_field( $_REQUEST['_wpnonce'] ), 'update-post_' . $post_id )
+			|| ! in_array( $post_type, $this->wpcfto_post_types(), true )
 		) {
 			return;
 		}
