@@ -11,7 +11,7 @@ Vue.component('wpcfto_multiselect', {
         }
     },
     template: `
-        <div class="wpcfto_generic_field wpcfto_generic_field_multiselect" v-bind:class="field_id" :class="'columns-' + columns.length">
+        <div class="wpcfto_generic_field wpcfto_generic_field_multiselect" v-bind:class="(typeof field_id !== 'undefined') ? field_id : '' + ' columns-' + (typeof columns !== 'undefined') ? columns.length : ''">
 
 			<wpcfto_fields_aside_before :fields="fields" :field_label="field_label"></wpcfto_fields_aside_before>
 			
@@ -41,7 +41,7 @@ Vue.component('wpcfto_multiselect', {
             this.track_by = this.field_data['track_by'];
         }
 
-        this.options = this.field_options;
+        this.options = (typeof this.field_options !== 'undefined') ? this.field_options : this.fields.options;
 
         this.selected = (typeof this.field_value !== 'undefined') ? this.field_value : [];
 
