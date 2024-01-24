@@ -49,3 +49,10 @@
         }
     }
 }
+
+.wpcfto-field-readonly {
+    input {
+        user-select: text;
+        pointer-events: none;
+    }
+}
