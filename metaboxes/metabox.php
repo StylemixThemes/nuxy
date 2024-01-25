@@ -599,7 +599,11 @@ function wpcfto_metaboxes_deps( $field, $section_name ) {
 	$dependencies = array();
 
 	if ( ! empty( $field['field_disabled'] ) && 'yes' === $field['field_disabled'] ) {
-		$dependency = "v-bind:class=\"{'wpcfto-field-disabled' : true}\"";
+		$dependency .= "v-bind:class=\"{'wpcfto-field-disabled' : true}\"";
+	}
+
+	if ( ! empty( $field['field_readonly'] ) && 'yes' === $field['field_readonly'] ) {
+		$dependency .= "v-bind:class=\"{'wpcfto-field-readonly' : true}\"";
 	}
 
 	if ( empty( $field['dependency'] ) ) {
@@ -625,10 +629,10 @@ function wpcfto_metaboxes_deps( $field, $section_name ) {
 		$dependencies = wpcfto_metaboxes_generate_deps( $section_name, $field['dependency'] );
 	}
 
-	$dependency = "v-if=\"{$dependencies}\"";
+	$dependency .= "v-if=\"{$dependencies}\"";
 
 	if ( ! empty( $field['dependency_mode'] ) && 'disabled' === $field['dependency_mode'] ) {
-		$dependency = "v-bind:class=\"{'wpcfto-disabled-field' : {$dependencies}}\"";
+		$dependency .= "v-bind:class=\"{'wpcfto-disabled-field' : {$dependencies}}\"";
 	}
 
 	return $dependency;

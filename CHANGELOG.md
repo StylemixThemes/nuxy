@@ -1,3 +1,5 @@
+## 4.4.3
+- **New:** Added 'field_readonly' option to fields.
 ## 4.4.2
 - **Fix:** Fixed safe_style_css filter with 1 argument.
 ## 4.4.1
