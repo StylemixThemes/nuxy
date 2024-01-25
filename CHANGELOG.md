@@ -1,3 +1,5 @@
+## 4.4.4
+- **New:** Fixed minor bugs.
 ## 4.4.3
 - **New:** Added 'field_readonly' option to fields.
 ## 4.4.2
