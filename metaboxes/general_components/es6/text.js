@@ -1,8 +1,9 @@
 Vue.component('wpcfto_text', {
-    props: ['fields', 'field_label', 'field_name', 'field_id', 'field_value'],
+    props: ['fields', 'field_label', 'field_name', 'field_id', 'field_value', 'field_readonly'],
     data: function () {
         return {
             value: '',
+	          showTooltip: false,
         }
     },
     template: `
@@ -15,8 +16,11 @@ Vue.component('wpcfto_text', {
                     v-bind:name="field_name"
                     v-bind:placeholder="fields.placeholder ? fields.placeholder : 'Enter ' + field_label "
                     v-bind:id="field_id"
+                    v-bind:readonly="field_readonly"
                     v-model="value"
+                    @click="handleInputClick"
                 />
+                <div v-if="showTooltip" class="readonly-tooltip">Copy</div>
             </div>
 
             <wpcfto_fields_aside_after :fields="fields"></wpcfto_fields_aside_after>
@@ -25,7 +29,19 @@ Vue.component('wpcfto_text', {
     mounted: function () {
         this.value = this.field_value;
     },
-    methods: {},
+    methods: {
+	    handleInputClick() {
+		    if (this.field_readonly) {
+			    const inputField = document.getElementById(this.field_id);
+			    inputField.select();
+			    document.execCommand('copy');
+			    this.showTooltip = true;
+			    setTimeout(() => {
+				    this.showTooltip = false;
+			    }, 2000);
+		    }
+	    }
+    },
     watch: {
         value: function (value) {
             this.$emit('wpcfto-get-value', value);

@@ -599,11 +599,7 @@ function wpcfto_metaboxes_deps( $field, $section_name ) {
 	$dependencies = array();
 
 	if ( ! empty( $field['field_disabled'] ) && 'yes' === $field['field_disabled'] ) {
-		$dependency .= "v-bind:class=\"{'wpcfto-field-disabled' : true}\"";
-	}
-
-	if ( ! empty( $field['field_readonly'] ) && 'yes' === $field['field_readonly'] ) {
-		$dependency .= "v-bind:class=\"{'wpcfto-field-readonly' : true}\"";
+		$dependency = "v-bind:class=\"{'wpcfto-field-disabled' : true}\"";
 	}
 
 	if ( empty( $field['dependency'] ) ) {
@@ -629,10 +625,10 @@ function wpcfto_metaboxes_deps( $field, $section_name ) {
 		$dependencies = wpcfto_metaboxes_generate_deps( $section_name, $field['dependency'] );
 	}
 
-	$dependency .= "v-if=\"{$dependencies}\"";
+	$dependency = "v-if=\"{$dependencies}\"";
 
 	if ( ! empty( $field['dependency_mode'] ) && 'disabled' === $field['dependency_mode'] ) {
-		$dependency .= "v-bind:class=\"{'wpcfto-disabled-field' : {$dependencies}}\"";
+		$dependency = "v-bind:class=\"{'wpcfto-disabled-field' : {$dependencies}}\"";
 	}
 
 	return $dependency;
@@ -733,9 +729,10 @@ function wpcfto_metaboxes_display_single_field( $section, $section_name, $field,
 			$field = "data['{$section_name}']['fields']['{$field_name}']";
 
 			/*Needed for include*/
-			$field_value = "{$field}['value']";
-			$field_label = "{$field}['label']";
-			$field_id    = $section_name . '-' . $field_name;
+			$field_value    = "{$field}['value']";
+			$field_label    = "{$field}['label']";
+			$field_id       = $section_name . '-' . $field_name;
+			$field_readonly = isset( $field_data['readonly'] ) ? 'true' : 'false';
 
 			$file = apply_filters( "wpcfto_field_{$field_type}", STM_WPCFTO_PATH . '/metaboxes/fields/' . $field_type . '.php' );
 
