@@ -200,7 +200,7 @@ class WPCFTO_Settings {
 }
 
 add_action(
-	'init',
+	'admin_init',
 	function () {
 		$theme_options_page = apply_filters( 'wpcfto_options_page_setup', array() );
 
