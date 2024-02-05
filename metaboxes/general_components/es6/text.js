@@ -20,7 +20,7 @@ Vue.component('wpcfto_text', {
                     v-model="value"
                     @click="handleInputClick"
                 />
-                <div v-if="showTooltip" class="readonly-tooltip">Copy</div>
+                <div v-if="showTooltip" class="readonly-tooltip">Copied</div>
             </div>
 
             <wpcfto_fields_aside_after :fields="fields"></wpcfto_fields_aside_after>
