@@ -1,3 +1,7 @@
+## 4.4.6
+- **Fix:** Changed the text for the read-only option in the text field type from 'Copy' to 'Copied'.
+## 4.4.5
+- **Fix:** All shortcodes with text field type are copied after being clicked on.
 ## 4.4.4
 - **Fix:** Fixed minor bugs.
 ## 4.4.3
