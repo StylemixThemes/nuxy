@@ -1,5 +1,5 @@
 ## 4.4.7
-- **New:** Added 'submenu' url param handler to activate submenu of navigation.
+- **New:** Added Submenu URL handler to enable navigation submenus.
 ## 4.4.6
 - **Fix:** Changed the text for the read-only option in the text field type from 'Copy' to 'Copied'.
 ## 4.4.5
