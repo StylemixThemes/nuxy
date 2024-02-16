@@ -1,3 +1,5 @@
+## 4.4.8
+- **Fix:** Fixed minor bugs.
 ## 4.4.7
 - **New:** Added Submenu URL handler to enable navigation submenus.
 ## 4.4.6
