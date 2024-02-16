@@ -76,7 +76,14 @@
 
                         /*if has submenu*/
                         if ($section.closest('.wpcfto-nav').hasClass('has-submenu')) {
-                            var $submenu = $section.closest('.wpcfto-nav').find('.wpcfto-submenus [data-submenu]').eq(0);
+                            let   $submenu = $section.closest('.wpcfto-nav').find('.wpcfto-submenus [data-submenu]').eq(0);
+                            const urlParams = new URLSearchParams(window.location.search);
+                            const submenuParam = urlParams.get('submenu');
+                        
+                            if (submenuParam) {
+                                const navSubmenu = $section.closest('.wpcfto-nav').find(`.wpcfto-submenus [data-submenu=${tab}_${submenuParam}]`);
+                                $submenu = navSubmenu !== undefined && navSubmenu.length > 0 ? navSubmenu : $submenu;
+                            } 
                             this.changeSubMenu($submenu.attr('data-submenu'));
                         }
 
