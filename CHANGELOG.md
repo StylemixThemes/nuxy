@@ -1,3 +1,5 @@
+## 4.4.9
+- **Fix:** Time component fallback is fixed
 ## 4.4.8
 - **Fix:** Fixed minor bugs.
 ## 4.4.7
