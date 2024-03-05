@@ -23,7 +23,7 @@ class STM_Metaboxes {
 
 		add_filter( 'safe_style_css', 'STM_Metaboxes::add_safe_style', 100 );
 
-		add_action( 'init', array( $this, 'enqueue' ), 10 );
+		add_action( 'admin_init', array( $this, 'enqueue' ), 10 );
 	}
 
 	public function enqueue() {
