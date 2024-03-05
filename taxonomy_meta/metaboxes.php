@@ -22,7 +22,7 @@ function wpcfto_get_term_meta_text( $term_id, $term_key ) {
 }
 
 add_action(
-	'init',
+	'admin_init',
 	function () {
 		$taxonomies = wpcfto_term_meta_fields();
 		foreach ( $taxonomies as $taxonomy => $fields ) {
