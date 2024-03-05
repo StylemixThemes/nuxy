@@ -1,3 +1,5 @@
+## 4.4.10
+- **Fix:** init hooks changed to admin_init (metaboxes/metabox.php, settings/settings.php, taxonomy_meta/metaboxes.php)
 ## 4.4.9
 - **Fix:** Time component fallback is fixed
 ## 4.4.8
