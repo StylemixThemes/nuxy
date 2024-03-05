@@ -200,7 +200,7 @@ class WPCFTO_Settings {
 }
 
 add_action(
-	'admin_init',
+	'init',
 	function () {
 		if ( ! is_admin() ) {
 			return;
