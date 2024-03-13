@@ -399,11 +399,6 @@ class STM_Metaboxes {
 			apply_filters( 'wpcfto_icons_set', $icons )
 		);
 
-		array(
-			'title'       => 'icon class',
-			'searchTerms' => array( 'here', 'array', 'of', 'terms', 'to', 'search' ),
-		);
-
 		do_action( 'wpcfto_enqueue_scripts' );
 	}
 
@@ -469,7 +464,7 @@ class STM_Metaboxes {
 			'posts_per_page' => 10,
 		);
 
-		if ( isset( $_GET['ids'] ) && empty( $_GET['ids'] ) ) {
+		if ( ( isset( $_GET['ids'] ) && empty( $_GET['ids'] ) ) || ! current_user_can( 'manage_options' ) ) {
 			wp_send_json( $r );
 		}
 
