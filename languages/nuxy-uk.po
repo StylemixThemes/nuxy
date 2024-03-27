@@ -3,46 +3,46 @@ msgstr ""
 "Project-Id-Version: NUXY\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-05-23 06:46+0000\n"
-"PO-Revision-Date: 2024-03-16 23:52+0200\n"
+"PO-Revision-Date: 2024-03-27 05:10+0000\n"
 "Last-Translator: Irina\n"
-"Language-Team: Русский\n"
-"Language: ru_RU\n"
+"Language-Team: Українська\n"
+"Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10 >= 2 && "
-"n%10<=4 &&(n%100<10||n%100 >= 20)? 1 : 2);\n"
-"X-Generator: Poedit 3.4.2\n"
-"X-Loco-Version: 2.6.2; wp-6.0\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.6.1; wp-5.9.3\n"
 "X-Domain: nuxy\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10 >= 2 && "
+"n%10<=4 &&(n%100<10||n%100 >= 20)? 1 : 2);"
 
 #: taxonomy_meta/fields/image.php:10
 msgid "Add image"
-msgstr "Добавить изображение"
+msgstr "Додати зображення"
 
 #: metaboxes/metabox.php:250
 msgid "Backup Font Family"
-msgstr "Семейство шрифтов Backup"
+msgstr "Сімейство шрифтів Backup"
 
 #: metaboxes/google_fonts.php:22
 msgid "Black 900"
-msgstr "Черный 900"
+msgstr "Чорний 900"
 
 #: metaboxes/google_fonts.php:23
 msgid "Black 900 italic"
-msgstr "Черный 900 курсив"
+msgstr "Чорний 900 курсив"
 
 #: metaboxes/google_fonts.php:20
 msgid "Bold 700"
-msgstr "Жирный 700"
+msgstr "Жирний 700"
 
 #: metaboxes/google_fonts.php:21
 msgid "Bold 700 italic"
-msgstr "Жирный 700 курсив"
+msgstr "Жирний 700 курсив"
 
 #: metaboxes/google_fonts.php:53
 msgid "Capitalize"
-msgstr "Заглавные буквы"
+msgstr "Заголовні букви"
 
 #: metaboxes/google_fonts.php:43
 msgid "Center"
@@ -50,83 +50,83 @@ msgstr "По центру"
 
 #: settings/settings.php:90
 msgid "Choose Page"
-msgstr "Выбрать страницу"
+msgstr "Виберіть сторінку"
 
 #: metaboxes/metabox.php:34
 msgid "Choose User"
-msgstr "Выбрать пользователя"
+msgstr "Виберіть користувача"
 
 #: metaboxes/metabox.php:256
 msgid "Copy settings"
-msgstr "Копировать настройки"
+msgstr "Копіювання налаштувань"
 
 #: metaboxes/metabox.php:260
 msgid "Couldn't copy settings"
-msgstr "Не удалось скопировать настройки"
+msgstr "Не вдалося скопіювати налаштування"
 
 #: metaboxes/google_fonts.php:29
 msgid "Cyrillic"
-msgstr "Кириллица"
+msgstr "Кирилиця"
 
 #: metaboxes/google_fonts.php:30
 msgid "Cyrillic ext"
-msgstr "Кириллица расширенная"
+msgstr "Кирилиця розширена"
 
 #: metaboxes/fields/duration.php:35
 msgid "Days"
-msgstr "Дни"
+msgstr "Дні"
 
 #: metaboxes/google_fonts.php:41
 msgid "Default"
-msgstr "По умолчанию"
+msgstr "За замовчуванням"
 
 #: taxonomy_meta/fields/image.php:13
 msgid "Delete image"
-msgstr "Удалить изображение"
+msgstr "Видалити зображення"
 
 #: metaboxes/fields/duration.php:24
 msgid "duration"
-msgstr "длительность"
+msgstr "тривалість"
 
 #: helpers/file_upload.php:22
 msgid "Error occurred, please try again"
-msgstr "Произошла ошибка, попробуйте еще раз"
+msgstr "Виникла помилка, спробуйте ще раз"
 
 #: metaboxes/metabox.php:261
 msgid "Export options"
-msgstr "Экспорт параметров"
+msgstr "Експорт параметрів"
 
 #: metaboxes/metabox.php:254
 msgid "Font Color"
-msgstr "Цвет шрифта"
+msgstr "Колір шрифту"
 
 #: metaboxes/metabox.php:249
 msgid "Font Family"
-msgstr "Семейство шрифтов"
+msgstr "Сімейство шрифтів"
 
 #: metaboxes/metabox.php:245
 msgid "Font size"
-msgstr "Размер шрифта"
+msgstr "Розмір шрифту"
 
 #: metaboxes/metabox.php:252
 msgid "Font Subsets"
-msgstr "Подмножества шрифтов"
+msgstr "Підмножини шрифтів"
 
 #: metaboxes/metabox.php:251
 msgid "Font Weignt & Style"
-msgstr "Толщина и стиль шрифта"
+msgstr "Товщина та стиль шрифту"
 
 #: metaboxes/google_fonts.php:31
 msgid "Greek"
-msgstr "Греческий"
+msgstr "Грецький"
 
 #: metaboxes/google_fonts.php:32
 msgid "Greek ext"
-msgstr "Греческий расширенный"
+msgstr "Грецький розширений"
 
 #: metaboxes/fields/duration.php:34
 msgid "Hours"
-msgstr "Часы"
+msgstr "Години"
 
 #. Author URI of the plugin
 msgid "https://stylemixthemes.com"
@@ -134,67 +134,67 @@ msgstr "https://stylemixthemes.com"
 
 #: metaboxes/metabox.php:262
 msgid "Import options"
-msgstr "Импорт параметров"
+msgstr "Імпорт параметрів"
 
 #: metaboxes/metabox.php:257
 msgid "Import settings"
-msgstr "Импорт настроек"
+msgstr "Імпорт налаштувань"
 
 #: metaboxes/metabox-display.php:27
 msgid "Import/Export"
-msgstr "Импорт/экспорт"
+msgstr "Імпорт/Експорт"
 
 #: helpers/file_upload.php:63
 msgid "Invalid file extension"
-msgstr "Недопустимое расширение файла"
+msgstr "Неприпустиме розширення файлу"
 
 #: metaboxes/google_fonts.php:33
 msgid "Latin"
-msgstr "Латиница"
+msgstr "Латиниця"
 
 #: metaboxes/google_fonts.php:34
 msgid "Latin ext"
-msgstr "Латиница расширенная"
+msgstr "Латиниця розширена"
 
 #: metaboxes/google_fonts.php:42
 msgid "Left"
-msgstr "Слева"
+msgstr "Ліворуч"
 
 #: metaboxes/metabox.php:248
 msgid "Letter spacing"
-msgstr "Межбуквенный интервал"
+msgstr "Letter spacing"
 
 #: metaboxes/google_fonts.php:14
 msgid "Light 300"
-msgstr "Лёгкий 300"
+msgstr "Легкий 300"
 
 #: metaboxes/google_fonts.php:15
 msgid "Light 300 italic"
-msgstr "Лёгкий 300 курсив"
+msgstr "Легкий 300 курсив"
 
 #: metaboxes/metabox.php:246
 msgid "Line height"
-msgstr "Высота строки"
+msgstr "Висота рядка"
 
 #: metaboxes/google_fonts.php:52
 msgid "Lowercase"
-msgstr "Нижний регистр"
+msgstr "Нижній регістр"
 
 #: metaboxes/google_fonts.php:18
 msgid "Medium 500"
-msgstr "Средний 500"
+msgstr "Середній 500"
 
 #: metaboxes/google_fonts.php:19
 msgid "Medium 500 italic"
-msgstr "Средний 500 курсив"
+msgstr "Середній 500 курсив"
 
 #: metaboxes/fields/duration.php:33
 msgid "Minutes"
-msgstr "Mинуты"
+msgstr "Хвилини"
 
 #: metaboxes/google_fonts.php:50
 msgid "Normal"
-msgstr "Обычный"
+msgstr "Звичайний"
 
 #. Name of the plugin
 msgid "NUXY"
@@ -202,39 +202,39 @@ msgstr "NUXY"
 
 #: helpers/file_upload.php:53
 msgid "Please, select file"
-msgstr "Выберите файл"
+msgstr "Оберіть файл"
 
 #: metaboxes/google_fonts.php:16
 msgid "Regular 400"
-msgstr "Обычный 400"
+msgstr "Звичайний 400"
 
 #: metaboxes/google_fonts.php:17
 msgid "Regular 400 italic"
-msgstr "Обычный 400 курсив"
+msgstr "Звичайний 400 курсив"
 
 #: metaboxes/google_fonts.php:44
 msgid "Right"
-msgstr "Справа"
+msgstr "Праворуч"
 
 #: settings/view/header.php:54
 msgid "Save Settings"
-msgstr "Сохранить настройки"
+msgstr "Зберегти налаштування"
 
 #: settings/view/header.php:47
 msgid "Search"
-msgstr "Поиск"
+msgstr "Пошук"
 
 #: taxonomy_meta/fields/image.php:45
 msgid "Select or Upload Media Of Your Chosen Persuasion"
-msgstr "Выберите или загрузите медиа файлы по вашему выбору"
+msgstr "Виберіть або завантажте медіа файли за вашим вибором"
 
 #: metaboxes/metabox.php:259
 msgid "Settings copied to buffer"
-msgstr "Настройки скопированы в буфер"
+msgstr "Параметри скопійовано до буфера"
 
 #: metaboxes/metabox.php:263
 msgid "Sorry, no matching options."
-msgstr "Извините, нет подходящих вариантов."
+msgstr "Вибачте, немає відповідних варіантів."
 
 #. Author of the plugin
 msgid "StylemixThemes"
@@ -242,11 +242,11 @@ msgstr "StylemixThemes"
 
 #: metaboxes/metabox.php:253
 msgid "Text Align"
-msgstr "Выравнивание текста"
+msgstr "Вирівнювання тексту"
 
 #: metaboxes/metabox.php:255
 msgid "Text transform"
-msgstr "Преобразование текста"
+msgstr "Трансформація тексту"
 
 #: metaboxes/google_fonts.php:12
 msgid "Thin 100"
@@ -258,28 +258,28 @@ msgstr "Тонкий 100 курсив"
 
 #: metaboxes/google_fonts.php:51
 msgid "Uppercase"
-msgstr "Верхний регистр"
+msgstr "Верхній регістр"
 
 #: taxonomy_meta/fields/image.php:47
 msgid "Use this media"
-msgstr "Используйте эти медиа файлы"
+msgstr "Використовуйте ці медіа файли "
 
 #: metaboxes/google_fonts.php:35
 msgid "Vietnamese"
-msgstr "Вьетнамский"
+msgstr "В'єтнамський"
 
 #: metaboxes/metabox.php:258
 msgid ""
 "WARNING! This will overwrite all existing option values, please proceed with "
 "caution!"
 msgstr ""
-"ВНИМАНИЕ! Это приведет к перезаписи всех существующих значений параметров, "
-"действуйте осторожно!"
+"УВАГА! Це призведе до заміни всіх існуючих значень опцій, будь ласка, будьте "
+"обережні!"
 
 #: metaboxes/metabox.php:247
 msgid "Word spacing"
-msgstr "Интервал между словами"
+msgstr "Інтервал між словами"
 
 #. Description of the plugin
 msgid "WordPress Custom Fields & Theme Options with Vue.js."
-msgstr "Пользовательские поля и параметры темы WordPress с Vue.js."
+msgstr "Власні поля WordPress та опції теми из Vue.js."
