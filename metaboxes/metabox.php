@@ -458,6 +458,10 @@ class STM_Metaboxes {
 	public static function search_posts() {
 		check_ajax_referer( 'wpcfto_search_posts', 'nonce' );
 
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_send_json( array( 'error' => 'Forbidden' ) );
+		}
+
 		$r = array();
 
 		$args = array(

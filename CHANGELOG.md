@@ -1,3 +1,5 @@
+## 4.4.12
+- **Fix:** Fixed missing authorization for better data protection.
 ## 4.4.11
 - **Add:** Ukraine language translation file
 ## 4.4.10
