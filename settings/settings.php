@@ -113,6 +113,12 @@ class WPCFTO_Settings {
 		$args                       = array();
 		$args[ $this->option_name ] = $this->fields;
 
+		array_walk_recursive( $args[ $this->option_name ], function ( &$value, $arrayKey ) {
+			if ( $arrayKey === 'label' ) {
+				$value = html_entity_decode( $value );
+			}
+		});
+
 		return apply_filters(
 			$this->option_name,
 			array(
