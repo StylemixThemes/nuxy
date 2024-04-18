@@ -1,3 +1,5 @@
+## 4.4.11
+- **Fix:** Using Quotes in Label issues fixed
 ## 4.4.10
 - **Fix:** init hooks changed to admin_init (metaboxes/metabox.php, settings/settings.php, taxonomy_meta/metaboxes.php)
 ## 4.4.9
