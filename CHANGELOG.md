@@ -1,3 +1,5 @@
+## 4.4.13
+- **Fix:** Using Quotes in Label issues fixed
 ## 4.4.12
 - **Fix:** Fixed missing authorization for better data protection.
 ## 4.4.11
