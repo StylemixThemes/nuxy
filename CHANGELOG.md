@@ -1,3 +1,5 @@
+## 4.4.14
+- **Fix:** Frontend Enqueues removed
 ## 4.4.13
 - **Fix:** Using Quotes in Label issues fixed
 ## 4.4.12

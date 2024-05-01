@@ -15,8 +15,6 @@ class STM_Metaboxes {
 
 		add_action( 'admin_enqueue_scripts', array( self::class, 'wpcfto_scripts' ) );
 
-		add_action( 'wp_enqueue_scripts', array( $this, 'wpcfto_front_scripts' ) );
-
 		add_action( 'save_post', array( $this, 'wpcfto_save' ), 10, 3 );
 
 		add_action( 'wp_ajax_wpcfto_search_posts', 'STM_Metaboxes::search_posts' );
@@ -28,11 +26,11 @@ class STM_Metaboxes {
 
 	public function enqueue() {
 		$assets = STM_WPCFTO_URL . 'metaboxes/assets';
-		wp_enqueue_style( 'ctrumbowyg', $assets . '/vendors/trumbowyg/ctrumbowyg.css', false, '' );
-		wp_enqueue_style( 'color-trumbowyg', $assets . '/vendors/trumbowyg/color-trumbowyg.css', false, '' );
-		wp_enqueue_script( 'strumbowyg', $assets . '/vendors/trumbowyg/strumbowyg.js', array( 'jquery', ), '', true );
-		wp_enqueue_script( 'vtrumbowyg', $assets . '/vendors/trumbowyg/vtrumbowyg.js', array( 'jquery', ), '', true );
-		wp_enqueue_script( 'color-trumbowyg', $assets . '/vendors/trumbowyg/color-trumbowyg.js', array( 'jquery', ), '', true );
+		wp_enqueue_style( 'ctrumbowyg', $assets . '/vendors/trumbowyg/ctrumbowyg.css', array(), '' );
+		wp_enqueue_style( 'color-trumbowyg', $assets . '/vendors/trumbowyg/color-trumbowyg.css', array(), '' );
+		wp_enqueue_script( 'strumbowyg', $assets . '/vendors/trumbowyg/strumbowyg.js', array( 'jquery' ), '', true );
+		wp_enqueue_script( 'vtrumbowyg', $assets . '/vendors/trumbowyg/vtrumbowyg.js', array( 'jquery' ), '', true );
+		wp_enqueue_script( 'color-trumbowyg', $assets . '/vendors/trumbowyg/color-trumbowyg.js', array( 'jquery' ), '', true );
 	}
 
 	public function boxes() {
@@ -277,9 +275,9 @@ class STM_Metaboxes {
 	}
 
 	public static function wpcfto_scripts() {
-		$v      = time();
+		$v      = STM_WPCFTO_VERSION;
 		$base   = STM_WPCFTO_URL . 'metaboxes/assets/';
-		$assets = STM_WPCFTO_URL . 'metaboxes/assets';
+		$assets = STM_WPCFTO_URL . 'metaboxes/assets/';
 
 		wp_enqueue_media();
 		wp_enqueue_script( 'vue.js', $base . 'js/vue.min.js', array( 'jquery' ), $v, true );
@@ -311,8 +309,8 @@ class STM_Metaboxes {
 
 		wp_enqueue_style( 'wpcfto-metaboxes.css', $base . 'css/main.css', array(), $v );
 		wp_enqueue_style( 'linear-icons', $base . 'css/linear-icons.css', array( 'wpcfto-metaboxes.css' ), $v );
-		wp_enqueue_style( 'font-awesome-min', $assets . '/vendors/font-awesome.min.css', null, $v, 'all' );
-		wp_enqueue_style( 'vue-multiselect-min', $assets . '/vendors/vue-multiselect.min.css', null, $v, 'all' );
+		wp_enqueue_style( 'font-awesome-min', $assets . 'vendors/font-awesome.min.css', null, $v, 'all' );
+		wp_enqueue_style( 'vue-multiselect-min', $assets . 'vendors/vue-multiselect.min.css', null, $v, 'all' );
 
 		if ( is_rtl() ) {
 			wp_enqueue_style( 'nuxy-rtl', $base . 'css/rtl.css', array( 'wpcfto-metaboxes.css' ), $v );
@@ -400,23 +398,6 @@ class STM_Metaboxes {
 		);
 
 		do_action( 'wpcfto_enqueue_scripts' );
-	}
-
-	public function wpcfto_front_scripts() {
-		$v      = time();
-		$base   = STM_WPCFTO_URL . 'metaboxes/assets/';
-		$assets = STM_WPCFTO_URL . 'metaboxes/assets';
-
-		wp_enqueue_style( 'font-awesome-min', $assets . '/vendors/font-awesome.min.css', null, $v, 'all' );
-		wp_enqueue_script( 'wpcfto_metaboxes.js', $base . 'js/metaboxes.js', array( 'vue.js' ), $v, true );
-
-		wp_localize_script(
-			'wpcfto_metaboxes.js',
-			'wpcfto_global_settings',
-			array(
-				'translations' => self::translations(),
-			)
-		);
 	}
 
 	public function wpcfto_post_types() {
