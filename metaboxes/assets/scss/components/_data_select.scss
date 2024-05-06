@@ -42,6 +42,14 @@ div.stm_metaboxes_grid__inner {
                 width: 100%;
                 flex-direction: column;
                 align-items: center;
+                &:hover {
+                    cursor: pointer;
+                }
+                &.wpcfto_data_select__wrapper_disabled {
+                    &:hover {
+                        cursor: default;
+                    }
+                }
             }
             .wpcfto_data_select__content {
                 display: flex;
@@ -100,9 +108,6 @@ div.stm_metaboxes_grid__inner {
                         }
                     }
                 }
-            }
-            &:hover {
-                cursor: pointer;
             }
         }
     }
