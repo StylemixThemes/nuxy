@@ -341,6 +341,7 @@ class STM_Metaboxes {
 			'button_group',
 			'button_list',
 			'image_select',
+			'data_select',
 			'spacing',
 			'link_color',
 			'multi_checkbox',
