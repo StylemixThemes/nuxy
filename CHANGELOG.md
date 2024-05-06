@@ -1,3 +1,5 @@
+## 4.4.15
+- **New:** Added new field "data_select"
 ## 4.4.14
 - **Fix:** Frontend Enqueues removed
 ## 4.4.13
