@@ -20,6 +20,9 @@ Vue.component('wpcfto_data_select', {
                         <div class="wpcfto_data_select__wrapper" v-bind:class="{'wpcfto_data_select__wrapper_disabled': option.disabled}">
                             <span class="wpcfto_data_select__img" v-bind:class="{'wpcfto_data_select__img_active': value == option.value}">
                                 <img v-bind:src="option.img" v-bind:alt="option.alt" v-bind:style="style">
+                                <a v-if="option.preview_url && !option.disabled" :href="option.preview_url" target="_blank" class="wpcfto_data_select__img-preview">
+                                    {{ option.preview_label }}
+                                </a>
                             </span>
                             <div class="wpcfto_data_select__content">
                                 <input v-if="!option.disabled" type="radio" v-bind:name="field_name" v-model="value" v-bind:value="option.value"/>
