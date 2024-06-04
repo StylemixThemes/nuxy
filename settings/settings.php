@@ -177,6 +177,13 @@ class WPCFTO_Settings {
 			$request_body = json_decode( $request_body, true );
 			foreach ( $request_body as $section_name => $section ) {
 				foreach ( $section['fields'] as $field_name => $field ) {
+					if ( class_exists( 'WPTT_WebFont_Loader' ) ) {
+						if ( is_array( $field['value'] ) && ! empty( $field['value']['font-data']['family'] ) ) {
+							$font = new WPTT_WebFont_Loader( $field['value'], $field_name );
+							$local_font_url = $font->get_url();
+							$field['value']['local_url'] = $local_font_url;
+						}
+					}
 					$settings[ $field_name ] = $field['value'];
 				}
 			}
