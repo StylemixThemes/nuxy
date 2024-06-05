@@ -1,3 +1,11 @@
+## 4.4.19
+- **Fix:** Removed processing function unslash for storing array
+## 4.4.18
+- **Fix:** Added processing unslash to variable $_POST for field type 'editor' & 'curriculum'.
+## 4.4.17
+- **Fix:** Fixed minor bugs.
+## 4.4.16
+- **New:** Preview button in new field "data_select"
 ## 4.4.15
 - **New:** Added new field "data_select"
 ## 4.4.14
