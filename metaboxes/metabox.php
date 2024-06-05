@@ -77,10 +77,10 @@ class STM_Metaboxes {
 
 					if ( isset( $_POST[ $field_name ] ) ) {
 
-						if ( 'editor' === $field['type'] || 'curriculum' === $field['type'] ) {
-							$field_modified = ( is_array( $_POST[ $field_name ] ) ) ? filter_var_array( wp_unslash( $_POST[ $field_name ] ) ) : $_POST[ $field_name ]; // phpcs:ignore
+						if ( 'editor' === $field['type'] ) {
+							$field_modified = ( is_array( $_POST[ $field_name ] ) ) ? array_map( 'sanitize_text_field', $_POST[ $field_name ] ) : wp_kses_post( $_POST[ $field_name ] );
 						} else {
-							$field_modified = ( is_array( $_POST[ $field_name ] ) ) ? filter_var_array( wp_unslash( $_POST[ $field_name ] ), FILTER_SANITIZE_STRING ) : sanitize_text_field( $_POST[ $field_name ] ); // phpcs:ignore
+							$field_modified = ( is_array( $_POST[ $field_name ] ) ) ? array_map( 'sanitize_text_field', $_POST[ $field_name ] ) : sanitize_text_field( $_POST[ $field_name ] );
 						}
 
 						if ( method_exists( 'STM_Metaboxes', "wpcfto_field_sanitize_{$field['type']}" ) ) {
