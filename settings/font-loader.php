@@ -1,9 +1,9 @@
 <?php
-if ( ! class_exists( 'WPTT_WebFont_Loader' ) ) {
+if ( ! class_exists( 'WPCFTO_WebFont_Loader' ) ) {
 	/**
 	 * Download webfonts locally.
 	 */
-	class WPTT_WebFont_Loader {
+	class WPCFTO_WebFont_Loader {
 
 		/**
 		 * The font-format.
@@ -150,6 +150,19 @@ if ( ! class_exists( 'WPTT_WebFont_Loader' ) ) {
 			}
 
 			return esc_url_raw( $fonts_url );
+		}
+
+		/**
+		 * Delete the fonts folder.
+		 *
+		 * This runs as part of a cleanup routine.
+		 *
+		 * @access public
+		 * @since 1.1.0
+		 * @return bool
+		 */
+		public function delete_fonts_folder() {
+			return $this->get_filesystem()->delete( $this->get_fonts_folder(), true );
 		}
 
 		/**
@@ -616,7 +629,7 @@ if ( ! class_exists( 'WPTT_WebFont_Loader' ) ) {
 		 */
 		public function get_base_url() {
 			if ( ! $this->base_url ) {
-				$this->base_url = apply_filters( 'wpcfto_get_local_fonts_base_url', content_url() . '/uploads' );
+				$this->base_url = apply_filters( 'wpcfto_get_local_fonts_base_url', content_url( '/uploads/' ) );
 			}
 
 			return $this->base_url;

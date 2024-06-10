@@ -271,6 +271,9 @@ class STM_Metaboxes {
 			'export_data_label'   => esc_html__( 'Export options', 'nuxy' ),
 			'import_data_label'   => esc_html__( 'Import options', 'nuxy' ),
 			'vue_select_notice'   => esc_html__( 'Sorry, no matching options.', 'nuxy' ),
+            'regenerate_fonts_btn' => esc_html__( 'Generate', 'nuxy' ),
+            'regenerate_fonts_title' => esc_html__( 'Generate fonts', 'nuxy' ),
+            'regenerate_fonts_notice' => esc_html__( 'This setting will automatically update font files in server', 'nuxy' ),
 		);
 	}
 
@@ -355,6 +358,7 @@ class STM_Metaboxes {
 			'typography',
 			'multiselect',
 			'import_export',
+			'regenerate_fonts',
 			'trumbowyg',
 		);
 

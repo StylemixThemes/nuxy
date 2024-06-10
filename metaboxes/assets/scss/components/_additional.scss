@@ -134,3 +134,41 @@ body .stm_metaboxes_grid .stm_metaboxes_grid__inner .stm_lms_questions_v2_wrappe
         padding: 20px;
     }
 }
+
+.wpcfto_regenerate_fonts {
+    width: 100%;
+}
+
+.wpcfto_generic_field_regenerate_fonts {
+    justify-content: space-between !important;
+    p {
+        color: #aaa;
+        margin: 0 !important;
+        padding: 0 15px;
+        font-style: italic;
+    }
+    .button {
+        position: relative;
+        i {
+            position: absolute;
+            left: 50%;
+            top: 14px;
+            font-size: 20px;
+            margin-top: -4px;
+            margin-left: -10px;
+            margin-right: 0 !important;
+            opacity: 0;
+            -webkit-animation: spin 2s infinite;
+            animation: spin 2s infinite;
+            transition: .3s ease;
+        }
+        &.loading {
+            i {
+                opacity: 1;
+            }
+            & > span {
+                opacity: 0;
+            }
+        }
+    }
+}

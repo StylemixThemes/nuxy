@@ -16,6 +16,8 @@ class WPCFTO_Settings {
 
 		add_action( 'admin_menu', array( $this, 'settings_page' ), 1000 );
 		add_action( 'wp_ajax_wpcfto_save_settings', array( $this, 'stm_save_settings' ) );
+		add_action( 'wp_ajax_wpcfto_regenerate_fonts', array( $this, 'stm_regenerate_fonts' ) );
+		add_filter( 'wpcfto_enable_regenerate_fonts', array( $this, 'stm_enable_regenerate_fonts' ) );
 
 		if ( ! empty( $this->setup['admin_bar_title'] ) ) {
 			add_action( 'admin_bar_menu', array( $this, 'admin_bar_button' ), 40 );
@@ -177,12 +179,9 @@ class WPCFTO_Settings {
 			$request_body = json_decode( $request_body, true );
 			foreach ( $request_body as $section_name => $section ) {
 				foreach ( $section['fields'] as $field_name => $field ) {
-					if ( class_exists( 'WPTT_WebFont_Loader' ) ) {
-						if ( is_array( $field['value'] ) && ! empty( $field['value']['font-data']['family'] ) ) {
-							$font = new WPTT_WebFont_Loader( $field['value'], $field_name );
-							$local_font_url = $font->get_url();
-							$field['value']['local_url'] = $local_font_url;
-						}
+					if ( class_exists( 'WPCFTO_WebFont_Loader' ) && ! empty( $field['value']['font-data']['family'] ) ) {
+						$font                        = new WPCFTO_WebFont_Loader( $field['value'], $field_name );
+						$field['value']['font-data']['local_url'] = $font->get_url();
 					}
 					$settings[ $field_name ] = $field['value'];
 				}
@@ -203,6 +202,49 @@ class WPCFTO_Settings {
 		do_action( 'wpcfto_after_settings_saved', $id, $settings );
 
 		wp_send_json( $response );
+	}
+
+	public function stm_regenerate_fonts() {
+		check_ajax_referer( 'wpcfto_regenerate_fonts', 'nonce' );
+
+		if ( ! current_user_can( 'manage_options' ) && ! class_exists( 'WPCFTO_WebFont_Loader' ) ) {
+			die;
+		}
+
+		$settings = $this->wpcfto_get_settings();
+
+		$response = array(
+			'reload'    => true,
+			'generated' => false,
+		);
+
+		$wpcfto_webfont = new WPCFTO_WebFont_Loader();
+		$wpcfto_webfont->delete_fonts_folder();
+
+		foreach ( $settings as $field_name => $field ) {
+			if ( ! empty( $field['font-data']['family'] ) ) {
+				$font                                 = new WPCFTO_WebFont_Loader( $field, $field_name );
+				$settings[ $field_name ]['font-data']['local_url'] = $font->get_url();
+			}
+		}
+		$response['generated'] = update_option( $this->option_name, $settings );
+
+		wp_send_json( $response );
+	}
+
+	public function stm_enable_regenerate_fonts( $val ) {
+		if ( ! current_user_can( 'manage_options' ) && ! class_exists( 'WPCFTO_WebFont_Loader' ) ) {
+			return false;
+		}
+
+		$settings = $this->wpcfto_get_settings();
+		foreach ( $settings as $field_name => $field ) {
+			if ( ! empty( $field['font-data']['family'] ) ) {
+				return true;
+			}
+		}
+
+		return false;
 	}
 }
 
