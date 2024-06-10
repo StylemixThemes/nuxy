@@ -180,7 +180,7 @@ class WPCFTO_Settings {
 			foreach ( $request_body as $section_name => $section ) {
 				foreach ( $section['fields'] as $field_name => $field ) {
 					if ( class_exists( 'WPCFTO_WebFont_Loader' ) && ! empty( $field['value']['font-data']['family'] ) ) {
-						$font                        = new WPCFTO_WebFont_Loader( $field['value'], $field_name );
+						$font                                    = new WPCFTO_WebFont_Loader( $field['value'], $field_name );
 						$field['value']['font-data']['local_url'] = $font->get_url();
 					}
 					$settings[ $field_name ] = $field['value'];
@@ -223,7 +223,7 @@ class WPCFTO_Settings {
 
 		foreach ( $settings as $field_name => $field ) {
 			if ( ! empty( $field['font-data']['family'] ) ) {
-				$font                                 = new WPCFTO_WebFont_Loader( $field, $field_name );
+				$font                                             = new WPCFTO_WebFont_Loader( $field, $field_name );
 				$settings[ $field_name ]['font-data']['local_url'] = $font->get_url();
 			}
 		}
