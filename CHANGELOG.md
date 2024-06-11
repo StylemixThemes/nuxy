@@ -1,5 +1,9 @@
-## 4.4.18
+## 4.4.20
 - **New:** Google fonts are uploaded on the server.
+## 4.4.19
+- **Fix:** Coding improvement.
+## 4.4.18
+- **Fix:** Added processing unslash to variable $_POST for field type 'editor' & 'curriculum'.
 ## 4.4.17
 - **Fix:** Fixed minor bugs.
 ## 4.4.16
