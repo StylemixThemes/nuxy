@@ -26,11 +26,11 @@ class STM_Metaboxes {
 
 	public function enqueue() {
 		$assets = STM_WPCFTO_URL . 'metaboxes/assets';
-		wp_enqueue_style( 'ctrumbowyg', $assets . '/vendors/trumbowyg/ctrumbowyg.css', array(), '' );
-		wp_enqueue_style( 'color-trumbowyg', $assets . '/vendors/trumbowyg/color-trumbowyg.css', array(), '' );
-		wp_enqueue_script( 'strumbowyg', $assets . '/vendors/trumbowyg/strumbowyg.js', array( 'jquery' ), '', true );
-		wp_enqueue_script( 'vtrumbowyg', $assets . '/vendors/trumbowyg/vtrumbowyg.js', array( 'jquery' ), '', true );
-		wp_enqueue_script( 'color-trumbowyg', $assets . '/vendors/trumbowyg/color-trumbowyg.js', array( 'jquery' ), '', true );
+		wp_enqueue_style( 'ctrumbowyg', $assets . '/vendors/trumbowyg/ctrumbowyg.css', array(), STM_WPCFTO_VERSION );
+		wp_enqueue_style( 'color-trumbowyg', $assets . '/vendors/trumbowyg/color-trumbowyg.css', array(), STM_WPCFTO_VERSION );
+		wp_enqueue_script( 'strumbowyg', $assets . '/vendors/trumbowyg/strumbowyg.js', array( 'jquery' ), STM_WPCFTO_VERSION, true );
+		wp_enqueue_script( 'vtrumbowyg', $assets . '/vendors/trumbowyg/vtrumbowyg.js', array( 'jquery' ), STM_WPCFTO_VERSION, true );
+		wp_enqueue_script( 'color-trumbowyg', $assets . '/vendors/trumbowyg/color-trumbowyg.js', array( 'jquery' ), STM_WPCFTO_VERSION, true );
 	}
 
 	public function boxes() {
@@ -77,10 +77,10 @@ class STM_Metaboxes {
 
 					if ( isset( $_POST[ $field_name ] ) ) {
 
-						if ( 'editor' === $field['type'] || 'curriculum' === $field['type'] ) {
-							$field_modified = ( is_array( $_POST[ $field_name ] ) ) ? filter_var_array( $_POST[ $field_name ] ) : $_POST[ $field_name ];
+						if ( 'editor' === $field['type'] ) {
+							$field_modified = ( is_array( $_POST[ $field_name ] ) ) ? filter_var_array( $_POST[ $field_name ] ) : $_POST[ $field_name ]; // phpcs:ignore
 						} else {
-							$field_modified = ( is_array( $_POST[ $field_name ] ) ) ? filter_var_array( $_POST[ $field_name ], FILTER_SANITIZE_STRING ) : sanitize_text_field( $_POST[ $field_name ] );
+							$field_modified = ( is_array( $_POST[ $field_name ] ) ) ? filter_var_array( $_POST[ $field_name ], FILTER_SANITIZE_STRING  ) : sanitize_text_field( $_POST[ $field_name ] ); // phpcs:ignore
 						}
 
 						if ( method_exists( 'STM_Metaboxes', "wpcfto_field_sanitize_{$field['type']}" ) ) {
