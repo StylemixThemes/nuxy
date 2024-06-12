@@ -139,8 +139,8 @@ body .stm_metaboxes_grid .stm_metaboxes_grid__inner .stm_lms_questions_v2_wrappe
     width: 100%;
 }
 
-.wpcfto_generic_field_regenerate_fonts {
-    justify-content: space-between !important;
+.stm_metaboxes_grid .wpcfto_generic_field.wpcfto_generic_field_regenerate_fonts {
+    justify-content: space-between;
     p {
         color: #aaa;
         margin: 0 !important;
