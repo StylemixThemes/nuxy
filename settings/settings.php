@@ -177,7 +177,9 @@ class WPCFTO_Settings {
 			$request_body = json_decode( $request_body, true );
 			foreach ( $request_body as $section_name => $section ) {
 				foreach ( $section['fields'] as $field_name => $field ) {
-					$settings[ $field_name ] = $field['value'];
+					if ( ! isset( $field['readonly'] ) || ! $field['readonly'] ) {
+						$settings[ $field_name ] = $field['value'];
+					}
 				}
 			}
 		}
