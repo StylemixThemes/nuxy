@@ -183,7 +183,9 @@ class WPCFTO_Settings {
 						$font                                     = new WPCFTO_WebFont_Loader( $field['value'], $field_name );
 						$field['value']['font-data']['local_url'] = $font->get_url();
 					}
-					$settings[ $field_name ] = $field['value'];
+					if ( ! isset( $field['readonly'] ) || ! $field['readonly'] ) {
+						$settings[ $field_name ] = $field['value'];
+					}
 				}
 			}
 		}
