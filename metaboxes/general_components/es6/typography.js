@@ -54,9 +54,9 @@ Vue.component('wpcfto_typography', {
                 
                             <div class="column-50" v-if="notExcluded('font-family')">
                                 <label class="field-label" v-html="translations['font_family']"></label>                        
-                                <select v-model="typography['font-data']" @change="fontChanged()">
+                                <select v-model="typography['font-data'].family" @change="fontChanged()">
                                     <option value="">Select font</option>
-                                    <option v-bind:value="font" v-for="font in google_fonts" v-html="font.family"></option>
+                                    <option v-bind:value="font.family" v-for="font in google_fonts" v-html="font.family"></option>
                                 </select>
                             </div>        
                 
