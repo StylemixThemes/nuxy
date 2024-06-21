@@ -1,3 +1,5 @@
+## 4.4.21
+- **New:** Translation support for settings.
 ## 4.4.20
 - **New:** Google fonts are uploaded on the server.
 ## 4.4.19
