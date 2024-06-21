@@ -1,3 +1,5 @@
+## 4.4.21
+- **Fix:** Fixed minor bugs.
 ## 4.4.20
 - **New:** Google fonts are uploaded on the server.
 ## 4.4.19
