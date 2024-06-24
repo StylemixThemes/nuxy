@@ -1,3 +1,5 @@
+## 4.4.22
+- **Fix:** Translation support for settings.
 ## 4.4.21
 - **Fix:** Fixed minor bugs.
 ## 4.4.20

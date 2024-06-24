@@ -1,18 +1,28 @@
 Vue.component('wpcfto_image', {
-    props: ['fields', 'field_label', 'field_name', 'field_id', 'field_value'],
-    mixins: [wpcfto_get_image_mixin],
-    data: function () {
-        return {
-            value: '',
-            media_modal: '',
-            image_url: ''
-        }
-    },
-    mounted: function () {
-        var vm = this;
-        vm.value = vm.field_value;
-    },
-    template: `
+	props: [
+		'fields',
+		'field_label',
+		'field_name',
+		'field_id',
+		'field_value',
+		'placeholder_text',
+		'upload_text',
+		'replace_text',
+		'remove_text',
+	],
+	mixins: [wpcfto_get_image_mixin],
+	data: function () {
+		return {
+			value: '',
+			media_modal: '',
+			image_url: '',
+		}
+	},
+	mounted: function () {
+		var vm = this
+		vm.value = vm.field_value
+	},
+	template: `
         <div class="wpcfto_generic_field wpcfto_generic_field_image">
 
             <wpcfto_fields_aside_before :fields="fields" :field_label="field_label"></wpcfto_fields_aside_before>
@@ -20,20 +30,20 @@ Vue.component('wpcfto_image', {
             <div class="wpcfto-field-content" v-bind:class="{'not_image' : (image_url && !wpcfto_checkURL(image_url))}">
                 <div class="wpcfto-image" :class="{ 'has-image' : image_url && wpcfto_checkURL(image_url) }">
                     <input type="text" v-model="image_url" class="wpcfto-input-url" readonly
-                    v-bind:placeholder="fields.placeholder ? fields.placeholder : 'Image URL'" />
+                    v-bind:placeholder="fields.placeholder ? fields.placeholder : placeholder_text" />
     
                     <div class="image-field" v-if="image_url && wpcfto_checkURL(image_url)">
                         <img v-bind:src="image_url" v-if="wpcfto_checkURL(image_url)"/>
                     </div>
                     <div class="actions">
                         <div class="button" v-if="!image_url || !wpcfto_checkURL(image_url)" @click="addImage()">
-                            <i class="fa fa-upload"></i>Upload
+                            <i class="fa fa-upload"></i>upload_text
                         </div>
                         <div class="button" v-if="image_url && wpcfto_checkURL(image_url)" @click="addImage()">
-                        <i class="fa fa-upload"></i>Replace
+                        <i class="fa fa-upload"></i>replace_text
                         </div>
                         <div class="button button-remove" v-if="image_url" @click="removeImage()">
-                            <i class="fa fa-times"></i>Remove
+                            <i class="fa fa-times"></i>remove_text
                         </div>
                     </div>
                 </div>
@@ -49,31 +59,38 @@ Vue.component('wpcfto_image', {
 
         </div>
     `,
-    methods: {
-        addImage: function () {
-            this.media_modal = wp.media({
-                frame: 'select',
-                multiple: false,
-                editing: true,
-            });
+	methods: {
+		addImage: function () {
+			this.media_modal = wp.media({
+				frame: 'select',
+				multiple: false,
+				editing: true,
+			})
 
-            this.media_modal.on('select', function (value) {
-                var attachment = this.media_modal.state().get('selection').first().toJSON();
+			this.media_modal.on(
+				'select',
+				function (value) {
+					var attachment = this.media_modal
+						.state()
+						.get('selection')
+						.first()
+						.toJSON()
 
-                this.value = attachment.id;
-                this.image_url = attachment.url;
+					this.value = attachment.id
+					this.image_url = attachment.url
+				},
+				this
+			)
 
-            }, this);
-
-            this.media_modal.open();
-        },
-        removeImage: function () {
-            this.value = this.image_url = '';
-        }
-    },
-    watch: {
-        value: function (value) {
-            this.$emit('wpcfto-get-value', value);
-        },
-    }
-});
+			this.media_modal.open()
+		},
+		removeImage: function () {
+			this.value = this.image_url = ''
+		},
+	},
+	watch: {
+		value: function (value) {
+			this.$emit('wpcfto-get-value', value)
+		},
+	},
+})

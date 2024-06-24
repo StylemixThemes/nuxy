@@ -24,5 +24,7 @@ $field = "data['{$section_name}']['fields']['{$field_name}']";
 	:field_id="'<?php echo esc_attr( $field_id ); ?>'"
 	:field_value="<?php echo esc_attr( $field_value ); ?>"
 	:field_readonly="<?php echo esc_attr( $field_readonly ); ?>"
+	:placeholder_text="'<?php echo esc_html__( 'Enter', 'nuxy' ); ?>'"
+	:copied_text="'<?php echo esc_html__( 'Copied', 'nuxy' ); ?>'"
 	@wpcfto-get-value="<?php echo esc_attr( $field_value ); ?> = $event">
 </wpcfto_text>
