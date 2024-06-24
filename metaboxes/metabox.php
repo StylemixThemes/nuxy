@@ -76,11 +76,12 @@ class STM_Metaboxes {
 					$field_modified = '';
 
 					if ( isset( $_POST[ $field_name ] ) ) {
-
 						if ( 'editor' === $field['type'] ) {
-							$field_modified = ( is_array( $_POST[ $field_name ] ) ) ? filter_var_array( $_POST[ $field_name ] ) : $_POST[ $field_name ]; // phpcs:ignore
+							$field_modified = wp_kses_post( $_POST[ $field_name ] );
 						} else {
-							$field_modified = ( is_array( $_POST[ $field_name ] ) ) ? filter_var_array( $_POST[ $field_name ], FILTER_SANITIZE_STRING  ) : sanitize_text_field( $_POST[ $field_name ] ); // phpcs:ignore
+							$field_modified = is_array( $_POST[ $field_name ] )
+								? array_map( 'sanitize_text_field', $_POST[ $field_name ] )
+								: sanitize_text_field( $_POST[ $field_name ] );
 						}
 
 						if ( method_exists( 'STM_Metaboxes', "wpcfto_field_sanitize_{$field['type']}" ) ) {
@@ -94,11 +95,9 @@ class STM_Metaboxes {
 						}
 
 						$field_modified = call_user_func( array( $this, $sanitize ), $field_modified, $field_name );
-
 					}
 
 					$fields[ $field_name ] = $field_modified;
-
 				}
 			}
 		}
@@ -130,40 +129,6 @@ class STM_Metaboxes {
 		return $value;
 	}
 
-	public function wpcfto_sanitize_curriculum( $value ) {
-		$value = str_replace( 'stm_lms_amp', '&', $value );
-
-		return esc_html( $value );
-	}
-
-	public function wpcfto_sanitize_editor( $value ) {
-
-		global $wpcfto_allowed_html;
-
-		$wpcfto_allowed_html = array(
-			'a'          => array(
-				'href'  => array(),
-				'style' => array(),
-			),
-			'p'          => array( 'style' => array() ),
-			'br'         => array(),
-			'span'       => array( 'style' => array() ),
-			'strong'     => array( 'style' => array() ),
-			'h1'         => array(),
-			'h2'         => array(),
-			'h3'         => array(),
-			'h4'         => array(),
-			'h5'         => array(),
-			'h6'         => array(),
-			'ol'         => array( 'style' => array() ),
-			'ul'         => array( 'style' => array() ),
-			'li'         => array( 'style' => array() ),
-			'blockquote' => array(),
-		);
-		$value               = wp_kses( $value, $wpcfto_allowed_html );
-
-		return $value;
-	}
 
 	public static function add_safe_style( $tags ) {
 		$allowed = array(

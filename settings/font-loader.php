@@ -11,7 +11,6 @@ if ( ! class_exists( 'WPCFTO_WebFont_Loader' ) ) {
 		 * Use "woff" or "woff2".
 		 * This will change the user-agent user to make the request.
 		 *
-		 * @access protected
 		 * @since 1.0.0
 		 * @var string
 		 */
@@ -20,7 +19,6 @@ if ( ! class_exists( 'WPCFTO_WebFont_Loader' ) ) {
 		/**
 		 * The remote URL.
 		 *
-		 * @access protected
 		 * @since 1.1.0
 		 * @var string
 		 */
@@ -29,7 +27,6 @@ if ( ! class_exists( 'WPCFTO_WebFont_Loader' ) ) {
 		/**
 		 * The remote URL.
 		 *
-		 * @access protected
 		 * @since 1.1.0
 		 * @var string
 		 */
@@ -38,7 +35,6 @@ if ( ! class_exists( 'WPCFTO_WebFont_Loader' ) ) {
 		/**
 		 * Base path.
 		 *
-		 * @access protected
 		 * @since 1.1.0
 		 * @var string
 		 */
@@ -47,7 +43,6 @@ if ( ! class_exists( 'WPCFTO_WebFont_Loader' ) ) {
 		/**
 		 * Base URL.
 		 *
-		 * @access protected
 		 * @since 1.1.0
 		 * @var string
 		 */
@@ -56,7 +51,6 @@ if ( ! class_exists( 'WPCFTO_WebFont_Loader' ) ) {
 		/**
 		 * Subfolder name.
 		 *
-		 * @access protected
 		 * @since 1.1.0
 		 * @var string
 		 */
@@ -65,7 +59,6 @@ if ( ! class_exists( 'WPCFTO_WebFont_Loader' ) ) {
 		/**
 		 * The fonts folder.
 		 *
-		 * @access protected
 		 * @since 1.1.0
 		 * @var string
 		 */
@@ -74,7 +67,6 @@ if ( ! class_exists( 'WPCFTO_WebFont_Loader' ) ) {
 		/**
 		 * The local stylesheet's path.
 		 *
-		 * @access protected
 		 * @since 1.1.0
 		 * @var string
 		 */
@@ -83,7 +75,6 @@ if ( ! class_exists( 'WPCFTO_WebFont_Loader' ) ) {
 		/**
 		 * The local stylesheet's URL.
 		 *
-		 * @access protected
 		 * @since 1.1.0
 		 * @var string
 		 */
@@ -92,7 +83,6 @@ if ( ! class_exists( 'WPCFTO_WebFont_Loader' ) ) {
 		/**
 		 * The remote CSS.
 		 *
-		 * @access protected
 		 * @since 1.1.0
 		 * @var string
 		 */
@@ -101,7 +91,6 @@ if ( ! class_exists( 'WPCFTO_WebFont_Loader' ) ) {
 		/**
 		 * The final CSS.
 		 *
-		 * @access protected
 		 * @since 1.1.0
 		 * @var string
 		 */
@@ -111,8 +100,6 @@ if ( ! class_exists( 'WPCFTO_WebFont_Loader' ) ) {
 		 * Constructor.
 		 *
 		 * Get a new instance of the object for a new URL.
-		 *
-		 * @access public
 		 *
 		 * @param array $option_name The remote URLs.
 		 * @param string $key The folder name.
@@ -127,8 +114,6 @@ if ( ! class_exists( 'WPCFTO_WebFont_Loader' ) ) {
 
 		/**
 		 * Get fonts url from nuxy.
-		 *
-		 * @access private
 		 *
 		 * @param array $option_name Options name.
 		 *
@@ -157,7 +142,6 @@ if ( ! class_exists( 'WPCFTO_WebFont_Loader' ) ) {
 		 *
 		 * This runs as part of a cleanup routine.
 		 *
-		 * @access public
 		 * @return bool
 		 * @since 1.1.0
 		 */
@@ -170,7 +154,6 @@ if ( ! class_exists( 'WPCFTO_WebFont_Loader' ) ) {
 		 *
 		 * Fallback to the remote URL if we were unable to write the file locally.
 		 *
-		 * @access public
 		 * @return string
 		 * @since 1.1.0
 		 */
@@ -194,7 +177,6 @@ if ( ! class_exists( 'WPCFTO_WebFont_Loader' ) ) {
 		/**
 		 * Get the local stylesheet URL.
 		 *
-		 * @access public
 		 * @return string
 		 * @since 1.1.0
 		 */
@@ -209,7 +191,6 @@ if ( ! class_exists( 'WPCFTO_WebFont_Loader' ) ) {
 		/**
 		 * Get styles with fonts downloaded locally.
 		 *
-		 * @access public
 		 * @return string
 		 * @since 1.0.0
 		 */
@@ -250,7 +231,6 @@ if ( ! class_exists( 'WPCFTO_WebFont_Loader' ) ) {
 		/**
 		 * Get local stylesheet contents.
 		 *
-		 * @access public
 		 * @return string|false Returns the remote URL contents.
 		 * @since 1.1.0
 		 */
@@ -275,7 +255,6 @@ if ( ! class_exists( 'WPCFTO_WebFont_Loader' ) ) {
 		/**
 		 * Get remote file contents.
 		 *
-		 * @access public
 		 * @return string Returns the remote URL contents.
 		 * @since 1.0.0
 		 */
@@ -310,7 +289,6 @@ if ( ! class_exists( 'WPCFTO_WebFont_Loader' ) ) {
 		/**
 		 * Download files mentioned in our CSS locally.
 		 *
-		 * @access public
 		 * @return array Returns an array of remote URLs and their local counterparts.
 		 * @since 1.0.0
 		 */
@@ -425,7 +403,6 @@ if ( ! class_exists( 'WPCFTO_WebFont_Loader' ) ) {
 		/**
 		 * Get font files from the CSS.
 		 *
-		 * @access public
 		 * @return array Returns an array of font-families and the font-files used.
 		 * @since 1.0.0
 		 */
@@ -494,7 +471,6 @@ if ( ! class_exists( 'WPCFTO_WebFont_Loader' ) ) {
 		/**
 		 * Write the CSS to the filesystem.
 		 *
-		 * @access protected
 		 * @return string|false Returns the absolute path of the file on success, or false on fail.
 		 * @since 1.1.0
 		 */
@@ -552,7 +528,6 @@ if ( ! class_exists( 'WPCFTO_WebFont_Loader' ) ) {
 		/**
 		 * Get the stylesheet path.
 		 *
-		 * @access public
 		 * @return string
 		 * @since 1.1.0
 		 */
@@ -570,7 +545,6 @@ if ( ! class_exists( 'WPCFTO_WebFont_Loader' ) ) {
 		 * This is a hash, generated from the site-URL, the wp-content path and the URL.
 		 * This way we can avoid issues with sites changing their URL, or the wp-content path etc.
 		 *
-		 * @access public
 		 * @return string
 		 * @since 1.1.0
 		 */
@@ -580,8 +554,6 @@ if ( ! class_exists( 'WPCFTO_WebFont_Loader' ) ) {
 
 		/**
 		 * Set the font-format to be used.
-		 *
-		 * @access public
 		 *
 		 * @param string $format The format to be used. Use "woff" or "woff2".
 		 *
@@ -595,7 +567,6 @@ if ( ! class_exists( 'WPCFTO_WebFont_Loader' ) ) {
 		/**
 		 * Check if the local stylesheet exists.
 		 *
-		 * @access public
 		 * @return bool
 		 * @since 1.1.0
 		 */
@@ -606,7 +577,6 @@ if ( ! class_exists( 'WPCFTO_WebFont_Loader' ) ) {
 		/**
 		 * Get the base path.
 		 *
-		 * @access public
 		 * @return string
 		 * @since 1.1.0
 		 */
@@ -623,7 +593,6 @@ if ( ! class_exists( 'WPCFTO_WebFont_Loader' ) ) {
 		/**
 		 * Get the base URL.
 		 *
-		 * @access public
 		 * @return string
 		 * @since 1.1.0
 		 */
@@ -638,7 +607,6 @@ if ( ! class_exists( 'WPCFTO_WebFont_Loader' ) ) {
 		/**
 		 * Get the subfolder name.
 		 *
-		 * @access public
 		 * @return string
 		 * @since 1.1.0
 		 */
@@ -653,7 +621,6 @@ if ( ! class_exists( 'WPCFTO_WebFont_Loader' ) ) {
 		/**
 		 * Get the folder for fonts.
 		 *
-		 * @access public
 		 * @return string
 		 */
 		public function get_fonts_folder() {
@@ -670,7 +637,6 @@ if ( ! class_exists( 'WPCFTO_WebFont_Loader' ) ) {
 		/**
 		 * Get the filesystem.
 		 *
-		 * @access protected
 		 * @return \WP_Filesystem_Base
 		 * @since 1.0.0
 		 */
@@ -691,8 +657,6 @@ if ( ! class_exists( 'WPCFTO_WebFont_Loader' ) ) {
 		/**
 		 * Get an absolute URL from a relative URL.
 		 *
-		 * @access protected
-		 *
 		 * @param string $url The URL.
 		 *
 		 * @return string
@@ -711,8 +675,6 @@ if ( ! class_exists( 'WPCFTO_WebFont_Loader' ) ) {
 
 		/**
 		 * Delete folders not used
-		 *
-		 * @access private
 		 */
 		private function deleteFoldersExceptSpecified( $dir, $excludeFolders ) {
 			$wp_filesystem = $this->get_filesystem();
@@ -724,7 +686,7 @@ if ( ! class_exists( 'WPCFTO_WebFont_Loader' ) ) {
 			$items = $wp_filesystem->dirlist( $dir );
 
 			foreach ( $items as $item ) {
-				if ( $item['name'] == '.' || $item['name'] == '..' ) {
+				if ( '.' === $item['name'] || '..' === $item['name'] ) {
 					continue;
 				}
 
@@ -740,8 +702,6 @@ if ( ! class_exists( 'WPCFTO_WebFont_Loader' ) ) {
 
 		/**
 		 * Delete folder and content
-		 *
-		 * @access private
 		 */
 		private function deleteDirectory( $dir ) {
 			$wp_filesystem = $this->get_filesystem();
@@ -749,7 +709,7 @@ if ( ! class_exists( 'WPCFTO_WebFont_Loader' ) ) {
 			$items = $wp_filesystem->dirlist( $dir );
 
 			foreach ( $items as $item ) {
-				if ( $item['name'] == '.' || $item['name'] == '..' ) {
+				if ( '.' === $item['name'] || '..' === $item['name'] ) {
 					continue;
 				}
 
