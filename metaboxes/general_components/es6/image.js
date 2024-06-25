@@ -37,13 +37,13 @@ Vue.component('wpcfto_image', {
                     </div>
                     <div class="actions">
                         <div class="button" v-if="!image_url || !wpcfto_checkURL(image_url)" @click="addImage()">
-                            <i class="fa fa-upload"></i>upload_text
+                            <i class="fa fa-upload"></i>{{ upload_text }}
                         </div>
                         <div class="button" v-if="image_url && wpcfto_checkURL(image_url)" @click="addImage()">
-                        <i class="fa fa-upload"></i>replace_text
+                        <i class="fa fa-upload"></i>{{ replace_text }}
                         </div>
                         <div class="button button-remove" v-if="image_url" @click="removeImage()">
-                            <i class="fa fa-times"></i>remove_text
+                            <i class="fa fa-times"></i>{{ remove_text }}
                         </div>
                     </div>
                 </div>
