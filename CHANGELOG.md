@@ -1,3 +1,5 @@
+## 4.4.23
+- **Fix:** Added text variable for image upload button.
 ## 4.4.22
 - **Fix:** Translation support for settings.
 ## 4.4.21
