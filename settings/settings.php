@@ -221,10 +221,11 @@ class WPCFTO_Settings {
 		);
 
 		$wpcfto_webfont = new WPCFTO_WebFont_Loader();
-		$wpcfto_webfont->delete_fonts_folder();
 
 		foreach ( $settings as $field_name => $field ) {
 			if ( ! empty( $field['font-data']['family'] ) ) {
+				$folder_name = $wpcfto_webfont->get_fonts_folder() . '/' . $field_name;
+				$wpcfto_webfont->deleteDirFiles( $folder_name );
 				$font                                              = new WPCFTO_WebFont_Loader( $field, $field_name );
 				$settings[ $field_name ]['font-data']['local_url'] = $font->get_url();
 			}

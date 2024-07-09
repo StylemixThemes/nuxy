@@ -724,5 +724,12 @@ if ( ! class_exists( 'WPCFTO_WebFont_Loader' ) ) {
 			$wp_filesystem->rmdir( $dir );
 		}
 
+		/**
+		 * Delete folder with files
+		 */
+		public function deleteDirFiles( $dir ) {
+			return $this->get_filesystem()->delete( $dir, true );
+		}
+
 	}
 }
