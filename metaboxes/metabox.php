@@ -96,6 +96,12 @@ class STM_Metaboxes {
 
 						$field_modified = call_user_func( array( $this, $sanitize ), $field_modified, $field_name );
 					}
+					$field_modified_array = json_decode( wp_unslash( $field_modified ), true );
+					if ( ! empty( $field_modified_array ) && ! empty( $field_modified_array['font-data']['family'] ) ) {
+						$font                                           = new WPCFTO_WebFont_Loader( $field_modified_array, $field_name . '_' . $post_id );
+						$field_modified_array['font-data']['local_url'] = $font->get_url();
+						$field_modified                                 = json_encode( wp_slash( $field_modified_array ) );
+					}
 
 					$fields[ $field_name ] = $field_modified;
 				}
