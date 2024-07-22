@@ -1,5 +1,13 @@
 Vue.component('wpcfto_repeater', {
-    props: ['fields', 'field_label', 'field_name', 'field_id', 'field_value', 'field_data'],
+    props: [
+        'fields',
+        'field_label',
+        'field_name',
+        'field_id',
+        'field_value',
+        'field_data',
+        'placeholder_text',
+    ],
     data: function () {
         return {
             repeater: [],
@@ -30,6 +38,7 @@ Vue.component('wpcfto_repeater', {
                                    :field_data="field"
                                    :field_native_name="field_name"
                                    :field_native_name_inner="field_name_inner"
+                                   :placeholder_text="placeholder_text"
                                    @wpcfto-get-value="$set(repeater[area_key], field_name_inner, $event)">
                         </component>
     
