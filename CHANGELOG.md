@@ -1,3 +1,5 @@
+## 4.4.25
+- **Fix:** Fixed minor bug.
 ## 4.4.24
 - **Fix:** Fixed repeater field props.
 ## 4.4.23
