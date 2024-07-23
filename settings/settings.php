@@ -240,9 +240,11 @@ class WPCFTO_Settings {
 		}
 
 		$settings = $this->wpcfto_get_settings();
-		foreach ( $settings as $field_name => $field ) {
-			if ( ! empty( $field['font-data']['family'] ) ) {
-				return true;
+		if ( ! empty( $settings ) ) {
+			foreach ( $settings as $field_name => $field ) {
+				if ( ! empty( $field['font-data']['family'] ) ) {
+					return true;
+				}
 			}
 		}
 
