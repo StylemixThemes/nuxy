@@ -80,7 +80,8 @@ class STM_Metaboxes {
 							$field_modified = wp_kses_post( $_POST[ $field_name ] );
 						} else {
 							$field_modified = is_array( $_POST[ $field_name ] )
-								? array_map( 'sanitize_text_field', $_POST[ $field_name ] )
+								// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+								? $this->wpcfto_sanitize_array_field( $_POST[ $field_name ] )
 								: sanitize_text_field( $_POST[ $field_name ] );
 						}
 
@@ -103,6 +104,20 @@ class STM_Metaboxes {
 		}
 
 		return $fields;
+	}
+
+	public function wpcfto_sanitize_array_field( $value ) {
+		if ( is_array( $value ) ) {
+			foreach ( $value as &$val ) {
+				if ( is_array( $val ) ) {
+					$val = $this->wpcfto_sanitize_array_field( $val );
+				} else {
+					$val = sanitize_text_field( $val );
+				}
+			}
+		}
+
+		return $value;
 	}
 
 	public function wpcfto_field_sanitize_repeater( $value ) {
