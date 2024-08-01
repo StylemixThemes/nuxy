@@ -22,6 +22,7 @@ wp_enqueue_script( 'my-super-component', STM_WPCFTO_URL . '/metaboxes/general_co
 				v-bind:field_id="'<?php echo esc_attr( $field_id ); ?>'"
 				v-bind:field_value="<?php echo esc_attr( $field_value ); ?>"
 				v-bind:field_data='<?php echo esc_attr( htmlspecialchars( wp_json_encode( $field_data ) ) ); ?>'
+				v-bind:placeholder_text="'<?php echo esc_html__( 'Enter', 'nuxy' ); ?>'"
 				@wpcfto-get-value="$set(<?php echo esc_attr( $field ); ?>, 'value', $event)">
 </wpcfto_repeater>
 

@@ -1,3 +1,7 @@
+## 4.4.25
+- **Fix:** Fixed minor bug.
+## 4.4.24
+- **Fix:** Fixed repeater field props.
 ## 4.4.23
 - **Fix:** Added text variable for image upload button.
 ## 4.4.22
