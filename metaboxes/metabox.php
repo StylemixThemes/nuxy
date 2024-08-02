@@ -108,11 +108,13 @@ class STM_Metaboxes {
 
 	public function wpcfto_sanitize_array_field( $value ) {
 		if ( is_array( $value ) ) {
-			foreach ( $value as &$val ) {
+			foreach ( $value as $key => &$val ) {
 				if ( is_array( $val ) ) {
 					$val = $this->wpcfto_sanitize_array_field( $val );
 				} else {
-					$val = sanitize_text_field( $val );
+					$val = 'isTrue' === $key
+						? rest_sanitize_boolean( $val )
+						: sanitize_text_field( $val );
 				}
 			}
 		}
