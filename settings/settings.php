@@ -175,16 +175,27 @@ class WPCFTO_Settings {
 		$id           = sanitize_text_field( $_REQUEST['name'] );
 		$settings     = array();
 		$request_body = file_get_contents( 'php://input' );
-		if ( ! empty( $request_body ) ) {
-			$request_body = json_decode( $request_body, true );
-			foreach ( $request_body as $section_name => $section ) {
-				foreach ( $section['fields'] as $field_name => $field ) {
-					if ( ! empty( $field['value']['font-data']['family'] ) ) {
-						$font                                     = new WPCFTO_WebFont_Loader( $field['value'], $field_name );
-						$field['value']['font-data']['local_url'] = $font->get_url();
+		if (!empty($request_body)) {
+			$request_body = json_decode($request_body, true);
+			foreach ($request_body as $section_name => $section) {
+				foreach ($section['fields'] as $field_name => $field) {
+					if (!empty($field['value']['font-data']['family'])) {
+						$exclude_font_family = false;
+						if (!empty($field['excluded'])) {
+							foreach ($field['excluded'] as $exclude) {
+								if ("font-family" === $exclude) {
+									$exclude_font_family = true;
+									break;
+								}
+							}
+						}
+						if (!$exclude_font_family) {
+							$font = new WPCFTO_WebFont_Loader($field['value'], $field_name);
+							$field['value']['font-data']['local_url'] = $font->get_url();
+						}
 					}
-					if ( ! isset( $field['readonly'] ) || ! $field['readonly'] ) {
-						$settings[ $field_name ] = $field['value'];
+					if (!isset($field['readonly']) || !$field['readonly']) {
+						$settings[$field_name] = $field['value'];
 					}
 				}
 			}
