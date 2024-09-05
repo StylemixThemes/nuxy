@@ -180,15 +180,7 @@ class WPCFTO_Settings {
 			foreach ($request_body as $section_name => $section) {
 				foreach ( $section['fields'] as $field_name => $field ) {
 					if ( ! empty( $field['value']['font-data']['family'] ) ) {
-						$exclude_font_family = false;
-						if ( ! empty( $field['excluded'] ) ) {
-							foreach ( $field['excluded'] as $exclude ) {
-								if ( "font-family" === $exclude ) {
-									$exclude_font_family = true;
-									break;
-								}
-							}
-						}
+						$exclude_font_family = ! empty( $field['excluded'] ) && in_array( 'font-family', $field['excluded'], true );
 						if ( ! $exclude_font_family ) {
 							$font                                     = new WPCFTO_WebFont_Loader( $field['value'], $field_name );
 							$field['value']['font-data']['local_url'] = $font->get_url();
