@@ -182,7 +182,7 @@ if ( ! class_exists( 'WPCFTO_WebFont_Loader' ) ) {
 		 */
 		public function get_local_stylesheet_url() {
 			if ( ! $this->local_stylesheet_url ) {
-				$base_path = is_multisite() ? '/wp-content/uploads/sites/' . get_current_blog_id() : '/wp-content/uploads/';
+				$base_path = is_multisite() ? '/wp-content/uploads/sites/' . get_current_blog_id() . '/' : '/wp-content/uploads/';
 				$this->local_stylesheet_url = $base_path . $this->get_subfolder_name() . '/' . $this->key . '/' . $this->get_local_stylesheet_filename() . '.css';
 			}
 
