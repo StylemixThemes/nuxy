@@ -182,7 +182,13 @@ if ( ! class_exists( 'WPCFTO_WebFont_Loader' ) ) {
 		 */
 		public function get_local_stylesheet_url() {
 			if ( ! $this->local_stylesheet_url ) {
-				$base_path = is_multisite() ? '/wp-content/uploads/sites/' . get_current_blog_id() . '/' : '/wp-content/uploads/';
+				$base_path = '/wp-content/uploads/';
+				if ( is_multisite() ) {
+					$current_site_id = get_current_blog_id();
+					if ( 1 !== $current_site_id ) {
+						$base_path = '/wp-content/uploads/sites/' . $current_site_id . '/';
+					}
+				}
 				$this->local_stylesheet_url = $base_path . $this->get_subfolder_name() . '/' . $this->key . '/' . $this->get_local_stylesheet_filename() . '.css';
 			}
 
@@ -603,7 +609,9 @@ if ( ! class_exists( 'WPCFTO_WebFont_Loader' ) ) {
 
 				if ( is_multisite() ) {
 					$current_site_id = get_current_blog_id();
-					$base_url .= 'sites/' . $current_site_id;
+					if ( 1 !== $current_site_id ) {
+						$base_url .= 'sites/' . $current_site_id;
+					}
 				}
 
 				$this->base_url = apply_filters( 'wpcfto_get_local_fonts_base_url', $base_url );
