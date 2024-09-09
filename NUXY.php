@@ -35,7 +35,7 @@ add_action(
 					require_once STM_WPCFTO_PATH . '/metaboxes/metabox.php';
 					require_once STM_WPCFTO_PATH . '/metaboxes/google_fonts.php';
 					require_once STM_WPCFTO_PATH . '/taxonomy_meta/metaboxes.php';
-					require_once STM_WPCFTO_PATH . '/settings/font-loader.php';
+//					require_once STM_WPCFTO_PATH . '/settings/font-loader.php';
 					require_once STM_WPCFTO_PATH . '/settings/settings.php';
 					require_once STM_WPCFTO_PATH . '/settings/front_settings.php';
 					require_once STM_WPCFTO_PATH . '/backward-compatibility.php';
