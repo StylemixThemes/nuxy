@@ -260,10 +260,10 @@ class STM_Metaboxes {
 			'import_data_label'                  => esc_html__( 'Import options', 'nuxy' ),
 			'vue_select_notice'                  => esc_html__( 'Sorry, no matching options.', 'nuxy' ),
 			'regenerate_fonts_btn'               => esc_html__( 'Synchronise', 'nuxy' ),
-			'regenerate_fonts_title'             => esc_html__( 'Synchronise fonts', 'nuxy' ),
-			'regenerate_fonts_notice'            => esc_html__( 'This setting will automatically update font files in server', 'nuxy' ),
-			'fonts_download_setting_label'       => esc_html__( 'Download Fonts', 'nuxy' ),
-			'fonts_download_setting_description' => esc_html__( 'This setting enables downloading Google fonts and storing them locally', 'nuxy' ),
+			'regenerate_fonts_title'             => esc_html__( 'Font Synchronization', 'nuxy' ),
+			'regenerate_fonts_notice'            => esc_html__( 'Sync and update your fonts if they are displayed incorrectly on your website.', 'nuxy' ),
+			'fonts_download_setting_label'       => esc_html__( 'Download Google Fonts', 'nuxy' ),
+			'fonts_download_setting_description' => esc_html__( 'Download and store Google Fonts locally. Set the fonts in the typography.', 'nuxy' ),
 		);
 	}
 
