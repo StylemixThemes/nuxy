@@ -20,17 +20,19 @@ Vue.component('fonts_download_settings', {
             <div class="wpcfto_enable_fonts">
                 <div class="wpcfto_generic_field wpcfto_generic_checkbox wpcfto_generic_field_regenerate_fonts">
                     <wpcfto_fields_aside_before :fields="fonts_download_setting_texts" :field_label="fonts_download_setting_texts.label"></wpcfto_fields_aside_before>
-                    <div class="wpcfto-admin-checkbox wpcfto_enable_fonts_checkbox">
-                        <label>
-                            <div class="wpcfto-admin-checkbox-wrapper is_toggle" v-bind:class="{'active' : value}">
-                                <div class="wpcfto-checkbox-switcher"></div>
-                                <input type="checkbox"
-                                       :name="field_name"
-                                       v-bind:id="field_id"
-                                       v-model="value"
-                                />
-                            </div>
-                        </label>
+                    <div class="wpcfto-field-content">
+                        <div class="wpcfto-admin-checkbox wpcfto_enable_fonts_checkbox">
+                            <label>
+                                <div class="wpcfto-admin-checkbox-wrapper is_toggle" v-bind:class="{'active' : value}">
+                                    <div class="wpcfto-checkbox-switcher"></div>
+                                    <input type="checkbox"
+                                           :name="field_name"
+                                           v-bind:id="field_id"
+                                           v-model="value"
+                                    />
+                                </div>
+                            </label>
+                        </div>
                     </div>
                 </div>
             </div>
