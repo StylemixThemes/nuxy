@@ -220,7 +220,8 @@ class WPCFTO_Settings {
 			die;
 		}
 
-		$settings = $this->wpcfto_get_settings();
+		$id       = sanitize_text_field( $_GET['name'] );
+		$settings = get_option( $id, array() );
 
 		$response = array(
 			'reload'    => true,

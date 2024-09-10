@@ -1,5 +1,5 @@
 Vue.component('fonts_download_settings', {
-    props: ['fields', 'field_label', 'field_name', 'field_id', 'field_value'],
+    props: ['fields', 'field_label', 'field_name', 'field_id', 'field_value', 'option_id'],
     data: function () {
         return {
             translations: wpcfto_global_settings['translations'],
@@ -55,7 +55,7 @@ Vue.component('fonts_download_settings', {
             var vm = this;
 
             vm.loading = true;
-            let url = stm_wpcfto_ajaxurl + '?action=wpcfto_regenerate_fonts&nonce=' + stm_wpcfto_nonces['wpcfto_regenerate_fonts'];
+            let url = stm_wpcfto_ajaxurl + '?action=wpcfto_regenerate_fonts&name=' + vm.option_id + '&nonce=' + stm_wpcfto_nonces['wpcfto_regenerate_fonts'];
             this.$http.post(url).then(function (response) {
                 vm.loading = false;
                 if (response?.data?.reload) {

@@ -636,7 +636,7 @@ function wpcfto_metaboxes_generate_deps( $section_name, $dep ) {
 	return $dependency;
 }
 
-function wpcfto_metaboxes_display_single_field( $section, $section_name, $field, $field_name ) {
+function wpcfto_metaboxes_display_single_field( $section, $section_name, $field, $field_name, $metabox_id = null  ) {
 	$dependency  = wpcfto_metaboxes_deps( $field, $section_name );
 	$width       = 'column-1';
 	$is_pro      = ( ! empty( $field['pro'] ) ) ? 'is_pro' : 'not_pro';
@@ -707,6 +707,7 @@ function wpcfto_metaboxes_display_single_field( $section, $section_name, $field,
 			$field_label    = "{$field}['label']";
 			$field_id       = $section_name . '-' . $field_name;
 			$field_readonly = isset( $field_data['readonly'] ) ? 'true' : 'false';
+			$option_id     = $metabox_id;
 
 			$file = apply_filters( "wpcfto_field_{$field_type}", STM_WPCFTO_PATH . '/metaboxes/fields/' . $field_type . '.php' );
 

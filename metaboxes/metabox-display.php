@@ -174,7 +174,7 @@ if ( empty( $metabox_id ) ) {
 										continue;
 									}
 
-									wpcfto_metaboxes_display_single_field( $section, $section_name, $field, $field_name );
+									wpcfto_metaboxes_display_single_field( $section, $section_name, $field, $field_name, $metabox_id );
 
 								}
 								?>
