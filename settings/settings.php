@@ -18,6 +18,7 @@ class WPCFTO_Settings {
 		add_action( 'wp_ajax_wpcfto_save_settings', array( $this, 'stm_save_settings' ) );
 		add_action( 'wp_ajax_wpcfto_regenerate_fonts', array( $this, 'stm_regenerate_fonts' ) );
 		add_filter( 'wpcfto_enable_regenerate_fonts', array( $this, 'stm_enable_regenerate_fonts' ) );
+		add_filter( 'wpcfto_field_fonts_download_settings', array( $this, 'fonts_download_settings_template' ) );
 
 		if ( ! empty( $this->setup['admin_bar_title'] ) ) {
 			add_action( 'admin_bar_menu', array( $this, 'admin_bar_button' ), 40 );
@@ -179,7 +180,7 @@ class WPCFTO_Settings {
 			$request_body = json_decode($request_body, true);
 			foreach ($request_body as $section_name => $section) {
 				foreach ( $section['fields'] as $field_name => $field ) {
-					if ( class_exists( 'WPCFTO_WebFont_Loader' ) ) {
+					if ( ( 'fonts_download_settings' === $field['type'] && $field['value'] ) && class_exists( 'WPCFTO_WebFont_Loader' ) ) {
 						if ( ! empty( $field['value']['font-data']['family'] ) ) {
 							$exclude_font_family = ! empty( $field['excluded'] ) && in_array( 'font-family', $field['excluded'], true );
 							if ( ! $exclude_font_family ) {
@@ -255,6 +256,10 @@ class WPCFTO_Settings {
 		}
 
 		return false;
+	}
+
+	public function fonts_download_settings_template() {
+		return STM_WPCFTO_PATH . '/metaboxes/fields/fonts_download_settings.php';
 	}
 }
 
