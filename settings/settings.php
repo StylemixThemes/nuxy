@@ -69,7 +69,8 @@ class WPCFTO_Settings {
 					$this->page_args['menu_title'],
 					'manage_options',
 					$this->page_args['menu_slug'],
-					array( $this, 'settings_page_view' )
+					array( $this, 'settings_page_view' ),
+					$this->page_args['position']
 				);
 			} else {
 				add_menu_page(
