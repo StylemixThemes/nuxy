@@ -240,28 +240,30 @@ class STM_Metaboxes {
 
 	public static function translations() {
 		return array(
-			'font_size'               => esc_html__( 'Font size', 'nuxy' ),
-			'line_height'             => esc_html__( 'Line height', 'nuxy' ),
-			'word_spacing'            => esc_html__( 'Word spacing', 'nuxy' ),
-			'letter_spacing'          => esc_html__( 'Letter spacing', 'nuxy' ),
-			'font_family'             => esc_html__( 'Font Family', 'nuxy' ),
-			'backup_font_family'      => esc_html__( 'Backup Font Family', 'nuxy' ),
-			'font_weight'             => esc_html__( 'Font Weignt & Style', 'nuxy' ),
-			'font_subset'             => esc_html__( 'Font Subsets', 'nuxy' ),
-			'text_align'              => esc_html__( 'Text Align', 'nuxy' ),
-			'font_color'              => esc_html__( 'Font Color', 'nuxy' ),
-			'text-transform'          => esc_html__( 'Text transform', 'nuxy' ),
-			'export'                  => esc_html__( 'Copy settings', 'nuxy' ),
-			'import'                  => esc_html__( 'Import settings', 'nuxy' ),
-			'import_notice'           => esc_html__( 'WARNING! This will overwrite all existing option values, please proceed with caution!', 'nuxy' ),
-			'exported_data'           => esc_html__( 'Settings copied to buffer', 'nuxy' ),
-			'exported_data_error'     => esc_html__( 'Couldn\'t copy settings', 'nuxy' ),
-			'export_data_label'       => esc_html__( 'Export options', 'nuxy' ),
-			'import_data_label'       => esc_html__( 'Import options', 'nuxy' ),
-			'vue_select_notice'       => esc_html__( 'Sorry, no matching options.', 'nuxy' ),
-			'regenerate_fonts_btn'    => esc_html__( 'Generate', 'nuxy' ),
-			'regenerate_fonts_title'  => esc_html__( 'Generate fonts', 'nuxy' ),
-			'regenerate_fonts_notice' => esc_html__( 'This setting will automatically update font files in server', 'nuxy' ),
+			'font_size'                          => esc_html__( 'Font size', 'nuxy' ),
+			'line_height'                        => esc_html__( 'Line height', 'nuxy' ),
+			'word_spacing'                       => esc_html__( 'Word spacing', 'nuxy' ),
+			'letter_spacing'                     => esc_html__( 'Letter spacing', 'nuxy' ),
+			'font_family'                        => esc_html__( 'Font Family', 'nuxy' ),
+			'backup_font_family'                 => esc_html__( 'Backup Font Family', 'nuxy' ),
+			'font_weight'                        => esc_html__( 'Font Weignt & Style', 'nuxy' ),
+			'font_subset'                        => esc_html__( 'Font Subsets', 'nuxy' ),
+			'text_align'                         => esc_html__( 'Text Align', 'nuxy' ),
+			'font_color'                         => esc_html__( 'Font Color', 'nuxy' ),
+			'text-transform'                     => esc_html__( 'Text transform', 'nuxy' ),
+			'export'                             => esc_html__( 'Copy settings', 'nuxy' ),
+			'import'                             => esc_html__( 'Import settings', 'nuxy' ),
+			'import_notice'                      => esc_html__( 'WARNING! This will overwrite all existing option values, please proceed with caution!', 'nuxy' ),
+			'exported_data'                      => esc_html__( 'Settings copied to buffer', 'nuxy' ),
+			'exported_data_error'                => esc_html__( 'Couldn\'t copy settings', 'nuxy' ),
+			'export_data_label'                  => esc_html__( 'Export options', 'nuxy' ),
+			'import_data_label'                  => esc_html__( 'Import options', 'nuxy' ),
+			'vue_select_notice'                  => esc_html__( 'Sorry, no matching options.', 'nuxy' ),
+			'regenerate_fonts_btn'               => esc_html__( 'Synchronise', 'nuxy' ),
+			'regenerate_fonts_title'             => esc_html__( 'Font Synchronization', 'nuxy' ),
+			'regenerate_fonts_notice'            => esc_html__( 'Sync and update your fonts if they are displayed incorrectly on your website.', 'nuxy' ),
+			'fonts_download_setting_label'       => esc_html__( 'Download Google Fonts', 'nuxy' ),
+			'fonts_download_setting_description' => esc_html__( 'Download and store Google Fonts locally. Set the fonts in the typography.', 'nuxy' ),
 		);
 	}
 
@@ -346,7 +348,6 @@ class STM_Metaboxes {
 			'typography',
 			'multiselect',
 			'import_export',
-			'regenerate_fonts',
 			'trumbowyg',
 		);
 
@@ -635,7 +636,7 @@ function wpcfto_metaboxes_generate_deps( $section_name, $dep ) {
 	return $dependency;
 }
 
-function wpcfto_metaboxes_display_single_field( $section, $section_name, $field, $field_name ) {
+function wpcfto_metaboxes_display_single_field( $section, $section_name, $field, $field_name, $metabox_id = null  ) {
 	$dependency  = wpcfto_metaboxes_deps( $field, $section_name );
 	$width       = 'column-1';
 	$is_pro      = ( ! empty( $field['pro'] ) ) ? 'is_pro' : 'not_pro';
@@ -706,6 +707,7 @@ function wpcfto_metaboxes_display_single_field( $section, $section_name, $field,
 			$field_label    = "{$field}['label']";
 			$field_id       = $section_name . '-' . $field_name;
 			$field_readonly = isset( $field_data['readonly'] ) ? 'true' : 'false';
+			$option_id     = $metabox_id;
 
 			$file = apply_filters( "wpcfto_field_{$field_type}", STM_WPCFTO_PATH . '/metaboxes/fields/' . $field_type . '.php' );
 

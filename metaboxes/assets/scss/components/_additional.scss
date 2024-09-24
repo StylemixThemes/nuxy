@@ -135,12 +135,11 @@ body .stm_metaboxes_grid .stm_metaboxes_grid__inner .stm_lms_questions_v2_wrappe
     }
 }
 
-.wpcfto_regenerate_fonts {
+.wpcfto_regenerate_fonts, .wpcfto_fonts_download_settings {
     width: 100%;
 }
 
 .stm_metaboxes_grid .wpcfto_generic_field.wpcfto_generic_field_regenerate_fonts {
-    justify-content: space-between;
     p {
         color: #aaa;
         margin: 0 !important;

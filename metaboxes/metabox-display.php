@@ -34,18 +34,6 @@ if ( empty( $metabox_id ) ) {
 			),
 		);
 	}
-	if ( apply_filters( 'wpcfto_enable_regenerate_fonts', true ) && class_exists( 'WPCFTO_WebFont_Loader' ) ) {
-		$sections['wpcfto_regenerate_fonts'] = array(
-			'name'   => esc_html__( 'Generate fonts', 'nuxy' ),
-			'icon'   => 'fa fa-sync',
-			'fields' => array(
-				'wpcfto_regenerate_fonts_field' => array(
-					'type' => 'regenerate_fonts',
-					'id'   => $metabox['id'],
-				),
-			),
-		);
-	}
 }
 
 ?>
@@ -186,7 +174,7 @@ if ( empty( $metabox_id ) ) {
 										continue;
 									}
 
-									wpcfto_metaboxes_display_single_field( $section, $section_name, $field, $field_name );
+									wpcfto_metaboxes_display_single_field( $section, $section_name, $field, $field_name, $metabox_id );
 
 								}
 								?>
