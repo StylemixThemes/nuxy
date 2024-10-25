@@ -3,6 +3,86 @@
         display: flex;
         width: 100%;
         flex-direction: column;
+        position: relative;
+        &__popup {
+            display: flex;
+            width: 300px;
+            padding: 20px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            z-index: 999;
+            visibility: hidden;
+            opacity: 0;
+            background: #ffffff;
+            box-shadow: 0 5px 30px 0 rgba(0, 0, 0, 0.25);
+            border-radius: 8px;
+            transition: 0.3s;
+            &.wpcfto_repeater_table__popup_show {
+                opacity: 1;
+                visibility: visible;
+            }
+            &-content {
+                display: flex;
+                width: 100%;
+                flex-direction: column;
+            }
+            &-text {
+                display: flex;
+                justify-content: center;
+                width: 100%;
+                font-size: 18px;
+                line-height: normal;
+                color: #001931;
+                font-weight: 700;
+            }
+            &-actions {
+                display: flex;
+                width: 100%;
+                margin-top: 20px;
+                justify-content: center;
+            }
+            &-cancel {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 0 20px;
+                height: 40px;
+                border-radius: 4px;
+                background: rgba(255, 57, 69, 0.1);
+                color: rgba(255, 57, 69, 1);
+                font-size: 14px;
+                font-weight: 700;
+                line-height: normal;
+                transition: 0.2s;
+                margin-right: 20px;
+                &:hover {
+                    cursor: pointer;
+                    background: rgba(255, 57, 69, 1);
+                    color: #ffffff;
+                }
+            }
+            &-confirm {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 0 20px;
+                height: 40px;
+                border-radius: 4px;
+                background: rgba(34, 122, 255, 0.1);
+                color: rgba(34, 122, 255, 1);
+                font-size: 14px;
+                font-weight: 700;
+                line-height: normal;
+                transition: 0.2s;
+                &:hover {
+                    cursor: pointer;
+                    background: rgba(34, 122, 255, 1);
+                    color: #ffffff;
+                }
+            }
+        }
         &__wrapper {
             display: flex;
             width: 100%;
@@ -38,6 +118,33 @@
             height: 60px;
             padding: 10px 20px;
             border-bottom: 1px solid #DBE0E9;
+            position: relative;
+            &-delete {
+                display: flex;
+                width: 40px;
+                height: 40px;
+                justify-content: center;
+                align-items: center;
+                position: absolute;
+                right: 20px;
+                top: 50%;
+                transform: translateY(-50%);
+                border-radius: 4px;
+                background: rgba(255, 57, 69, 0.10);
+                transition: 0.2s;
+                i {
+                    font-size: 15px;
+                    transition: 0.2s;
+                    color: rgba(255, 57, 69, 1);
+                }
+                &:hover {
+                    cursor: pointer;
+                    background: rgba(255, 57, 69, 1);
+                    i {
+                        color: #ffffff;
+                    }
+                }
+            }
             &:last-child {
                 border-bottom: none;
             }
@@ -80,94 +187,160 @@
                 line-height: normal;
             }
         }
-    }
-}
-
-.stm_colorpicker_wrapper {
-    position: relative;
-    .vc-photoshop,
-    .vc-chrome {
-        position: absolute;
-        top: 100%;
-        right: 0;
-        width: 100%;
-        min-width: 540px;
-        opacity: 0;
-        visibility: hidden;
-        transform: translateY(5px);
-        transition: .3s ease;
-        z-index: 999999999999;
-        &:hover {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
+        &__add-row {
+            display: flex;
+            width: 100%;
+            flex-wrap: nowrap;
+            margin: 30px 0 20px 0px;
         }
-        .vc-ps-ac-btn {
-            display: none;
-        }
-        .vc-editable-input {
-            .vc-input__input {
-                position: relative;
-                left: 17px;
-                width: 100%;
+        &__add-button {
+            display: flex;
+            flex-shrink: 0;
+            height: 40px;
+            padding: 0 20px;
+            justify-content: center;
+            align-items: center;
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 700;
+            line-height: 1;
+            background: rgba(34, 122, 255, 1);
+            border-radius: 5px;
+            transition: 0.2s;
+            margin-top: auto;
+            &:hover {
+                cursor: pointer;
+                background: rgba(34, 122, 255, 0.85);
             }
         }
-    }
-
-    &.picker-position-top {
-        .vc-photoshop,
-        .vc-chrome {
-            top: auto;
-            bottom: 100%;
+        input.wpcfto_repeater_table__input {
+            display: flex;
+            width: 100%;
+            &.wpcfto_repeater_table__input_error {
+                border-color: rgba(255, 57, 69, 1);
+            }
         }
-    }
-
-    label {
-        display: block;
-        font-size: 16px;
-        font-weight: 600;
-        margin-bottom: 7px;
-    }
-    > input[type='text'] {
-        padding-right: 20px;
-        & {
-            vertical-align: middle;
-            width: calc(100% - 52px) !important;
-            display: initial !important;
+        &__input {
+            &-wrapper {
+                display: flex;
+                flex: 1;
+                flex-shrink: 0;
+                flex-direction: column;
+                margin-right: 20px;
+                position: relative;
+                &:last-child {
+                    margin-right: 0;
+                }
+                .wpcfto_repeater_table__error-message {
+                    display: flex;
+                    color: rgba(255, 57, 69, 1);
+                    font-size: 12px;
+                    font-weight: 400;
+                    line-height: normal;
+                    position: absolute;
+                    top: 100%;
+                    margin-top: 3px;
+                }
+            }
+            &-title {
+                display: flex;
+                width: 100%;
+                color: #001931;
+                font-size: 12px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: normal;
+                margin-bottom: 5px;
+            }
         }
-        &:focus + div {
+        .stm_colorpicker_wrapper {
+            position: relative;
             .vc-photoshop,
             .vc-chrome {
-                opacity: 1;
-                visibility: visible;
-                transform: translateY(0);
+                position: absolute;
+                top: 100%;
+                right: 0;
+                width: 100%;
+                min-width: 540px;
+                opacity: 0;
+                visibility: hidden;
+                transform: translateY(5px);
+                transition: .3s ease;
+                z-index: 999999999999;
+                &:hover {
+                    opacity: 1;
+                    visibility: visible;
+                    transform: translateY(0);
+                }
+                .vc-ps-ac-btn {
+                    display: none;
+                }
+                .vc-editable-input {
+                    .vc-input__input {
+                        position: relative;
+                        left: 17px;
+                        width: 100%;
+                    }
+                }
+            }
+            &.picker-position-top {
+                .vc-photoshop,
+                .vc-chrome {
+                    top: auto;
+                    bottom: 100%;
+                }
+            }
+            label {
+                display: block;
+                font-size: 16px;
+                font-weight: 600;
+                margin-bottom: 7px;
+            }
+            > input[type='text'] {
+                padding: 0 16px 0 45px;
+                & {
+                    vertical-align: middle;
+                    width: 100% !important;
+                    display: initial !important;
+                }
+                &:focus + div {
+                    .vc-photoshop,
+                    .vc-chrome {
+                        opacity: 1;
+                        visibility: visible;
+                        transform: translateY(0);
+                    }
+                }
+            }
+            > span:not(.description) {
+                background: #f6f9fc;
+                display: flex;
+                width: 30px;
+                height: 30px;
+                margin: 0;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+                border: 1px solid #bec5cb;
+                position: absolute;
+                left: 6px;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+            .wpcfto_generic_field_color__clear {
+                position: absolute;
+                right: 7px;
+                top: 5px;
+                padding: 0;
+                width: 18px;
+                height: 18px;
+                text-align: center;
+                line-height: 19px;
+                border-radius: 50%;
+                font-size: 11px;
+                background: #ccc;
+                color: #fff;
             }
         }
-    }
-    > span:not(.description) {
-        background-color: #f6f9fc;
-        display: inline-block;
-        width: 40px;
-        height: 40px;
-        margin-right: 10px;
-        border: 1px solid #bec5cb;
-        cursor: pointer;
-        vertical-align: top;
-        border-radius: 5px;
-    }
-
-    .wpcfto_generic_field_color__clear {
-        position: absolute;
-        right: 7px;
-        top: 5px;
-        padding: 0;
-        width: 18px;
-        height: 18px;
-        text-align: center;
-        line-height: 19px;
-        border-radius: 50%;
-        font-size: 11px;
-        background: #ccc;
-        color: #fff;
     }
 }

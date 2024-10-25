@@ -1,18 +1,18 @@
 Vue.component('wpcfto_repeater_table', {
 	props: [
 		'fields',
+		'popup_text',
+		'popup_confirm_button',
+		'popup_cancel_button',
+		'fields_error',
+		'fields_range_error',
 	],
 	components: {
 		'slider-picker': VueColor.Chrome
 	},
 	data() {
 		return {
-			newRow: {
-				badge: '',
-				point: null,
-				minRange: null,
-				color: null,
-			},
+			newRow: this.initializeNewRow(),
 			colorValue: {
 				r: 255,
 				g: 255,
@@ -20,6 +20,8 @@ Vue.component('wpcfto_repeater_table', {
 				a: 1,
 			},
 			colorInputValue: 'rgba(255, 255, 255, 1)',
+			showConfirmDelete: false,
+			validationErrors: {},
 		};
 	},
 	created: function () {
@@ -65,29 +67,67 @@ Vue.component('wpcfto_repeater_table', {
 									{{ row[key] || '' }}
 								</span>
 							</div>
+							<span v-if="rowIndex === fields.value.length - 1" @click="confirmDelete" class="wpcfto_repeater_table__row-delete">
+								<i class="fa fa-trash"></i>
+							</span>
 						</div>
 					</div>
 				</div>
 				<div class="wpcfto_repeater_table__add-row">
-					<div class="wpcfto_repeater_table__input">
-						<input type="text" v-model="newRow.badge" />
-					</div>
-					<div class="wpcfto_repeater_table__input">
-						<input type="number" min="0" v-model="newRow.point" />
-					</div>
-					<div class="wpcfto_repeater_table__input">
-						<input type="number" min="0" v-model="newRow.minRange" />
-					</div>
-					<div class="wpcfto_repeater_table__input">
-						<div class="stm_colorpicker_wrapper">
-							<span v-bind:style="{'background-color': colorInputValue}" @click="$refs.color_input.focus()"></span>
-							<input type="text" v-model="colorInputValue" ref="color_input" />
+					<div v-for="(column, key) in fields.options" :key="key" class="wpcfto_repeater_table__input-wrapper">
+						<span class="wpcfto_repeater_table__input-title">
+							{{ column.title }}{{ column.type === 'range' ? ' min, %' : '' }}
+						</span>
+						<input v-if="column.type === 'text' || column.type === 'badge'"
+							type="text"
+							v-model="newRow[key]"
+							class="wpcfto_repeater_table__input"
+							:class="{'wpcfto_repeater_table__input_error': validationErrors[key]}"
+							@input="clearValidationError(key)"
+						/>
+						<input v-else-if="column.type === 'number'"
+							type="number"
+							min="0"
+							v-model="newRow[key]"
+							class="wpcfto_repeater_table__input"
+							:class="{'wpcfto_repeater_table__input_error': validationErrors[key]}"
+							@input="clearValidationError(key)"
+						/>
+						<input v-else-if="column.type === 'range'"
+							type="number"
+							min="0"
+							v-model="newRow[key]"
+							class="wpcfto_repeater_table__input"
+							:class="{'wpcfto_repeater_table__input_error': validationErrors[key]}"
+							@input="handleRangeInput(key)"
+						/>
+						<div v-else-if="column.type === 'color'" class="stm_colorpicker_wrapper">
+							<span :style="{'background-color': colorInputValue}" @click="focusNextInput"></span>
+							<input
+								type="text"
+								v-model="colorInputValue"
+								class="wpcfto_repeater_table__input"
+								:class="{'wpcfto_repeater_table__input_error': validationErrors[key] && colorInputValue === ''}"
+								@input="handleColorInput(key)"
+							/>
 							<div>
 								<slider-picker v-model="colorValue"></slider-picker>
 							</div>
 						</div>
+						<div v-if="validationErrors[key] && (key !== 'color' || colorInputValue === '')" class="wpcfto_repeater_table__error-message">
+							{{ validationErrors[key] }}
+						</div>
 					</div>
-					<button @click="addRow">Add</button>
+					<span class="wpcfto_repeater_table__add-button" @click="addRow">Add</span>
+				</div>
+				<div :class="{'wpcfto_repeater_table__popup': true, 'wpcfto_repeater_table__popup_show': showConfirmDelete}">
+					<div class="wpcfto_repeater_table__popup-content">
+						<div class="wpcfto_repeater_table__popup-text">{{ popup_text }}</div>
+						<div class="wpcfto_repeater_table__popup-actions">
+							<span @click="closeDeleteConfirm" class="wpcfto_repeater_table__popup-cancel">{{ popup_cancel_button }}</span>
+							<span @click="deleteLastRow" class="wpcfto_repeater_table__popup-confirm">{{ popup_confirm_button }}</span>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -96,37 +136,111 @@ Vue.component('wpcfto_repeater_table', {
 		updateColor(newColor) {
 			this.newRow.color = newColor;
 		},
-		addRow() {
-			if (this.newRow.badge && this.newRow.point !== null && this.newRow.minRange !== null && this.newRow.color) {
-				let maxRange = 100;
-
-				if (this.fields.value.length > 0) {
-					const previousRow = this.fields.value[this.fields.value.length - 1];
-					maxRange = previousRow.range[0] - 1;
-
-					if (this.newRow.minRange >= previousRow.range[0]) {
-						return;
-					}
-				}
-
-				if (this.newRow.minRange <= 0) {
-					return;
-				}
-
-				this.fields.value.push({
-					badge: this.newRow.badge,
-					point: this.newRow.point,
-					range: [this.newRow.minRange, maxRange],
-					color: this.newRow.color,
-				});
-
-				this.newRow = {
-					badge: '',
-					point: null,
-					minRange: null,
-					color: '',
-				};
+		initializeNewRow() {
+			let row = {};
+			for (let key in this.fields.options) {
+				row[key] = '';
 			}
+			return row;
+		},
+		focusNextInput() {
+			this.$nextTick(() => {
+				const spanElement = event.target;
+				const inputElement = spanElement.nextElementSibling;
+
+				if (inputElement && inputElement.tagName === 'INPUT') {
+					inputElement.focus();
+				}
+			});
+		},
+		addRow() {
+			let isValid = true;
+			let maxRange = 100;
+
+			this.validationErrors = {};
+
+			for (let key in this.fields.options) {
+				if (this.newRow[key] === null || this.newRow[key] === '') {
+					isValid = false;
+					this.$set(this.validationErrors, key, this.fields_error);
+				}
+			}
+
+			const colorField = Object.keys(this.fields.options).find(key => this.fields.options[key].type === 'color');
+
+			if (colorField && this.colorInputValue === '') {
+				isValid = false;
+				this.$set(this.validationErrors, 'color', this.fields_error);
+			}
+
+			if (this.fields.value.length > 0) {
+				const previousRow = this.fields.value[this.fields.value.length - 1];
+				maxRange = previousRow.range[0] - 1;
+	
+				if (this.newRow.range === undefined || this.newRow.range >= previousRow.range[0]) {
+					isValid = false;
+					this.$set(this.validationErrors, 'range', this.fields_range_error);
+				}
+			}
+
+			if (this.newRow.range <= 0) {
+				isValid = false;
+				this.$set(this.validationErrors, 'range', this.fields_error);
+			}
+
+			if (isValid) {
+				const newRow = {
+					...this.newRow,
+					range: [this.newRow.range, maxRange],
+				};
+	
+				this.fields.value.push(newRow);
+				this.newRow = this.initializeNewRow();
+				this.resetColorFields();
+			}
+		},
+		clearValidationError(key) {
+			this.$delete(this.validationErrors, key);
+		},
+		handleColorInput(key) {
+			if (this.colorInputValue === '') {
+				this.resetColorFields();
+				this.$set(this.validationErrors, key, this.fields_error);
+			} else {
+				this.clearValidationError(key);
+			}
+		},
+		handleRangeInput(key) {
+			const value = Math.floor(this.newRow[key]);
+
+			if (value <= 0) {
+				this.newRow[key] = 1;
+			} else {
+				this.newRow[key] = value;
+			}
+	
+			this.clearValidationError(key);
+		},
+		resetColorFields() {
+			this.colorInputValue = '';
+			this.colorValue = {
+				r: '',
+				g: '',
+				b: '',
+				a: '',
+			};
+		},
+		confirmDelete() {
+			this.showConfirmDelete = true;
+		},
+		closeDeleteConfirm() {
+			this.showConfirmDelete = false;
+		},
+		deleteLastRow() {
+			if (this.fields.value.length > 0) {
+				this.fields.value.pop();
+			}
+			this.showConfirmDelete = false;
 		}
 	},
 	watch: {
