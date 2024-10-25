@@ -1,3 +1,5 @@
+## 4.4.27
+- **New:** Added new field "repeater_table"
 ## 4.4.26
 - **Fix:** Fixed minor bug.
 ## 4.4.25
