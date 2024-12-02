@@ -3,6 +3,23 @@ html body .stm_metaboxes_grid {
         .no-childs-visible {
             display: none !important;
         }
+        .group-disabled {
+            pointer-events:none;
+
+            &:before {
+                display: block;
+                content: '';
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                background: #ccc;
+                z-index: 100;
+                opacity: 0.3;
+                border-radius: 10px;
+            }
+        }
         .wpcfto_group_started {
             width: 100%;
             flex-wrap: wrap;

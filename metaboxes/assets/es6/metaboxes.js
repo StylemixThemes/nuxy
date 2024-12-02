@@ -174,6 +174,8 @@
                         });
                     },
                     clearEmptyGroups() {
+                        var _this = this;
+
                         Vue.nextTick()
                             .then(function () {
                                 (function ($) {
@@ -184,6 +186,27 @@
                                             $group.addClass('no-childs-visible');
                                         } else {
                                             $group.removeClass('no-childs-visible');
+                                        }
+
+                                        var group_dependency = $group.attr('data-dependency');
+
+                                        if(typeof group_dependency == 'string' ) {
+                                            group_dependency = JSON.parse(group_dependency);
+
+                                            let objKey = Object.keys(_this.data)[0];
+                                            let depsKey = group_dependency.key;
+                                            let depsDisableFields = _this.data[objKey].fields[depsKey].value[1].options;
+
+                                            if(depsDisableFields.length > 0) {
+                                                let dps = depsDisableFields.filter(dep => dep.id === group_dependency.value);
+                                                if(dps.length > 0) {
+                                                    $group.addClass('group-disabled');
+                                                } else {
+                                                    $group.removeClass('group-disabled');
+                                                }
+                                            } else {
+                                                $group.removeClass('group-disabled');
+                                            }
                                         }
                                     })
                                 })(jQuery);
