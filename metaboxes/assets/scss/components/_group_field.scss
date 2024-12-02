@@ -4,7 +4,6 @@ html body .stm_metaboxes_grid {
             display: none !important;
         }
         .group-disabled {
-            display: flex !important;
             pointer-events:none;
 
             &:before {
