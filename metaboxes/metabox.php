@@ -576,6 +576,10 @@ function wpcfto_metaboxes_deps( $field, $section_name ) {
 		$dependency = "v-bind:class=\"{'wpcfto-field-disabled' : true}\"";
 	}
 
+	if ( ! empty( $field['dependency_mode'] ) && 'sorted' === $field['dependency_mode'] ) {
+		return '';
+	}
+
 	if ( empty( $field['dependency'] ) ) {
 		return $dependency;
 	}
@@ -723,12 +727,19 @@ function wpcfto_metaboxes_display_single_field( $section, $section_name, $field,
 
 function wpcfto_metaboxes_display_group_field( $section, $section_name, $field, $field_name ) {
 	if ( 'started' === $field['group'] ) :
+
+		$group_data = '';
+
+		if ( ! empty( $field['dependency_mode'] ) && 'sorted' === $field['dependency_mode'] ) {
+			$group_data = 'data-dependency=' . json_encode( $field['dependency'] );
+		}
+
 		$group_classes = array( 'wpcfto-box wpcfto_group_started column-1' );
 		if ( ! empty( $field['submenu'] ) ) {
 			$group_classes[] = sanitize_title( "{$section_name}_{$field['submenu']}" );
 		}
 		?>
-		<div class="<?php echo esc_attr( implode( ' ', $group_classes ) ); ?>">
+		<div class="<?php echo esc_attr( implode( ' ', $group_classes ) ); ?>" <?php echo esc_attr( $group_data ); ?> >
 		<div class="container">
 		<div class="row">
 		<?php if ( isset( $field['group_title'] ) && ! empty( $field['group_title'] ) ) { ?>
