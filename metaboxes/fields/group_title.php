@@ -23,5 +23,6 @@ $field = "data['{$section_name}']['fields']['{$field_name}']";
 			:field_id="'<?php echo esc_attr($field_id); ?>'"
 			:field_icon="<?php echo esc_attr( $field ); ?>['icon']"
 			:field_preview_position="<?php echo esc_attr( $field ); ?>['preview_position']"
+			:field_button="<?php echo esc_attr( $field ); ?>['button']"
 			>
 </wpcfto_group_title>

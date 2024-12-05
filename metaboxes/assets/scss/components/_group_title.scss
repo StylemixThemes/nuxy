@@ -69,5 +69,29 @@
                 }
             }
         }
+        .wpcfto-group-title-wrapper {
+            display: flex;
+            justify-content: space-between;
+            .wpcfto-group-title-button-container {
+                .wpcfto-group-title-button {
+                    display: block;
+                    background-color: #2985F7;
+                    color: #fff;
+                    padding: 12px 18px;
+                    border-radius: 4px;
+                    margin-top: 5px;
+                    text-transform: uppercase;
+                    transition: all 0.2s;
+                    line-height: 0;
+                    i {
+                        margin-right: 5px;
+                        font-size: 14px;
+                    }
+                    &:hover {
+                        opacity: 0.8;
+                    }
+                }
+            }
+        }
     }
 }
