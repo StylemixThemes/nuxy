@@ -9,6 +9,7 @@ Vue.component('wpcfto_image', {
 		'upload_text',
 		'replace_text',
 		'remove_text',
+		'preview_text',
 	],
 	mixins: [wpcfto_get_image_mixin],
 	data: function () {
@@ -25,7 +26,7 @@ Vue.component('wpcfto_image', {
 	template: `
         <div class="wpcfto_generic_field wpcfto_generic_field_image">
 
-            <wpcfto_fields_aside_before :fields="fields" :field_label="field_label"></wpcfto_fields_aside_before>
+            <wpcfto_fields_aside_before :fields="fields" :field_label="field_label" :preview_text="preview_text"></wpcfto_fields_aside_before>
 
             <div class="wpcfto-field-content" v-bind:class="{'not_image' : (image_url && !wpcfto_checkURL(image_url))}">
                 <div class="wpcfto-image" :class="{ 'has-image' : image_url && wpcfto_checkURL(image_url) }">

@@ -17,11 +17,12 @@ $field = "data['{$section_name}']['fields']['{$field_name}']";
 ?>
 
 
-<wpcfto_textarea :fields="<?php echo esc_attr($field); ?>"
-	:field_label="<?php echo esc_attr($field_label); ?>"
-	:field_name="'<?php echo esc_attr($field_name); ?>'"
-	:field_id="'<?php echo esc_attr($field_id); ?>'"
-	:field_value="<?php echo esc_attr($field_value); ?>"
-	:placeholder_text="'<?php echo esc_html__( 'Enter', 'nuxy' ); ?>'"
-	@wpcfto-get-value="<?php echo esc_attr($field_value); ?> = $event">
+<wpcfto_textarea :fields="<?php echo esc_attr( $field ); ?>"
+	:field_label="<?php echo esc_attr( $field_label ); ?>"
+	:field_name="'<?php echo esc_attr( $field_name ); ?>'"
+	:field_id="'<?php echo esc_attr( $field_id ); ?>'"
+	:field_value="<?php echo esc_attr( $field_value ); ?>"
+	:placeholder_text="'<?php echo esc_attr__( 'Enter', 'nuxy' ); ?>'"
+	:preview_text="'<?php echo esc_attr__( 'Preview', 'nuxy' ); ?>'"
+	@wpcfto-get-value="<?php echo esc_attr( $field_value ); ?> = $event">
 </wpcfto_textarea>

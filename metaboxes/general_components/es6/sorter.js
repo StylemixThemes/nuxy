@@ -1,14 +1,22 @@
 Vue.component('wpcfto_sorter', {
-    props: ['fields', 'field_label', 'field_name', 'field_id', 'field_value', 'field_options'],
-    data: function () {
-        return {
-            columns: []
-        }
-    },
-    template: `
+	props: [
+		'fields',
+		'field_label',
+		'field_name',
+		'field_id',
+		'field_value',
+		'field_options',
+		'preview_text',
+	],
+	data: function () {
+		return {
+			columns: [],
+		}
+	},
+	template: `
         <div class="wpcfto_generic_field wpcfto_generic_field_sorter" v-bind:class="field_id" :class="'columns-' + columns.length">
 
-			<wpcfto_fields_aside_before :fields="fields" :field_label="field_label"></wpcfto_fields_aside_before>
+			<wpcfto_fields_aside_before :fields="fields" :field_label="field_label" :preview_text="preview_text"></wpcfto_fields_aside_before>
 			
 			<div class="wpcfto-field-content">
 			
@@ -46,61 +54,62 @@ Vue.component('wpcfto_sorter', {
 
         </div>
     `,
-    mounted: function () {
+	mounted: function () {
+		this.columns =
+			typeof this.field_value !== 'undefined'
+				? this.field_value
+				: this.field_options
 
-        this.columns = (typeof this.field_value !== 'undefined') ? this.field_value : this.field_options;
+		if (
+			typeof this.field_value === 'string' &&
+			WpcftoIsJsonString(this.field_value)
+		)
+			this.columns = JSON.parse(this.field_value)
 
-        if (typeof this.field_value === 'string' && WpcftoIsJsonString(this.field_value)) this.columns = JSON.parse(this.field_value);
+		if (!this.columns.length) this.columns = this.field_options
 
-        if (!this.columns.length) this.columns = this.field_options;
+		this.fillNewOptions()
+	},
+	methods: {
+		fillNewOptions: function () {
+			var _this = this
 
-        this.fillNewOptions();
-    },
-    methods: {
-        fillNewOptions: function () {
+			/*Get current saved keys*/
+			var fields = []
+			var keys = []
+			_this.columns.forEach(function (column, column_key) {
+				column['options'].forEach(function (field) {
+					fields[field.id] = field.label
+				})
+			})
 
-            var _this = this;
+			/*Add new fields from config*/
+			_this.field_options.forEach(function (column, column_key) {
+				column['options'].forEach(function (field) {
+					keys[field.id] = field.label
 
-            /*Get current saved keys*/
-            var fields = [];
-            var keys = [];
-            _this.columns.forEach(function (column, column_key) {
-                column['options'].forEach(function (field) {
-                    fields[field.id] = field.label;
-                });
-            });
+					if (typeof fields[field['id']] !== 'undefined') return false
 
-            /*Add new fields from config*/
-            _this.field_options.forEach(function (column, column_key) {
-                column['options'].forEach(function (field) {
+					_this.columns[column_key]['options'].push(field)
+				})
+			})
 
-                    keys[field.id] = field.label;
+			/*Remove deleted config fields from stored in db*/
+			_this.columns.forEach(function (column, column_key) {
+				column['options'].forEach(function (field, field_key) {
+					if (typeof keys[field['id']] !== 'undefined') return false
 
-                    if (typeof fields[field['id']] !== 'undefined') return false;
-
-                    _this.columns[column_key]['options'].push(field);
-                });
-            });
-
-            /*Remove deleted config fields from stored in db*/
-            _this.columns.forEach(function (column, column_key) {
-                column['options'].forEach(function (field, field_key) {
-
-                    if (typeof keys[field['id']] !== 'undefined') return false;
-
-                    _this.columns[column_key]['options'].splice(field_key, 1);
-
-                });
-            });
-
-        }
-    },
-    watch: {
-        columns: {
-            deep: true,
-            handler: function (columns) {
-                this.$emit('wpcfto-get-value', columns);
-            }
-        }
-    }
-});
+					_this.columns[column_key]['options'].splice(field_key, 1)
+				})
+			})
+		},
+	},
+	watch: {
+		columns: {
+			deep: true,
+			handler: function (columns) {
+				this.$emit('wpcfto-get-value', columns)
+			},
+		},
+	},
+})

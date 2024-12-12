@@ -15,10 +15,11 @@
 
 ?>
 
-<wpcfto_checkbox :fields="<?php echo esc_attr($field); ?>"
-				:field_label="<?php echo esc_attr($field_label); ?>"
-				:field_name="'<?php echo esc_attr($field_name); ?>'"
-				:field_id="'<?php echo esc_attr($field_id); ?>'"
-				:field_value="<?php echo esc_attr($field_value); ?>"
-				@wpcfto-get-value="<?php echo esc_attr($field_value); ?> = $event">
+<wpcfto_checkbox :fields="<?php echo esc_attr( $field ); ?>"
+	:field_label="<?php echo esc_attr( $field_label ); ?>"
+	:field_name="'<?php echo esc_attr( $field_name ); ?>'"
+	:field_id="'<?php echo esc_attr( $field_id ); ?>'"
+	:field_value="<?php echo esc_attr( $field_value ); ?>"
+	:preview_text="'<?php echo esc_attr__( 'Preview', 'nuxy' ); ?>'"
+	@wpcfto-get-value="<?php echo esc_attr( $field_value ); ?> = $event">
 </wpcfto_checkbox>

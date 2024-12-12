@@ -19,6 +19,7 @@
 	:field_name="'<?php echo esc_attr( $field_name ); ?>'"
 	:field_id="'<?php echo esc_attr( $field_id ); ?>'"
 	:field_value="<?php echo esc_attr( $field_value ); ?>"
-	:placeholder_text="'<?php echo esc_html__( 'Enter numbers...', 'nuxy' ); ?>'"
+	:placeholder_text="'<?php echo esc_attr__( 'Enter numbers...', 'nuxy' ); ?>'"
+	:preview_text="'<?php echo esc_attr__( 'Preview', 'nuxy' ); ?>'"
 	@wpcfto-get-value="<?php echo esc_attr( $field_value ); ?> = $event">
 </wpcfto_number>
