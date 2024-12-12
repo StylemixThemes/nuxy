@@ -131,13 +131,28 @@ class WPCFTO_Settings {
 	}
 
 	public function settings_page_view() {
-		$metabox               = $this->wpcfto_settings();
-		$settings              = $this->wpcfto_get_settings();
-		$page                  = $this->page_args;
-		$wpcfto_title          = ( ! empty( $this->setup['title'] ) ) ? $this->setup['title'] : '';
-		$wpcfto_sub_title      = ( ! empty( $this->setup['sub_title'] ) ) ? $this->setup['sub_title'] : '';
-		$wpcfto_logo           = ( ! empty( $this->setup['logo'] ) ) ? $this->setup['logo'] : STM_WPCFTO_URL . '/metaboxes/assets/images/stm-logo.svg';
-		$wpcfto_settings_alert = ( ! empty( $this->setup['save_settings_alert'] ) ) ? $this->setup['save_settings_alert'] : array(
+		$metabox                      = $this->wpcfto_settings();
+		$settings                     = $this->wpcfto_get_settings();
+		$page                         = $this->page_args;
+		$wpcfto_link                  = ( ! empty( $this->setup['additional_link'] ) && is_array( $this->setup['additional_link'] ) ) ? $this->setup['additional_link'] : array();
+		$link_text                    = ( ! empty( $wpcfto_link['text'] ) ) ? $wpcfto_link['text'] : '';
+		$link_icon                    = ( ! empty( $wpcfto_link['icon'] ) ) ? $wpcfto_link['icon'] : '';
+		$link_url                     = ( ! empty( $wpcfto_link['url'] ) ) ? $wpcfto_link['url'] : '';
+		$link_target                  = ( ! empty( $wpcfto_link['target'] ) ) ? $wpcfto_link['target'] : true;
+		$wpcfto_header_menu	          = ( ! empty( $this->setup['header_menu'] ) ) ? $this->setup['header_menu'] : array();
+		$wpcfto_header_menu_text      = ( ! empty( $wpcfto_header_menu['text'] ) ) ? $wpcfto_header_menu['text'] : '';
+		$wpcfto_header_menu_icon      = ( ! empty( $wpcfto_header_menu['icon'] ) ) ? $wpcfto_header_menu['icon'] : '';
+		$wpcfto_header_menu_url       = ( ! empty( $wpcfto_header_menu['url'] ) ) ? $wpcfto_header_menu['url'] : '';
+		$wpcfto_header_submenu        = ( ! empty( $this->setup['header_submenu'] ) ) ? $this->setup['header_submenu'] : array();
+		$wpcfto_header_submenu_text   = ( ! empty( $wpcfto_header_submenu['text'] ) ) ? $wpcfto_header_submenu['text'] : '';
+		$wpcfto_header_submenu_icon   = ( ! empty( $wpcfto_header_submenu['icon'] ) ) ? $wpcfto_header_submenu['icon'] : '';
+		$wpcfto_header_submenu_url    = ( ! empty( $wpcfto_header_submenu['url'] ) ) ? $wpcfto_header_submenu['url'] : '';
+		$wpcfto_header_submenu_target = ( ! empty( $wpcfto_header_submenu['target'] ) ) ? $wpcfto_header_submenu['target'] : true;
+
+		$wpcfto_title           = ( ! empty( $this->setup['title'] ) ) ? $this->setup['title'] : '';
+		$wpcfto_sub_title       = ( ! empty( $this->setup['sub_title'] ) ) ? $this->setup['sub_title'] : '';
+		$wpcfto_logo            = ( ! empty( $this->setup['logo'] ) ) ? $this->setup['logo'] : STM_WPCFTO_URL . '/metaboxes/assets/images/stm-logo.svg';
+		$wpcfto_settings_alert  = ( ! empty( $this->setup['save_settings_alert'] ) ) ? $this->setup['save_settings_alert'] : array(
 			'position'      => 'top_right',
 			'success_alert' => array(
 				'title'    => esc_html__( 'Saved!', 'nuxy' ),
