@@ -1,6 +1,6 @@
 Vue.component('v-select', VueSelect.VueSelect);
 Vue.component('wpcfto_autocomplete', {
-    props: ['fields', 'field_label', 'field_name', 'field_id', 'field_value', 'field_data'],
+    props: ['fields', 'field_label', 'field_name', 'field_id', 'field_value', 'field_data', 'preview_text'],
     data: function () {
         return {
             ids: [],
@@ -17,7 +17,7 @@ Vue.component('wpcfto_autocomplete', {
     template: `
         <div class="wpcfto_generic_field wpcfto_generic_field_autocomplete">
 
-            <wpcfto_fields_aside_before :fields="fields" :field_label="field_label"></wpcfto_fields_aside_before>
+            <wpcfto_fields_aside_before :fields="fields" :field_label="field_label" :preview_text="preview_text"></wpcfto_fields_aside_before>
 
             <div class="wpcfto-field-content">
 

@@ -1,14 +1,14 @@
 Vue.component('wpcfto_checkbox', {
-    props: ['fields', 'field_label', 'field_name', 'field_id', 'field_value'],
-    data: function () {
-        return {
-            value : '',
-        }
-    },
-    template: `
+	props: ['fields', 'field_label', 'field_name', 'field_id', 'field_value', 'preview_text'],
+	data: function () {
+		return {
+			value: '',
+		}
+	},
+	template: `
         <div class="wpcfto_generic_field wpcfto_generic_checkbox">
         
-            <wpcfto_fields_aside_before :fields="fields" :field_label="field_label"></wpcfto_fields_aside_before>
+            <wpcfto_fields_aside_before :fields="fields" :field_label="field_label" :preview_text="preview_text"></wpcfto_fields_aside_before>
             
             <div class="wpcfto-field-content">
                 <div class="wpcfto-admin-checkbox" v-bind:class="field_id">
@@ -29,14 +29,13 @@ Vue.component('wpcfto_checkbox', {
 
         </div>
     `,
-    mounted: function () {
-        this.value = this.field_value;
-
-    },
-    methods: {},
-    watch: {
-        value: function (value) {
-            this.$emit('wpcfto-get-value', value);
-        }
-    }
-});
+	mounted: function () {
+		this.value = this.field_value
+	},
+	methods: {},
+	watch: {
+		value: function (value) {
+			this.$emit('wpcfto-get-value', value)
+		},
+	},
+})

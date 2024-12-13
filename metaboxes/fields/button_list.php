@@ -17,5 +17,6 @@ $field = "data['{$section_name}']['fields']['{$field_name}']";
 <wpcfto_button_list
 	:fields="<?php echo esc_attr( $field ); ?>"
 	:field_name="'<?php echo esc_attr( $field_name ); ?>'"
+	:preview_text="'<?php echo esc_attr__( 'Preview', 'nuxy' ); ?>'"
 	:field_label="<?php echo esc_attr( $field_label ); ?>">
 </wpcfto_button_list>

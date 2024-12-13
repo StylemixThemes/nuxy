@@ -6,6 +6,7 @@ Vue.component('wpcfto_textarea', {
 		'field_id',
 		'field_value',
 		'placeholder_text',
+		'preview_text',
 	],
 	data: function () {
 		return {
@@ -14,7 +15,7 @@ Vue.component('wpcfto_textarea', {
 	},
 	template: `
         <div class="wpcfto_generic_field wpcfto_generic_field_textarea">
-            <wpcfto_fields_aside_before :fields="fields" :field_label="field_label"></wpcfto_fields_aside_before>
+            <wpcfto_fields_aside_before :fields="fields" :field_label="field_label" :preview_text="preview_text"></wpcfto_fields_aside_before>
             
             <div class="wpcfto-field-content">
                 <textarea v-bind:name="field_name"

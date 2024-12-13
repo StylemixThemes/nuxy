@@ -1,6 +1,6 @@
 Vue.component('vue-editor', Vue2Editor.default.VueEditor);
 Vue.component('wpcfto_editor', {
-    props: ['fields', 'field_label', 'field_name', 'field_id', 'field_value'],
+    props: ['fields', 'field_label', 'field_name', 'field_id', 'field_value', 'preview_text'],
     data: function () {
         return {
             value: '',
@@ -9,7 +9,7 @@ Vue.component('wpcfto_editor', {
     template: `
         <div class="wpcfto_generic_field wpcfto_generic_field_editor">
         
-            <wpcfto_fields_aside_before :fields="fields" :field_label="field_label"></wpcfto_fields_aside_before>
+            <wpcfto_fields_aside_before :fields="fields" :field_label="field_label" :preview_text="preview_text"></wpcfto_fields_aside_before>
             
             <div class="wpcfto-field-content">
                 <div class="wpcfto-editor">

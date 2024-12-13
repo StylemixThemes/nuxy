@@ -3,42 +3,50 @@
  */
 
 Vue.component('wpcfto_typography', {
-    props: ['fields', 'field_label', 'field_name', 'field_id', 'field_value', 'field_data'],
-    data: function () {
-        return {
-            inited: false,
-            google_fonts: wpcfto_global_settings['fonts_list']['google'],
-            web_safe_fonts: wpcfto_global_settings['fonts_list']['websafe'],
-            variants: wpcfto_global_settings['variants'],
-            subsets: wpcfto_global_settings['subsets'],
-            align: wpcfto_global_settings['align'],
-            translations: wpcfto_global_settings['translations'],
-            transform: wpcfto_global_settings['transform'],
-            typography: {
-                'font-family': '',
-                'google-weight': 'regular',
-                'font-weight': '400',
-                'font-style': 'normal',
-                'subset': 'latin',
-                'color': '#000',
-                'font-size': '14',
-                'line-height': '20',
-                'text-align': 'left',
-                'word-spacing': '0',
-                'text-transform': 'normal',
-                'letter-spacing': '0',
-                'backup-font': '',
-                'font-data': {
-                    'family': '',
-                    'variants': []
-                }
-            },
-        }
-    },
-    template: `
+	props: [
+		'fields',
+		'field_label',
+		'field_name',
+		'field_id',
+		'field_value',
+		'field_data',
+		'preview_text',
+	],
+	data: function () {
+		return {
+			inited: false,
+			google_fonts: wpcfto_global_settings['fonts_list']['google'],
+			web_safe_fonts: wpcfto_global_settings['fonts_list']['websafe'],
+			variants: wpcfto_global_settings['variants'],
+			subsets: wpcfto_global_settings['subsets'],
+			align: wpcfto_global_settings['align'],
+			translations: wpcfto_global_settings['translations'],
+			transform: wpcfto_global_settings['transform'],
+			typography: {
+				'font-family': '',
+				'google-weight': 'regular',
+				'font-weight': '400',
+				'font-style': 'normal',
+				subset: 'latin',
+				color: '#000',
+				'font-size': '14',
+				'line-height': '20',
+				'text-align': 'left',
+				'word-spacing': '0',
+				'text-transform': 'normal',
+				'letter-spacing': '0',
+				'backup-font': '',
+				'font-data': {
+					family: '',
+					variants: [],
+				},
+			},
+		}
+	},
+	template: `
         <div class="wpcfto_generic_field wpcfto_generic_field__typography" v-bind:class="field_id">
 
-            <wpcfto_fields_aside_before :fields="fields" :field_label="field_label"></wpcfto_fields_aside_before>
+            <wpcfto_fields_aside_before :fields="fields" :field_label="field_label" :preview_text="preview_text"></wpcfto_fields_aside_before>
             
             <div class="wpcfto-field-content">
                 <div class="wpcfto-typography-fields-wrap">
@@ -181,159 +189,170 @@ Vue.component('wpcfto_typography', {
 
         </div>
     `,
-    mounted: function () {
+	mounted: function () {
+		if (
+			typeof this.field_value === 'string' &&
+			WpcftoIsJsonString(this.field_value)
+		) {
+			this.field_value = JSON.parse(this.field_value)
+		}
 
-        if (typeof this.field_value === 'string' && WpcftoIsJsonString(this.field_value)) {
-            this.field_value = JSON.parse(this.field_value)
-        }
+		this.fillTypography()
 
-        this.fillTypography();
+		this.inited = true
 
-        this.inited = true;
+		this.editVariant()
+		this.editSubset()
+	},
+	methods: {
+		fillTypography: function () {
+			const _this = this
+			for (const [key] of Object.entries(_this.typography)) {
+				const value = _this.field_value[key]
 
-        this.editVariant();
-        this.editSubset();
+				if (typeof value !== 'undefined') {
+					_this.$set(_this.typography, key, value)
 
-    },
-    methods: {
-        fillTypography: function () {
-            const _this = this;
-            for (const [key, ] of Object.entries(_this.typography)) {
-                const value = _this.field_value[key];
+					if (key === 'font-family') {
+						_this.setGoogleFontFamily(value)
+					}
 
-                if (typeof value !== 'undefined') {
-                    _this.$set(_this.typography, key, value);
+					if (key === 'font-weight') {
+						setTimeout(function () {
+							_this.$set(_this.typography, 'font-weight', value)
+							if (typeof _this.field_value['google-weight'] !== 'undefined') {
+								_this.$set(
+									_this.typography,
+									'google-weight',
+									_this.field_value['google-weight']
+								)
+							}
+						})
+					}
+				}
+			}
+		},
+		isFontWeightDisabled: function (variant) {
+			if (
+				typeof this.field_data['excluded'] !== 'undefined' &&
+				this.field_data['excluded'].includes('font-family')
+			) {
+				return false
+			}
 
+			let current_variants = this.typography['font-data']['variants']
+			if (typeof current_variants === 'undefined') return false
+			return !current_variants.includes(variant)
+		},
+		isSubsetDisabled: function (subset) {
+			let current_subsets = this.typography['font-data']['subsets']
+			if (typeof current_subsets === 'undefined') return false
+			return !current_subsets.includes(subset)
+		},
+		fontChanged: function () {
+			this.$set(
+				this.typography,
+				'font-family',
+				this.typography['font-data'].family
+			)
+			this.editVariant()
+			this.editSubset()
+		},
+		editVariant() {
+			let current_variant = this.typography['google-weight']
+			let current_variants = this.typography['font-data']['variants']
+			if (
+				typeof current_variants !== 'undefined' &&
+				!current_variants.includes(current_variant)
+			) {
+				this.$set(this.typography, 'google-weight', current_variants[0])
+				this.weightChanged()
+			}
+		},
+		editSubset() {
+			let current_subset = this.typography['subset']
+			let current_subsets = this.typography['font-data']['subsets']
+			if (
+				typeof current_subsets !== 'undefined' &&
+				!current_subsets.includes(current_subset)
+			) {
+				this.$set(this.typography, 'subset', current_subsets[0])
+			}
+		},
+		buildGLink() {
+			let base = 'https://fonts.googleapis.com/css2?family='
+			base += `${this.typography['font-family']}`
+			let isItalic = this.typography['font-style'] === 'italic'
 
+			base += isItalic ? ':ital,' : ':'
+			base += 'wght@'
+			if (isItalic) base += '1,'
+			base += this.typography['font-weight']
+			base += '&display=swap'
 
-                    if (key === 'font-family') {
-                        _this.setGoogleFontFamily(value);
-                    }
+			return base
+		},
+		previewStyles() {
+			let typo = this.typography
+			return {
+				'font-family': `'${typo['font-family']}', ${typo['font-data']['category']}`,
+				color: typo['color'],
+				'font-size': typo['font-size'] + 'px',
+				'line-height': typo['line-height'] + 'px',
+				'letter-spacing': typo['letter-spacing'] + 'px',
+				'word-spacing': typo['word-spacing'] + 'px',
+				'text-align': typo['text-align'],
+				'font-weight': typo['font-weight'],
+				'font-style': typo['font-style'],
+				'text-transform': typo['text-transform'],
+			}
+		},
+		weightChanged() {
+			let typo = this.typography
+			let weight = typo['google-weight']
+			let multiWeight =
+				typeof weight !== 'undefined'
+					? weight.match(/[a-zA-Z]+|[0-9]+/g)
+					: ['400', 'normal']
 
-                    if (key === 'font-weight') {
+			if (weight === 'regular') {
+				this.$set(typo, 'font-weight', 400)
+				this.$set(typo, 'font-style', 'normal')
+			} else if (weight === 'italic') {
+				this.$set(typo, 'font-weight', 400)
+				this.$set(typo, 'font-style', 'italic')
+			} else if (multiWeight.length === 2) {
+				this.$set(typo, 'font-weight', multiWeight[0])
+				this.$set(typo, 'font-style', multiWeight[1])
+			} else {
+				this.$set(typo, 'font-weight', weight)
+				this.$set(typo, 'font-style', 'normal')
+			}
+		},
+		notExcluded(option) {
+			if (typeof this.field_data['excluded'] === 'undefined') return true
 
-                        setTimeout(function() {
-                            _this.$set(_this.typography, 'font-weight', value);
-                            if(typeof _this.field_value['google-weight'] !== 'undefined') {
-                                _this.$set(_this.typography, 'google-weight', _this.field_value['google-weight']);
-                            }
-                        })
+			let excluded = this.field_data['excluded']
 
-                    }
-
-                }
-            }
-        },
-        isFontWeightDisabled: function (variant) {
-
-            if (typeof this.field_data['excluded'] !== 'undefined' && this.field_data['excluded'].includes('font-family')) {
-                return false;
-            }
-
-            let current_variants = this.typography['font-data']['variants'];
-            if (typeof current_variants === 'undefined') return false;
-            return (!current_variants.includes(variant));
-        },
-        isSubsetDisabled: function (subset) {
-            let current_subsets = this.typography['font-data']['subsets'];
-            if (typeof current_subsets === 'undefined') return false;
-            return (!current_subsets.includes(subset));
-        },
-        fontChanged: function () {
-            this.$set(this.typography, 'font-family', this.typography['font-data'].family);
-            this.editVariant();
-            this.editSubset();
-        },
-        editVariant() {
-            let current_variant = this.typography['google-weight'];
-            let current_variants = this.typography['font-data']['variants'];
-            if (typeof current_variants !== 'undefined' && !current_variants.includes(current_variant)) {
-                this.$set(this.typography, 'google-weight', current_variants[0]);
-                this.weightChanged();
-            }
-        },
-        editSubset() {
-            let current_subset = this.typography['subset'];
-            let current_subsets = this.typography['font-data']['subsets'];
-            if (typeof current_subsets !== 'undefined' && !current_subsets.includes(current_subset)) {
-                this.$set(this.typography, 'subset', current_subsets[0]);
-            }
-        },
-        buildGLink() {
-            let base = 'https://fonts.googleapis.com/css2?family=';
-            base += `${this.typography['font-family']}`;
-            let isItalic = this.typography['font-style'] === 'italic';
-
-            base += (isItalic) ? ':ital,' : ':';
-            base += 'wght@';
-            if (isItalic) base += '1,';
-            base += this.typography['font-weight'];
-            base += '&display=swap';
-
-            return base;
-        },
-        previewStyles() {
-            let typo = this.typography;
-            return {
-                'font-family': `'${typo['font-family']}', ${typo['font-data']['category']}`,
-                'color': typo['color'],
-                'font-size': typo['font-size'] + 'px',
-                'line-height': typo['line-height'] + 'px',
-                'letter-spacing': typo['letter-spacing'] + 'px',
-                'word-spacing': typo['word-spacing'] + 'px',
-                'text-align': typo['text-align'],
-                'font-weight': typo['font-weight'],
-                'font-style': typo['font-style'],
-                'text-transform': typo['text-transform'],
-            }
-        },
-        weightChanged() {
-            let typo = this.typography;
-            let weight = typo['google-weight'];
-            let multiWeight = (typeof weight !== 'undefined') ? weight.match(/[a-zA-Z]+|[0-9]+/g) : ['400', 'normal'];
-
-            if (weight === 'regular') {
-                this.$set(typo, 'font-weight', 400);
-                this.$set(typo, 'font-style', 'normal');
-            } else if (weight === 'italic') {
-                this.$set(typo, 'font-weight', 400);
-                this.$set(typo, 'font-style', 'italic');
-            } else if (multiWeight.length === 2) {
-                this.$set(typo, 'font-weight', multiWeight[0]);
-                this.$set(typo, 'font-style', multiWeight[1]);
-            } else {
-                this.$set(typo, 'font-weight', weight);
-                this.$set(typo, 'font-style', 'normal');
-            }
-        },
-        notExcluded(option) {
-
-            if (typeof this.field_data['excluded'] === 'undefined') return true;
-
-            let excluded = this.field_data['excluded'];
-
-            return !excluded.includes(option);
-
-        },
-        setGoogleFontFamily(font_family) {
-            let _this = this;
-            _this.google_fonts.forEach(function (value) {
-                if (value.family === font_family) {
-                    _this.$set(_this.typography, 'font-data', value);
-                    _this.editVariant();
-                    _this.editSubset();
-                }
-            })
-
-
-        }
-    },
-    watch: {
-        typography: {
-            deep: true,
-            handler: function (typography) {
-                this.$emit('wpcfto-get-value', typography);
-            }
-        }
-    }
-});
+			return !excluded.includes(option)
+		},
+		setGoogleFontFamily(font_family) {
+			let _this = this
+			_this.google_fonts.forEach(function (value) {
+				if (value.family === font_family) {
+					_this.$set(_this.typography, 'font-data', value)
+					_this.editVariant()
+					_this.editSubset()
+				}
+			})
+		},
+	},
+	watch: {
+		typography: {
+			deep: true,
+			handler: function (typography) {
+				this.$emit('wpcfto-get-value', typography)
+			},
+		},
+	},
+})

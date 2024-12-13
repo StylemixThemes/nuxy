@@ -7,6 +7,7 @@ Vue.component('wpcfto_group_title', {
 		'field_icon',
 		'field_preview_position',
 		'field_button',
+		'preview_text',
 	],
 	data: function () {
 		return {
@@ -56,7 +57,7 @@ Vue.component('wpcfto_group_title', {
     >
       <i :class="field_icon"></i>
       <div class="wpcfto-group-title-wrapper">
-        <wpcfto_fields_aside_before :fields="fields" :field_label="field_label"></wpcfto_fields_aside_before>
+        <wpcfto_fields_aside_before :fields="fields" :field_label="field_label" :preview_text="preview_text"></wpcfto_fields_aside_before>
         <div 
           v-if="field_button" 
           class="wpcfto-group-title-button-container"  

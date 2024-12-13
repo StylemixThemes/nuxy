@@ -16,18 +16,20 @@ wp_enqueue_script( 'my-super-component', STM_WPCFTO_URL . '/metaboxes/general_co
 ?>
 
 <wpcfto_repeater v-bind:fields="<?php echo esc_attr( $field ); ?>"
-				v-bind:parent_repeater="'parent'"
-				v-bind:field_label="<?php echo esc_attr( $field_label ); ?>"
-				v-bind:field_name="'<?php echo esc_attr( $field_name ); ?>'"
-				v-bind:field_id="'<?php echo esc_attr( $field_id ); ?>'"
-				v-bind:field_value="<?php echo esc_attr( $field_value ); ?>"
-				v-bind:field_data='<?php echo esc_attr( htmlspecialchars( wp_json_encode( $field_data ) ) ); ?>'
-				v-bind:placeholder_text="'<?php echo esc_html__( 'Enter', 'nuxy' ); ?>'"
-				@wpcfto-get-value="$set(<?php echo esc_attr( $field ); ?>, 'value', $event)">
+	v-bind:parent_repeater="'parent'"
+	v-bind:field_label="<?php echo esc_attr( $field_label ); ?>"
+	v-bind:field_name="'<?php echo esc_attr( $field_name ); ?>'"
+	v-bind:field_id="'<?php echo esc_attr( $field_id ); ?>'"
+	v-bind:field_value="<?php echo esc_attr( $field_value ); ?>"
+	v-bind:field_data='<?php echo esc_attr( htmlspecialchars( wp_json_encode( $field_data ) ) ); ?>'
+	v-bind:placeholder_text="'<?php echo esc_attr__( 'Enter', 'nuxy' ); ?>'"
+	v-bind:trash_text="'<?php echo esc_attr__( 'Delete', 'nuxy' ); ?>'"
+	v-bind:preview_text="'<?php echo esc_attr__( 'Preview', 'nuxy' ); ?>'"
+	@wpcfto-get-value="$set(<?php echo esc_attr( $field ); ?>, 'value', $event)">
 </wpcfto_repeater>
 
 <input type="hidden"
-		:style="{'width' : '100%'}"
-		name="<?php echo esc_attr( $field_name ); ?>"
-		v-bind:id="'<?php echo esc_attr( $field_id ); ?>'"
-		v-model="JSON.stringify(<?php echo esc_attr( wp_unslash( $field_value ) ); ?>)" />
+	:style="{'width' : '100%'}"
+	name="<?php echo esc_attr( $field_name ); ?>"
+	v-bind:id="'<?php echo esc_attr( $field_id ); ?>'"
+	v-model="JSON.stringify(<?php echo esc_attr( wp_unslash( $field_value ) ); ?>)" />

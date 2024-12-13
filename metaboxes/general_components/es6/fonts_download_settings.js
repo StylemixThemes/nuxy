@@ -1,25 +1,37 @@
 Vue.component('fonts_download_settings', {
-    props: ['fields', 'field_label', 'field_name', 'field_id', 'field_value', 'option_id'],
-    data: function () {
-        return {
-            translations: wpcfto_global_settings['translations'],
-            loading: false,
-            value: '',
-            regenerate_texts: {
-                label: wpcfto_global_settings['translations'].regenerate_fonts_title,
-                description: wpcfto_global_settings['translations'].regenerate_fonts_notice,
-            },
-            fonts_download_setting_texts: {
-                label: wpcfto_global_settings['translations'].fonts_download_setting_label,
-                description: wpcfto_global_settings['translations'].fonts_download_setting_description,
-            }
-        }
-    },
-    template: `
+	props: [
+		'fields',
+		'field_label',
+		'field_name',
+		'field_id',
+		'field_value',
+		'option_id',
+		'preview_text',
+	],
+	data: function () {
+		return {
+			translations: wpcfto_global_settings['translations'],
+			loading: false,
+			value: '',
+			regenerate_texts: {
+				label: wpcfto_global_settings['translations'].regenerate_fonts_title,
+				description:
+					wpcfto_global_settings['translations'].regenerate_fonts_notice,
+			},
+			fonts_download_setting_texts: {
+				label:
+					wpcfto_global_settings['translations'].fonts_download_setting_label,
+				description:
+					wpcfto_global_settings['translations']
+						.fonts_download_setting_description,
+			},
+		}
+	},
+	template: `
         <div class="wpcfto_fonts_download_settings">
             <div class="wpcfto_enable_fonts">
                 <div class="wpcfto_generic_field wpcfto_generic_checkbox wpcfto_generic_field_regenerate_fonts">
-                    <wpcfto_fields_aside_before :fields="fonts_download_setting_texts" :field_label="fonts_download_setting_texts.label"></wpcfto_fields_aside_before>
+                    <wpcfto_fields_aside_before :fields="fonts_download_setting_texts" :field_label="fonts_download_setting_texts.label" :preview_text="preview_text"></wpcfto_fields_aside_before>
                     <div class="wpcfto-field-content">
                         <div class="wpcfto-admin-checkbox wpcfto_enable_fonts_checkbox">
                             <label>
@@ -47,26 +59,31 @@ Vue.component('fonts_download_settings', {
             </div>
         </div>
     `,
-    mounted: function () {
-        this.value = this.field_value;
-    },
-    methods: {
-        regenerateFonts() {
-            var vm = this;
+	mounted: function () {
+		this.value = this.field_value
+	},
+	methods: {
+		regenerateFonts() {
+			var vm = this
 
-            vm.loading = true;
-            let url = stm_wpcfto_ajaxurl + '?action=wpcfto_regenerate_fonts&name=' + vm.option_id + '&nonce=' + stm_wpcfto_nonces['wpcfto_regenerate_fonts'];
-            this.$http.post(url).then(function (response) {
-                vm.loading = false;
-                if (response?.data?.reload) {
-                    location.reload();
-                }
-            });
-        }
-    },
-    watch: {
-        value: function (value) {
-            this.$emit('wpcfto-get-value', value);
-        }
-    }
-});
+			vm.loading = true
+			let url =
+				stm_wpcfto_ajaxurl +
+				'?action=wpcfto_regenerate_fonts&name=' +
+				vm.option_id +
+				'&nonce=' +
+				stm_wpcfto_nonces['wpcfto_regenerate_fonts']
+			this.$http.post(url).then(function (response) {
+				vm.loading = false
+				if (response?.data?.reload) {
+					location.reload()
+				}
+			})
+		},
+	},
+	watch: {
+		value: function (value) {
+			this.$emit('wpcfto-get-value', value)
+		},
+	},
+})
