@@ -29,6 +29,34 @@
             margin: 0;
         }
     }
+    .wpcfto-radio-with-image {
+        .wpcfto-radio {
+            label {
+                cursor: pointer;
+            }
+            label.active {
+                background: unset;
+                .radio-option-image {
+                    border: 2px solid #2E85F7;
+                    border-radius: 5px;
+                }
+            }
+            .radio-option-image {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border: 2px solid #D5DBE5;
+                border-radius: 5px;;
+                width: 100px;
+                height: 65px;
+            }
+            .radio-input-field {
+                display: flex;
+                justify-content: center;
+                margin-top: 10px;
+            }
+        }
+    }
     .wpcfto-radio {
         input {
             position: relative;
