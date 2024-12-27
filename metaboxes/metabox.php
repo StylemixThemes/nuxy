@@ -268,6 +268,10 @@ class STM_Metaboxes {
 	}
 
 	public static function wpcfto_scripts() {
+        if ( is_customize_preview() ) {
+            return;
+        }
+
 		$v      = STM_WPCFTO_VERSION;
 		$base   = STM_WPCFTO_URL . 'metaboxes/assets/';
 		$assets = STM_WPCFTO_URL . 'metaboxes/assets/';
