@@ -99,7 +99,7 @@ class STM_Metaboxes {
 					}
 					$field_modified_array = json_decode( wp_unslash( $field_modified ), true );
 					if ( ! empty( $field_modified_array ) && ! empty( $field_modified_array['font-data']['family'] ) ) {
-						$font                                           = new WPCFTO_WebFont_Loader( $field_modified_array, $field_name . '_' . $post_id );
+						$font = new WPCFTO_WebFont_Loader( $field_modified_array, $field_name . '_' . $post_id );
 						$field_modified_array['font-data']['local_url'] = $font->get_url();
 						$field_modified                                 = json_encode( wp_slash( $field_modified_array ) );
 					}
@@ -268,9 +268,9 @@ class STM_Metaboxes {
 	}
 
 	public static function wpcfto_scripts() {
-        if ( is_customize_preview() ) {
-            return;
-        }
+		if ( is_customize_preview() ) {
+			return;
+		}
 
 		$v      = STM_WPCFTO_VERSION;
 		$base   = STM_WPCFTO_URL . 'metaboxes/assets/';
@@ -644,7 +644,7 @@ function wpcfto_metaboxes_generate_deps( $section_name, $dep ) {
 	return $dependency;
 }
 
-function wpcfto_metaboxes_display_single_field( $section, $section_name, $field, $field_name, $metabox_id = null  ) {
+function wpcfto_metaboxes_display_single_field( $section, $section_name, $field, $field_name, $metabox_id = null ) {
 	$dependency  = wpcfto_metaboxes_deps( $field, $section_name );
 	$width       = 'column-1';
 	$is_pro      = ( ! empty( $field['pro'] ) ) ? 'is_pro' : 'not_pro';
@@ -715,7 +715,7 @@ function wpcfto_metaboxes_display_single_field( $section, $section_name, $field,
 			$field_label    = "{$field}['label']";
 			$field_id       = $section_name . '-' . $field_name;
 			$field_readonly = isset( $field_data['readonly'] ) ? 'true' : 'false';
-			$option_id     = $metabox_id;
+			$option_id      = $metabox_id;
 
 			$file = apply_filters( "wpcfto_field_{$field_type}", STM_WPCFTO_PATH . '/metaboxes/fields/' . $field_type . '.php' );
 
@@ -749,7 +749,7 @@ function wpcfto_metaboxes_display_group_field( $section, $section_name, $field, 
 		<?php if ( isset( $field['group_title'] ) && ! empty( $field['group_title'] ) ) { ?>
 		<div class="wpcfto_group_title"><?php echo esc_html( $field['group_title'] ); ?></div>
 	<?php } ?>
-	<?php
+		<?php
 	endif;
 
 	wpcfto_metaboxes_display_single_field( $section, $section_name, $field, $field_name );
@@ -757,7 +757,7 @@ function wpcfto_metaboxes_display_group_field( $section, $section_name, $field, 
 	if ( 'ended' === $field['group'] ) :
 		?>
 		</div></div></div>
-	<?php
+		<?php
 	endif;
 }
 
