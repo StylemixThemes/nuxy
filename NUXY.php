@@ -3,7 +3,7 @@
  * Framework Name: NUXY
  * Framework URI: https://github.com/StylemixThemes/nuxy
  * Description: WordPress Custom Fields & Theme Options with Vue.js.
- * Version: 4.4.26
+ * Version: 4.4.27
  * License: http://www.gnu.org/licenses/gpl-3.0.html
  * Author: StylemixThemes
  * Author URI: https://stylemixthemes.com
@@ -24,7 +24,7 @@ add_action(
 
 		if ( ! class_exists( 'Stylemix_NUXY' ) && __FILE__ === $max_version[0] ) {
 
-			define( 'STM_WPCFTO_VERSION', '4.4.26' );
+			define( 'STM_WPCFTO_VERSION', '4.4.27' );
 			define( 'STM_WPCFTO_FILE', __FILE__ );
 			define( 'STM_WPCFTO_PATH', dirname( STM_WPCFTO_FILE ) );
 			define( 'STM_WPCFTO_URL', plugin_dir_url( STM_WPCFTO_FILE ) );

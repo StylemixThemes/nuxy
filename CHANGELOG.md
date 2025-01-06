@@ -1,3 +1,5 @@
+## 4.4.27
+- **Fix:** Add string translate for options.
 ## 4.4.26
 - **Fix:** Fixed minor bug.
 ## 4.4.25

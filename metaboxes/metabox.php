@@ -297,6 +297,10 @@ class STM_Metaboxes {
 				'translations' => self::translations(),
 				'transform'    => WPCFTO_Gfonts::transform(),
 				'nonce'        => wp_create_nonce( 'stm_wpcfto_get_settings_nonce' ),
+				'translations' => array(
+					'delete'  => esc_html__( 'Delete', 'nuxy' ),
+					'preview' => esc_html__( 'Preview', 'nuxy' ),
+				),
 			)
 		);
 

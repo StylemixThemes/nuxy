@@ -1,24 +1,26 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
+"Project-Id-Version: NUXY\n"
 "Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-12-23 11:57+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language-Team: \n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-07-22 05:27+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: Loco https://localise.biz/\n"
-"Language: \n"
-"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;"
+"X-Loco-Version: 2.6.14; wp-6.7.1\n"
+"X-Domain: nuxy"
 
 #: taxonomy_meta/fields/image.php:10
 msgid "Add image"
 msgstr ""
 
-#: metaboxes/metabox.php:225
+#: metaboxes/metabox.php:248
 msgid "Backup Font Family"
 msgstr ""
 
@@ -46,7 +48,7 @@ msgstr ""
 msgid "Center"
 msgstr ""
 
-#: settings/settings.php:92
+#: settings/settings.php:94
 msgid "Choose Page"
 msgstr ""
 
@@ -58,11 +60,11 @@ msgstr ""
 msgid "Copied"
 msgstr ""
 
-#: metaboxes/metabox.php:231
+#: metaboxes/metabox.php:254
 msgid "Copy settings"
 msgstr ""
 
-#: metaboxes/metabox.php:235
+#: metaboxes/metabox.php:258
 msgid "Couldn't copy settings"
 msgstr ""
 
@@ -82,8 +84,21 @@ msgstr ""
 msgid "Default"
 msgstr ""
 
+#: metaboxes/metabox.php:301
+msgid "Delete"
+msgstr ""
+
 #: taxonomy_meta/fields/image.php:13
 msgid "Delete image"
+msgstr ""
+
+#: metaboxes/metabox.php:266
+msgid ""
+"Download and store Google Fonts locally. Set the fonts in the typography."
+msgstr ""
+
+#: metaboxes/metabox.php:265
+msgid "Download Google Fonts"
 msgstr ""
 
 #: metaboxes/fields/duration.php:24
@@ -103,36 +118,32 @@ msgstr ""
 msgid "Error occurred, please try again"
 msgstr ""
 
-#: metaboxes/metabox.php:236
+#: metaboxes/metabox.php:259
 msgid "Export options"
 msgstr ""
 
-#: metaboxes/metabox.php:229
+#: metaboxes/metabox.php:252
 msgid "Font Color"
 msgstr ""
 
-#: metaboxes/metabox.php:224
+#: metaboxes/metabox.php:247
 msgid "Font Family"
 msgstr ""
 
-#: metaboxes/metabox.php:220
+#: metaboxes/metabox.php:243
 msgid "Font size"
 msgstr ""
 
-#: metaboxes/metabox.php:227
+#: metaboxes/metabox.php:250
 msgid "Font Subsets"
 msgstr ""
 
-#: metaboxes/metabox.php:226
+#: metaboxes/metabox.php:263
+msgid "Font Synchronize"
+msgstr ""
+
+#: metaboxes/metabox.php:249
 msgid "Font Weignt & Style"
-msgstr ""
-
-#: metaboxes/metabox.php:239
-msgid "Generate"
-msgstr ""
-
-#: metaboxes/metabox.php:240 metaboxes/metabox-display.php:39
-msgid "Generate fonts"
 msgstr ""
 
 #: metaboxes/google_fonts.php:31
@@ -147,10 +158,6 @@ msgstr ""
 msgid "Hours"
 msgstr ""
 
-#. URI of the plugin
-msgid "https://github.com/StylemixThemes/nuxy"
-msgstr ""
-
 #. Author URI of the plugin
 msgid "https://stylemixthemes.com"
 msgstr ""
@@ -159,11 +166,11 @@ msgstr ""
 msgid "Image URL"
 msgstr ""
 
-#: metaboxes/metabox.php:237
+#: metaboxes/metabox.php:260
 msgid "Import options"
 msgstr ""
 
-#: metaboxes/metabox.php:232
+#: metaboxes/metabox.php:255
 msgid "Import settings"
 msgstr ""
 
@@ -187,7 +194,7 @@ msgstr ""
 msgid "Left"
 msgstr ""
 
-#: metaboxes/metabox.php:223
+#: metaboxes/metabox.php:246
 msgid "Letter spacing"
 msgstr ""
 
@@ -199,7 +206,7 @@ msgstr ""
 msgid "Light 300 italic"
 msgstr ""
 
-#: metaboxes/metabox.php:221
+#: metaboxes/metabox.php:244
 msgid "Line height"
 msgstr ""
 
@@ -227,12 +234,16 @@ msgstr ""
 msgid "NUXY"
 msgstr ""
 
-#: settings/settings.php:145
+#: settings/settings.php:162
 msgid "Oops, something went wrong"
 msgstr ""
 
 #: helpers/file_upload.php:53
 msgid "Please, select file"
+msgstr ""
+
+#: metaboxes/metabox.php:302
+msgid "Preview"
 msgstr ""
 
 #: metaboxes/google_fonts.php:16
@@ -255,15 +266,15 @@ msgstr ""
 msgid "Right"
 msgstr ""
 
-#: settings/view/header.php:55
+#: settings/view/header.php:82
 msgid "Save Settings"
 msgstr ""
 
-#: settings/settings.php:141
+#: settings/settings.php:158
 msgid "Saved!"
 msgstr ""
 
-#: settings/view/header.php:48
+#: settings/view/header.php:47
 msgid "Search"
 msgstr ""
 
@@ -271,19 +282,19 @@ msgstr ""
 msgid "Select or Upload Media Of Your Chosen Persuasion"
 msgstr ""
 
-#: settings/settings.php:142
+#: settings/settings.php:159
 msgid "Settings are changed"
 msgstr ""
 
-#: settings/settings.php:146
+#: settings/settings.php:163
 msgid "Settings are not changed"
 msgstr ""
 
-#: metaboxes/metabox.php:234
+#: metaboxes/metabox.php:257
 msgid "Settings copied to buffer"
 msgstr ""
 
-#: metaboxes/metabox.php:238
+#: metaboxes/metabox.php:261
 msgid "Sorry, no matching options."
 msgstr ""
 
@@ -291,11 +302,20 @@ msgstr ""
 msgid "StylemixThemes"
 msgstr ""
 
-#: metaboxes/metabox.php:228
+#: metaboxes/metabox.php:264
+msgid ""
+"Sync and update your fonts if they are displayed incorrectly on your website."
+msgstr ""
+
+#: metaboxes/metabox.php:262
+msgid "Synchronize"
+msgstr ""
+
+#: metaboxes/metabox.php:251
 msgid "Text Align"
 msgstr ""
 
-#: metaboxes/metabox.php:230
+#: metaboxes/metabox.php:253
 msgid "Text transform"
 msgstr ""
 
@@ -305,10 +325,6 @@ msgstr ""
 
 #: metaboxes/google_fonts.php:13
 msgid "Thin 100 italic"
-msgstr ""
-
-#: metaboxes/metabox.php:241
-msgid "This setting will automatically update font files in server"
 msgstr ""
 
 #: metaboxes/fields/image.php:25
@@ -327,13 +343,13 @@ msgstr ""
 msgid "Vietnamese"
 msgstr ""
 
-#: metaboxes/metabox.php:233
+#: metaboxes/metabox.php:256
 msgid ""
 "WARNING! This will overwrite all existing option values, please proceed with "
 "caution!"
 msgstr ""
 
-#: metaboxes/metabox.php:222
+#: metaboxes/metabox.php:245
 msgid "Word spacing"
 msgstr ""
 
