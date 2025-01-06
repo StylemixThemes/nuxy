@@ -72,6 +72,15 @@
         .wpcfto-group-title-wrapper {
             display: flex;
             justify-content: space-between;
+            .wpcfto_preview {
+                margin-left: 0;
+                margin-top: 5px;
+                &::after {
+                    transform: rotate(0);
+                    top: 5px;
+                    bottom: unset;
+                }
+            }
             .wpcfto-group-title-button-container {
                 position: relative;
                 .wpcfto-group-title-button {

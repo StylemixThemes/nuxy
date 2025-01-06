@@ -688,6 +688,7 @@
         & {
             color: $accent;
             border-bottom-color: $accent;
+            z-index: 1000;
         }
 
         .wpcfto_preview__popup {

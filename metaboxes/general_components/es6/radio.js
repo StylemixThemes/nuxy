@@ -6,6 +6,11 @@ Vue.component('wpcfto_radio', {
         }
     },
     computed: {
+        hasImageTop() {
+            return (
+                this.fields.image_top && Object.keys(this.fields.image_top).length > 0
+            )
+        },
         previewLabel() {
             return typeof wpcfto_global_settings !== 'undefined' &&
                 wpcfto_global_settings.translations
@@ -20,17 +25,27 @@ Vue.component('wpcfto_radio', {
         
             <div class="wpcfto-field-content">
         
-                <div class="wpcfto-admin-radio" v-bind:id="field_id">
+                <div class="wpcfto-admin-radio" 
+                     v-bind:id="field_id" 
+                     :class="{ 'wpcfto-radio-with-image': hasImageTop }">
+                     
                     <div class="wpcfto-radio">
-                        <label v-for="(option, key) in fields['options']" :class="{ 'disabled' : fields.soon && fields.soon[key], 'active' : value == key }">
-    
-                            <input type="radio"
-                                   v-bind:name="field_name"
-                                   v-model="value"
-                                   :disabled="fields.soon && fields.soon[key]"
-                                   v-bind:value="key"/>
-                                   
-                           <span class="radio-option-text" v-html="option"></span>
+                        <label v-for="(option, key) in fields.options" :key="key" 
+                               :class="{ 'disabled': fields.soon && fields.soon[key], 'active': value == key }">
+                            
+                            <div class="radio-option-image" v-if="fields.image_top && fields.image_top[key]">
+                                <img :src="fields.image_top[key]" :alt="option" />
+                            </div>
+                            
+                            <div class="radio-input-field">
+                                <input type="radio"
+                                    v-bind:name="field_name"
+                                    v-model="value"
+                                    :disabled="fields.soon && fields.soon[key]"
+                                    v-bind:value="key"/>
+                                    
+                                <span class="radio-option-text" v-html="option"></span>
+                            </div>
           
                             <span
                                 v-if="fields.previews && fields.previews[key]"
@@ -39,7 +54,6 @@ Vue.component('wpcfto_radio', {
                                 :src="fields.previews[key]" /></span></span>
                         </label>
                     </div>
-    
                 </div>
             
             </div>
