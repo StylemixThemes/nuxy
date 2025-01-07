@@ -2,7 +2,14 @@ let timeout = undefined;
 let icons = wpcfto_icons_set;
 
 Vue.component('wpcfto_icon_picker', {
-    props: ['fields', 'field_label', 'field_name', 'field_id', 'field_value', 'field_data'],
+    props: [
+        'fields',
+        'field_label',
+        'field_name',
+        'field_id',
+        'field_value',
+        'field_data',
+    ],
     data: function () {
         return {
             value: {
@@ -13,11 +20,19 @@ Vue.component('wpcfto_icon_picker', {
             focusOn: false,
             icons: icons,
             hoverPanel: false,
-            search: "",
-            beforeSelect: "",
-            selected: "",
-            inited: false
+            search: '',
+            beforeSelect: '',
+            selected: '',
+            inited: false,
         }
+    },
+    computed: {
+        previewLabel() {
+            return typeof wpcfto_global_settings !== 'undefined' &&
+                wpcfto_global_settings.translations
+                ? wpcfto_global_settings.translations.preview
+                : 'Preview'
+        },
     },
     template: `
         <div class="wpcfto_generic_field wpcfto_generic_field_iconpicker">
@@ -73,7 +88,7 @@ Vue.component('wpcfto_icon_picker', {
                 </transition>
             
                  <div class="icon-preview-wrap">
-                    <label>Preview</label>
+                    <label>{{ previewLabel }}</label>
                     <div class="icon-preview-inner">
                         <i class="wpcfto_generic_field__iconpicker__icon"
                         v-bind:class="value.icon"
@@ -86,60 +101,65 @@ Vue.component('wpcfto_icon_picker', {
 
         </div>
   `,
-    mounted: function () {
-        if (typeof this.field_value === 'string' && WpcftoIsJsonString(this.field_value)) {
-            this.value = JSON.parse(this.field_value);
-        } else if (typeof this.field_value === 'object') {
-            this.value = this.field_value;
-        }
+	mounted: function () {
+		if (
+			typeof this.field_value === 'string' &&
+			WpcftoIsJsonString(this.field_value)
+		) {
+			this.value = JSON.parse(this.field_value)
+		} else if (typeof this.field_value === 'object') {
+			this.value = this.field_value
+		}
 
-        if (!this.value.icon) {
-            this.value = {
-                icon: '',
-                color: '#000',
-                size: 15,
-            };
-        }
+		if (!this.value.icon) {
+			this.value = {
+				icon: '',
+				color: '#000',
+				size: 15,
+			}
+		}
 
-        this.selected = this.value.icon;
-        this.inited = true;
-    },
-    methods: {
-        blur() {
-            timeout = setTimeout(() => {
-                this.focusOn = false;
-                this.value.icon = '';
-            }, 100);
-        },
-        focus() {
-            this.focusOn = true;
-        },
-        select(icon) {
-            clearTimeout(timeout);
-            if (icon) {
-                if (this.search != this.selected) this.beforeSelect = this.search;
-                this.selected = icon.title;
-                this.search = icon.title;
-            }
-            this.focusOn = false;
-            this.value.icon = this.selected;
-
-        }
-    },
-    computed: {
-        iconsFiltered: function () {
-            const search = (this.search == this.selected) ? this.beforeSelect : this.search
-            return this.icons.filter(i =>
-                i.title.indexOf(search) !== -1 || i.searchTerms.some(t => t.indexOf(search) !== -1)
-            )
-        }
-    },
-    watch: {
-        value: {
-            deep: true,
-            handler: function (value) {
-                this.$emit('wpcfto-get-value', value);
-            }
-        }
-    }
-});
+		this.selected = this.value.icon
+		this.inited = true
+	},
+	methods: {
+		blur() {
+			timeout = setTimeout(() => {
+				this.focusOn = false
+				this.value.icon = ''
+			}, 100)
+		},
+		focus() {
+			this.focusOn = true
+		},
+		select(icon) {
+			clearTimeout(timeout)
+			if (icon) {
+				if (this.search != this.selected) this.beforeSelect = this.search
+				this.selected = icon.title
+				this.search = icon.title
+			}
+			this.focusOn = false
+			this.value.icon = this.selected
+		},
+	},
+	computed: {
+		iconsFiltered: function () {
+			const search =
+				this.search == this.selected ? this.beforeSelect : this.search
+			return this.icons.filter(
+				i =>
+					i.title.indexOf(search) !== -1 ||
+					i.searchTerms.some(t => t.indexOf(search) !== -1)
+			)
+		},
+	},
+	watch: {
+		value: {
+			deep: true,
+			handler: function (value) {
+				this.$emit('wpcfto-get-value', value)
+			},
+		},
+	},
+})

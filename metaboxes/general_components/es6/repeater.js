@@ -12,8 +12,16 @@ Vue.component('wpcfto_repeater', {
         return {
             repeater: [],
             repeater_values: {},
-            disable_scroll: false
+            disable_scroll: false,
         }
+    },
+    computed: {
+        deleteLabel() {
+            return typeof wpcfto_global_settings !== 'undefined' &&
+                wpcfto_global_settings.translations
+                ? wpcfto_global_settings.translations.delete
+                : 'Delete'
+        },
     },
     template: `
     <div class="wpcfto_generic_field wpcfto_generic_field_repeater wpcfto-repeater unflex_fields">
@@ -47,7 +55,7 @@ Vue.component('wpcfto_repeater', {
                 </div>
     
                 <span class="wpcfto-repeater-single-delete" @click="removeArea(area_key)">
-                    <i class="fa fa-trash-alt"></i>Delete
+                    <i class="fa fa-trash-alt"></i>{{ deleteLabel }}
                 </span>
     
             </div>
@@ -65,78 +73,94 @@ Vue.component('wpcfto_repeater', {
 
     </div>
     `,
-    mounted: function () {
-        var _this = this;
+	mounted: function () {
+		var _this = this
 
-        if (typeof _this.field_value === 'string' && WpcftoIsJsonString(_this.field_value)) {
-            _this.field_value = JSON.parse(_this.field_value);
-        }
+		if (
+			typeof _this.field_value === 'string' &&
+			WpcftoIsJsonString(_this.field_value)
+		) {
+			_this.field_value = JSON.parse(_this.field_value)
+		}
 
+		if (
+			typeof _this.field_value !== 'undefined' &&
+			typeof _this.field_value !== 'string'
+		) {
+			_this.$set(_this, 'repeater_values', _this.field_value)
+			_this.repeater_values.forEach(function () {
+				_this.repeater.push({})
+			})
+		}
 
-        if (typeof _this.field_value !== 'undefined' && typeof _this.field_value !== 'string') {
-            _this.$set(_this, 'repeater_values', _this.field_value);
-            _this.repeater_values.forEach(function () {
-                _this.repeater.push({});
-            });
-        }
+		if (
+			typeof _this.field_data !== 'undefined' &&
+			typeof _this.field_data['disable_scroll'] !== 'undefined'
+		)
+			_this.disable_scroll = true
+	},
+	methods: {
+		addArea: function () {
+			this.repeater.push({
+				closed_tab: true,
+			})
 
-        if(typeof _this.field_data !== 'undefined' && typeof _this.field_data['disable_scroll'] !== 'undefined') _this.disable_scroll = true;
+			if (!this.disable_scroll) {
+				var el =
+					'wpcfto-repeater_' +
+					this.field_name +
+					'_' +
+					(this.repeater.length - 1)
 
-    },
-    methods: {
-        addArea: function () {
-            this.repeater.push({
-                closed_tab : true
-            });
+				Vue.nextTick(function () {
+					if (typeof jQuery !== 'undefined') {
+						var $ = jQuery
+						$([document.documentElement, document.body]).animate(
+							{
+								scrollTop: $('.' + el).offset().top - 40,
+							},
+							400
+						)
+					}
+				})
+			}
+		},
+		toggleArea: function (area) {
+			var currentState =
+				typeof area['closed_tab'] !== 'undefined' ? area['closed_tab'] : false
 
+			this.$set(area, 'closed_tab', !currentState)
+		},
+		removeArea: function (areaIndex) {
+			if (confirm('Do your really want to delete this field?')) {
+				this.repeater.splice(areaIndex, 1)
+			}
+		},
+		getFieldValue(key, field, field_name) {
+			if (typeof this.repeater_values === 'undefined') return field.value
+			if (typeof this.repeater_values[key] === 'undefined') return field.value
+			if (typeof this.repeater_values[key][field_name] === 'undefined')
+				return field.value
 
-            if(!this.disable_scroll) {
-                var el = 'wpcfto-repeater_' + this.field_name + '_' + (this.repeater.length - 1);
+			return this.repeater_values[key][field_name]
+		},
+		addLabel() {
+			if (
+				typeof this.fields['load_labels'] !== 'undefined' &&
+				this.fields['load_labels']['add_label'] !== 'undefined'
+			) {
+				return this.fields['load_labels']['add_label']
+			}
 
-                Vue.nextTick(function () {
-                    if (typeof jQuery !== 'undefined') {
-                        var $ = jQuery;
-                        $([document.documentElement, document.body]).animate({
-                            scrollTop: $("." + el).offset().top - 40
-                        }, 400);
-                    }
-                })
-            }
-
-        },
-        toggleArea: function(area) {
-            var currentState  = (typeof area['closed_tab'] !== 'undefined') ? area['closed_tab'] : false;
-
-            this.$set(area, 'closed_tab', !currentState);
-        },
-        removeArea: function (areaIndex) {
-            if(confirm('Do your really want to delete this field?')) {
-                this.repeater.splice(areaIndex, 1);
-            }
-        },
-        getFieldValue(key, field, field_name) {
-
-            if (typeof this.repeater_values === 'undefined') return field.value;
-            if (typeof this.repeater_values[key] === 'undefined') return field.value;
-            if (typeof this.repeater_values[key][field_name] === 'undefined') return field.value;
-
-            return this.repeater_values[key][field_name];
-        },
-        addLabel() {
-
-            if(typeof this.fields['load_labels'] !== 'undefined' && this.fields['load_labels']['add_label'] !== 'undefined') {
-                return this.fields['load_labels']['add_label'];
-            }
-
-            return this['field_label'];
-        }
-    },
-    watch: {
-        repeater: {
-            deep: true,
-            handler: function (repeater) {
-                this.$emit('wpcfto-get-value', repeater);
-            }
-        },
-    }
-});
+			return this['field_label']
+		},
+	},
+	watch: {
+		repeater: {
+			deep: true,
+			handler: function (repeater) {
+				this.$emit('wpcfto-get-value', repeater)
+			},
+		},
+	},
+})

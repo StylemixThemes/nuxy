@@ -1,18 +1,24 @@
 Vue.component('wpcfto_radio', {
-	props: ['fields', 'field_label', 'field_name', 'field_id', 'field_value'],
-	data: function () {
-		return {
-			value: '',
-		}
-	},
-	computed: {
-		hasImageTop() {
-			return (
-				this.fields.image_top && Object.keys(this.fields.image_top).length > 0
-			)
-		},
-	},
-	template: `
+    props: ['fields', 'field_label', 'field_name', 'field_id', 'field_value'],
+    data: function () {
+        return {
+            value: '',
+        }
+    },
+    computed: {
+        hasImageTop() {
+            return (
+                this.fields.image_top && Object.keys(this.fields.image_top).length > 0
+            )
+        },
+        previewLabel() {
+            return typeof wpcfto_global_settings !== 'undefined' &&
+                wpcfto_global_settings.translations
+                ? wpcfto_global_settings.translations.preview
+                : 'Preview'
+        },
+    },
+    template: `
         <div class="wpcfto_generic_field wpcfto_generic_radio" v-bind:class="field_id">
         
             <wpcfto_fields_aside_before :fields="fields" :field_label="field_label"></wpcfto_fields_aside_before>
@@ -43,7 +49,7 @@ Vue.component('wpcfto_radio', {
           
                             <span
                                 v-if="fields.previews && fields.previews[key]"
-                                class="wpcfto_preview">Preview<span
+                                class="wpcfto_preview">{{ previewLabel }}<span
                                 class="wpcfto_preview__popup"><img
                                 :src="fields.previews[key]" /></span></span>
                         </label>
@@ -56,6 +62,7 @@ Vue.component('wpcfto_radio', {
 	mounted: function () {
 		this.value = this.field_value
 	},
+	methods: {},
 	watch: {
 		value: function (value) {
 			this.$emit('wpcfto-get-value', value)
