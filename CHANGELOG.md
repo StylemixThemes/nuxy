@@ -1,3 +1,5 @@
+## 4.4.28
+- **Fix:** Fixed script error in WordPress Customizer.
 ## 4.4.27
 - **Fix:** Add string translate for options.
 ## 4.4.26
