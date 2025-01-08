@@ -63,6 +63,8 @@ class WPCFTO_Settings {
 	public function settings_page() {
 		if ( current_user_can( 'manage_options' ) ) {
 
+			$position = isset( $this->page_args['position'] ) ? $this->page_args['position'] : null;
+
 			if ( ! empty( $this->page_args['parent_slug'] ) ) {
 				$r = add_submenu_page(
 					$this->page_args['parent_slug'],
@@ -71,7 +73,7 @@ class WPCFTO_Settings {
 					'manage_options',
 					$this->page_args['menu_slug'],
 					array( $this, 'settings_page_view' ),
-					$this->page_args['position']
+					$position
 				);
 			} else {
 				add_menu_page(
@@ -81,7 +83,7 @@ class WPCFTO_Settings {
 					$this->page_args['menu_slug'],
 					array( $this, 'settings_page_view' ),
 					$this->page_args['icon'],
-					$this->page_args['position']
+					$position
 				);
 			}
 
