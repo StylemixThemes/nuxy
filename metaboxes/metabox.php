@@ -377,6 +377,14 @@ class STM_Metaboxes {
 			true
 		);
 
+		wp_enqueue_script(
+			'wpcfto_multiselect_add_term_component',
+			STM_WPCFTO_URL . '/metaboxes/general_components/js/multiselect_add_term.js',
+			array( 'wpcfto_metaboxes.js' ),
+			$v,
+			true
+		);
+
 		$icons        = array();
 		$font_awesome = stm_wpcfto_new_fa_icons();
 		array_walk(
