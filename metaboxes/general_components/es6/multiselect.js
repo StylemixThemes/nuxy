@@ -29,6 +29,7 @@ Vue.component('wpcfto_multiselect', {
 	
 				 </div>
 				 
+                <wpcfto_multiselect_add_term :fields="fields" @add-term="addTermToSelect"></wpcfto_multiselect_add_term>
 			</div>
 
 			 <wpcfto_fields_aside_after :fields="fields"></wpcfto_fields_aside_after>
@@ -67,6 +68,23 @@ Vue.component('wpcfto_multiselect', {
                 b[i] = a[j];
             }
             return b.join("");
+        },
+        addTermToSelect: function (taxonomy,term) {
+            var vm = this;
+            let url = stm_wpcfto_ajaxurl + '?action=wpcfto_create_term&nonce=' + stm_wpcfto_nonces['wpcfto_create_term'];
+
+            this.$http.post(url, JSON.stringify({new_taxonomy: taxonomy, new_term: term}))
+                .then(function (response) {
+                    console.log(response.body.hasOwnProperty('success'));
+                        if(response.body.hasOwnProperty('success')) {
+                            let term_name = response.body.term.name;
+                            let term_slug = response.body.term.slug;
+
+                            vm.selected.push({label: term_name, name: term_slug});
+                            vm.options.push({label: term_name, name: term_slug});
+                        }
+                    }
+                );
         }
     },
     watch: {
