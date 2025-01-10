@@ -33,6 +33,7 @@ function stm_wpcfto_nonces() {
 		'wpcfto_upload_file',
 		'wpcfto_search_posts',
 		'wpcfto_regenerate_fonts',
+		'wpcfto_create_term',
 	);
 
 	$nonces_list = array();
