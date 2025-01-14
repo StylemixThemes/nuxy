@@ -274,6 +274,8 @@ class STM_Metaboxes {
 			'regenerate_fonts_notice'            => esc_html__( 'Sync and update your fonts if they are displayed incorrectly on your website.', 'nuxy' ),
 			'fonts_download_setting_label'       => esc_html__( 'Download Google Fonts', 'nuxy' ),
 			'fonts_download_setting_description' => esc_html__( 'Download and store Google Fonts locally. Set the fonts in the typography.', 'nuxy' ),
+			'delete'                             => esc_html__( 'Delete', 'nuxy' ),
+			'preview'                            => esc_html__( 'Preview', 'nuxy' ),
 		);
 	}
 
@@ -311,10 +313,6 @@ class STM_Metaboxes {
 				'translations' => self::translations(),
 				'transform'    => WPCFTO_Gfonts::transform(),
 				'nonce'        => wp_create_nonce( 'stm_wpcfto_get_settings_nonce' ),
-				'translations' => array(
-					'delete'  => esc_html__( 'Delete', 'nuxy' ),
-					'preview' => esc_html__( 'Preview', 'nuxy' ),
-				),
 			)
 		);
 
