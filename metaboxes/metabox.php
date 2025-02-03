@@ -299,6 +299,7 @@ class STM_Metaboxes {
 		wp_enqueue_script( 'vue-draggable.js', $base . 'js/vue-draggable.min.js', array( 'sortable.js' ), $v, true );
 		wp_enqueue_script( 'wpcfto_mixins.js', $base . 'js/mixins.js', array( 'vue.js' ), $v, true );
 		wp_enqueue_script( 'wpcfto_metaboxes.js', $base . 'js/metaboxes.js', array( 'vue.js' ), $v, true );
+		wp_enqueue_script( 'wpcfto_search-by-settings.js', $base . 'js/search-by-settings.js', array( 'vue.js' ), $v, true );
 
 		wp_add_inline_script( 'wpcfto_metaboxes.js', 'const WPCFTO_EventBus = new Vue();' );
 
