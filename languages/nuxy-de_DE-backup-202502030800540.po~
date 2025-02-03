@@ -281,7 +281,7 @@ msgstr "Gespeichert!"
 
 #: settings/view/header.php:45
 msgid "Search..."
-msgstr "Suchen..."
+msgstr ""
 
 #: taxonomy_meta/fields/image.php:45
 msgid "Select or Upload Media Of Your Chosen Persuasion"

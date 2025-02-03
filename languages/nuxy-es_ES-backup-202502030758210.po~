@@ -3,161 +3,164 @@ msgstr ""
 "Project-Id-Version: NUXY\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-05-23 06:46+0000\n"
-"PO-Revision-Date: 2025-02-03 08:00+0000\n"
+"PO-Revision-Date: 2025-02-03 07:58+0000\n"
 "Last-Translator: \n"
-"Language-Team: German\n"
-"Language: de_DE\n"
+"Language-Team: Spanish (Spain)\n"
+"Language: es_ES\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco https://localise.biz/\n"
-"X-Loco-Version: 2.6.10; wp-6.5.4\n"
+"X-Loco-Version: 2.6.1; wp-5.9.3\n"
 "X-Domain: nuxy"
 
 #: taxonomy_meta/fields/image.php:10
 msgid "Add image"
-msgstr "Bild hinzufügen"
+msgstr "Añadir imagen"
 
 #: metaboxes/metabox.php:258
 msgid "Backup Font Family"
-msgstr "Schriftfamilie sichern"
+msgstr "Familia de fuentes de copia de seguridad"
 
 #: metaboxes/google_fonts.php:22
 msgid "Black 900"
-msgstr "Schwarz 900"
+msgstr "Negro 900"
 
 #: metaboxes/google_fonts.php:23
 msgid "Black 900 italic"
-msgstr "Schwarz 900 kursiv"
+msgstr "Negro 900 cursiva"
 
 #: metaboxes/google_fonts.php:20
 msgid "Bold 700"
-msgstr "Fett 700"
+msgstr "Negrita 700"
 
 #: metaboxes/google_fonts.php:21
 msgid "Bold 700 italic"
-msgstr "Fett 700 kursiv"
+msgstr "Negrita 700 cursiva"
 
 #: metaboxes/google_fonts.php:53
 msgid "Capitalize"
-msgstr "Profitieren"
+msgstr "Capitalizar"
 
 #: metaboxes/google_fonts.php:43
 msgid "Center"
-msgstr "Center"
+msgstr "Centro"
 
 #: settings/settings.php:97
 msgid "Choose Page"
-msgstr "Seite wählen"
+msgstr "Elegir página"
 
 #: metaboxes/metabox.php:42
 msgid "Choose User"
-msgstr "Benutzer wählen"
+msgstr "Elija usuario"
 
 #: metaboxes/fields/text.php:28
 msgid "Copied"
-msgstr "Kopiert"
+msgstr "Copiado"
 
 #: metaboxes/metabox.php:264
 msgid "Copy settings"
-msgstr "Einstellungen kopieren"
+msgstr "Copiar configuración"
 
 #: metaboxes/metabox.php:268
 msgid "Couldn't copy settings"
-msgstr "Konnte die Einstellungen nicht kopieren"
+msgstr "No se pudo copiar la configuración"
 
 #: metaboxes/google_fonts.php:29
 msgid "Cyrillic"
-msgstr "Kyrillisch"
+msgstr "Cirílico"
 
 #: metaboxes/google_fonts.php:30
 msgid "Cyrillic ext"
-msgstr "Kyrillische Erweiterung"
+msgstr "Extensión cirílica"
 
 #: metaboxes/fields/duration.php:35
 msgid "Days"
-msgstr "Tage"
+msgstr "Días"
 
 #: metaboxes/google_fonts.php:41
 msgid "Default"
-msgstr "Standard"
+msgstr "Por defecto"
 
 #: metaboxes/metabox.php:277
 msgid "Delete"
-msgstr "Löschen"
+msgstr "Borrar"
 
 #: taxonomy_meta/fields/image.php:13
 msgid "Delete image"
-msgstr "Bild löschen"
+msgstr "Eliminar imagen"
 
 #: metaboxes/metabox.php:276
 msgid ""
 "Download and store Google Fonts locally. Set the fonts in the typography."
 msgstr ""
-"Google Fonts herunterladen und lokal speichern. Schriftarten in der "
-"Typografie festlegen."
+"Descargue y guarde las fuentes de Google de forma local. Configure las "
+"fuentes en la tipografía."
 
 #: metaboxes/metabox.php:275
 msgid "Download Google Fonts"
-msgstr "Google Fonts herunterladen"
+msgstr ""
+"\n"
+"21 / 5 000\n"
+"Descargar fuentes de Google"
 
 #: metaboxes/fields/duration.php:24
 msgid "duration"
-msgstr "Dauer"
+msgstr "duración"
 
 #: metaboxes/fields/repeater.php:25 metaboxes/fields/text.php:27
 #: metaboxes/fields/textarea.php:25
 msgid "Enter"
-msgstr "Eingeben"
+msgstr "Introducir"
 
 #: metaboxes/fields/number.php:22
 msgid "Enter numbers..."
-msgstr "Zahlen eingeben..."
+msgstr "Introducir números..."
 
 #: helpers/file_upload.php:21
 msgid "Error occurred, please try again"
-msgstr "Fehler aufgetreten, bitte versuchen Sie es erneut"
+msgstr "Error, inténtelo de nuevo"
 
 #: metaboxes/metabox.php:269
 msgid "Export options"
-msgstr "Exportoptionen"
+msgstr "Opciones de exportación"
 
 #: metaboxes/metabox.php:262
 msgid "Font Color"
-msgstr "Schriftfarbe"
+msgstr "Color de fuente"
 
 #: metaboxes/metabox.php:257
 msgid "Font Family"
-msgstr "Schriftfamilie"
+msgstr "Familia de fuentes"
 
 #: metaboxes/metabox.php:253
 msgid "Font size"
-msgstr "Schriftgröße"
+msgstr "Tamaño de fuente"
 
 #: metaboxes/metabox.php:260
 msgid "Font Subsets"
-msgstr "Schriftart-Untergruppen"
+msgstr "Subconjuntos de fuentes"
 
 #: metaboxes/metabox.php:273
 msgid "Font Synchronize"
-msgstr "Schriftart synchronisieren"
+msgstr "Sincronizar fuente"
 
 #: metaboxes/metabox.php:259
 msgid "Font Weignt & Style"
-msgstr "Schriftart & Stil"
+msgstr "Fuente Weignt & Style"
 
 #: metaboxes/google_fonts.php:31
 msgid "Greek"
-msgstr "Griechisch"
+msgstr "Griego"
 
 #: metaboxes/google_fonts.php:32
 msgid "Greek ext"
-msgstr "Griechische Erweiterung"
+msgstr "Extensión griega"
 
 #: metaboxes/fields/duration.php:34
 msgid "Hours"
-msgstr "Stunden"
+msgstr "Horas"
 
 #. Author URI of the plugin
 msgid "https://stylemixthemes.com"
@@ -165,67 +168,67 @@ msgstr "https://stylemixthemes.com"
 
 #: metaboxes/fields/image.php:24
 msgid "Image URL"
-msgstr "Bild-URL"
+msgstr "URL de la imagen"
 
 #: metaboxes/metabox.php:270
 msgid "Import options"
-msgstr "Importoptionen"
+msgstr "Opciones de importación"
 
 #: metaboxes/metabox.php:265
 msgid "Import settings"
-msgstr "Einstellungen importieren"
+msgstr "Configuración de importación"
 
 #: metaboxes/metabox-display.php:27
 msgid "Import/Export"
-msgstr "Import/Export"
+msgstr "Importación/Exportación"
 
 #: helpers/file_upload.php:65
 msgid "Invalid file extension"
-msgstr "Ungültige Dateierweiterung"
+msgstr "Extensión de archivo no válida"
 
 #: metaboxes/google_fonts.php:33
 msgid "Latin"
-msgstr "Lateinisch"
+msgstr "Latino"
 
 #: metaboxes/google_fonts.php:34
 msgid "Latin ext"
-msgstr "Lateinische Erweiterung"
+msgstr "Ext latino"
 
 #: metaboxes/google_fonts.php:42
 msgid "Left"
-msgstr "Links"
+msgstr "Izquierda"
 
 #: metaboxes/metabox.php:256
 msgid "Letter spacing"
-msgstr "Buchstabenabstände"
+msgstr "Espaciado de letras"
 
 #: metaboxes/google_fonts.php:14
 msgid "Light 300"
-msgstr "Licht 300"
+msgstr "Luz 300"
 
 #: metaboxes/google_fonts.php:15
 msgid "Light 300 italic"
-msgstr "Light 300 kursiv"
+msgstr "Luz 300 cursiva"
 
 #: metaboxes/metabox.php:254
 msgid "Line height"
-msgstr "Zeilenhöhe"
+msgstr "Altura de línea"
 
 #: metaboxes/google_fonts.php:52
 msgid "Lowercase"
-msgstr "Kleinbuchstaben"
+msgstr "Minúsculos"
 
 #: metaboxes/google_fonts.php:18
 msgid "Medium 500"
-msgstr "Mittel 500"
+msgstr "Mediano 500"
 
 #: metaboxes/google_fonts.php:19
 msgid "Medium 500 italic"
-msgstr "Medium 500 kursiv"
+msgstr "Cursiva mediana 500"
 
 #: metaboxes/fields/duration.php:33
 msgid "Minutes"
-msgstr "Minuten"
+msgstr "Minutos"
 
 #: metaboxes/google_fonts.php:50
 msgid "Normal"
@@ -237,71 +240,71 @@ msgstr "NUXY"
 
 #: settings/settings.php:165
 msgid "Oops, something went wrong"
-msgstr "Ups, etwas ist schiefgegangen"
+msgstr "Ups, algo salió mal"
 
 #: helpers/file_upload.php:53
 msgid "Please, select file"
-msgstr "Bitte, Datei auswählen"
+msgstr "Por favor, seleccione el archivo"
 
 #: metaboxes/metabox.php:278
 msgid "Preview"
-msgstr "Vorschau"
+msgstr "Avance"
 
 #: metaboxes/google_fonts.php:16
 msgid "Regular 400"
-msgstr "Regulär 400"
+msgstr "Regular 400"
 
 #: metaboxes/google_fonts.php:17
 msgid "Regular 400 italic"
-msgstr "Normal 400 kursiv"
+msgstr "Regular 400 cursiva"
 
 #: metaboxes/fields/image.php:27
 msgid "Remove"
-msgstr "Entfernen"
+msgstr "Eliminar"
 
 #: metaboxes/fields/image.php:26
 msgid "Replace"
-msgstr "Ersetzen"
+msgstr "Reemplazar"
 
 #: settings/view/header.php:45
 msgid "Results not found"
-msgstr "Keine Ergebnisse gefunden"
+msgstr "Resultados no encontrados"
 
 #: metaboxes/google_fonts.php:44
 msgid "Right"
-msgstr "Rechts"
+msgstr "Bien"
 
 #: settings/view/header.php:79
 msgid "Save Settings"
-msgstr "Einstellungen speichern"
+msgstr "Guardar configuración"
 
 #: settings/settings.php:161
 msgid "Saved!"
-msgstr "Gespeichert!"
+msgstr "¡Salvado!"
 
 #: settings/view/header.php:45
 msgid "Search..."
-msgstr "Suchen..."
+msgstr ""
 
 #: taxonomy_meta/fields/image.php:45
 msgid "Select or Upload Media Of Your Chosen Persuasion"
-msgstr "Medien Ihrer Wahl auswählen oder hochladen"
+msgstr "Seleccione o cargue medios de su persuasión elegida"
 
 #: settings/settings.php:162
 msgid "Settings are changed"
-msgstr "Einstellungen wurden geändert"
+msgstr "Se han cambiado las configuraciones"
 
 #: settings/settings.php:166
 msgid "Settings are not changed"
-msgstr "Einstellungen wurden nicht geändert"
+msgstr "Los ajustes no se modifican"
 
 #: metaboxes/metabox.php:267
 msgid "Settings copied to buffer"
-msgstr "Einstellungen in Puffer kopiert"
+msgstr "Configuración copiada en el búfer"
 
 #: metaboxes/metabox.php:271
 msgid "Sorry, no matching options."
-msgstr "Entschuldigung, keine passenden Optionen."
+msgstr "Lo sentimos, no hay opciones de coincidencia."
 
 #. Author of the plugin
 msgid "StylemixThemes"
@@ -311,57 +314,57 @@ msgstr "StylemixThemes"
 msgid ""
 "Sync and update your fonts if they are displayed incorrectly on your website."
 msgstr ""
-"Synchronisieren und aktualisieren Sie Ihre Schriftarten, wenn sie auf Ihrer "
-"Website falsch angezeigt werden."
+"Sincronice y actualice sus fuentes si se muestran incorrectamente en su "
+"sitio web."
 
 #: metaboxes/metabox.php:272
 msgid "Synchronize"
-msgstr "Synchronisieren"
+msgstr "Sincronizar"
 
 #: metaboxes/metabox.php:261
 msgid "Text Align"
-msgstr "Text ausrichten"
+msgstr "Alineación de texto"
 
 #: metaboxes/metabox.php:263
 msgid "Text transform"
-msgstr "Text transformieren"
+msgstr "TTransformación de texto"
 
 #: metaboxes/google_fonts.php:12
 msgid "Thin 100"
-msgstr "Dünn 100"
+msgstr "Delgado 100"
 
 #: metaboxes/google_fonts.php:13
 msgid "Thin 100 italic"
-msgstr "Dünn 100 kursiv"
+msgstr "Delgado 100 cursiva"
 
 #: metaboxes/fields/image.php:25
 msgid "Upload"
-msgstr "Hochladen"
+msgstr "Subir"
 
 #: metaboxes/google_fonts.php:51
 msgid "Uppercase"
-msgstr "Großbuchstaben"
+msgstr "Mayúsculas"
 
 #: taxonomy_meta/fields/image.php:47
 msgid "Use this media"
-msgstr "Dieses Medium verwenden"
+msgstr "Utilice este medio"
 
 #: metaboxes/google_fonts.php:35
 msgid "Vietnamese"
-msgstr "Vietnamesisch"
+msgstr "Vietnamita"
 
 #: metaboxes/metabox.php:266
 msgid ""
 "WARNING! This will overwrite all existing option values, please proceed with "
 "caution!"
 msgstr ""
-"WARNUNG! Dies überschreibt alle existierenden Optionswerte, bitte gehen Sie "
-"mit"
+"¡ADVERTENCIA! Esto sobrescribirá todos los valores existentes, por favor "
+"continúe ¡precaución!"
 
 #: metaboxes/metabox.php:255
 msgid "Word spacing"
-msgstr "Wortabstände"
+msgstr "Espaciado de palabras"
 
 #. Description of the plugin
 msgid "WordPress Custom Fields & Theme Options with Vue.js."
-msgstr "Benutzerdefinierte Felder und Designoptionen für WordPress mit Vue.js."
+msgstr "Campos personalizados y opciones de temas de WordPress con Vue.js."
