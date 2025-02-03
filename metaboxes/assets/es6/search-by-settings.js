@@ -34,28 +34,26 @@ Vue.component('search-by-settings', {
     `,
     methods: {
         validatePaste: function( event ) {
-            event.preventDefault(); // Блокируем стандартную вставку
+            event.preventDefault();
             let pastedText = (event.clipboardData || window.clipboardData).getData("text");
 
-            // Очищаем строку по правилам:
             pastedText = pastedText
-                .replace(/[^\p{L} ]/gu, '') // Удаляем всё, кроме букв и пробелов
-                .replace(/\s+/g, ' ') // Заменяем множественные пробелы на один
-                .trim(); // Убираем пробелы в начале и конце строки
+                .replace(/[^\p{L} ]/gu, '')
+                .replace(/\s+/g, ' ')
+                .trim();
 
-            this.мalue = pastedText; // Обновляем поле
+            this.мalue = pastedText;
         },
         validate: function( event ) {
             let char = event.key;
-            let isLetter = /^[\p{L}]$/u.test(char); // Проверяет, является ли символ буквой (любой алфавит)
+            let isLetter = /^[\p{L}]$/u.test(char);
             let isSpace = char === " ";
           
             if (isLetter) {
-              return true; // Разрешаем ввод буквы
+              return true;
             }
       
             if (isSpace) {
-              // Запрещаем пробел, если он первый или если до него уже есть пробел
               if (this.value.length === 0 || this.value.endsWith(" ")) {
                 event.preventDefault();
                 return false;
