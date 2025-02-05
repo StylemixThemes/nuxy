@@ -1,3 +1,5 @@
+## 4.4.34
+- **New:** Available search by settings
 ## 4.4.33
 - **Fix:** Fixed Import/Export options.
 ## 4.4.32
