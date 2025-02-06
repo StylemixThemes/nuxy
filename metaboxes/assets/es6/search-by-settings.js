@@ -1,5 +1,5 @@
 Vue.component('search-by-settings', {
-    props: ['settings', 'placeholder'],
+    props: ['settings', 'placeholder', 'notfound'],
     data: function () {
         return {
             data: {},
@@ -8,8 +8,7 @@ Vue.component('search-by-settings', {
             selected: {},
             inFocus: false,
             selectedBlinkTimeout: false,
-            hoverOnResults: false,
-            notfound: false
+            hoverOnResults: false
         }
     },
     template: `
