@@ -127,4 +127,32 @@ gulp.task('build_wpcfto', function (done) {
 
 });
 
+gulp.task('build_mlts', function (done) {
+
+    gulp.src('./metaboxes/general_components/es6/multiselect_add_term.js')
+        .pipe(babel({
+            presets: ['@babel/env']
+        }))
+        .on('error', function(error) {
+            console.log(error)
+        })
+        .pipe(browserify({
+            transform: ['babelify'],
+        }))
+        .pipe(gulp.dest('./metaboxes/general_components/js'));
+
+    gulp.src('./metaboxes/general_components/es6/multiselect.js')
+        .pipe(babel({
+            presets: ['@babel/env']
+        }))
+        .on('error', function(error) {
+            console.log(error)
+        })
+        .pipe(browserify({
+            transform: ['babelify'],
+        }))
+        .pipe(gulp.dest('./metaboxes/general_components/js'));
+    done();
+});
+
 gulp.task('build', gulp.series('clean_wpcfto', 'build_wpcfto'));
