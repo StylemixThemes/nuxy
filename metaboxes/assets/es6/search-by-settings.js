@@ -75,7 +75,7 @@ Vue.component('search-by-settings', {
                             let fieldLabel  = field.label.toLowerCase();
                             let searchIndex = fieldLabel.indexOf( search );
                             let fieldNode   = document.querySelector('.wpcfto-box-child.' + fieldID + ', .wpcfto-box.' + fieldID);
-                            if ( fieldNode && searchIndex !== -1 ) {
+                            if ( fieldNode && searchIndex !== -1 && !fieldNode.classList.contains('notice_banner') ) {
                                 this.found[sectionID + '_' + fieldID] = {
                                     section_id: sectionID,
                                     field_id: fieldID,
@@ -115,9 +115,11 @@ Vue.component('search-by-settings', {
 
                 for ( let tabContent of activeTabsContent ) {
                     tabContent.classList.remove('active');
-                    let activeSubMenuFields = tabContent.querySelectorAll('.wpcfto-box');
-                    for ( let field of activeSubMenuFields ) {
-                        field.setAttribute('style', 'display:none');
+                    if ( tabContent.classList.contains('has-submenu') ) {
+                        let activeSubMenuFields = tabContent.querySelectorAll('.wpcfto-box');
+                        for ( let field of activeSubMenuFields ) {
+                            field.setAttribute('style', 'display:none');
+                        }
                     }
                 }
     
