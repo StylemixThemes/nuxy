@@ -93,7 +93,7 @@ input[type="text"].wpcfto-search-field {
     height: 25px;
     display: block;
     right: 25px;
-    top: 8px;
+    top: 11px;
     position: absolute;
     opacity: 0.6;
     transition: 0.2s;
@@ -127,6 +127,8 @@ input[type="text"].wpcfto-search-field {
 .selected-field {
     .wpcfto-field-aside__label {
         position: relative;
+        display: inline-block;
+
         &:before {
             content: '';
             border: 1px solid #2985f7;

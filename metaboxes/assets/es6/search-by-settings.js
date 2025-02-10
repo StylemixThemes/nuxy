@@ -13,7 +13,7 @@ Vue.component('search-by-settings', {
     },
     template: `
         <div class="wpcfto_search_group">
-			<input @paste="validatePaste" @keypress="validate" @focus="focusIn" @focusout="focusOut" @input="search" type="text" name="" v-model="value" class="wpcfto-search-field" :placeholder="placeholder"/>
+			<input @focus="focusIn" @focusout="focusOut" @input="search" type="text" name="" v-model="value" class="wpcfto-search-field" :placeholder="placeholder"/>
             <div @mouseenter="resultsHover" @mouseleave="resultsHoverOut" v-if="value.length && Object.keys(found).length && inFocus" class="wpcfto-search-results">
                 <div @click="goToOption" class="wpcfto-search-result" v-for="(item, key) in found" :data-key="key">
                     <div class="wpcfto-search-result-name" :data-key="key">{{ item.label_begin }}<span :data-key="key">{{ item.label_match }}</span>{{ item.label_end }}</div>
@@ -26,45 +26,16 @@ Vue.component('search-by-settings', {
             <div v-if="value.length" @click="removeSearchValue" class="wpcfto-remove-search-value"></div>
             <div @mouseenter="resultsHover" @mouseleave="resultsHoverOut" v-if="value.length && Object.keys(found).length === 0 && inFocus" class="wpcfto-search-results not-found">
                 <div class="wpcfto-search-result">
-                    <div class="wpcfto-search-result-name"><i class="fa-solid fa-triangle-exclamation"></i>{{ notfound }}</div>
+                    <div class="wpcfto-search-result-name"><i class="nuxy-notfound-icon"></i>{{ notfound }}</div>
                 </div>
             </div>
         </div>
     `,
     methods: {
-        validatePaste: function( event ) {
-            event.preventDefault();
-            let pastedText = (event.clipboardData || window.clipboardData).getData("text");
-
-            pastedText = pastedText
-                .replace(/[^\p{L} ]/gu, '')
-                .replace(/\s+/g, ' ')
-                .trim();
-
-            this.мalue = pastedText;
-        },
-        validate: function( event ) {
-            let char = event.key;
-            let isLetter = /^[\p{L}]$/u.test(char);
-            let isSpace = char === " ";
-          
-            if (isLetter) {
-              return true;
-            }
-      
-            if (isSpace) {
-              if (this.value.length === 0 || this.value.endsWith(" ")) {
-                event.preventDefault();
-                return false;
-              }
-              return true;
-            }
-      
-            event.preventDefault();
-            return false;
-        },
         search: function( e ) {
-            let search = this.value.toLowerCase();
+            let doc    = new DOMParser().parseFromString(this.value, 'text/html');
+            let search = doc.body.textContent.trim().toLowerCase() || ''
+
             this.found = {};
             if ( search ) {
                 for ( let sectionID in this.settings ) {

@@ -239,3 +239,37 @@
         }
     }
 }
+
+.nuxy-notfound-icon {
+    position: relative;
+    display: inline-block;
+    border-radius: 50%;
+    overflow: hidden;
+    width: 20px;
+    height: 20px;
+    vertical-align: bottom;
+
+    &:before {
+        content: "";
+        display: block;
+        top: -1px;
+        left: 0;
+        position: absolute;
+        border: 10px solid transparent;
+        border-bottom-color: #000;
+        border-bottom-width: 17px;
+        border-top-width: 0;
+        opacity: 0.5;
+    }
+
+    &:after {
+        content: '!';
+        font-family: "Verdana", "Arial", "sans-serif";
+        font-weight: normal;
+        color: #fff;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translateX(-50%) translateY(-50%);
+    }
+}
