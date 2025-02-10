@@ -126,7 +126,6 @@ Vue.component('search-by-settings', {
                 });
 
                 ths.inFocus = false;
-                ths.value   = '';
                 
                 ths.selectedBlinkTimeout = setTimeout(function() {
                     if ( selectedField.classList.contains('selected-field') ) {
