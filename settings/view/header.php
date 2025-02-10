@@ -42,10 +42,7 @@ $only_logo = empty( $wpcfto_title ) && empty( $wpcfto_sub_title );
 
 		<?php do_action( 'custom_content' ); ?>
 
-		<div class="wpcfto_search_group">
-			<input type="text" name="" value="" class="wpcfto-search-field"
-					placeholder="<?php esc_html_e( 'Search', 'nuxy' ); ?>"/>
-		</div>
+		<search-by-settings :settings="data" notfound="<?php esc_html_e( 'Results not found', 'nuxy' ); ?>" placeholder="<?php esc_html_e( 'Search...', 'nuxy' ); ?>"></search-by-settings>
 		
 		<div class="wpcfto_header_actions">
 			<?php if ( ! empty( $wpcfto_link['url'] ) ) : ?>

@@ -1,0 +1,147 @@
+@keyframes blink-and-fade {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 1; }
+}
+
+.wpcfto_search_group {
+    position: relative;
+    flex: 1;
+    padding: 0 15px 0 0;
+}
+
+input[type="text"].wpcfto-search-field {
+    min-width: 276px;
+    height: 45px;
+    border-radius: 30px;
+    border: 1px solid #8c99a5;
+    background-color: #f6f9fc;
+    padding-left: 16px;
+    padding-right: 16px;
+    width: 100%;
+}
+
+.wpcfto-search-results {
+    display: block;
+    position: absolute;
+    top: 0;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.25);
+    left: 0;
+    right: 15px;
+    top: 47px;
+    max-height: 250px;
+    overflow: auto;
+    border: 1px solid #efefef;
+
+    i {
+        margin: 0 5px 0 0;
+    }
+
+    &.not-found {
+        pointer-events: none;
+    }
+}
+.wpcfto-search-result {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    padding: 12px;
+    transition: 0.2s;
+    cursor: pointer;
+    color: rgba(0, 0, 0, 0.5);
+
+    &:not(last-child) {
+        border-bottom: 1px solid #efefef;
+    }
+
+    &:hover {
+        background-color: #efefef;
+        color: rgba(0, 0, 0, 0.9);
+    }
+}
+.wpcfto-search-result-name {
+    span {
+        font-weight: bold;
+        color: rgba(0, 0, 0, 0.9);
+    }
+}
+.wpcfto-search-result-section {
+    display: flex;
+
+    span {
+        position: relative;
+        padding: 0 0 0 20px;
+
+        &:before {
+            content: '';
+            position: absolute;
+            border-top: 1px solid #000;
+            border-right: 1px solid #000;
+            transform: rotate(45deg);
+            display: block;
+            width: 3px;
+            height: 3px;
+            left: 7px;
+            top: 7px;
+            opacity: 0.5;
+        }
+    }
+}
+.wpcfto-remove-search-value {
+    width: 25px;
+    height: 25px;
+    display: block;
+    right: 25px;
+    top: 11px;
+    position: absolute;
+    opacity: 0.6;
+    transition: 0.2s;
+    cursor: pointer;
+
+    &:hover {
+        opacity: 1;
+    }
+
+    &:before,
+    &:after {
+        content: "";
+        display: block;
+        position: absolute;
+        width: 15px;
+        height: 2px;
+        left: 50%;
+        top: 50%;
+        transition: 0.3s;
+        background-color: black;
+    }
+
+    &:before {
+        transform: translateX(-50%) translateY(-50%) rotate(45deg);
+    }
+
+    &:after {
+        transform: translateX(-50%) translateY(-50%) rotate(-45deg);
+    }
+}
+.selected-field {
+    .wpcfto-field-aside__label {
+        position: relative;
+        display: inline-block;
+
+        &:before {
+            content: '';
+            border: 1px solid #2985f7;
+            border-radius: 5px;
+            background-color: #2985f74a;
+            position: absolute;
+            left: -4px;
+            right: -4px;
+            top: -2px;
+            bottom: -2px;
+            display: block;
+            animation: blink-and-fade 1s ease-in-out 4, fade-out 4s forwards;
+            opacity: 0;
+        }
+    }
+}
