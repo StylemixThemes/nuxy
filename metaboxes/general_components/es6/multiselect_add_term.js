@@ -6,8 +6,12 @@ Vue.component('wpcfto_multiselect_add_term', {
             uniq_id: '',
             show_input: false,
             new_term: '',
-            new_tag_placeholder: this.fields.new_tag_settings.placeholder,
+            new_tag_placeholder: '',
         }
+    },
+    beforeMount: function () {
+        console.log(this.fields);
+        this.new_tag_placeholder = ( this.fields.new_tag_settings !== undefined ) ? this.fields.new_tag_settings.placeholder : '';
     },
     computed: {},
     template: `
