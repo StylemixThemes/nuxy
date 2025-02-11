@@ -8,7 +8,8 @@ Vue.component('search-by-settings', {
             selected: {},
             inFocus: false,
             selectedBlinkTimeout: false,
-            hoverOnResults: false
+            hoverOnResults: false,
+            searchTimeout: false
         }
     },
     template: `
@@ -33,37 +34,43 @@ Vue.component('search-by-settings', {
     `,
     methods: {
         search: function( e ) {
-            let doc    = new DOMParser().parseFromString(this.value, 'text/html');
-            let search = doc.body.textContent.trim().toLowerCase() || ''
-
-            this.found = {};
-            if ( search ) {
-                for ( let sectionID in this.settings ) {
-                    let section = this.settings[sectionID];
-                    for ( let fieldID in section.fields ) {
-                        let field = section.fields[fieldID];
-                        if ( field.label && field.type !== 'group_title' ) {
-                            if (!isNaN(fieldID.charAt(0))) {
-                                fieldID = 'a' + fieldID;
-                            }
-
-                            let fieldLabel  = field.label.toLowerCase();
-                            let searchIndex = fieldLabel.indexOf( search );
-                            let fieldNode   = document.querySelector('.wpcfto-box-child.' + fieldID + ', .wpcfto-box.' + fieldID);
-                            
-                            if ( fieldNode && searchIndex !== -1 && !fieldNode.classList.contains('notice_banner') ) {
-                                this.found[sectionID + '_' + fieldID] = {
-                                    section_id: sectionID,
-                                    field_id: fieldID,
-                                    label_begin: field.label.slice(0, searchIndex),
-                                    label_match: field.label.slice(searchIndex, searchIndex + search.length),
-                                    label_end: field.label.slice(searchIndex + search.length)
-                                };
+            if ( this.searchTimeout ) {
+                clearTimeout(this.searchTimeout);
+            }
+            this.searchTimeout = setTimeout(() => {
+                let doc    = new DOMParser().parseFromString(this.value, 'text/html');
+                let search = doc.body.textContent.trim().toLowerCase() || ''
+    
+                this.found = {};
+                if ( search ) {
+                    for ( let sectionID in this.settings ) {
+                        let section = this.settings[sectionID];
+                        for ( let fieldID in section.fields ) {
+                            let field = section.fields[fieldID];
+                            if ( field.label && field.type !== 'group_title' ) {
+                                if (!isNaN(fieldID.charAt(0))) {
+                                    fieldID = 'a' + fieldID;
+                                }
+    
+                                let fieldLabel  = field.label.toLowerCase();
+                                let searchIndex = fieldLabel.indexOf( search );
+                                let fieldNode   = document.querySelector('.wpcfto-box-child.' + fieldID + ', .wpcfto-box.' + fieldID);
+                                
+                                if ( fieldNode && searchIndex !== -1 && !fieldNode.classList.contains('notice_banner') ) {
+                                    this.found[sectionID + '_' + fieldID] = {
+                                        section_id: sectionID,
+                                        field_id: fieldID,
+                                        label_begin: field.label.slice(0, searchIndex),
+                                        label_match: field.label.slice(searchIndex, searchIndex + search.length),
+                                        label_end: field.label.slice(searchIndex + search.length)
+                                    };
+                                }
                             }
                         }
                     }
                 }
-            }
+            }, 500)
+            
         },
         goToOption: function( e ) {
             let ths = this;
