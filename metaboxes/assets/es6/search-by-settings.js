@@ -9,7 +9,8 @@ Vue.component('search-by-settings', {
             inFocus: false,
             selectedBlinkTimeout: false,
             hoverOnResults: false,
-            searchTimeout: false
+            searchTimeout: false,
+            searchDone: false
         }
     },
     template: `
@@ -20,12 +21,12 @@ Vue.component('search-by-settings', {
                     <div class="wpcfto-search-result-name" :data-key="key">{{ item.label_begin }}<span :data-key="key">{{ item.label_match }}</span>{{ item.label_end }}</div>
                     <div class="wpcfto-search-result-section" :data-key="key">
                         {{ settings[item.section_id].name }}
-                        <span :data-key="key" v-if="settings[item.section_id].fields[item.field_id].submenu">{{ settings[item.section_id].fields[item.field_id].submenu }}</span>
+                        <span :data-key="key" v-if="settings[item.section_id].fields[item.field_id] && settings[item.section_id].fields[item.field_id].submenu">{{ settings[item.section_id].fields[item.field_id].submenu }}</span>
                     </div>
                 </div>
             </div>
             <div v-if="value.length" @click="removeSearchValue" class="wpcfto-remove-search-value"></div>
-            <div @mouseenter="resultsHover" @mouseleave="resultsHoverOut" v-if="value.length && Object.keys(found).length === 0 && inFocus" class="wpcfto-search-results not-found">
+            <div @mouseenter="resultsHover" @mouseleave="resultsHoverOut" v-if="value.length && searchDone === true && Object.keys(found).length === 0 && inFocus" class="wpcfto-search-results not-found">
                 <div class="wpcfto-search-result">
                     <div class="wpcfto-search-result-name"><i class="nuxy-notfound-icon"></i>{{ notfound }}</div>
                 </div>
@@ -34,9 +35,11 @@ Vue.component('search-by-settings', {
     `,
     methods: {
         search: function( e ) {
+            this.searchDone = false;
             if ( this.searchTimeout ) {
                 clearTimeout(this.searchTimeout);
             }
+
             this.searchTimeout = setTimeout(() => {
                 let doc    = new DOMParser().parseFromString(this.value, 'text/html');
                 let search = doc.body.textContent.trim().toLowerCase() || ''
@@ -51,7 +54,7 @@ Vue.component('search-by-settings', {
                                 if (!isNaN(fieldID.charAt(0))) {
                                     fieldID = 'a' + fieldID;
                                 }
-    
+
                                 let fieldLabel  = field.label.toLowerCase();
                                 let searchIndex = fieldLabel.indexOf( search );
                                 let fieldNode   = document.querySelector('.wpcfto-box-child.' + fieldID + ', .wpcfto-box.' + fieldID);
@@ -69,7 +72,9 @@ Vue.component('search-by-settings', {
                         }
                     }
                 }
-            }, 500)
+
+                this.searchDone = true;
+            }, 300)
             
         },
         goToOption: function( e ) {
@@ -79,7 +84,7 @@ Vue.component('search-by-settings', {
                 let selected  = this.found[optionKey];
                 let tabTitle  = document.querySelector('[data-section="' + selected.section_id + '"].wpcfto-nav-title');
                 let activeTabs = document.querySelectorAll( '.wpcfto-nav.active, .wpcfto-submenus > .active' );
-                let selectedSubmenu = this.settings[selected.section_id].fields[selected.field_id].submenu;
+                let selectedSubmenu = this.settings[selected.section_id].fields[selected.field_id] ? this.settings[selected.section_id].fields[selected.field_id].submenu : false;
                 let activeTabsContent = document.querySelectorAll('.wpcfto-tab.active');
                 let selectedTabContent = document.querySelector('.wpcfto-tab#' + selected.section_id);
                 let activeSubmenu;
