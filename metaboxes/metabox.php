@@ -687,6 +687,10 @@ function wpcfto_metaboxes_display_single_field( $section, $section_name, $field,
 
 	$classes[] = $field_name;
 
+	if (ctype_digit(substr($field_name, 0, 1))) {
+		$classes[] = 'a' . $field_name;
+	}
+
 	if ( 'notice' !== $field['type'] ) {
 		$classes[] = $field['type'];
 	}
