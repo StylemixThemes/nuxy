@@ -687,6 +687,8 @@ function wpcfto_metaboxes_display_single_field( $section, $section_name, $field,
 
 	$classes[] = $field_name;
 
+	$classes[] = 'wpcfto-box-of-' . $field_name;
+
 	if ( 'notice' !== $field['type'] ) {
 		$classes[] = $field['type'];
 	}
