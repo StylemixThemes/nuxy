@@ -42,7 +42,7 @@ Vue.component('search-by-settings', {
 
             this.searchTimeout = setTimeout(() => {
                 let doc    = new DOMParser().parseFromString(this.value, 'text/html');
-                let search = this.decodeHTMLEntities(doc.body.textContent.trim().toLowerCase()) || ''
+                let search = this.decodeHTMLEntities(doc.body.textContent.trim().toLowerCase()) || '';
     
                 this.found = {};
                 if ( search ) {
@@ -52,14 +52,11 @@ Vue.component('search-by-settings', {
                         for ( let fieldID in section.fields ) {
                             let field = section.fields[fieldID];
                             if ( field.label && field.type !== 'group_title' ) {
-                                if (!isNaN(fieldID.charAt(0))) {
-                                    fieldID = 'a' + fieldID;
-                                }
                                 
                                 let fieldLabelInResults = this.decodeHTMLEntities(field.label);
                                 let fieldLabel  = fieldLabelInResults.toLowerCase()
                                 let searchIndex = fieldLabel.indexOf( search );
-                                let fieldNode   = document.querySelector('.wpcfto-box-child.' + fieldID + ', .wpcfto-box.' + fieldID);
+                                let fieldNode   = document.querySelector('.wpcfto-box-child.wpcfto-box-of-' + fieldID + ', .wpcfto-box.wpcfto-box-of-' + fieldID);
                                 
                                 if ( fieldNode && searchIndex !== -1 && !fieldNode.classList.contains('notice_banner') && !fieldNode.classList.contains('pro_banner') ) {
                                     this.found[sectionID + '_' + fieldID] = {
@@ -95,7 +92,7 @@ Vue.component('search-by-settings', {
                 let activeTabsContent = document.querySelectorAll('.wpcfto-tab.active');
                 let selectedTabContent = document.querySelector('.wpcfto-tab#' + selected.section_id);
                 let activeSubmenu;
-                let selectedField = document.querySelector('.wpcfto-box.' + selected.field_id + ', .wpcfto-box-child.' + selected.field_id);
+                let selectedField = document.querySelector('.wpcfto-box.wpcfto-box-of-' + selected.field_id + ', .wpcfto-box-child.wpcfto-box-of-' + selected.field_id);
                 let previousSelectedFields = document.querySelectorAll('.wpcfto-box.selected-field, .wpcfto-box-child.selected-field');
                 
                 for ( let field of previousSelectedFields ) {
