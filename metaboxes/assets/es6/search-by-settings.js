@@ -20,8 +20,8 @@ Vue.component('search-by-settings', {
                 <div @click="goToOption" class="wpcfto-search-result" v-for="(item, key) in found" :data-key="key">
                     <div class="wpcfto-search-result-name" :data-key="key">{{ item.label_begin }}<span :data-key="key">{{ item.label_match }}</span>{{ item.label_end }}</div>
                     <div class="wpcfto-search-result-section" :data-key="key">
-                        {{ settings[item.section_id].name }}
-                        <span :data-key="key" v-if="settings[item.section_id].fields[item.field_id] && settings[item.section_id].fields[item.field_id].submenu">{{ settings[item.section_id].fields[item.field_id].submenu }}</span>
+                        {{ decodeHTMLEntities(settings[item.section_id].name) }}
+                        <span :data-key="key" v-if="settings[item.section_id].fields[item.field_id] && settings[item.section_id].fields[item.field_id].submenu">{{ decodeHTMLEntities(settings[item.section_id].fields[item.field_id].submenu) }}</span>
                     </div>
                 </div>
             </div>
@@ -42,30 +42,32 @@ Vue.component('search-by-settings', {
 
             this.searchTimeout = setTimeout(() => {
                 let doc    = new DOMParser().parseFromString(this.value, 'text/html');
-                let search = doc.body.textContent.trim().toLowerCase() || ''
+                let search = this.decodeHTMLEntities(doc.body.textContent.trim().toLowerCase()) || ''
     
                 this.found = {};
                 if ( search ) {
                     for ( let sectionID in this.settings ) {
                         let section = this.settings[sectionID];
+                        
                         for ( let fieldID in section.fields ) {
                             let field = section.fields[fieldID];
                             if ( field.label && field.type !== 'group_title' ) {
                                 if (!isNaN(fieldID.charAt(0))) {
                                     fieldID = 'a' + fieldID;
                                 }
-
-                                let fieldLabel  = field.label.toLowerCase();
+                                
+                                let fieldLabelInResults = this.decodeHTMLEntities(field.label);
+                                let fieldLabel  = fieldLabelInResults.toLowerCase()
                                 let searchIndex = fieldLabel.indexOf( search );
                                 let fieldNode   = document.querySelector('.wpcfto-box-child.' + fieldID + ', .wpcfto-box.' + fieldID);
                                 
-                                if ( fieldNode && searchIndex !== -1 && !fieldNode.classList.contains('notice_banner') ) {
+                                if ( fieldNode && searchIndex !== -1 && !fieldNode.classList.contains('notice_banner') && !fieldNode.classList.contains('pro_banner') ) {
                                     this.found[sectionID + '_' + fieldID] = {
                                         section_id: sectionID,
                                         field_id: fieldID,
-                                        label_begin: field.label.slice(0, searchIndex),
-                                        label_match: field.label.slice(searchIndex, searchIndex + search.length),
-                                        label_end: field.label.slice(searchIndex + search.length)
+                                        label_begin: this.decodeHTMLEntities(fieldLabelInResults.slice(0, searchIndex)),
+                                        label_match: this.decodeHTMLEntities(fieldLabelInResults.slice(searchIndex, searchIndex + search.length)),
+                                        label_end: this.decodeHTMLEntities(fieldLabelInResults.slice(searchIndex + search.length)),
                                     };
                                 }
                             }
@@ -76,6 +78,11 @@ Vue.component('search-by-settings', {
                 this.searchDone = true;
             }, 300)
             
+        },
+        decodeHTMLEntities: function( str ) {
+            let textarea = document.createElement("textarea");
+            textarea.innerHTML = str;
+            return textarea.value;
         },
         goToOption: function( e ) {
             let ths = this;
@@ -148,7 +155,7 @@ Vue.component('search-by-settings', {
                     if ( selectedField.classList.contains('selected-field') ) {
                         selectedField.classList.remove('selected-field')
                     }
-                }, 5000)
+                }, 4100)
             });
         },
         focusIn: function( e ) {
