@@ -24,7 +24,7 @@ add_action(
 
 		if ( ! class_exists( 'Stylemix_NUXY' ) && __FILE__ === $max_version[0] ) {
 
-			define( 'STM_WPCFTO_VERSION', '4.4.34' );
+			define( 'STM_WPCFTO_VERSION', '4.4.35' );
 			define( 'STM_WPCFTO_FILE', __FILE__ );
 			define( 'STM_WPCFTO_PATH', dirname( STM_WPCFTO_FILE ) );
 			define( 'STM_WPCFTO_URL', plugin_dir_url( STM_WPCFTO_FILE ) );
