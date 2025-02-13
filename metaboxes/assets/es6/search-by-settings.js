@@ -10,8 +10,13 @@ Vue.component('search-by-settings', {
             selectedBlinkTimeout: false,
             hoverOnResults: false,
             searchTimeout: false,
-            searchDone: false
+            searchDone: false,
+            container: false
         }
+    },
+    mounted: function () {
+        let settingsContainer = this.$el.closest('.wpcfto-settings');
+        this.container = settingsContainer ? settingsContainer : document;
     },
     template: `
         <div class="wpcfto_search_group">
@@ -43,7 +48,7 @@ Vue.component('search-by-settings', {
             this.searchTimeout = setTimeout(() => {
                 let doc    = new DOMParser().parseFromString(this.value, 'text/html');
                 let search = this.decodeHTMLEntities(doc.body.textContent.trim().toLowerCase()) || '';
-    
+           
                 this.found = {};
                 if ( search ) {
                     for ( let sectionID in this.settings ) {
@@ -56,7 +61,7 @@ Vue.component('search-by-settings', {
                                 let fieldLabelInResults = this.decodeHTMLEntities(field.label);
                                 let fieldLabel  = fieldLabelInResults.toLowerCase()
                                 let searchIndex = fieldLabel.indexOf( search );
-                                let fieldNode   = document.querySelector('.wpcfto-box-child.wpcfto-box-of-' + fieldID + ', .wpcfto-box.wpcfto-box-of-' + fieldID);
+                                let fieldNode   = this.container.querySelector('.wpcfto-box-child.wpcfto-box-of-' + fieldID + ', .wpcfto-box.wpcfto-box-of-' + fieldID);
                                 
                                 if ( fieldNode && searchIndex !== -1 && !fieldNode.classList.contains('notice_banner') && !fieldNode.classList.contains('pro_banner') ) {
                                     this.found[sectionID + '_' + fieldID] = {
@@ -86,15 +91,15 @@ Vue.component('search-by-settings', {
             Vue.nextTick().then(() => {
                 let optionKey = e.target.getAttribute('data-key');
                 let selected  = this.found[optionKey];
-                let tabTitle  = document.querySelector('[data-section="' + selected.section_id + '"].wpcfto-nav-title');
-                let activeTabs = document.querySelectorAll( '.wpcfto-nav.active, .wpcfto-submenus > .active' );
+                let tabTitle  = this.container.querySelector('[data-section="' + selected.section_id + '"].wpcfto-nav-title');
+                let activeTabs = this.container.querySelectorAll( '.wpcfto-nav.active, .wpcfto-submenus > .active' );
                 let selectedSubmenu = this.settings[selected.section_id].fields[selected.field_id] ? this.settings[selected.section_id].fields[selected.field_id].submenu : false;
-                let activeTabsContent = document.querySelectorAll('.wpcfto-tab.active');
-                let selectedTabContent = document.querySelector('.wpcfto-tab#' + selected.section_id);
+                let activeTabsContent = this.container.querySelectorAll('.wpcfto-tab.active');
+                let selectedTabContent = this.container.querySelector('.wpcfto-tab#' + selected.section_id);
                 let activeSubmenu;
-                let selectedField = document.querySelector('.wpcfto-box.wpcfto-box-of-' + selected.field_id + ', .wpcfto-box-child.wpcfto-box-of-' + selected.field_id);
-                let previousSelectedFields = document.querySelectorAll('.wpcfto-box.selected-field, .wpcfto-box-child.selected-field');
-                
+                let selectedField = this.container.querySelector('.wpcfto-box.wpcfto-box-of-' + selected.field_id + ', .wpcfto-box-child.wpcfto-box-of-' + selected.field_id);
+                let previousSelectedFields = this.container.querySelectorAll('.wpcfto-box.selected-field, .wpcfto-box-child.selected-field');
+              
                 for ( let field of previousSelectedFields ) {
                     if ( field.classList.contains('selected-field') ) {
                         field.classList.remove('selected-field')
@@ -107,7 +112,7 @@ Vue.component('search-by-settings', {
 
                 for ( let tabContent of activeTabsContent ) {
                     tabContent.classList.remove('active');
-                    if ( tabContent.classList.contains('has-submenu') ) {
+                    if ( tabContent.classList.contains('has-submenu') || tabContent.classList.contains('has-submenu-items') ) {
                         let activeSubMenuFields = tabContent.querySelectorAll('.wpcfto-box');
                         for ( let field of activeSubMenuFields ) {
                             field.setAttribute('style', 'display:none');
@@ -119,18 +124,23 @@ Vue.component('search-by-settings', {
                 selectedTabContent.classList.add('active');
                 
                 if ( selectedSubmenu ) {
-                    let submenus = document.querySelectorAll('.wpcfto-submenus > div');
-                    for ( let submenu of submenus ) {
-                        if ( submenu.textContent.trim() === selectedSubmenu.trim() ) {
-                            activeSubmenu = submenu;
-                            submenu.classList.add('active');
-                            break;
+                    let selectedMenuItem = this.container.querySelector('[data-section="' + selected.section_id + '"].wpcfto-nav-title');
+                    if ( selectedMenuItem ) {
+                        selectedMenuItem = selectedMenuItem.closest('.wpcfto-nav');
+                        let submenus = selectedMenuItem.querySelectorAll('.wpcfto-submenus > div');
+                        
+                        for ( let submenu of submenus ) {
+                            if ( submenu.textContent.trim() === selectedSubmenu.trim() ) {
+                                activeSubmenu = submenu;
+                                submenu.classList.add('active');
+                                break;
+                            }
                         }
-                    }
-                    let fields = selectedTabContent.querySelectorAll('.wpcfto-box.' + activeSubmenu.getAttribute('data-submenu') + ', .wpcfto-box.' + activeSubmenu.getAttribute('data-submenu') + ' .wpcfto-box-child');
-                    for ( let field of fields ) {
-                        field.removeAttribute('style');
-                    }
+                        let fields = selectedTabContent.querySelectorAll('.wpcfto-box.' + activeSubmenu.getAttribute('data-submenu') + ', .wpcfto-box.' + activeSubmenu.getAttribute('data-submenu') + ' .wpcfto-box-child');
+                        for ( let field of fields ) {
+                            field.removeAttribute('style');
+                        }
+                    } 
                 } else {
                     let fields = selectedTabContent.querySelectorAll('.wpcfto-box, .wpcfto-box-child');
                     for ( let field of fields ) {
@@ -165,7 +175,7 @@ Vue.component('search-by-settings', {
         },
         removeSearchValue: function() {
             this.value = '';
-            document.querySelector('.wpcfto-search-field').focus();
+            this.container.querySelector('.wpcfto-search-field').focus();
         },
         resultsHover: function() {
             this.hoverOnResults = true;
