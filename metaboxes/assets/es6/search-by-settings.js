@@ -107,7 +107,7 @@ Vue.component('search-by-settings', {
 
                 for ( let tabContent of activeTabsContent ) {
                     tabContent.classList.remove('active');
-                    if ( tabContent.classList.contains('has-submenu') ) {
+                    if ( tabContent.classList.contains('has-submenu') || tabContent.classList.contains('has-submenu-items') ) {
                         let activeSubMenuFields = tabContent.querySelectorAll('.wpcfto-box');
                         for ( let field of activeSubMenuFields ) {
                             field.setAttribute('style', 'display:none');
