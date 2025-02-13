@@ -1,3 +1,5 @@
+## 4.4.35
+- **Fix:** Fix bugs on click by some search results
 ## 4.4.34
 - **New:** Available search by settings
 ## 4.4.33
