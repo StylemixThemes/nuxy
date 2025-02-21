@@ -1,3 +1,5 @@
+## 4.4.36
+- **Fix:** Fixed an issue when the icon picker field was not displayed.
 ## 4.4.35
 - **Fix:** Fix bugs on click by some search results
 ## 4.4.34
