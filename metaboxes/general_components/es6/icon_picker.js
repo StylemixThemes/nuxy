@@ -27,13 +27,22 @@ Vue.component('wpcfto_icon_picker', {
         }
     },
     computed: {
-        previewLabel() {
-            return typeof wpcfto_global_settings !== 'undefined' &&
-                wpcfto_global_settings.translations
-                ? wpcfto_global_settings.translations.preview
-                : 'Preview'
-        },
-    },
+		previewLabel() {
+			return typeof wpcfto_global_settings !== 'undefined' &&
+				wpcfto_global_settings.translations
+				? wpcfto_global_settings.translations.preview
+				: 'Preview'
+		},
+		iconsFiltered() {
+			const search =
+				this.search == this.selected ? this.beforeSelect : this.search
+			return this.icons.filter(
+				i =>
+					i.title.indexOf(search) !== -1 ||
+					i.searchTerms.some(t => t.indexOf(search) !== -1)
+			)
+		},
+	},
     template: `
         <div class="wpcfto_generic_field wpcfto_generic_field_iconpicker">
 
@@ -141,17 +150,6 @@ Vue.component('wpcfto_icon_picker', {
 			}
 			this.focusOn = false
 			this.value.icon = this.selected
-		},
-	},
-	computed: {
-		iconsFiltered: function () {
-			const search =
-				this.search == this.selected ? this.beforeSelect : this.search
-			return this.icons.filter(
-				i =>
-					i.title.indexOf(search) !== -1 ||
-					i.searchTerms.some(t => t.indexOf(search) !== -1)
-			)
 		},
 	},
 	watch: {
