@@ -1,36 +1,4 @@
 Vue.component('wpcfto_color', {
-    props: ['fields', 'field_label', 'field_name', 'field_id', 'field_value'],
-    components: {
-        'slider-picker': VueColor.Chrome
-    },
-    data: function () {
-        return {
-            input_value: '',
-            position : 'bottom',
-            value: {
-                r: 255,
-                g: 255,
-                b: 255,
-                a: 1,
-            },
-        }
-    },
-    created: function () {
-        if (typeof this.field_value === 'string') {
-
-            this.input_value = this.field_value;
-
-            var colors = this.field_value.replace('rgba(', '').slice(0, -1).split(',');
-
-            this.$set(this.value, 'r', colors[0]);
-            this.$set(this.value, 'g', colors[1]);
-            this.$set(this.value, 'b', colors[2]);
-            this.$set(this.value, 'a', colors[3]);
-
-        }
-
-        if(this.fields.position) this.position = this.fields.position;
-    },
     template: `
         <div class="wpcfto_generic_field wpcfto_generic_field_color">
         
@@ -54,7 +22,7 @@ Vue.component('wpcfto_color', {
                         <slider-picker v-model="value"></slider-picker>
                     </div>
 
-                      <a href="#" @click.prevent="input_value=''" v-if="input_value" class="wpcfto_generic_field_color__clear">
+                      <a href="#" @click="resetValue" v-if="input_value" class="wpcfto_generic_field_color__clear">
                         <i class="fa fa-times"></i>
                       </a>
     
@@ -66,7 +34,48 @@ Vue.component('wpcfto_color', {
             
         </div>
     `,
-    methods: {},
+    props: ['fields', 'field_label', 'field_name', 'field_id', 'field_value'],
+    components: {
+        'slider-picker': VueColor.Chrome
+    },
+    data: function () {
+        return {
+            default_value: '',
+            input_value: '',
+            position : 'bottom',
+            value: {
+                r: 255,
+                g: 255,
+                b: 255,
+                a: 1,
+            },
+        }
+    },
+    created: function () {
+        this.default_value = this.field_value;
+
+        if (typeof this.field_value === 'string') {
+
+            this.input_value = this.field_value;
+
+            var colors = this.field_value.replace('rgba(', '').slice(0, -1).split(',');
+
+            this.$set(this.value, 'r', colors[0]);
+            this.$set(this.value, 'g', colors[1]);
+            this.$set(this.value, 'b', colors[2]);
+            this.$set(this.value, 'a', colors[3]);
+
+        }
+
+        if(this.fields.position) this.position = this.fields.position;
+    },
+    methods: {
+        resetValue: function(event) {
+            event.preventDefault();
+            this.$set(this, 'input_value', this.default_value);
+            this.$emit('wpcfto-get-value', this.default_value);
+        }
+    },
     watch: {
         input_value : function(value) {
             this.$emit('wpcfto-get-value', value);
