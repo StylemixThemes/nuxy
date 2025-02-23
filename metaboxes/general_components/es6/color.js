@@ -34,13 +34,12 @@ Vue.component('wpcfto_color', {
             
         </div>
     `,
-    props: ['fields', 'field_label', 'field_name', 'field_id', 'field_value'],
+    props: ['fields', 'field_label', 'field_name', 'field_id', 'field_value', 'default_value'],
     components: {
         'slider-picker': VueColor.Chrome
     },
     data: function () {
         return {
-            default_value: '',
             input_value: '',
             position: 'bottom',
             current_format: 'hex',
@@ -62,7 +61,6 @@ Vue.component('wpcfto_color', {
         }
     },
     created: function() {
-        this.default_value = this.field_value;
         if(this.fields.position) {
             this.position = this.fields.position;
         }
