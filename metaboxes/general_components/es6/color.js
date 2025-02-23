@@ -18,7 +18,7 @@ Vue.component('wpcfto_color', {
                            ref="field_name"
                     />
     
-                    <div>
+                    <div @click="changeValueFormat">
                         <slider-picker v-model="value"></slider-picker>
                     </div>
 
@@ -44,10 +44,19 @@ Vue.component('wpcfto_color', {
             input_value: '',
             position : 'bottom',
             value: {
-                r: 255,
-                g: 255,
-                b: 255,
-                a: 1,
+                hex: '#000000',
+                rgba: {
+                    r: 0,
+                    g: 0,
+                    b: 0,
+                    a: 1,
+                },
+                hsl: {
+                    a: 1,
+                    h: 0,
+                    l: 1,
+                    s: 0
+                },
             },
         }
     },
@@ -56,15 +65,34 @@ Vue.component('wpcfto_color', {
 
         if (typeof this.field_value === 'string') {
 
+            if ( this.field_value.indexOf('rgb') !== -1 ) {
+                var colors = this.field_value.replace('rgba(', '').slice(0, -1).split(',');
+
+                this.value = {
+                    rgba: {
+                        r: colors[0],
+                        g: colors[1],
+                        b: colors[2],
+                        a: colors[3]
+                    }
+                };
+
+            } else if ( this.field_value.indexOf('hsl') !== -1 ) {
+                var colors = this.field_value.replace('hsla(', '').slice(0, -1).split(',');
+                this.value = {
+                    hsl: {
+                        h: colors[0],
+                        s: colors[1],
+                        l: colors[2],
+                        a: colors[3]
+                    }
+                };
+            } else if ( this.field_value.indexOf('#') !== -1 ) {
+                this.value = {
+                    hex: this.field_value
+                };
+            }
             this.input_value = this.field_value;
-
-            var colors = this.field_value.replace('rgba(', '').slice(0, -1).split(',');
-
-            this.$set(this.value, 'r', colors[0]);
-            this.$set(this.value, 'g', colors[1]);
-            this.$set(this.value, 'b', colors[2]);
-            this.$set(this.value, 'a', colors[3]);
-
         }
 
         if(this.fields.position) this.position = this.fields.position;
@@ -74,6 +102,41 @@ Vue.component('wpcfto_color', {
             event.preventDefault();
             this.$set(this, 'input_value', this.default_value);
             this.$emit('wpcfto-get-value', this.default_value);
+        },
+        updateValue: function(value) {
+            this.$set(this, 'input_value', value);
+            this.$emit('wpcfto-get-value', value);
+        },
+        changeValueFormat: function(event) {
+            if ( event.target.classList.contains('vc-chrome-toggle-icon') || event.target.closest('.vc-chrome-toggle-icon') ) {
+                var wrapper = event.target.closest('.vc-chrome-fields-wrap');
+                if ( wrapper ) {
+                    var fields = wrapper.querySelectorAll('.vc-chrome-fields');
+                    for ( var field of fields ) {
+                        if ( field.style.display !== 'none' ) {
+                            var format = field.querySelector('.vc-input__label').textContent.toLowerCase().trim();
+                            var colorValue = '';
+
+                            switch (format) {
+                                case 'hex':
+                                    colorValue = field.querySelector('.vc-input__input').getAttribute('aria-label');
+                                    console.log(colorValue);
+                                    break;
+                                case 'r':
+                                    var rgba = field.querySelectorAll('.vc-input__input');
+                                    colorValue = 'rgba(' + rgba[0].getAttribute('aria-label') + ',' + rgba[1].getAttribute('aria-label') + ',' + rgba[2].getAttribute('aria-label') + ',' + rgba[3].getAttribute('aria-label') + ')';
+                                    break;
+                                case 'h':
+                                    var hsla = field.querySelectorAll('.vc-input__input');
+                                    colorValue = 'hsla(' + hsla[0].getAttribute('aria-label') + ',' + hsla[1].getAttribute('aria-label') + ',' + hsla[2].getAttribute('aria-label') + ',' + hsla[3].getAttribute('aria-label') + ')';
+                                    break;
+                            }
+                            this.updateValue(colorValue);
+                            break;
+                        }
+                    }
+                }
+            }
         }
     },
     watch: {
@@ -83,8 +146,7 @@ Vue.component('wpcfto_color', {
         value: function (value) {
             if (typeof value.rgba !== 'undefined') {
                 var rgba_color = 'rgba(' + value.rgba.r + ',' + value.rgba.g + ',' + value.rgba.b + ',' + value.rgba.a + ')';
-                this.$set(this, 'input_value', rgba_color);
-                this.$emit('wpcfto-get-value', rgba_color);
+                this.updateValue(rgba_color);
             }
         }
     }
