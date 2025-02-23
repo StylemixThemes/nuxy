@@ -19,7 +19,7 @@ Vue.component('wpcfto_color', {
                     />
     
                     <div @click="changeValueFormat">
-                        <slider-picker v-model="value"></slider-picker>
+                        <slider-picker ref="colorPicker" v-model="value"></slider-picker>
                     </div>
 
                       <a href="#" @click="resetValue" v-if="input_value" class="wpcfto_generic_field_color__clear">
@@ -42,7 +42,8 @@ Vue.component('wpcfto_color', {
         return {
             default_value: '',
             input_value: '',
-            position : 'bottom',
+            position: 'bottom',
+            current_format: 'hex',
             value: {
                 hex: '#000000',
                 rgba: {
@@ -53,57 +54,73 @@ Vue.component('wpcfto_color', {
                 },
                 hsl: {
                     a: 1,
-                    h: 0,
-                    l: 1,
-                    s: 0
+                    h: 1,
+                    l: 0,
+                    s: 1
                 },
             },
         }
     },
-    created: function () {
+    created: function() {
         this.default_value = this.field_value;
-
-        if (typeof this.field_value === 'string') {
-
-            if ( this.field_value.indexOf('rgb') !== -1 ) {
-                var colors = this.field_value.replace('rgba(', '').slice(0, -1).split(',');
-
-                this.value = {
-                    rgba: {
-                        r: colors[0],
-                        g: colors[1],
-                        b: colors[2],
-                        a: colors[3]
-                    }
-                };
-
-            } else if ( this.field_value.indexOf('hsl') !== -1 ) {
-                var colors = this.field_value.replace('hsla(', '').slice(0, -1).split(',');
-                this.value = {
-                    hsl: {
-                        h: colors[0],
-                        s: colors[1],
-                        l: colors[2],
-                        a: colors[3]
-                    }
-                };
-            } else if ( this.field_value.indexOf('#') !== -1 ) {
-                this.value = {
-                    hex: this.field_value
-                };
-            }
-            this.input_value = this.field_value;
+        if(this.fields.position) {
+            this.position = this.fields.position;
         }
-
-        if(this.fields.position) this.position = this.fields.position;
+    },
+    mounted: function () {
+        this.$nextTick(() => {
+            this.updatePickerValue(this.field_value);
+        });
     },
     methods: {
         resetValue: function(event) {
             event.preventDefault();
-            this.$set(this, 'input_value', this.default_value);
-            this.$emit('wpcfto-get-value', this.default_value);
+            this.updateInputValue(this.default_value);
+            this.updatePickerValue(this.default_value);
         },
-        updateValue: function(value) {
+        updatePickerValue: function(value) {
+            console.log(value);
+            if (typeof value === 'string') {
+                if ( value.indexOf('rgb') !== -1 ) {
+                    var colors = value.replace('rgba(', '').slice(0, -1).split(',');
+                    this.current_format = 'rgba';
+                    this.value = {
+                        r: colors[0],
+                        g: colors[1],
+                        b: colors[2],
+                        a: colors[3],
+                        rgba: {
+                            r: colors[0],
+                            g: colors[1],
+                            b: colors[2],
+                            a: colors[3]
+                        }
+                    };
+                    this.$refs.colorPicker.fieldsIndex = 1;
+                } else if ( value.indexOf('hsl') !== -1 ) {       
+                    var colors = value.replace('hsla(', '').slice(0, -1).split(',');
+                    this.current_format = 'hsl';
+                    this.value = {
+                        hsl: {
+                            h: colors[0],
+                            s: colors[1].replace('%', '') / 100,
+                            l: colors[2].replace('%', '') / 100,
+                            a: colors[3],
+                        }
+                    };
+                    this.$refs.colorPicker.fieldsIndex = 2;
+                } else if ( value.indexOf('#') !== -1 ) {
+                    this.current_format = 'hex';
+                    this.value = {
+                        hex: value
+                    };
+                    this.$refs.colorPicker.fieldsIndex = 0;
+                }
+                this.input_value = value;
+            }
+            
+        },
+        updateInputValue: function(value) {
             this.$set(this, 'input_value', value);
             this.$emit('wpcfto-get-value', value);
         },
@@ -116,37 +133,46 @@ Vue.component('wpcfto_color', {
                         if ( field.style.display !== 'none' ) {
                             var format = field.querySelector('.vc-input__label').textContent.toLowerCase().trim();
                             var colorValue = '';
-
+                            
                             switch (format) {
                                 case 'hex':
+                                    this.current_format = 'hex';
                                     colorValue = field.querySelector('.vc-input__input').getAttribute('aria-label');
-                                    console.log(colorValue);
                                     break;
                                 case 'r':
                                     var rgba = field.querySelectorAll('.vc-input__input');
+                                    this.current_format = 'rgba';
                                     colorValue = 'rgba(' + rgba[0].getAttribute('aria-label') + ',' + rgba[1].getAttribute('aria-label') + ',' + rgba[2].getAttribute('aria-label') + ',' + rgba[3].getAttribute('aria-label') + ')';
                                     break;
                                 case 'h':
                                     var hsla = field.querySelectorAll('.vc-input__input');
+                                    this.current_format = 'hsl';
                                     colorValue = 'hsla(' + hsla[0].getAttribute('aria-label') + ',' + hsla[1].getAttribute('aria-label') + ',' + hsla[2].getAttribute('aria-label') + ',' + hsla[3].getAttribute('aria-label') + ')';
                                     break;
                             }
-                            this.updateValue(colorValue);
+                            this.updateInputValue(colorValue);
                             break;
                         }
                     }
                 }
             }
-        }
+        },
     },
     watch: {
         input_value : function(value) {
             this.$emit('wpcfto-get-value', value);
         },
         value: function (value) {
-            if (typeof value.rgba !== 'undefined') {
-                var rgba_color = 'rgba(' + value.rgba.r + ',' + value.rgba.g + ',' + value.rgba.b + ',' + value.rgba.a + ')';
-                this.updateValue(rgba_color);
+            switch ( this.current_format ) {
+                case 'hex':
+                    this.updateInputValue(value.hex);
+                    break;
+                case 'rgba':
+                    this.updateInputValue('rgba(' + value.rgba.r + ',' + value.rgba.g + ',' + value.rgba.b + ',' + value.rgba.a + ')');
+                    break;
+                case 'hsl':
+                    this.updateInputValue('hsla(' +  Math.ceil(value.hsl.h) + ',' + value.hsl.s*100 + '%,' + value.hsl.l*100 + '%,' + value.hsl.a + ')');
+                    break;
             }
         }
     }
