@@ -77,7 +77,6 @@ Vue.component('wpcfto_color', {
             this.updatePickerValue(this.default_value);
         },
         updatePickerValue: function(value) {
-            console.log(value);
             if (typeof value === 'string') {
                 if ( value.indexOf('rgb') !== -1 ) {
                     var colors = value.replace('rgba(', '').slice(0, -1).split(',');

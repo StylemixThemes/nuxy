@@ -204,8 +204,6 @@ Vue.component('wpcfto_typography', {
                 if (typeof value !== 'undefined') {
                     _this.$set(_this.typography, key, value);
 
-
-
                     if (key === 'font-family') {
                         _this.setGoogleFontFamily(value);
                     }
@@ -225,11 +223,14 @@ Vue.component('wpcfto_typography', {
             }
         },
         isFontWeightDisabled: function (variant) {
-
             if (typeof this.field_data['excluded'] !== 'undefined' && this.field_data['excluded'].includes('font-family')) {
                 return false;
             }
-
+            console.log( this.typography['font-data']['variants'].length );
+            if ( this.typography && this.typography['font-data'] && ! this.typography['font-data']['variants'].length && this.typography['font-data']['family'] ) {
+                this.setGoogleFontFamily( this.typography['font-data']['family'] );
+                console.log(this.typography['font-data']['family']);
+            }
             let current_variants = this.typography['font-data']['variants'];
             if (typeof current_variants === 'undefined') return false;
             return (!current_variants.includes(variant));
@@ -324,8 +325,6 @@ Vue.component('wpcfto_typography', {
                     _this.editSubset();
                 }
             })
-
-
         }
     },
     watch: {
