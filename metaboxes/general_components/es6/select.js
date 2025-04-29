@@ -1,5 +1,5 @@
 Vue.component('wpcfto_select', {
-    props: ['fields', 'field_label', 'field_name', 'field_id', 'field_value'],
+    props: ['fields', 'field_label', 'field_name', 'field_id', 'field_value', 'default_value'],
     data: function () {
         return {
             value : '',
@@ -27,6 +27,9 @@ Vue.component('wpcfto_select', {
     `,
     mounted: function () {
         this.value = this.field_value;
+        if ( this.default_value && ! this.value ) {
+            this.value = this.default_value;
+        }
     },
     methods: {},
     watch: {
