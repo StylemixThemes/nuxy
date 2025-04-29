@@ -1,3 +1,5 @@
+## 4.4.38
+- **Fix:** Select field has new option "default_value", when input without value. Fix change transparency for color field. Fix google font weight select bug in typography field.
 ## 4.4.37
 - **Fix:** Color field has new option "default_value", when reset input value. Input value format change, when it change in color picker.
 ## 4.4.36
