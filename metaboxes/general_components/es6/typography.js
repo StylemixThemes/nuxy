@@ -184,7 +184,6 @@ Vue.component('wpcfto_typography', {
         </div>
     `,
     mounted: function () {
-
         for ( var key in this.google_fonts ) {
             this.google_fonts_keys[this.google_fonts[key].family] = key;
         }
@@ -199,9 +198,6 @@ Vue.component('wpcfto_typography', {
 
         this.editVariant();
         this.editSubset();
-
-        
-
     },
     methods: {
         fillTypography: function () {

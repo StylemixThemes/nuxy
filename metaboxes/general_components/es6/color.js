@@ -115,7 +115,6 @@ Vue.component('wpcfto_color', {
                 }
                 this.input_value = value;
             }
-            
         },
         getValueFormat: function(value) {
             var format = 'hex';
