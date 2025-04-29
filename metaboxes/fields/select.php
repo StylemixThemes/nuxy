@@ -5,6 +5,7 @@
  * @var $field
  * @var $field_id
  * @var $field_value
+ * @var $default_value
  * @var $field_label
  * @var $field_name
  * @var $field_data
