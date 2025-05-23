@@ -13,7 +13,6 @@ Vue.component('wpcfto_multiselect_add_term', {
     };
   },
   beforeMount: function beforeMount() {
-    console.log(this.fields);
     this.new_tag_placeholder = this.fields.new_tag_settings !== undefined ? this.fields.new_tag_settings.placeholder : '';
   },
   computed: {},

@@ -6,7 +6,9 @@ Vue.component('wpcfto_typography', {
     props: ['fields', 'field_label', 'field_name', 'field_id', 'field_value', 'field_data'],
     data: function () {
         return {
+            selected_font: 'Montserrat',
             inited: false,
+            google_fonts_keys: {},
             google_fonts: wpcfto_global_settings['fonts_list']['google'],
             web_safe_fonts: wpcfto_global_settings['fonts_list']['websafe'],
             variants: wpcfto_global_settings['variants'],
@@ -182,6 +184,9 @@ Vue.component('wpcfto_typography', {
         </div>
     `,
     mounted: function () {
+        for ( var key in this.google_fonts ) {
+            this.google_fonts_keys[this.google_fonts[key].family] = key;
+        }
 
         if (typeof this.field_value === 'string' && WpcftoIsJsonString(this.field_value)) {
             this.field_value = JSON.parse(this.field_value)
@@ -193,7 +198,6 @@ Vue.component('wpcfto_typography', {
 
         this.editVariant();
         this.editSubset();
-
     },
     methods: {
         fillTypography: function () {
@@ -208,6 +212,7 @@ Vue.component('wpcfto_typography', {
 
                     if (key === 'font-family') {
                         _this.setGoogleFontFamily(value);
+                        _this.selected_font = value;
                     }
 
                     if (key === 'font-weight') {
@@ -225,11 +230,17 @@ Vue.component('wpcfto_typography', {
             }
         },
         isFontWeightDisabled: function (variant) {
-
             if (typeof this.field_data['excluded'] !== 'undefined' && this.field_data['excluded'].includes('font-family')) {
                 return false;
             }
+            if ( this.selected_font ) {
+                var google_font = this.getGoogleFont( this.selected_font );
 
+                if ( google_font && google_font.variants ) {
+                    this.typography['font-data']['variants'] = google_font.variants;
+                }
+            }
+            
             let current_variants = this.typography['font-data']['variants'];
             if (typeof current_variants === 'undefined') return false;
             return (!current_variants.includes(variant));
@@ -240,6 +251,7 @@ Vue.component('wpcfto_typography', {
             return (!current_subsets.includes(subset));
         },
         fontChanged: function () {
+            this.selected_font = this.typography['font-data'].family;
             this.$set(this.typography, 'font-family', this.typography['font-data'].family);
             this.editVariant();
             this.editSubset();
@@ -316,16 +328,16 @@ Vue.component('wpcfto_typography', {
 
         },
         setGoogleFontFamily(font_family) {
-            let _this = this;
-            _this.google_fonts.forEach(function (value) {
-                if (value.family === font_family) {
-                    _this.$set(_this.typography, 'font-data', value);
-                    _this.editVariant();
-                    _this.editSubset();
-                }
-            })
-
-
+            var font_data = this.getGoogleFont(font_family);
+            var _this = this;
+            if ( font_data ) {
+                _this.$set(_this.typography, 'font-data', font_data);
+                _this.editVariant();
+                _this.editSubset();
+            }
+        },
+        getGoogleFont(font_family) {
+            return this.google_fonts[this.google_fonts_keys[font_family]];
         }
     },
     watch: {

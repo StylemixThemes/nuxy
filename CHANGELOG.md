@@ -1,7 +1,13 @@
+## 4.4.38
+- **Fix:** Select field has new option "default_value", when input without value. Fix change transparency for color field. Fix google font weight select bug in typography field.
+## 4.4.37
+- **Fix:** Color field has new option "default_value", when reset input value. Input value format change, when it change in color picker.
+## 4.4.36
+- **Fix:** Fixed an issue when the icon picker field was not displayed.
 ## 4.4.35
-- **Fix:** Fix bugs on click by some search results
+- **Fix:** Fix bugs on click by some search results.
 ## 4.4.34
-- **New:** Available search by settings
+- **New:** Available search by settings.
 ## 4.4.33
 - **Fix:** Fixed Import/Export options.
 ## 4.4.32
