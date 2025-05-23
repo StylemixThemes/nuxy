@@ -108,11 +108,6 @@ function wpcfto_get_settings_map( $source, $name ) {
 								$value = explode( ',', $value );
 							}
 							break;
-						case 'answers':
-							if ( ! empty( $value ) ) {
-								$value = unserialize( $value );
-							}
-							break;
 						case 'repeater':
 							if ( empty( $value ) ) {
 								$value = array();
