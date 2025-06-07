@@ -702,10 +702,11 @@ function wpcfto_metaboxes_display_single_field( $section, $section_name, $field,
 	<transition name="slide-fade">
 		<div class="<?php echo esc_attr( implode( ' ', $classes ) ); ?>"
 			<?php echo wp_kses( $dependency, array() ); ?>
-			data-field="<?php echo esc_attr( "wpcfto_addon_option_{$field_name}" ); ?>">
+			data-field="<?php echo esc_attr( "wpcfto_addon_option_{$field_name}" ); ?>"
 			<?php if ( ! empty( $vars ) ) : ?>
 				data-vars="<?php echo esc_attr( json_encode( $vars ) ); ?>"
 			<?php endif; ?>
+		>
 			<?php
 			do_action( 'stm_wpcfto_single_field_before_start', $classes, $field_name, $field, $is_pro, $pro_url, $disable );
 
