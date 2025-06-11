@@ -1,3 +1,5 @@
+## 4.4.39
+- **New:** Added new 'vars' attribute to fields. (alternative hints option)
 ## 4.4.38
 - **Fix:** Select field has new option "default_value", when input without value. Fix change transparency for color field. Fix google font weight select bug in typography field.
 ## 4.4.37
