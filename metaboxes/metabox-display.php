@@ -127,6 +127,7 @@ if ( empty( $metabox_id ) ) {
 			foreach ( $sections as $section_name => $section ) :
 
 				$submenus        = array_column( $section['fields'], 'submenu' );
+				$submenu_title   = array_column( $section['fields'], 'submenu_title' );
 				$section_classes = array();
 				if ( $section_name === $active ) {
 					$section_classes[] = 'active';
@@ -143,10 +144,17 @@ if ( empty( $metabox_id ) ) {
 
 							<div class="column">
 
-								<?php if ( ! empty( $section['label'] ) ) : ?>
+								<?php if ( ! empty( $section['label'] ) && empty( $submenu_title ) ) : ?>
 									<div data-notice="enable_courses_filter_notice"
 										class="wpcfto_generic_field wpcfto_generic_field__notice first opened">
 										<label><?php echo esc_html( $section['label'] ); ?></label>
+									</div>
+								<?php endif; ?>
+
+								<?php if ( ! empty( $submenus ) && ! empty( $submenu_title ) ) : ?>
+									<div data-notice="enable_courses_filter_notice" v-if="submenuTitle"
+										 class="wpcfto_generic_field wpcfto_generic_field__notice first opened">
+										<label>{{ submenuTitle }}</label>
 									</div>
 								<?php endif; ?>
 
