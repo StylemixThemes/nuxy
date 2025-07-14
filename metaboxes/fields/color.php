@@ -10,6 +10,7 @@
  * @var $field_name
  * @var $section_name
  * @var $default_value
+ * @var $format
  *
  */
 
@@ -23,5 +24,6 @@ $field = "data['{$section_name}']['fields']['{$field_name}']";
 				:field_id="'<?php echo esc_attr($field_id); ?>'"
 				:field_value="<?php echo esc_attr($field_value); ?>"
 				:default_value="'<?php echo esc_attr($default_value); ?>'"
+				:format="'<?php echo esc_attr($format); ?>'"
 				@wpcfto-get-value="<?php echo esc_attr($field_value); ?> = $event">
 </wpcfto_color>

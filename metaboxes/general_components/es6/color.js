@@ -34,7 +34,7 @@ Vue.component('wpcfto_color', {
             
         </div>
     `,
-    props: ['fields', 'field_label', 'field_name', 'field_id', 'field_value', 'default_value'],
+    props: ['fields', 'field_label', 'field_name', 'field_id', 'field_value', 'default_value', 'format'],
     components: {
         'slider-picker': VueColor.Chrome
     },
@@ -166,9 +166,38 @@ Vue.component('wpcfto_color', {
                 }
             }
         },
+        hexToRgba(hex) {
+            let c;
+            hex = hex.trim();
+
+            if(/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)) {
+            c = hex.substring(1).split('');
+            if (c.length === 3) {
+                c = [c[0], c[0], c[1], c[1], c[2], c[2]];
+            }
+            const r = parseInt(c[0] + c[1], 16);
+            const g = parseInt(c[2] + c[3], 16);
+            const b = parseInt(c[4] + c[5], 16);
+            return { r, g, b, a: 1 };
+            }
+            return null;
+        }
     },
     watch: {
-        input_value : function(value) {
+        input_value: function(value) {
+            const format = this.format;
+            if (format === 'rgba' && typeof value === 'string' && value.startsWith('#')) {
+                const rgba = this.hexToRgba(value);
+                if (rgba) {
+                    const rgbaStr = `rgba(${rgba.r},${rgba.g},${rgba.b},${rgba.a})`;
+                    this.$nextTick(() => {
+                        this.input_value = rgbaStr;
+                        this.$emit('wpcfto-get-value', rgbaStr);
+                    });
+                    return;
+                }
+            }
+
             this.$emit('wpcfto-get-value', value);
         },
         value: function (value) {

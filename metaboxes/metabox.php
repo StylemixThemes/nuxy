@@ -736,6 +736,7 @@ function wpcfto_metaboxes_display_single_field( $section, $section_name, $field,
 			$field_readonly = isset( $field_data['readonly'] ) ? 'true' : 'false';
 			$option_id      = $metabox_id;
 			$default_value  = isset( $field_data['default_value'] ) ? $field_data['default_value'] : '';
+			$format         = isset( $field_data['format'] ) ? $field_data['format'] : '';
 
 			$file = apply_filters( "wpcfto_field_{$field_type}", STM_WPCFTO_PATH . '/metaboxes/fields/' . $field_type . '.php' );
 
