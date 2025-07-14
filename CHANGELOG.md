@@ -1,5 +1,5 @@
 ## 4.4.41
-- **New:** Added 'format' option to fields.
+- **New:** Added 'format' option to color field.
 ## 4.4.40
 - **New:** Added new submenu support title
 ## 4.4.39
