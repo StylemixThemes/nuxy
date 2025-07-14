@@ -186,7 +186,6 @@ Vue.component('wpcfto_color', {
     watch: {
         input_value: function(value) {
             const format = this.format;
-            console.log(format);
             if (format === 'rgba' && typeof value === 'string' && value.startsWith('#')) {
                 const rgba = this.hexToRgba(value);
                 if (rgba) {
