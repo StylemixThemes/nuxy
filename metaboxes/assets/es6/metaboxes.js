@@ -18,6 +18,7 @@
                             status: false,
                             success: true
                         },
+                        submenuTitle: '',
                     }
                 },
                 mounted: function () {
@@ -87,10 +88,8 @@
                             const submenuParam = urlParams.get('submenu');
 
                             if (submenuParam) {
-                                const navSubmenu = $section.closest('.wpcfto-nav').find(`.wpcfto-submenus [data-submenu="${tab}_${submenuParam}"]`);
-                                if (navSubmenu.length > 0) {
-                                    $submenu = navSubmenu;
-                                }
+                                const navSubmenu = $section.closest('.wpcfto-nav').find(`.wpcfto-submenus [data-submenu=${tab}_${submenuParam}]`);
+                                $submenu = navSubmenu !== undefined && navSubmenu.length > 0 ? navSubmenu : $submenu;
                             }
                             this.changeSubMenu($submenu.attr('data-submenu'));
                         }
@@ -108,6 +107,7 @@
 
                         let $submenu = $('[data-submenu="' + sub_menu + '"]');
                         if (!$submenu.length) return;
+                        this.submenuTitle = $submenu.text();
 
                         $('[data-submenu]').removeClass('active');
                         $submenu.addClass('active');
