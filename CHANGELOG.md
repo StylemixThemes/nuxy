@@ -1,3 +1,5 @@
+## 4.4.42
+- **New:** Correctly open NUXY subsections based on URL hash after page reload
 ## 4.4.41
 - **New:** Added 'format' option to color field.
 ## 4.4.40

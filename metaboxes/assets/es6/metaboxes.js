@@ -64,11 +64,17 @@
                         }
                     },
                     changeTab: function (tab) {
+                        if (!tab) return;
+
                         let $tab = $('#' + tab);
+                        if (!$tab.length) return;
+
                         $tab.closest('.stm_metaboxes_grid__inner').find('.wpcfto-tab').removeClass('active');
                         $tab.addClass('active');
 
                         let $section = $('div[data-section="' + tab + '"]');
+                        if (!$section.length) return;
+
                         $tab.closest('.wpcfto-settings').find('.wpcfto-nav').removeClass('active');
                         $tab.closest('.stm_metaboxes_grid__inner').find('.wpcfto-nav').removeClass('active');
                         $section.closest('.wpcfto-nav').addClass('active');
@@ -77,7 +83,7 @@
 
                         /*if has submenu*/
                         if ($section.closest('.wpcfto-nav').hasClass('has-submenu')) {
-                            let   $submenu = $section.closest('.wpcfto-nav').find('.wpcfto-submenus [data-submenu]').eq(0);
+                            let $submenu = $section.closest('.wpcfto-nav').find('.wpcfto-submenus [data-submenu]').eq(0);
                             const urlParams = new URLSearchParams(window.location.search);
                             const submenuParam = urlParams.get('submenu');
 
@@ -97,10 +103,22 @@
 
                     },
                     changeSubMenu(sub_menu) {
+                        if (!sub_menu) return;
+
                         let $submenu = $('[data-submenu="' + sub_menu + '"]');
+                        if (!$submenu.length) return;
                         this.submenuTitle = $submenu.text();
+
                         $('[data-submenu]').removeClass('active');
                         $submenu.addClass('active');
+
+                        const url = new URL(window.location);
+                        const submenuName = sub_menu.split('_').pop();
+                        if (submenuName) {
+                            url.searchParams.set('submenu', submenuName);
+                            history.pushState(null, null, url.toString());
+                        }
+
                         this.initSubmenu();
                     },
                     getSettings: function () {
