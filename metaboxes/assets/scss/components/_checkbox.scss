@@ -300,3 +300,11 @@
     }
 
 }
+
+.wpcfto-always-on {
+    .wpcfto-admin-checkbox {
+        .wpcfto-admin-checkbox-wrapper.is_toggle.active {
+            opacity: 0.6;
+        }
+    }
+}
