@@ -1,3 +1,7 @@
+## 4.4.43
+- **New:** Added 'always_on' dependency mode for checkbox fields to enforce enabled state based on parent condition
+## 4.4.42
+- **New:** Correctly open NUXY subsections based on URL hash after page reload
 ## 4.4.41
 - **New:** Added 'format' option to color field.
 ## 4.4.40

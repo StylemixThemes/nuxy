@@ -627,6 +627,10 @@ function wpcfto_metaboxes_deps( $field, $section_name ) {
 		$dependency = "v-bind:class=\"{'wpcfto-disabled-field' : {$dependencies}}\"";
 	}
 
+	if ( ! empty( $field['dependency_mode'] ) && 'always_on' === $field['dependency_mode'] ) {
+		$dependency = "v-bind:class=\"{'wpcfto-always-on' : {$dependencies}}\"";
+	}
+
 	return $dependency;
 }
 
