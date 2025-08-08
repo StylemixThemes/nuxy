@@ -660,7 +660,7 @@ function wpcfto_metaboxes_generate_deps( $section_name, $dep ) {
 
 function wpcfto_metaboxes_display_single_field( $section, $section_name, $field, $field_name, $metabox_id = null ) {
 	$dependency  = wpcfto_metaboxes_deps( $field, $section_name );
-	$width       = 'column-1';
+	$width       = 'column-' . ( isset( $field['column'] ) ? $field['column'] : 1 );
 	$is_pro      = ( ! empty( $field['pro'] ) ) ? 'is_pro' : 'not_pro';
 	$vars        = ( ! empty( $field['vars'] ) ) ? $field['vars'] : '';
 	$disable     = ( ! empty( $field['disable'] ) ) ? 'is_disabled' : '';
@@ -752,6 +752,7 @@ function wpcfto_metaboxes_display_single_field( $section, $section_name, $field,
 
 function wpcfto_metaboxes_display_group_field( $section, $section_name, $field, $field_name ) {
 	if ( 'started' === $field['group'] ) :
+		$column = isset( $field['column'] ) ? $field['column'] : 1;
 
 		$group_data = '';
 
@@ -759,7 +760,7 @@ function wpcfto_metaboxes_display_group_field( $section, $section_name, $field, 
 			$group_data = 'data-dependency=' . json_encode( $field['dependency'] );
 		}
 
-		$group_classes = array( 'wpcfto-box wpcfto_group_started column-1' );
+		$group_classes = array( 'wpcfto-box wpcfto_group_started column-' . $column );
 		if ( ! empty( $field['submenu'] ) ) {
 			$group_classes[] = sanitize_title( "{$section_name}_{$field['submenu']}" );
 		}

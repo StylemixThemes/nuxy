@@ -40,6 +40,17 @@ html body .stm_metaboxes_grid {
                 margin-left: -10px;
                 margin-right: -10px;
             }
+            &.column-2 {
+                .row {
+                    gap: 15px;
+                }
+                .wpcfto-box-child {
+                    &.column-2 {
+                        margin-top: 0;
+                        width: calc(50% - 15px);
+                    }
+                }
+            }
         }
     }
 }

@@ -12,7 +12,6 @@
  * @var $section_name
  *
  */
-
 $field = "data['{$section_name}']['fields']['{$field_name}']";
 ?>
 
