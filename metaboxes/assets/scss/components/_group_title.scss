@@ -149,3 +149,12 @@
     position: relative;
     z-index: 1000;
 }
+html body .stm_metaboxes_grid__inner .wpcfto-box-group_title {
+    &.wpcfto-box-group_title {
+        &.wpcfto-box-group_title {
+            &.column-2 {
+                width: 100%;
+            }
+        }
+    }
+}
