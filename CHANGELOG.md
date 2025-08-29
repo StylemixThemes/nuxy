@@ -1,3 +1,6 @@
+## 4.4.44
+- **Fix:** Fixed repeater delete issue
+- **Fix:** Fixed repeater anchor issue
 ## 4.4.43
 - **New:** Added 'always_on' dependency mode for checkbox fields to enforce enabled state based on parent condition
 ## 4.4.42
