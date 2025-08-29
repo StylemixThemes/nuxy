@@ -27,17 +27,17 @@ Vue.component('wpcfto_repeater', {
     <div class="wpcfto_generic_field wpcfto_generic_field_repeater wpcfto-repeater unflex_fields">
 
         <wpcfto_fields_aside_before :fields="fields" :field_label="field_label"></wpcfto_fields_aside_before>
-
+        
         <div class="wpcfto-field-content">
 
             <div v-for="(area, area_key) in repeater" :key="area" class="wpcfto-repeater-single" :class="'wpcfto-repeater_' + field_name + '_' + area_key ">
-
+    
                 <div class="wpcfto_group_title" v-html="field_label + ' #' + (area_key + 1)"></div>
-
+    
                 <div class="repeater_inner">
-
+    
                     <div class="wpcfto-repeater-field" v-for="(field, field_name_inner) in fields.fields">
-
+                    
                         <component :is="'wpcfto_' + field.type"
                                    :fields="field"
                                    :field_name="field_name + '_' + area_key + '_' + field_name_inner"
@@ -49,26 +49,26 @@ Vue.component('wpcfto_repeater', {
                                    :placeholder_text="placeholder_text"
                                    @wpcfto-get-value="$set(repeater[area_key], field_name_inner, $event)">
                         </component>
-
+    
                     </div>
-
+    
                 </div>
-
+    
                 <span class="wpcfto-repeater-single-delete" @click="removeArea(area_key)">
                     <i class="fa fa-trash-alt"></i>{{ deleteLabel }}
                 </span>
-
+    
             </div>
-
+    
             <div v-if="repeater && repeater.length > 0" class="separator"></div>
-
+    
             <div class="addArea" @click="addArea">
                 <i class="fa fa-plus-circle"></i>
                 <span v-html="addLabel()"></span>
             </div>
-
+        
         </div>
-
+        
         <wpcfto_fields_aside_after :fields="fields"></wpcfto_fields_aside_after>
 
     </div>
@@ -134,7 +134,7 @@ Vue.component('wpcfto_repeater', {
 		removeArea: function (areaIndex) {
 			if (confirm('Do your really want to delete this field?')) {
 				this.repeater.splice(areaIndex, 1)
-                this.repeater_values.splice(areaIndex, 1)
+				this.repeater_values.splice(areaIndex, 1)
 			}
 		},
 		getFieldValue(key, field, field_name) {
