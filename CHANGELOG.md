@@ -1,3 +1,5 @@
+## 4.4.45
+- **New:** Added a filter to intercept and filter settings before saving.
 ## 4.4.44
 - **Fix:** Fixed issues with repeaters, including proper deletion of items and correct handling of repeater anchors.
 ## 4.4.43
