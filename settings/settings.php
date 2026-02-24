@@ -225,6 +225,8 @@ class WPCFTO_Settings {
 
 		do_action( 'wpcfto_settings_saved', $id, $settings );
 
+		$settings = apply_filters( 'wpcfto_masterstudy_settings_before_update_option', $id, $settings );
+
 		$response['updated'] = update_option( $id, $settings );
 
 		do_action( 'wpcfto_after_settings_saved', $id, $settings );
