@@ -1,3 +1,5 @@
+## 4.4.46
+- **New:** Fixed minor bug.
 ## 4.4.45
 - **New:** Added a filter to intercept and filter settings before saving.
 ## 4.4.44

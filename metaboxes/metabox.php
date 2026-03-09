@@ -273,6 +273,10 @@ class STM_Metaboxes {
 	}
 
 	public static function wpcfto_scripts() {
+		if ( ! empty( $_GET['page'] ) && in_array( $_GET['page'], array( 'cost_calculator_builder', 'cost_calculator_templates' ), true ) ) {
+			return;
+		}
+
 		if ( is_customize_preview() ) {
 			return;
 		}
