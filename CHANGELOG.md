@@ -1,3 +1,5 @@
+## 4.4.42
+- **New:** Fixed Vue.js conflict with Cost Calculator Builder plugin.
 ## 4.4.41
 - **New:** Added 'format' option to color field.
 ## 4.4.40

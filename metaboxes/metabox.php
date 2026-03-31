@@ -97,7 +97,7 @@ class STM_Metaboxes {
 
 						$field_modified = call_user_func( array( $this, $sanitize ), $field_modified, $field_name );
 					}
-					
+
 					$field_modified_array = array();
 
 					if ( is_string( $field_modified ) ) {
@@ -273,7 +273,9 @@ class STM_Metaboxes {
 	}
 
 	public static function wpcfto_scripts() {
-		if ( is_customize_preview() ) {
+		$page = isset( $_GET['page'] ) ? sanitize_text_field( $_GET['page'] ) : '';
+
+		if ( is_customize_preview() || 'cost_calculator_builder' === $page ) {
 			return;
 		}
 
