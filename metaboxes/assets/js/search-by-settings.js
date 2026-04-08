@@ -267,20 +267,39 @@
                 _iterator4.f();
               }
   
-              var fields = selectedTabContent.querySelectorAll('.wpcfto-box.' + activeSubmenu.getAttribute('data-submenu') + ', .wpcfto-box.' + activeSubmenu.getAttribute('data-submenu') + ' .wpcfto-box-child');
-  
-              var _iterator5 = _createForOfIteratorHelper(fields),
-                  _step5;
-  
-              try {
-                for (_iterator5.s(); !(_step5 = _iterator5.n()).done;) {
-                  var field = _step5.value;
-                  field.removeAttribute('style');
+              if (activeSubmenu) {
+                var fields = selectedTabContent.querySelectorAll('.wpcfto-box.' + activeSubmenu.getAttribute('data-submenu') + ', .wpcfto-box.' + activeSubmenu.getAttribute('data-submenu') + ' .wpcfto-box-child');
+
+                var _iterator5 = _createForOfIteratorHelper(fields),
+                    _step5;
+
+                try {
+                  for (_iterator5.s(); !(_step5 = _iterator5.n()).done;) {
+                    var field = _step5.value;
+                    field.removeAttribute('style');
+                  }
+                } catch (err) {
+                  _iterator5.e(err);
+                } finally {
+                  _iterator5.f();
                 }
-              } catch (err) {
-                _iterator5.e(err);
-              } finally {
-                _iterator5.f();
+              } else {
+                var _fields2 = selectedTabContent.querySelectorAll('.wpcfto-box, .wpcfto-box-child');
+
+                var _iterator8 = _createForOfIteratorHelper(_fields2),
+                    _step8;
+
+                try {
+                  for (_iterator8.s(); !(_step8 = _iterator8.n()).done;) {
+                    var _field4 = _step8.value;
+
+                    _field4.removeAttribute('style');
+                  }
+                } catch (err) {
+                  _iterator8.e(err);
+                } finally {
+                  _iterator8.f();
+                }
               }
             }
           } else {
@@ -302,6 +321,24 @@
             }
           }
   
+          var url = new URL(window.location.href);
+          url.hash = selected.section_id;
+
+          if (activeSubmenu) {
+            var submenuData = activeSubmenu.getAttribute('data-submenu') || '';
+            var submenuName = submenuData.split('_').pop();
+
+            if (submenuName) {
+              url.searchParams.set('submenu', submenuName);
+            } else {
+              url.searchParams.delete('submenu');
+            }
+          } else {
+            url.searchParams.delete('submenu');
+          }
+
+          history.pushState(null, null, url.toString());
+
           clearTimeout(ths.selectedBlinkTimeout);
           selectedField.classList.add('selected-field');
           window.scrollTo({

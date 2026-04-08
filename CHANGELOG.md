@@ -1,3 +1,5 @@
+## 4.4.47
+- **Fix:** Fixed issues with search by settings path
 ## 4.4.46
 - **New:** Fixed minor bug.
 ## 4.4.45
