@@ -136,9 +136,16 @@ Vue.component('search-by-settings', {
                                 break;
                             }
                         }
-                        let fields = selectedTabContent.querySelectorAll('.wpcfto-box.' + activeSubmenu.getAttribute('data-submenu') + ', .wpcfto-box.' + activeSubmenu.getAttribute('data-submenu') + ' .wpcfto-box-child');
-                        for ( let field of fields ) {
-                            field.removeAttribute('style');
+                        if ( activeSubmenu ) {
+                            let fields = selectedTabContent.querySelectorAll('.wpcfto-box.' + activeSubmenu.getAttribute('data-submenu') + ', .wpcfto-box.' + activeSubmenu.getAttribute('data-submenu') + ' .wpcfto-box-child');
+                            for ( let field of fields ) {
+                                field.removeAttribute('style');
+                            }
+                        } else {
+                            let fields = selectedTabContent.querySelectorAll('.wpcfto-box, .wpcfto-box-child');
+                            for ( let field of fields ) {
+                                field.removeAttribute('style');
+                            }
                         }
                     } 
                 } else {
@@ -147,6 +154,23 @@ Vue.component('search-by-settings', {
                         field.removeAttribute('style');
                     }
                 }
+
+                const url = new URL(window.location.href);
+                url.hash = selected.section_id;
+
+                if ( activeSubmenu ) {
+                    const submenuData = activeSubmenu.getAttribute('data-submenu') || '';
+                    const submenuName = submenuData.split('_').pop();
+                    if ( submenuName ) {
+                        url.searchParams.set('submenu', submenuName);
+                    } else {
+                        url.searchParams.delete('submenu');
+                    }
+                } else {
+                    url.searchParams.delete('submenu');
+                }
+
+                history.pushState(null, null, url.toString());
 
                 clearTimeout( ths.selectedBlinkTimeout );
 
