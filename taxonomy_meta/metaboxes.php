@@ -33,97 +33,103 @@ add_action(
 			add_action( "create_{$taxonomy}", 'wpcfto_save_term_meta_field' );
 		}
 
-		function wpcfto_add_term_meta_fields( $tax ) {
-			$meta   = wpcfto_term_meta_fields();
-			$fields = $meta[ $tax ]; ?>
-			<table class="form-table">
-				<tbody>
+		if ( ! function_exists( 'wpcfto_add_term_meta_fields' ) ) {
+			function wpcfto_add_term_meta_fields( $tax ) {
+				$meta   = wpcfto_term_meta_fields();
+				$fields = $meta[ $tax ]; ?>
+				<table class="form-table">
+					<tbody>
+					<?php
+					foreach ( $fields as $field_key => $field ) :
+						?>
+						<tr class="form-field">
+							<th scope="row">
+								<label for="<?php echo esc_attr( $field_key ); ?>"><?php echo esc_html( $field['label'] ); ?></label>
+							</th>
+							<td>
+								<?php
+								switch ( $field['type'] ) {
+									case 'image':
+										wpcfto_term_meta_field_image( $field_key, '' );
+										break;
+									case 'icon':
+										wpcfto_term_meta_field_icon( $field_key, '' );
+										break;
+									case 'color':
+										wpcfto_term_meta_field_color( $field_key, '' );
+										break;
+									default:
+										wpcfto_term_meta_field_default( $field_key, '' );
+								}
+								?>
+							</td>
+						</tr>
+
+					<?php endforeach; ?>
+					</tbody>
+				</table>
 				<?php
-				foreach ( $fields as $field_key => $field ) :
-					?>
-					<tr class="form-field">
-						<th scope="row">
-							<label for="<?php echo esc_attr( $field_key ); ?>"><?php echo esc_html( $field['label'] ); ?></label>
-						</th>
-						<td>
-							<?php
-							switch ( $field['type'] ) {
-								case 'image':
-									wpcfto_term_meta_field_image( $field_key, '' );
-									break;
-								case 'icon':
-									wpcfto_term_meta_field_icon( $field_key, '' );
-									break;
-								case 'color':
-									wpcfto_term_meta_field_color( $field_key, '' );
-									break;
-								default:
-									wpcfto_term_meta_field_default( $field_key, '' );
-							}
-							?>
-						</td>
-					</tr>
-
-				<?php endforeach; ?>
-				</tbody>
-			</table>
-			<?php
-		}
-
-		function wpcfto_edit_term_meta_fields( $term ) {
-			$taxonomy = $term->taxonomy;
-			$meta     = wpcfto_term_meta_fields();
-			$fields   = $meta[ $taxonomy ];
-			?>
-			<table class="form-table">
-				<tbody>
-				<?php
-				foreach ( $fields as $field_key => $field ) :
-					$value = wpcfto_get_term_meta_text( $term->term_id, $field_key );
-					?>
-
-					<tr class="form-field">
-						<th scope="row">
-							<label for="<?php echo esc_attr( $field_key ); ?>"><?php echo esc_html( $field['label'] ); ?></label>
-						</th>
-						<td>
-							<?php
-							switch ( $field['type'] ) {
-								case 'image':
-									wpcfto_term_meta_field_image( $field_key, $value );
-									break;
-								case 'icon':
-									wpcfto_term_meta_field_icon( $field_key, $value );
-									break;
-								case 'color':
-									wpcfto_term_meta_field_color( $field_key, $value );
-									break;
-								default:
-									wpcfto_term_meta_field_default( $field_key, $value );
-							}
-							?>
-						</td>
-					</tr>
-
-				<?php endforeach; ?>
-				</tbody>
-			</table>
-			<?php
-		}
-
-		function wpcfto_save_term_meta_field( $term_id ) {
-			if ( ! isset( $_REQUEST['_wpnonce'] ) || ! wp_verify_nonce( sanitize_text_field( $_REQUEST['_wpnonce'] ), 'update-tag_' . $term_id ) ) {
-				return;
 			}
+		}
 
-			if ( ! empty( $_POST['taxonomy'] ) ) {
-				$taxonomy = sanitize_text_field( $_POST['taxonomy'] );
+		if	( ! function_exists('wpcfto_edit_term_meta_fields') ) {
+			function wpcfto_edit_term_meta_fields( $term ) {
+				$taxonomy = $term->taxonomy;
 				$meta     = wpcfto_term_meta_fields();
-				if ( ! empty( $meta[ $taxonomy ] ) ) {
-					$fields = $meta[ $taxonomy ];
-					foreach ( $fields as $field_key => $field ) {
-						$field_value = ( ! empty( $_POST[ $field_key ] ) ) ? sanitize_text_field( $_POST[ $field_key ] ) : '';
-						update_term_meta( $term_id, $field_key, $field_value );
+				$fields   = $meta[ $taxonomy ];
+				?>
+				<table class="form-table">
+					<tbody>
+					<?php
+					foreach ( $fields as $field_key => $field ) :
+						$value = wpcfto_get_term_meta_text( $term->term_id, $field_key );
+						?>
+
+						<tr class="form-field">
+							<th scope="row">
+								<label for="<?php echo esc_attr( $field_key ); ?>"><?php echo esc_html( $field['label'] ); ?></label>
+							</th>
+							<td>
+								<?php
+								switch ( $field['type'] ) {
+									case 'image':
+										wpcfto_term_meta_field_image( $field_key, $value );
+										break;
+									case 'icon':
+										wpcfto_term_meta_field_icon( $field_key, $value );
+										break;
+									case 'color':
+										wpcfto_term_meta_field_color( $field_key, $value );
+										break;
+									default:
+										wpcfto_term_meta_field_default( $field_key, $value );
+								}
+								?>
+							</td>
+						</tr>
+
+					<?php endforeach; ?>
+					</tbody>
+				</table>
+				<?php
+			}
+		}
+
+		if ( ! function_exists('wpcfto_save_term_meta_field') ) {
+			function wpcfto_save_term_meta_field( $term_id ) {
+				if ( ! isset( $_REQUEST['_wpnonce'] ) || ! wp_verify_nonce( sanitize_text_field( $_REQUEST['_wpnonce'] ), 'update-tag_' . $term_id ) ) {
+					return;
+				}
+
+				if ( ! empty( $_POST['taxonomy'] ) ) {
+					$taxonomy = sanitize_text_field( $_POST['taxonomy'] );
+					$meta     = wpcfto_term_meta_fields();
+					if ( ! empty( $meta[ $taxonomy ] ) ) {
+						$fields = $meta[ $taxonomy ];
+						foreach ( $fields as $field_key => $field ) {
+							$field_value = ( ! empty( $_POST[ $field_key ] ) ) ? sanitize_text_field( $_POST[ $field_key ] ) : '';
+							update_term_meta( $term_id, $field_key, $field_value );
+						}
 					}
 				}
 			}
