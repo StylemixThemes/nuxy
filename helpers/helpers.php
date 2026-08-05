@@ -15,9 +15,9 @@ function stm_wpcfto_wp_head() {
 	</script>
 
 	<style>
-		.vue_is_disabled {
-			display: none;
-		}
+        .vue_is_disabled {
+            display: none;
+        }
 	</style>
 	<?php
 }
@@ -57,9 +57,24 @@ add_action( 'wp_ajax_stm_wpcfto_get_settings', 'stm_wpcfto_get_settings_callback
 function stm_wpcfto_get_settings_callback() {
 	check_ajax_referer( 'stm_wpcfto_get_settings_nonce', 'nonce' );
 
-	$source = ( isset( $_GET['source'] ) ) ? sanitize_text_field( $_GET['source'] ) : '';
-	$name   = ( isset( $_GET['name'] ) ) ? sanitize_text_field( $_GET['name'] ) : '';
+	$source = isset( $_GET['source'] ) ? sanitize_text_field( wp_unslash( $_GET['source'] ) ) : '';
+	$name   = isset( $_GET['name'] ) ? sanitize_text_field( wp_unslash( $_GET['name'] ) ) : '';
+
+	if ( ! stm_wpcfto_current_user_can_get_settings( $source ) ) {
+		wp_send_json_error( array( 'message' => esc_html__( 'You are not allowed to access these settings.', 'nuxy' ) ), 403 );
+	}
+
 	wp_send_json( wpcfto_get_settings_map( $source, $name ) );
+}
+
+function stm_wpcfto_current_user_can_get_settings( $source ) {
+	if ( 'settings' === $source ) {
+		return current_user_can( 'manage_options' );
+	}
+
+	$post_id = absint( $source );
+
+	return $post_id > 0 && current_user_can( 'edit_post', $post_id );
 }
 
 function wpcfto_get_settings_map( $source, $name ) {
