@@ -237,12 +237,20 @@ class WPCFTO_Settings {
 	public function stm_regenerate_fonts() {
 		check_ajax_referer( 'wpcfto_regenerate_fonts', 'nonce' );
 
-		if ( ! current_user_can( 'manage_options' ) && ! class_exists( 'WPCFTO_WebFont_Loader' ) ) {
-			die;
+		if ( ! current_user_can( 'manage_options' ) || ! class_exists( 'WPCFTO_WebFont_Loader' ) ) {
+			wp_send_json_error( array( 'message' => esc_html__( 'You are not allowed to regenerate fonts.', 'nuxy' ) ), 403 );
 		}
 
-		$id       = sanitize_text_field( $_GET['name'] );
+		$id = isset( $_GET['name'] ) ? sanitize_key( wp_unslash( $_GET['name'] ) ) : '';
+
+		if ( $id !== sanitize_key( $this->option_name ) ) {
+			return;
+		}
+
 		$settings = get_option( $id, array() );
+		if ( ! is_array( $settings ) ) {
+			wp_send_json_error( array( 'message' => esc_html__( 'Invalid font settings.', 'nuxy' ) ), 400 );
+		}
 
 		$response = array(
 			'reload'    => true,
@@ -252,6 +260,11 @@ class WPCFTO_Settings {
 		$wpcfto_webfont = new WPCFTO_WebFont_Loader();
 
 		foreach ( $settings as $field_name => $field ) {
+			$field_name = (string) $field_name;
+			if ( ! preg_match( '/^[A-Za-z0-9_-]+$/', $field_name ) ) {
+				continue;
+			}
+
 			if ( ! empty( $field['font-data']['family'] ) && ! empty( $field['font-family'] ) ) {
 				$folder_name = $wpcfto_webfont->get_fonts_folder() . '/' . $field_name;
 				$wpcfto_webfont->deleteDirFiles( $folder_name );
@@ -265,7 +278,7 @@ class WPCFTO_Settings {
 	}
 
 	public function stm_enable_regenerate_fonts( $val ) {
-		if ( ! current_user_can( 'manage_options' ) && ! class_exists( 'WPCFTO_WebFont_Loader' ) ) {
+		if ( ! current_user_can( 'manage_options' ) || ! class_exists( 'WPCFTO_WebFont_Loader' ) ) {
 			return false;
 		}
 
