@@ -744,7 +744,21 @@ if ( ! class_exists( 'WPCFTO_WebFont_Loader' ) ) {
 		 * Delete folder with files
 		 */
 		public function deleteDirFiles( $dir ) {
-			return $this->get_filesystem()->delete( $dir, true );
+			$fonts_folder = realpath( $this->get_fonts_folder() );
+			$directory    = realpath( $dir );
+
+			if ( false === $fonts_folder || false === $directory ) {
+				return false;
+			}
+
+			$fonts_folder = untrailingslashit( wp_normalize_path( $fonts_folder ) );
+			$directory    = untrailingslashit( wp_normalize_path( $directory ) );
+
+			if ( $directory === $fonts_folder || 0 !== strpos( $directory, trailingslashit( $fonts_folder ) ) ) {
+				return false;
+			}
+
+			return $this->get_filesystem()->delete( $directory, true );
 		}
 
 	}

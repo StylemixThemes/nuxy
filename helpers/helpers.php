@@ -28,13 +28,21 @@ add_action( 'admin_head', 'stm_wpcfto_wp_head' );
 function stm_wpcfto_nonces() {
 
 	$nonces = array(
-		'wpcfto_save_settings',
 		'get_image_url',
 		'wpcfto_upload_file',
 		'wpcfto_search_posts',
-		'wpcfto_regenerate_fonts',
-		'wpcfto_create_term',
 	);
+
+	if ( current_user_can( 'manage_options' ) ) {
+		$nonces = array_merge(
+			$nonces,
+			array(
+				'wpcfto_save_settings',
+				'wpcfto_regenerate_fonts',
+				'wpcfto_create_term',
+			)
+		);
+	}
 
 	$nonces_list = array();
 
